@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>手势密码登录</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+	</head>
+	<body  class='back_fff'>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">设置手势密码</h1>
+			<a class="mui-action-back head_title_a">跳过</a>
+		</header>
+		<div class="mui-content" style="height: 100%;">
+			<div class="gesture_Passs">
+					<ul id="get_ul">
+						<li data-value="0" class="dis"></li>
+						<li data-value="1" class="dis"></li>
+						<li data-value="2" class="dis"></li>
+						<li data-value="3" class="dis"></li>
+						<li data-value="4" class="dis"></li>
+						<li data-value="5" class="dis"></li>
+						<li data-value="6" class="dis"></li>
+						<li data-value="7" class="dis"></li>
+						<li data-value="8" class="dis"></li>
+					</ul>
+				</div>
+			<div id='alert' class="tip_pass" style="color: #007AFF;;"></div>
+
+			<div id='holder' class="mui-locker" data-locker-options='{"ringColor":"rgba(210,210,210,1)","fillColor":"#ffffff","pointColor":"rgba(0,136,204,1)","lineColor":"rgba(0,136,204,1)"}' data-locker-width='300' data-locker-height='300'></div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/mui.locker.js"></script>
+	<script src="../../common/js/zepto.min.js"></script>
+	<script src="../../common/js/common.js"></script>
+	<script type="text/javascript" src="../../common/js/md5.js" ></script>
+	<script src="setgesturepwd.js" ></script>
+</html>

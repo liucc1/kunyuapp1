@@ -1,0 +1,489 @@
+{
+	"marital": [
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "未婚"
+		}, {
+			"value": "02",
+			"text": "已婚"
+		}, {
+			"value": "03",
+			"text": "其他"
+		}
+	],
+	
+	"eduLevel": [
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "初中及以下"
+		}, {
+			"value": "02",
+			"text": "高中及中专"
+		}, {
+			"value": "03",
+			"text": "大专"
+		}, {
+			"value": "04",
+			"text": "本科"
+		}, {
+			"value": "05",
+			"text": "硕士"
+		}, {
+			"value": "06",
+			"text": "博士及以上"
+		}
+	],
+	"relation": [
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "05",
+			"text": "亲属"
+		}, {
+			"value": "06",
+			"text": "同事"
+		}, {
+			"value": "07",
+			"text": "朋友"
+		}, {
+			"value": "08",
+			"text": "其他"
+		}
+	],
+	"companyType": [
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "机关、事业单位"
+		}, {
+			"value": "02",
+			"text": "国有企业"
+		}, {
+			"value": "03",
+			"text": "外商独资企业"
+		}, {
+			"value": "04",
+			"text": "合资、合作企业"
+		}, {
+			"value": "05",
+			"text": "股份制"
+		}, {
+			"value": "06",
+			"text": "私营企业"
+		}, {
+			"value": "07",
+			"text": "其他"
+		}
+	],
+	"applicantRelationship": [
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "05",
+			"text": "亲属"
+		}, {
+			"value": "06",
+			"text": "同事"
+		}, {
+			"value": "07",
+			"text": "朋友"
+		}, {
+			"value": "08",
+			"text": "其他"
+		}
+	],
+	"industryCategory":[
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "政府机构及社会非盈利组织"
+		}, {
+			"value": "02",
+			"text": "军队"
+		}, {
+			"value": "03",
+			"text": "教育机构"
+		}, {
+			"value": "04",
+			"text": "医院"
+		}, {
+			"value": "05",
+			"text": "公用事业"
+		}, {
+			"value": "06",
+			"text": "建筑业"
+		},{
+			"value": "07",
+			"text": "制造业"
+		}, {
+			"value": "08",
+			"text": "金融业"
+		}, {
+			"value": "09",
+			"text": "电信/计算机/信息"
+		}, {
+			"value": "10",
+			"text": "交通运输"
+		}, {
+			"value": "11",
+			"text": "零售商贸"
+		}, {
+			"value": "12",
+			"text": "服务业"
+		}, {
+			"value": "13",
+			"text": "传媒文化"
+		}, {
+			"value": "14",
+			"text": "专业事务所"
+		}, {
+			"value": "15",
+			"text": "其他"
+		}, {
+			"value": "16",
+			"text": "学生"
+		},{
+			"value": "17",
+			"text": "我行员工"
+		}
+	],
+	"companyDuty":[
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "高级管理人员/厅局级及以上"
+		}, {
+			"value": "02",
+			"text": "中级管理人员/处级"
+		}, {
+			"value": "03",
+			"text": "一般管理人员/科级"
+		}, {
+			"value": "04",
+			"text": "行政人员/科员"
+		}, {
+			"value": "05",
+			"text": "专业技术人员"
+		}, {
+			"value": "06",
+			"text": "销售人员"
+		},{
+			"value": "07",
+			"text": "服务人员"
+		}, {
+			"value": "08",
+			"text": "作业人员"
+		}, {
+			"value": "09",
+			"text": "法人/其他企业主"
+		}, {
+			"value": "10",
+			"text": "普通员工"
+		}, {
+			"value": "11",
+			"text": "其他"
+		}
+	],
+	"houseOwner":[
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "本人或配偶"
+		}, {
+			"value": "02",
+			"text": "成年子女"
+		}, {
+			"value": "03",
+			"text": "父母"
+		}, {
+			"value": "04",
+			"text": "企业或股东"
+		}, {
+			"value": "05",
+			"text": "租赁"
+		}, {
+			"value": "06",
+			"text": "其他"
+		}
+	],
+	"houseType":[
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "住宅"
+		}, {
+			"value": "02",
+			"text": "商住两用"
+		}, {
+			"value": "03",
+			"text": "商铺"
+		}, {
+			"value": "04",
+			"text": "办公"
+		}, {
+			"value": "05",
+			"text": "其他"
+		}
+	],
+	"capitalpurpose":[
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "消费"
+		}, {
+			"value": "02",
+			"text": "还款"
+		}, {
+			"value": "03",
+			"text": "经营"
+		}
+	],
+	"totleTaskNum" : [
+		{
+			"value": "0",
+			"text": "所有"
+		},{
+			"value": "1",
+			"text": "近三天"
+		},{
+			"value": "2",
+			"text": "近一周"
+		},{
+			"value": "3",
+			"text": "近一个月"
+		},{
+			"value": "4",
+			"text": "近三个月"
+		}
+	],
+	"unCompleteNum" : [
+		{
+			"value": "0",
+			"text": "所有"
+		},{
+			"value": "1",
+			"text": "近三天"
+		},{
+			"value": "2",
+			"text": "近一周"
+		},{
+			"value": "3",
+			"text": "近一个月"
+		},{
+			"value": "4",
+			"text": "近三个月"
+		}
+	],
+	"housingLoanType" : [
+		{
+			"value": "0",
+			"text": "按揭贷款"
+		},{
+			"value": "1",
+			"text": "抵押贷款"
+		},{
+			"value": "2",
+			"text": "无贷款"
+		}
+	],
+	"referralRelation" : [
+		{
+			"value": "0",
+			"text": "客户"
+		},{
+			"value": "1",
+			"text": "亲属"
+		},{
+			"value": "2",
+			"text": "朋友"
+		},{
+			"value": "3",
+			"text": "同事"
+		},{
+			"value": "4",
+			"text": "其他"
+		}
+	],
+	"conAddrType" : [
+		{
+			"value": "00",
+			"text": "请选择"
+		},
+		{
+			"value": "01",
+			"text": "住所地址"
+		},{
+			"value": "02",
+			"text": "单位地址"
+		},{
+			"value": "03",
+			"text": "库房地址"
+		},{
+			"value": "04",
+			"text": "实际经营地址"
+		},{
+			"value": "05",
+			"text": "其他"
+		}
+	],
+	"ifFlag" : [
+		{
+			"value": "00",
+			"text": "请选择"
+		},
+		{
+			"value": "0",
+			"text": "是"
+		},{
+			"value": "1",
+			"text": "否"
+		}
+	],
+	"rel": [
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "配偶"
+		}, {
+			"value": "02",
+			"text": "父母"
+		}, {
+			"value": "03",
+			"text": "子女"
+		}, {
+			"value": "04",
+			"text": "其他"
+		}
+	],"beIntroducedpropertyType": [
+		{
+			"value": "00",
+			"text": "请选择"
+		}, {
+			"value": "01",
+			"text": "有房客户"
+		}, {
+			"value": "02",
+			"text": "他行信贷客户"
+		}, {
+			"value": "03",
+			"text": "其他"
+		}
+	],"refuseRes": [{
+			"value": "0",
+			"text": "请选择"
+		},{
+			"value": "1",
+			"text": "高利贷"
+		}, {
+			"value": "2",
+			"text": "疑似高利贷"
+		}, {
+			"value": "3",
+			"text": "资不抵债"
+		}, {
+			"value": "4",
+			"text": "限制推广行业"
+		}, {
+			"value": "5",
+			"text": "生存状态不佳"
+		}, {
+			"value": "6",
+			"text": "人品有问题"
+		}
+	],"pendRes": [{
+			"value": "0",
+			"text": "请选择"
+		},{
+			"value": "1",
+			"text": "不愿缴费"
+		}, {
+			"value": "2",
+			"text": "额度太低"
+		}, {
+			"value": "3",
+			"text": "房屋二抵"
+		}, {
+			"value": "4",
+			"text": "经营流水少"
+		}, {
+			"value": "5",
+			"text": "负债过高"
+		}
+	],"approPassRes":[
+		{"value": "A101", "text": "目标客户"},
+		{"value": "A102", "text": "学历客户"},
+		{"value": "A103", "text": "人行资信"},
+		{"value": "A104", "text": "小贷客户"},
+		{"value": "A105", "text": "房产客户"},
+		{"value": "A106", "text": "车产客户"},
+		{"value": "A107", "text": "投资客户"},
+		{"value": "A108", "text": "社保客户"},
+		{"value": "A109", "text": "公积金客户"},
+		{"value": "A110", "text": "内部员工"},
+		{"value": "A111", "text": "私营业主"},
+		{"value": "A112", "text": "工资收入"},
+		{"value": "A113", "text": "优质行业"},
+		{"value": "A114", "text": "评分授信"},
+		{"value": "A115", "text": "通讯资费授信"},
+		{"value": "A116", "text": "在校学生"}		
+	],"approRejRes":[
+		{"value": "D101", "text": "黑名单"},
+		{"value": "D102", "text": "多头授信"},
+		{"value": "D103", "text": "过度授信"},
+		{"value": "D104", "text": "识别身份证异常"},
+		{"value": "D105", "text": "身份证联网核查失败"},
+		{"value": "D106", "text": "活体检测异常"},
+		{"value": "D107", "text": "人脸比对疑似非本人"},
+		{"value": "D108", "text": "人脸黑名单数据"},
+		{"value": "D109", "text": "疑资料不实"},
+		{"value": "D110", "text": "推荐人为高风险户"},
+		{"value": "D111", "text": "公安不良记录"},
+		{"value": "D112", "text": "失信被执行人"},
+		{"value": "D113", "text": "当前账户冻结"},
+		{"value": "D114", "text": "当前账户逾期"},
+		{"value": "D115", "text": "历史逾期严重"},
+		{"value": "D116", "text": "不符合展期资质"},
+		{"value": "D117", "text": "第三方提示风险"},
+		{"value": "D118", "text": "人行不良"},
+		{"value": "D119", "text": "联系信息疑似高风险"},
+		{"value": "D201", "text": "非目标客户"},
+		{"value": "D202", "text": "区域不符"},
+		{"value": "D203", "text": "申请资料不完整"},
+		{"value": "D204", "text": "信用评分不足"},
+		{"value": "D205", "text": "欺诈评分不足"},
+		{"value": "D206", "text": "名单失效"},
+		{"value": "D207", "text": "额度失效"},
+		{"value": "D208", "text": "运营商信息未达标"},
+		{"value": "D209", "text": "前次风险原因拒绝"},
+		{"value": "D210", "text": "资质不符"},
+		{"value": "D211", "text": "财力不符"},
+		{"value": "D212", "text": "限制推广行业"},
+		{"value": "D213", "text": "人行查询次数异常"},
+		{"value": "D301", "text": "接口查询失败"},
+		{"value": "D302", "text": "登陆密码输入错误"},
+		{"value": "D303", "text": "绑卡手机验证码输入错误"},
+		{"value": "D304", "text": "支用手机验证码输入错误"}
+	]
+}

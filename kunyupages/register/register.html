@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet"/>
+		<link href="../../common/css/base.css" rel="stylesheet"/>
+		<link href="../../common/css/mui.picker.css" rel="stylesheet"/>
+		<link href="../../common/css/mui.poppicker.css" rel="stylesheet"/>
+		<!--<style>
+	    	.agreement{
+	    	    height: inherit;
+			    overflow-y: scroll;
+			    margin-top: 6.5rem;
+	    	}	    	
+	    </style>-->
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">注册</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-form">
+				<div class="mui-input-row">
+					<label>手机号码</label> 
+					<input type="tel" maxlength="11" id="phone" placeholder="请输入手机号" />
+					<i id="i1" class="mui-icon mui-icon-closeempty none"></i>
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input type="password" id="pwd1" placeholder="字母+数字组合，大于等于8位">
+					<i id="i2" class="mui-icon mui-icon-closeempty none"></i>
+				</div>
+				<div class="mui-input-row">
+					<label>再次输入</label>
+					<input type="password" id="pwd2" placeholder="请输入您的密码">
+					<i id="i3" class="mui-icon mui-icon-closeempty none"></i>
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 40%;">常驻业务城市</label>
+					<input style="width: 60%;" type="text" id="cityCode" value="北京"data-key="01" readonly="readonly">
+					<a class="mui-push-right"></a>
+				</div>
+				<div class="mui-input-row mui-input-row-yan bor_none">
+					<label>验证码</label>
+					<input type="tel" id="smscode" maxlength="6" placeholder="请输入验证码" />
+					<button type="button" id="getcode" class="mui-btn mui-btn-primary mui-btn-outlined"disabled="disabled">获取验证码</button>
+				</div>
+			</div>
+			<div class="check_box">
+				<span id="checkbox">
+					<img id="checkImg" src="../../images/checkbox_empty.png" />
+				</span>
+				<a class="color_4aa font11" id='alertBtn'> 
+					<span class="color_333">我已阅读并同意 </span>《用户协议》
+				</a>
+			</div>
+			<div class="mui-content-padded">
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block" disabled="disabled">注 册</button>
+			</div>
+			<!--用户协议 -->
+			<div class="dis_show bg_fly none">
+				<div class="close-img"><img src="../../images/alertBtn_colse.png" alt="" /></div>
+				<div class="agreement">
+					<h5>尊敬的用户您好，感谢您注册昆玉app!</h5>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/mui.picker.js"></script>
+	<script src="../../common/js/mui.poppicker.js"></script>
+	<script src="../../common/js/zepto.min.js"></script>
+	<script src="../../common/js/common.js"></script>
+	<!--<script type="text/javascript" src="../../plugins/passguard/plugin-passguard.js" ></script>-->
+	<script src="../../common/json/select.js" type="text/javascript" charset="utf-8"></script>
+	<script src="register.js"></script>
+</html>

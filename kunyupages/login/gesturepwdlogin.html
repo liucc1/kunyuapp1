@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>手势密码登录</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+	</head>
+	<body class='back_fff'>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">手势密码登录</h1>
+		</header>
+		<div class="mui-content">
+			<div class="head-img">
+				<img id="myImg" class="head_icon" src="../../images/loginafterimg.png" alt="个人头像" width="30%" />
+				<h5 id="myMobile" class="text_c font11 color_666"></h5>
+			</div>
+			<div id="" class="">
+				<p class="text_c font11 color_4aa mt20">请绘制解锁图案</p>
+			</div>
+			<div id='holder' class="mui-locker" data-locker-options='{"ringColor":"rgba(210,210,210,1)","fillColor":"#ffffff","pointColor":"rgba(0,136,204,1)","lineColor":"rgba(0,136,204,1)"}' data-locker-width='300' data-locker-height='300'></div>
+			<div class='mb30 font12 pb20' style="text-align: center;">
+				<a id="goLogin" class="color_666 ml5">使用其它方式登录</a>
+			</div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/mui.locker.js"></script>
+	<script type="text/javascript" src="../../common/js/zepto.min.js"></script>
+	<script src="../../common/js/common.js"></script>
+	<script type="text/javascript" src="../../common/js/md5.js" ></script>
+	<script type="text/javascript" src="gesturepwdlogin.js" ></script>
+</html>

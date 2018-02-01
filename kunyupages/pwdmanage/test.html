@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<style>
+	    	.indent{
+	    		text-indent: 2em;
+	    	}
+	    	.title{
+	    		width: 15%;
+			    float: left;
+			    text-align: right;
+			    margin-top: 2px;
+	    	}
+	    	.content{
+	    		width: 85%;
+			    float: right;
+	    	}
+	    	.agreement{
+	    	    height: inherit;
+			    overflow-y: scroll;
+			    margin-top: 6.5rem;
+	    	}	    	
+	    	input[type=tel].bottopmInput{
+	    		margin-bottom: 0px;
+    			padding: 0px;
+    			border: 0px;
+    			border-bottom: 1px solid #e3e3e3;
+    			border-radius: 0px;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<!-- 头部标题 -->
+		<header class="mui-bar mui-bar-nav back_fff" >
+			<!-- 回退按钮 -->
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">注册</h1>
+			<!--     标题通过页面传值过来      -->
+			<!--<h1 class="mui-title ">绑定银行卡</h1>-->
+		</header>
+		<div class="mui-content">
+			<div class="mui-form">
+				<input class="bottopmInput" type="tel" maxlength="11" id="phone" placeholder="请输入手机号" />				
+				<div class="mui-input-row mui-input-row-yan bor_none">
+					<input type="tel" id="queryCode" maxlength="6"  placeholder="请输入验证码" />
+					<button type="button" id="getcode" class="mui-btn mui-btn-primary mui-btn-block">获取验证码</button>
+				</div>
+			</div>
+			<div class="mui-form m0">
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input type="password" id="pwd" placeholder="请设置6-16位包括字母和数字的密码" readonly="readonly">
+				</div>
+				<div class="mui-input-row" style="margin-top:-1px;">
+					<input type="password" id="doublePwd" placeholder="请重新输入密码" readonly="readonly">
+				</div>
+			</div>
+			<div class="check_box">
+				<span id="checkbox">
+					<img id="checkImg" class="nocheck" src="../images/checkbox_empty.png" />
+				</span>
+				<a class="color_4aa font11" id='alertBtn'> 
+					<span class="color_333">同意 </span>《用户注册与服务协议》
+				</a>
+			</div>
+			<!--   按钮     -->
+			<div class="mui-content-padded">
+				<button type="button" id="oBtn" class="mui-btn mui-btn-primary mui-btn-block">注 册</button>
+			</div>
+			
+			<!--     用户协议       -->
+			<div class="dis_show bg_fly none">
+				<div class="close-img"><img src="../images/alertBtn_colse.png" alt="" /></div>
+				<div class="agreement"></div>
+			</div>
+		</div>
+		
+		
+	</body>
+	<!--<script src="../../common/js/mui.min.js"></script>-->
+	<script src="../plugins/zepto.min.js"></script>
+	<script src="../plugins/common.js"></script>
+	<script type="text/javascript" src="../plugins/passguard/plugin-passguard.js" ></script>
+	<script src="../res/register.js"></script>
+</html>

@@ -1,0 +1,23 @@
+{
+  "kunyupages/home/home.html": {
+    "resources": [
+      "kunyupages/home/index.html"
+    ],
+    "refer": [
+      "kunyupages/home/index.html"
+    ]
+  },
+  "kunyupages/home/index.html": {
+    "refer": [
+      "kunyupages/index/progressquery.html"
+    ],
+    "resources": []
+  },
+  "kunyupages/login/login.html": {
+    "refer": [
+      "kunyupages/register/register.html",
+      "kunyupages/pwdmanage/forgetpassword.html"
+    ],
+    "resources": []
+  }
+}

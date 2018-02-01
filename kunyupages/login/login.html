@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link href="../../common/css/mui.min.css"rel="stylesheet" >
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<link href="../../common/css/mui.picker.css" rel="stylesheet" />
+		<link href="../../common/css/mui.poppicker.css" rel="stylesheet" />
+	</head>
+	<body class="back_fff">
+		<div class="mui-content"style="width: 100%;">
+			<div id="closex" class="close-x">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			</div>
+			<div class="login-bg">
+				<div class="login-topWrap">
+					<img src="../../images/logo.png" class="login-logo" />
+					<p class="login-p1">昆玉国际</p>
+				</div>
+			</div>
+			<div class="mui-form bor_none login-phone">
+				<div class="mui-input-row">
+					<span><img id="phonePic" src="../../images/person_grey.png" /></span>
+					<input type="tel" maxlength="11" id="phone" value="" class='logo_input' placeholder="请输入手机号">
+					<i id="historyPhone" class="mui-icon mui-icon-arrowdown select_show none"></i>
+				</div>
+				<div id="dis_nubmer" class="historyList none">
+					<ul id="usersList">
+						<!--<li><span class="nub">13733445580</span><span class='move_this'>x</span></li>
+						<li><span class="nub">13733445593</span><span class='move_his'>x</span></li>
+						<li><span class="nub">13733445591</span><span class='move_his'>x</span></li>
+						<li><span class="nub">13733445592</span><span class='move_his'>x</span></li>
+						<li><span class="nub">15211118882</span><span class='move_his'>x</span></li>
+						<li><span class="nub">15833335555</span><span class='move_his'>x</span></li>-->
+					</ul>
+				</div>
+			</div>
+			<div class="mui-form bor_none dis_bor_top login-phone" style="margin-top:-11px;">
+				<div class="mui-input-row">
+					<span><img id="pwdPic" src="../../images/lock_grey.png" /></span>
+					<input type="password" id="pwd" value="" placeholder="请输入登录密码"/>
+				</div>
+			</div>
+			<div class="mui-content-padded mt30">
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block"disabled="disabled"> 登 录 </button>
+			</div>
+		</div>
+		<!--底部信息   -->
+		<div class="bottomclass">
+			<a class="inleft" id="register">注册账号</a>
+			<a class="inright" id="forgetPassword">忘记密码?</a>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/zepto.min.js"></script>
+	<script src="../../common/js/common.js"></script>
+	<!--<script type="text/javascript" src="../../plugins/passguard/plugin-passguard.js" ></script>-->
+	<script src="login.js"></script>
+</html>
