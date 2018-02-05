@@ -1,8 +1,7 @@
 var eg = {};
 var network;//获取手机网络状况
-//eg.jrURL ="https://frkapp.ybyb11.com/ssp-customer/"//富滇银行生产环境
-
-eg.jrURL = localStorage.getItem("ccpcurl");//为方便打包
+//eg.jrURL = localStorage.getItem("ccpcurl");//为方便打包
+eg.jrURL ="http://192.168.3.201:8091/report/";//本地环境
 eg.isEmpty = function(obj){
     for (var name in obj){
         return false;
@@ -17,51 +16,27 @@ eg.isEmpty = function(obj){
  * @param {是否异步} isasync
  * PS ： 是否异步为非必传项
  */
-eg.ajax = function(url, params, method, success, isasync) {
-	var user = localStorage.getItem("user");
-	var prducNo = "01";
-	if(user !== null ){
-		user = JSON.parse(user);
-	};
-	if( !eg.isEmpty(user) ){
-		params.sessionId = user.sessionId;
-	}
-	params.clientId = localStorage.getItem("uuid");//上传UDID
-	if(mui.os.android){
-		params.channelId = "0002";//渠道号
-	}else{
-		params.channelId = "0001";//渠道号
-	}
-	
-	params = JSON.stringify(params);
+eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
+	plus.nativeUI.showWaiting();
+	//params.channelId = "kunyuapp";//渠道来源
+	//params = JSON.stringify(params);
 	isasync = isasync || false;
-	console.log("请求url："+url + ";上送参数为："+params);
+	console.log("请求url："+url + ";上送参数为："+JSON.stringify(params));
 	$.ajax({
 		url: url,
-		contentType: "application/json",
+		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		type: method,
 		timeout : 60000,
 		data: params,
 		dataType: "JSON",
 		async: isasync,
-		success: function(data){	
-			if(typeof data =='string'){
-				data = JSON.parse(data);
-			}			
-			console.log("返回参数为："+JSON.stringify(data));			
-			if(data.resCode == "USPS0513" || data.resCode == "USPS0512"){
-				mui.toast("请登录后重试");
-				plus.nativeUI.closeWaiting();				
-				eg.goMustLoginPage("","");		
-			return;
-			}else if( data.resCode !== "0" ){
-				plus.nativeUI.closeWaiting();
-				plus.nativeUI.toast(data.resMsg ,{'duration' : "long",align:"center",verticalAlign:"bottom"})
-				return;
-			}
-			success(data);
+		success: function(data){
+			plus.nativeUI.closeWaiting();
+			console.log("返回参数为："+JSON.stringify(data));
+			if(typeof data =='string'){data = JSON.parse(data);}			
+			successFun(data);
 		},
-		error: function(jqXHR, textStatus, errorThrown){			
+		error: function(jqXHR, textStatus, errorThrown){
 			plus.nativeUI.closeWaiting();			
 			if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
 				return;
@@ -69,28 +44,63 @@ eg.ajax = function(url, params, method, success, isasync) {
 			if(network == 0 || network == 1){
 				mui.toast("无网络");
 			}else{
-//				alert("jqXHR"+JSON.stringify(jqXHR));
-//				alert("textStatus"+JSON.stringify(textStatus));
-//				alert("errorThrown"+JSON.stringify(errorThrown));
+				//alert("jqXHR"+JSON.stringify(jqXHR));
+				//alert("textStatus"+JSON.stringify(textStatus));
+				//alert("errorThrown"+JSON.stringify(errorThrown));
 				mui.toast("系统维护中，请稍后重试");
 			}
+			//var jsonRep=JSON.parse(jqXHR)
+			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
+			errorFun(jqXHR.status); 
 		}
 	});
 };
 /***
- * 
  * @param {请求.do} url
  * @param {上送参数} params
  * @param {成功回调} fun
  * @param {是否异步} isasync
  * PS ： 是否异步为非必传项
  */
-eg.postAjax = function(url, params, fun, isasync) {
+eg.postAjax = function(url, params, sussessFun,errorFun, isasync) {
 	if(typeof(isasync) =="undefined"){
 		isasync = true;
   	}	
-	eg.ajax(eg.jrURL + url, params, "post", fun, isasync);
+	eg.ajax(eg.jrURL + url, params, "POST", sussessFun,errorFun, isasync);
 };
+/**
+ * http post请求前先获取token
+ * @param {Object} url
+ * @param {Object} success
+ */
+eg.getToken = function(url,success){
+	plus.nativeUI.showWaiting(); //增加等待框
+	$.ajax({
+		url: eg.jrURL + url,
+		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+		type: 'get',
+		timeout : 60000,
+		data: {},
+		dataType: "HTML",
+		success: function(data){
+			plus.nativeUI.closeWaiting(); //关闭等待框
+			//console.log("getToken——HTML==="+data);
+			success(data);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			plus.nativeUI.closeWaiting(); //关闭等待框
+			console.log("jqXHR"+JSON.stringify(jqXHR));
+		}
+	});
+}
+eg.getCsrf = function(){
+	eg.getToken("68720a30",function(data) {
+		var s=data.split('"');
+		var csrf=s[s.length-2];
+		console.log("重新请求获得_csrf==="+csrf);
+		localStorage.setItem("csrf",csrf);
+	});
+}
 
 /***
  * @param {请求地址} url	
@@ -100,62 +110,43 @@ eg.postAjax = function(url, params, fun, isasync) {
  * @param {是否异步} isasync
  * PS ： 是否异步为非必传项
  */
-eg.generalAjax = function(url, params, method, success, isasync) {
-	var user = localStorage.getItem("user");
-	var prducNo = "01";
-	if(user !== null ){
-		user = JSON.parse(user);
-	};
-	if( !eg.isEmpty(user) ){
-		params.sessionId = user.sessionId;
-	}
-	params.clientId = localStorage.getItem("uuid");//上传UDID
-	if(mui.os.android){
-		params.channelId = "0002";//渠道号
-	}else{
-		params.channelId = "0001";//渠道号
-	}
-	
-	
-	params = JSON.stringify(params);
+eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
+	plus.nativeUI.showWaiting();
 	isasync = isasync || false;
 	console.log("请求url："+url + ";上送参数为："+params);
 	$.ajax({
 		url: url,
-		contentType: "application/json",
+		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		type: method,
 		timeout : 60000,
 		data: params,
 		dataType: "JSON",
 		async: isasync,
-		success: function(data){	
-			if(typeof data =='string'){
-				data = JSON.parse(data);
-			}
+		success: function(data){
+			plus.nativeUI.closeWaiting();
 			console.log("返回参数为："+JSON.stringify(data));			
-			if(data.resCode == "USPS0513" || data.resCode == "USPS0512"){
-				mui.toast("请登录后重试");
-				plus.nativeUI.closeWaiting();	
-				eg.goMustLoginPage("","");
-				return;
-			}
-			success(data);
+//			if(data.resCode == "USPS0513" || data.resCode == "USPS0512"){
+//				mui.toast("请登录后重试");
+//				plus.nativeUI.closeWaiting();	
+//				eg.goMustLoginPage("","");
+//				return;
+//			}
+			sucfun(data);
 		},
 		error: function(jqXHR, textStatus, errorThrown){			
 			plus.nativeUI.closeWaiting();
 			if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
 				return;
 			}			
-			
-			
 			if(network == 0 || network == 1){
 				mui.toast("无网络");
 			}else{
 //				alert("jqXHR"+JSON.stringify(jqXHR));
 //				alert("textStatus"+JSON.stringify(textStatus));
 //				alert("errorThrown"+JSON.stringify(errorThrown));
-				mui.toast("系统维护中，请稍后重试");
+				mui.toast("系统维护中，请稍后重试!");
 			}
+			errfun(jqXHR.status);
 		}
 	});
 };
@@ -168,11 +159,9 @@ eg.generalAjax = function(url, params, method, success, isasync) {
  * @param {是否异步} isasync
  * PS ： 是否异步为非必传项
  */
-eg.generalPostAjax = function(url, params, fun, isasync) {
-	if(typeof(isasync) =="undefined"){
-        isasync = true;
-  	}	
-	eg.generalAjax(eg.jrURL + url, params, "post", fun, isasync);
+eg.generalPostAjax = function(url, params, sucfun,errfun,isasync) {
+	if(typeof(isasync) =="undefined"){ isasync = true;}	
+	eg.generalAjax(eg.jrURL + url, params, "post", sucfun,errfun, isasync);
 };
 
 /**正则表达式**/

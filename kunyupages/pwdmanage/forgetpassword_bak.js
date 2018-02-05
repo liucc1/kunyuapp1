@@ -1,39 +1,52 @@
 mui.init({ swipeBack:false });
-mui.plusReady(function(){
-	//获取token
- 	if (!localStorage.getItem("csrf")) {//不存在则重新获取
- 		eg.getCsrf();
- 	}
+/**1.手机号码聚焦离焦**/
+$("#phone").focus(function(){//获得焦点
+	$("#i1").css("display","none");
 });
-/**校验输入项**/
-function canSubmit(){
-	if(!$("#phone").val().trim()) {
-		mui.toast("手机号码不能为空！");
-		return false;
-	};
-	if(!$("#smscode").val().trim()) {
-		mui.toast("验证码不能为空！");
-		return false;
-	};
-	if(!$("#pwd1").val().trim()) {
-		mui.toast("新输入密码不能为空！");
-		return false;
-	};
-	if($("#pwd1").val()!=$("#pwd2").val()) {
-		mui.toast("两次输入的密码不一致！");
-		$("#pwd2").val("");
-		return false;
-	};
-	if(!eg.phone.test($("#phone").val())) {
-		mui.toast("手机号格式不正确！");
-		$("#phone").val("");
-		return false;
+$("#phone").blur(function(){//失去焦点
+	var phoneNum = $("#phone").val();
+	if(eg.phone.test(phoneNum)) {
+		$("#i1").css("display","none");
+		$("#getcode").removeAttr("disabled");
+	}else{
+		$("#getcode").attr({"disabled": "disabled"})
+		$("#i1").css("display","block");
 	}
-	if(eg.passwd.test($("#pwd1").val())) {
-		mui.toast("密码设置不符合要求！");
-		$("#pwd1").val("");
-		$("#pwd2").val("");
-		return false;
+});
+/**2.密码聚焦离焦**/
+$("#pwd1").focus(function(){//获得焦点
+	$("#i2").css("display","none");
+});
+$("#pwd1").blur(function(){//失去焦点
+	var pwd1 = $("#pwd1").val();
+	if(eg.passwd.test(pwd1)) {
+		$("#i2").css("display","none");
+	}else{
+		$("#i2").css("display","block");
+	}
+});
+/**3.再次输入密码聚焦离焦**/
+$("#pwd2").blur(function(){//失去焦点
+	var pwd1 = $("#pwd1").val();
+	var pwd2 = $("#pwd2").val();
+	if(pwd1!=pwd2) {
+		$("#oBtn").attr("disabled","disabled");
+		mui.toast("您两次输入密码不一致！");
+		document.getElementById('pwd2').value="";
+	}else{
+		if(canSubmit()){
+			$("#oBtn").removeAttr("disabled");
+		}else{
+			$("#oBtn").attr("disabled","disabled");
+		}
+	}
+});
+function canSubmit(){
+	var t1=eg.phone.test($("#phone").val());
+	var t2=eg.passwd.test($("#pwd1").val());
+	var t3=$("#smscode").val().trim();
+	if(t1&&t2&&t3) {
+		return true;
 	}
 }
 /**点击获取验证码**/
@@ -43,50 +56,40 @@ $("#getcode").on("tap",function(){
 		mui.toast("手机号码格式不正确！");
 		return;
 	};
-	eg.postAjax("search/mobile", {//1.首先验证该手机号是否已注册
-		"_csrf":localStorage.getItem("csrf"),
-		"mobile":$("#phone").val().trim()
+	plus.nativeUI.showWaiting();
+	eg.generalPostAjax("user/checkMobile.do", {//1.首先查询该手机号是否已注册
+		"mobile": phoneNum,
+		"serviceId": "02001001"
 		}, function(data) {
-		if(data.status == "1") {//已注册--发送短信验证码
-			eg.postAjax("captCha", {
-				"_csrf":localStorage.getItem("csrf"),
-				"mobile":$("#phone").val().trim()
+		if(data.resCode == "0") {//未注册
+				mui.toast("请输入已注册手机号！");
+				plus.nativeUI.closeWaiting();
+				return;
+		}else{//已注册											
+			eg.postAjax("safe/sendVerificateMessage.do", {
+				"mobile": $("#phone").val(),
+				"serviceId": "02009001",
+				"smsType":"REGET_PWD"
 				}, function(data) {
-					if(data.status=="1"){
-						$("#smscode").val(data.message);
-					}
-		//		if(data.resCode !== "0") {
-		//			return;
-		//		}else{											
-		//			eg.postAjax("safe/sendVerificateMessage.do", {//发送短信
-		//					"mobile": $("#phone").val(),
-		//					"serviceId": "02009001",
-		//					"smsType":"REGIST"
-		//				}, function(data) {
-		//					Countdown("getcode");
-		//					mui.toast("验证码已发送");
-		//			});
-		//		}
-			},function(data){
-				if(data=="403") eg.getCsrf();
+				plus.nativeUI.closeWaiting();
+				Countdown("getcode");
+				mui.toast("验证码已发送");
 			});
-		}else{//未注册
-			mui.toast("请输入已注册手机号！");
-			return;
 		}
-	},function(data){
-		if(data=="403") eg.getCsrf();
 	});
 });
 /**点击提交按钮**/
 $("#oBtn").on("tap",function(){
 	var params = {
-		"_csrf":localStorage.getItem("csrf"),
-		"mobile":$("#phone").val().trim(),
-		"code":$("#smscode").val().trim(),
-		"password":$("#pwd1").val().trim()
+		"serviceId": "02001004",
+		"mobile": $("#phone").val().trim(),
+		"password": forgetPasswordVal,
+		"passwordConfirm": ReForgetPasswordVal,
+		"verifyCode": $("#queryCode").val().trim()
 	};
-	eg.postAjax("forget", params, function(data) {
+	plus.nativeUI.showWaiting();
+	eg.postAjax("user/resetPassword.do", params, function(data) {
+		plus.nativeUI.closeWaiting();
 		plus.nativeUI.toast("密码修改成功！", {
 			duration: "short"
 		});
@@ -95,8 +98,6 @@ $("#oBtn").on("tap",function(){
 //				"id": "login"
 //			});
 		mui.back();
-	},function(data){
-		if(data=="403") eg.getCsrf();
 	});
 });
 

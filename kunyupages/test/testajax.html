@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div id=""class="mui-content">
+			uuuu
+		</div>
+		<script src="../../common/js/mui.min.js"></script>
+		<script src="../../common/js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../common/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function(){
+				//ajax();
+				//getSms();
+				register();
+				reg();
+			})
+			var url="http://192.168.3.201:8091/report/"
+			function ajax(){
+				$.ajax({
+					url: url+'68720a30',
+					contentType: "text/html;charset=UTF-8",
+					type: 'get',
+					timeout : 60000,
+					data: {},
+					dataType: "XML",
+					success: function(data){
+						var s=data.split('"');
+						alert(s);
+						alert(s[s.length-2]);
+						console.log("_csrf==="+s[s.length-2]);
+						//782cb9dc-ee03-46ec-a8e0-e5dac9bd4843
+					},
+					error: function(jqXHR, textStatus, errorThrown){}
+				});
+			}
+			function getSms(){
+				$.ajax({
+					url: url+'captCha',
+					contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+					type: 'POST',
+					timeout : 60000,
+					data: {
+						"_csrf":"782cb9dc-ee03-46ec-a8e0-e5dac9bd4843",
+						"mobile":"13411068304"
+					},
+					dataType: "JSON",
+					success: function(data){
+						alert(data);
+//						var s=data.split('"');
+//						alert(s);
+//						alert(s[s.length-2]);
+					},
+					error: function(jqXHR, textStatus, errorThrown){
+						if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
+								return;
+							}
+							alert("jqXHR"+JSON.stringify(jqXHR));
+							alert("textStatus"+JSON.stringify(textStatus));
+							alert("errorThrown"+JSON.stringify(errorThrown));
+							mui.toast("系统维护中，请稍后重试");
+					}
+				});
+			}
+			function register(){
+				$.ajax({
+					url: url+'register',
+					contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+					type: 'POST',
+					timeout : 60000,
+					data: {
+						"_csrf":"782cb9dc-ee03-46ec-a8e0-e5dac9bd4843",
+						"mobile":"13411068304",
+						"password":"123qwe"
+					},
+					dataType: "JSON",
+					success: function(data){
+						alert(data);
+					},
+					error: function(jqXHR, textStatus, errorThrown){
+						if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
+								return;
+							}
+							alert("jqXHR"+JSON.stringify(jqXHR));
+							alert("textStatus"+JSON.stringify(textStatus));
+							alert("errorThrown"+JSON.stringify(errorThrown));
+							mui.toast("系统维护中，请稍后重试");
+					}
+				});
+			}
+			function reg(){
+				var params = {
+					"_csrf":"782cb9dc-ee03-46ec-a8e0-e5dac9bd4843",
+						"mobile":"13411068304",
+						"password":"123qwe"
+				}
+				plus.nativeUI.showWaiting(); //增加等待框
+				eg.postAjax("register", params, function(data) {
+					alert(1);
+					plus.nativeUI.closeWaiting(); //关闭等待框
+			//		eg.toPersonalInformationHome();	//回到首页
+				});
+			}
+		</script>
+	</body>
+
+</html>
