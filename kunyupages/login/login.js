@@ -4,10 +4,6 @@
 	});
 	//0.预加载历史账户信息
 	mui.plusReady(function(){
-		//获取token
-	 	if (!localStorage.getItem("csrf")) {//不存在则重新获取
-	 		eg.getCsrf();
-	 	}
 	 	//获取历史账号
 		historyUser();
 		// 下拉账号
@@ -37,13 +33,37 @@
 			$("#pwdPic").attr("src","../../images/lock_grey.png")
 		})
 	});
+	/**登录之前校验**/
+	function canLogin(){
+		if(!$("#phone").val()) {
+			mui.toast("手机号码不能为空");
+			return false;
+		};
+		if(!$("#pwd").val()) {
+			mui.toast("密码不能为空");
+			return false;
+		};
+		if(!eg.phone.test($("#phone").val())) {
+			mui.toast("手机号输入有误！");
+			return false;
+		};
+		if(!eg.passwd.test($("#pwd").val())) {
+			mui.toast("密码输入有误！");
+			return false;
+		};
+		return true;
+	}
 	//1.点击登录按钮
 	$("#oBtn").on("tap",function(){
-		var csrf=localStorage.getItem("csrf");
-//		if(canLogin()){//初步校验通过，允许走登录逻辑
-//			isToLogin(csrf);
-//		}
-		isToLogin(csrf);
+		//var csrf=localStorage.getItem("csrf");
+		if(canLogin()){//初步校验通过，允许走登录逻辑
+			eg.getToken("68720a30",function(data) {
+				var s=data.split('"');
+				var csrf=s[s.length-2];
+				console.log("未登录时获取_csrf==="+csrf);
+				isToLogin(csrf);
+			});
+		}
 	});
 	//2.点击忘记密码
 	$("#forgetPassword").on("tap",function(){	
@@ -103,25 +123,6 @@
 		var  srcUrl = eg.jrURL+"safe/verifyImage.do?clientId="+plus.device.uuid+"&time="+timestamp;
 		$("#imgCode").attr("src",srcUrl);
 	}
-	/**登录之前校验**/
-	function canLogin(){
-		if(!$("#phone").val()) {
-			mui.toast("手机号码不能为空");
-			return false;
-		};
-		if(!$("#pwd").val()) {
-			mui.toast("密码不能为空");
-			return false;
-		};
-		if(!eg.phone.test($("#phone").val())) {
-			mui.toast("手机号输入有误！");
-			return false;
-		};
-		if(!eg.passwd.test($("#pwd").val())) {
-			mui.toast("密码输入有误！");
-			return false;
-		};
-	}
 	/**登录逻辑**/
 	var num;
     function toLogin(){
@@ -145,112 +146,21 @@
 	function isToLogin(csrf){ 
 		var params = {
 			"_csrf":csrf,
-			"mobile": $("#phone").val().trim(),
+			"username": $("#phone").val().trim(),
 			"password": $("#pwd").val().trim()
 		}
-		eg.generalAjax("login",params, function(data) {
-			//LCC请求返回来的是页面信息  如何解析模拟网页登陆呢？？？？？？
-			alert(data);
-//				if(data.failCount > 2) {
-//						mui.toast(data.resMsg);
-//						getImageCode();
-//						$("#tuxinpho").show();
-//						return;
-//				}else{
-//					$("#tuxinpho").hide();
-//				}
-//				if(data.resCode !== "0") {
-//					mui.toast(data.resMsg);
-//					return;
-//				}
-//				//存储历史账户
-//				if(!userList){
-//					userList = [];
-//					userList.push($("#phone").val());
-//				}
-//				
-//				$(userList).each(function(key, val) {
-//					if(val == $("#phone").val()){					
-//						userList.splice(key, 1);
-//					}
-//				});
-//							
-//				userList.unshift($("#phone").val());
-//				if(userList.length>3){
-//					userList.pop();
-//				}
-//				localStorage.setItem("userList",JSON.stringify(userList));//历史users信息存入本地				
-//				localStorage.setItem("user", JSON.stringify(data));
-//				localStorage.setItem("mobileAccount", data.mobile);
-//				localStorage.setItem("gesturePasswordErrorCount","0");
-//				if(data.loginMark == "1"){
-//					//强制修改登录密码
-//	           		mui.openWindow({
-//						url : "../customerInfo/modifyLoginPassword.html",
-//						id: "modifyLoginPassword",
-//						extras:{
-//							force:true
-//						}
-//					});
-//					setTimeout(function(){
-//						plus.webview.currentWebview().close();
-//					},1000);
-//				}else{
-//					var personPage = plus.webview.getWebviewById("../customerInfo/personalInformationHome.html");
-//					if(personPage){
-//						personPage.reload();
-//					}	
-//					var gesturePasswordLogin = plus.webview.getWebviewById("gesturePasswordLogin");
-//					if(gesturePasswordLogin){
-//						gesturePasswordLogin.close();
-//					}
-//					if(pageId =="certification"){//特殊情况，如果是实名认证
-//							eg.postAjax("customer/queryAccountStatus.do", {
-//									"serviceId": "02005019"
-//									}, function(data) {
-//										setTimeout(function(){
-//															plus.webview.currentWebview().close();
-//														},1000);
-//										if(data.status != 90) {
-//											var details = plus.webview.getLaunchWebview();
-//											mui.fire(details,"trige",{});
-//										}else{
-//											
-//											mui.openWindow({
-//												"url": "../customerInfo/certification.html",
-//												"id": "certification"
-//											});	
-//										}
-//							});					
-//					}else if(pageId =="personalInformationHome"){//个人中心----目前修改手机号用
-//						eg.toPersonalInformationHome();
-//					}else{
-//													
-//								if(destinationPage.length>0){
-//									plus.webview.currentWebview().close();
-//									var  thisPage = plus.webview.getWebviewById(pageId);
-//									if(thisPage){
-//										thisPage.show();
-//										thisPage.reload();
-//									}else{								
-//										mui.openWindow({
-//											url : destinationPage,
-//											id: pageId
-//										});									
-//									}
-//								}else{
-//									var fatherPage = plus.webview.currentWebview().opener();
-//	                                if(fatherPage.id == "../customerInfo/myAcont.html"){
-//	                                	fatherPage.reload();
-//	                                }
-//									plus.webview.currentWebview().close();
-//								}
-//					
-//					}
-//				}
-//				
+		eg.postAjax("login",params, function(data) {
+			if (JSON.stringify(data).indexOf('html')!='-1') {//返回页面信息
+				mui.alert("您输入的用户名或密码不正确，或您未注册！");
+			} else if(data.resCode==0){//mui.alert("登陆成功");
+				//eg.tohomeindex();	//进入首页
+				mui.openWindow({
+	                url:"../home/home.html",
+	                id:"home"
+	           	});
+			}
 		},function(data){
-			alert(data);
+			alert("err==="+data);
 		});
 	}
 
