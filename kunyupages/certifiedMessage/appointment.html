@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>预约</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/mui.picker.css" rel="stylesheet" />
+		<link href="../../common/css/mui.poppicker.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<style>	  
+			/*设置-不起作用 ？*/ 	
+	    	.lablewth{width: 35%;}
+	    	.inputwth{width: 65%;}
+	    	.mui-after:after{
+	    		content:"";
+	    		display: inline-block;
+	    		height: 8px;
+	    		width: 8px;
+	    		border-width: 2px 2px 0 0;
+	    		border-color: #C8C7CC;
+	    		border-style: solid;
+	    		-webkit-transform: matrix(0.71,0.71,-0.71,0.71,0,0);
+	    		transform: matrix(0.71,0.71,-0.71,0.71,0,0);
+	    		position: absolute;
+	    		top: 50%;
+	    		margin-top: -6px;
+	    		right: 5px;
+	    	}
+	    	.mui-picker-inner {
+	    		-webkit-mask-box-image:none
+			}
+			.mui-datePicker-ui{
+				height: 100%;
+			}
+			.mui-datePicker-ui li{
+				height: 20%;
+				padding-top: 10%;
+				text-align: center;
+			}
+			.mui-datePicker-ui>.mui-active{
+				background-color: white;
+				color:#D30D24;
+			}
+			.mui-datePicker-button{
+				text-align: center;
+    			padding-top: 20px;
+			}
+			.mui-datePicker-button li{
+				border: 1px solid #000000;
+				padding: 10px;
+				margin:0 -10px 20px 30px;
+				float: left;
+			}
+			.mui-datePicker-button>.mui-active{
+				border:0px;
+				background-color: #D30D24;
+				color:white;
+			}
+			.mui-datePicker-button>.disable{
+				/*background-color: #EBEBEB;*/
+				border: 1px solid #ddd;
+				color:#ddd;
+			}
+	    </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav back_fff" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">预约</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-form">
+				<div class="mui-input-row">
+					<label style="width: 35%;">姓名</label> 
+					<input style="width: 65%;" value="王星" type="text"  id="custName" readonly="" />
+				</div>
+				<div class="mui-input-row mui-input-row-yan">
+					<label style="width: 35%;">身份证号</label>
+					<input style="width: 65%;" value="123112443212" type="text"  id="cutNo" readonly="readonly" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">房产位置</label>
+					<input style="width: 65%;" value="北京市丰台区况状萨达是401" type="text"  id="address" readonly="readonly" />
+				</div>
+				<div class="mui-input-row  ">
+					<label style="width: 35%;">预约网点</label>
+					<input style="width: 65%;" value="裕惠大厦B做11层" type="text"  id="appoint" readonly="readonly" />
+				</div>
+				<div class="mui-input-row mui-after bor_none" id="showUserPicker">
+					<label style="width: 35%;">预约时点</label>
+					<input style="width: 65%;" value="" type="text"  id="appointTime" readonly="readonly" />
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">提交预约</button>
+			</div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	
+	<script src="../../common/js/zepto.min.js" ></script>
+	<script src="../../common/js/common.js" ></script>
+	<script src="../../common/js/mui.datePicker.js"></script>
+	<script src="./js/appointment.js"></script>
+</html>

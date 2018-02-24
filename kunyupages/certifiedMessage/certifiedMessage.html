@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>信息认证</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<style>	  
+			/*设置-不起作用 ？*/ 	
+	    	.lablewth{width: 35%;}
+	    	.inputwth{width: 65%;}
+	    </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav back_fff" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">信息认证</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-form">
+				<div class="mui-input-row">
+					<label style="width: 35%;">姓名</label> 
+					<input style="width: 65%;" type="tel" maxlength="11" id="phone" placeholder="请输入您的姓名" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">身份验证</label>
+					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="请输入您的身份证号" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">民族</label>
+					<input style="width: 65%;" type="password" id="pwd1" placeholder="请输入您的民族">
+				</div>
+				<div class="mui-input-row  ">
+					<label style="width: 35%;">住址</label>
+					<input style="width: 65%;" type="password" id="pwd2" placeholder="请输入您的地址">
+				</div>
+				<div class="mui-input-row  ">
+					<label style="width: 35%;">发证机关</label>
+					<input style="width: 65%;" type="password" id="pwd3" placeholder="请输入您的发证机关">
+				</div>
+				<div class="mui-input-row  bor_none">
+					<label style="width: 35%;">有效期至</label>
+					<input style="width: 65%;" type="password" id="pwd4" placeholder="请输入您的有效期">
+				</div>
+				
+			</div>
+			<p style="color:#F0AD4E"><a><span  style="color:#F0AD4E" class="mui-icon mui-icon-pulldown"></span></a>请核对客户信息，点击可修改</p>
+			<div class="mui-content-padded">
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block"> 下一步 </button>
+			</div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/zepto.min.js" ></script>
+	<script src="../../common/js/common.js" ></script>
+	<!--<script type="text/javascript" src="../plugins/passguard/plugin-passguard.js" ></script>-->
+	<script src="./js/certifiedMessage.js"></script>
+</html>
