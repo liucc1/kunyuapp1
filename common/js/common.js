@@ -33,7 +33,9 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 		success: function(data){
 			plus.nativeUI.closeWaiting();
 			console.log("返回参数为："+JSON.stringify(data));
-			if(typeof data =='string'){data = JSON.parse(data);}			
+			if (data.indexOf('html')=='-1') {//返回的不是页面信息
+				if(typeof data =='string'){data = JSON.parse(data);}
+			}
 			successFun(data);
 		},
 		error: function(jqXHR, textStatus, errorThrown){
@@ -101,6 +103,14 @@ eg.getCsrf = function(){
 		localStorage.setItem("csrf",csrf);
 	});
 }
+eg.getCsrfArr = function(){
+	eg.getToken("68720a30",function(data) {
+		var s=data.split('"');
+		var csrf=s[s.length-2];
+		console.log("未登录时获得_csrf==="+csrf);
+		return csrf;
+	});
+}
 
 /***
  * @param {请求地址} url	
@@ -113,7 +123,7 @@ eg.getCsrf = function(){
 eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
 	plus.nativeUI.showWaiting();
 	isasync = isasync || false;
-	console.log("请求url："+url + ";上送参数为："+params);
+	console.log("请求url："+url + ";上送参数为："+JSON.stringify(params));
 	$.ajax({
 		url: url,
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
@@ -124,31 +134,28 @@ eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
 		async: isasync,
 		success: function(data){
 			plus.nativeUI.closeWaiting();
-			console.log("返回参数为："+JSON.stringify(data));			
-//			if(data.resCode == "USPS0513" || data.resCode == "USPS0512"){
-//				mui.toast("请登录后重试");
-//				plus.nativeUI.closeWaiting();	
-//				eg.goMustLoginPage("","");
-//				return;
-//			}
+			console.log("返回参数为："+JSON.stringify(data));
 			sucfun(data);
 		},
-		error: function(jqXHR, textStatus, errorThrown){			
-			plus.nativeUI.closeWaiting();
+		error: function(jqXHR, textStatus, errorThrown){
+			plus.nativeUI.closeWaiting();			
 			if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
 				return;
-			}			
+			}
 			if(network == 0 || network == 1){
 				mui.toast("无网络");
 			}else{
-//				alert("jqXHR"+JSON.stringify(jqXHR));
-//				alert("textStatus"+JSON.stringify(textStatus));
-//				alert("errorThrown"+JSON.stringify(errorThrown));
-				mui.toast("系统维护中，请稍后重试!");
+				//alert("jqXHR"+JSON.stringify(jqXHR));
+				//alert("textStatus"+JSON.stringify(textStatus));
+				//alert("errorThrown"+JSON.stringify(errorThrown));
+				mui.toast("系统维护中，请稍后重试");
 			}
-			errfun(jqXHR.status);
+			//var jsonRep=JSON.parse(jqXHR)
+			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
+			errfun(jqXHR.status); 
 		}
 	});
+
 };
 
 /***
@@ -161,8 +168,39 @@ eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
  */
 eg.generalPostAjax = function(url, params, sucfun,errfun,isasync) {
 	if(typeof(isasync) =="undefined"){ isasync = true;}	
-	eg.generalAjax(eg.jrURL + url, params, "post", sucfun,errfun, isasync);
+	eg.generalAjax(eg.jrURL + url, params, "POST", sucfun,errfun, isasync);
 };
+/**页面跳转**/
+/**进入首页**/
+eg.tohomeindex = function() {
+	goHomeIndexPage("index");
+};
+function goHomeIndexPage(pageID){
+		var allPage = plus.webview.all();//获取所有打开的webview
+		var homePage = plus.webview.getWebviewById("home");//plus.webview.getLaunchWebview();
+		if (!homePage) {
+			plus.webview.create("../home/home.html","home");
+			homePage = plus.webview.getWebviewById("home");
+		} 
+		var thisPage = plus.webview.getWebviewById(pageID);
+		if(!thisPage){
+			plus.webview.create("../home/index.html","index");
+			thisPage = plus.webview.getWebviewById(pageID);
+		}
+		console.log("homePage=="+homePage+"----thisPage=="+thisPage);
+		if(thisPage ==null){
+			 thisPage = plus.webview.getWebviewById("index");
+		}
+		for(var i = 0;i < allPage.length;i++){
+			if(allPage[i] == homePage  || allPage[i] == thisPage){	
+					continue;	
+			}else{												
+				allPage[i].close();//关闭
+			}
+		}				
+//		homePage.show();				
+//		thisPage.reload();
+}
 
 /**正则表达式**/
 eg.phone = /^1[3|4|5|7|8]\d{9}$/;
@@ -442,7 +480,7 @@ eg.toMyAccountPage = function() {
  * 回到首页 
  */
 eg.toHomePage = function() {
-		toHomeIndexPage("../customerInfo/indexEE.html");
+		toHomeIndexPage("../home/index.html");
 };
 /***
  * 回到个人中心首页 
@@ -460,7 +498,7 @@ function   toHomeIndexPage(pageID){
 	//获取所有打开的webview
 		var allPage = plus.webview.all();
 		//首页
-		var homePage = plus.webview.getLaunchWebview();
+		var homePage = plus.webview.getWebviewById("../home/home.html");//plus.webview.getLaunchWebview();
 		//获取首页页面	
 		var thisPage = plus.webview.getWebviewById(pageID);	
 		if(thisPage ==null){
