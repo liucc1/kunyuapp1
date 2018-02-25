@@ -1,0 +1,46 @@
+<!DOCTYPE html>\r\n
+<html lang=\ "zh-cn\">\r\n\r\n
+
+	<head>\r\n
+		<meta charset=\ "UTF-8\">\r\n
+		<meta name=\ "viewport\" content=\ "width=device-width, initial-scale=1.0\">\r\n
+		<meta http-equiv=\ "X-UA-Compatible\" content=\ "ie=edge\">\r\n
+		<title>登陆系统</title>\r\n\t
+		<script type=\ "text/javascript\" src=\ "/report/assets/plugins/jquery/jquery-1.9.1/jquery.min.js\" charset=\ "utf-8\"></script>\r\n\t
+		<script type=\ "text/javascript\" src=\ "/report/assets/js/login-js.js\" charset=\ "utf-8\"></script>\r\n\t
+		<!--<script type=\"text/javascript\" src=\"js/etc.js\" charset=\"utf-8\"></script>-->\r\n\t
+		<link rel=\ "stylesheet\" href=\ "/report/assets/css/common/login.css\" />\r\n\t
+		<link href=\ "/report/assets/plugins/zeroModal/zeroModal.css\" rel=\ "stylesheet\" />\r\n\t
+		<script src=\ "/report/assets/plugins/zeroModal/zeroModal.min.js\" type=\ "text/javascript\" charset=\ "utf-8\"></script>\r\n</head>\r\n\r\n
+
+	<body>\r\n
+		<div class=\ "research-logo-all\">\r\n\t
+			<div class=\ "research-logo\"></div>\r\n\t
+			<ul class=\ "research-user-password\">\r\n\t\t
+				<li class=\ "research-title\">目标客户推荐</li>\r\n\t\t
+				<li class=\ "research-user\">\r\n\t\t\t<i class=\ "user\"></i>\r\n\t\t\t<input type=\ "text\" id=\ "loginname\" placeholder=\ "请输入用户名\" onfocus=\ "if(this.placeholder=='请输入用户名')this.placeholder =''\" onblur=\ "if(this.placeholder=='')this.placeholder='请输入用户名'\" />\r\n\t\t\t<span class=\ "research-del\"></span>\r\n\t\t</li>\r\n\t\t
+				<li class=\ "research-password\">\r\n\t\t\t<i class=\ "password\"></i>\r\n\t\t\t<input type=\ "password\" id=\ "password\" placeholder=\ "请输入密码\" onfocus=\ "if(this.placeholder=='请输入密码')this.placeholder =''\" onblur=\ "if(this.placeholder=='')this.placeholder='请输入密码'\" />\r\n\t\t\t<span class=\ "research-del\"></span>\r\n\t\t</li>\r\n\t\t<input id=\ "csrf\" type=\ "hidden\"\r\n\t\t\t name=\ "_csrf\"\r\n\t\t\t value=\ "aca0dbf4-4b3b-4002-aae5-a6a8751484ed\"/>\r\n\t\t
+				<a style=\ "visibility: hidden\" href=\ "/report/login\" id=\ "login_url\"></a>\r\n\t\t
+				<!--\r\n\t\t<li class=\"research-code\">\r\n\t\t\t<i class=\"code\"></i>\r\n\t\t\t<input type=\"text\" id=\"checkcode\" placeholder=\"请输入验证码\" onfocus=\"if(this.placeholder=='请输入验证码')this.placeholder =''\" onblur=\"if(this.placeholder=='')this.placeholder='请输入验证码'\" />\r\n\t\t\t<span class=\"research-del\"></span>\r\n\t\t\t<span class=\"research-code-img\"><img id=\"createCheckCode\" alt=\"点击刷新\" src=\"PictureCheckCode.jpeg\" onClick=\"myReload();\" /></span>\r\n\t\t</li>\r\n\t\t-->\r\n\r\n\t\t
+				<li class=\ "research-error-prompt\"><i></i>
+					<p></p>
+				</li>\r\n\t\t
+				<li class=\ "research-btn\">\r\n\t\t\t<button id=\ "login_btn\">登 录</button>\r\n\t\t</li>\r\n\t\t
+				<li class=\ "research-forget\">
+					<!--<a href=\"forgetPassword.html\">忘记密码？</a>-->
+				</li>\r\n\t</ul>\r\n</div>\r\n
+		<div id=\ "container\">
+			<div id=\ "output\"></div>
+		</div>\r\n
+		<div class=\ "research-footer\">版权所有：昆玉国际 Copyright © 2017 KUNYU Technologies Co., Ltd. All Rights Reserved.</div>\r\n\t\r\n
+		<script src=\ "/report/assets/plugins/layui/layui.js\"></script>\r\n
+		<script type=\ "text/javascript\">
+			\
+			r\ n layui.config({\
+					r\ n base: 'assets/js/'\
+					r\ n
+				}).use(function() {\
+						r\ n // var tab = layui.tab;\r\n            // debugger;\r\n            // if (tab.tabExists())\r\n            //     tab.tabAdd();\r\n        });\r\n
+		</script>\r\n</body>\r\n\r\n
+
+</html>

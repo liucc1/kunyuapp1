@@ -1,9 +1,9 @@
 mui.init({ swipeBack:false });
 mui.plusReady(function(){
 	//获取token
- 	if (!localStorage.getItem("csrf")) {//不存在则重新获取
- 		eg.getCsrf();
- 	}
+	eg.getCsrf();
+	//不存在则重新获取
+ 	//if (!localStorage.getItem("csrf")) {eg.getCsrf();}
 });
 /**校验输入项**/
 function canSubmit(){
@@ -47,7 +47,7 @@ $("#getcode").on("tap",function(){
 		"_csrf":localStorage.getItem("csrf"),
 		"mobile":$("#phone").val().trim()
 		}, function(data) {
-		if(data.status == "1") {//已注册--发送短信验证码
+		if(data.status != "1") {//已注册--发送短信验证码
 			eg.postAjax("captCha", {
 				"_csrf":localStorage.getItem("csrf"),
 				"mobile":$("#phone").val().trim()
@@ -104,10 +104,8 @@ $("#oBtn").on("tap",function(){
 var  forgetPasswordVal;
 var  ReForgetPasswordVal;
 //硬件监听
-document.addEventListener( "plusready", onPlusReady, false );
-function onPlusReady() {
-    console.log("plusready");
-}
+//document.addEventListener( "plusready", onPlusReady, false );
+//function onPlusReady() { console.log("plusready");}
 
 /***
  *调用密码控件     上线用

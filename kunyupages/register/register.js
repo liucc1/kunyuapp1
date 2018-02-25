@@ -16,11 +16,10 @@ mui.plusReady(function() {
 			$this.attr("data-key", items[0].value )
 		});
 	});
-	//获取token
- 	if (!localStorage.getItem("csrf")) {//不存在则重新获取
- 		eg.getCsrf();
- 	}
- 	
+	//获取token(每次进入该页面均重新获取)
+	eg.getCsrf();
+	//不存在则重新获取
+ 	//if (!localStorage.getItem("csrf")) {eg.getCsrf();}	
 });
 
 /**点击获取验证码**/
@@ -136,7 +135,10 @@ function istoregister(){
 //var  ifPlusKeyBoard = false;
 $("#oBtn").on("tap",function(){
 	$("#oBtn").attr("disabled","disabled")
- 	//if(!istoregister()){return};
+ 	if(!istoregister()){
+ 		$("#oBtn").removeAttr("disabled");
+ 		return
+ 	};
  	//获取本地存储的token
  	var csrf=localStorage.getItem("csrf");
  	goRegister(csrf);
@@ -151,7 +153,18 @@ function goRegister(csrf){
 	}
 	eg.postAjax("register", params, function(data) {
 		$("#oBtn").removeAttr("disabled");
-//		eg.toPersonalInformationHome();	//回到首页
+		var status=data.status;
+		if(status=='1'){
+			mui.alert("注册成功！");
+			plus.webview.currentWebview().close();//关闭注册页，回到登录页。
+			mui.back();
+		}else if(status=='-2'){
+			mui.alert("注册失败，用户已经存在！");
+		}else if(status=='-6'){
+			mui.alert("验证码输入错误！");
+		}else{
+			mui.alert("注册失败！");
+		}
 	},function(data){
 		$("#oBtn").removeAttr("disabled");
 		//alert(data);
