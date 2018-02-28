@@ -115,6 +115,13 @@
 				self.hide();
 			}, false);
 			self._createPicker();
+			//防止滚动穿透
+			self.panel.addEventListener($.EVENT_START, function(event) {
+				event.preventDefault();
+			}, false);
+			self.panel.addEventListener($.EVENT_MOVE, function(event) {
+				event.preventDefault();
+			}, false);
 		},
 		_createPicker: function() {
 			var self = this;

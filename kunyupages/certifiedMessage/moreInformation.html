@@ -7,6 +7,8 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/mui.picker.css" rel="stylesheet" />
+		<link href="../../common/css/mui.poppicker.css" rel="stylesheet" />
 		<link href="../../common/css/app.css" rel="stylesheet" />
 		<link href="../../common/css/base.css" rel="stylesheet" />
 		<style>	  
@@ -37,7 +39,6 @@
 	    		border-width: 2px 2px 0 0;
 	    		border-color: #333;
 	    		border-style: solid;
-	    		z-index: 99;
 	    		-webkit-transform: matrix(0.71,0.71,-0.71,0.71,0,0);
 	    		transform: matrix(0.71,0.71,-0.71,0.71,0,0);
 	    		position: relative;
@@ -66,22 +67,24 @@
 	    		margin-top: -4px;
 	    		right: 10px;
 	    	}
+	    	.mui-form{
+	    		border: 0px;
+	    	}
 	    </style>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav back_fff" >
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title ">更多信息</h1>
+		</header>
+		<div class="mui-content">
 			<div style="padding: 10px 10px;background-color: white;width: calc(100% + 20px);margin-left: -10px;">
 				<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
-					<a class="mui-control-item mui-active"><span class="aSpan">1</span>身份验证</a>
+					<a class="mui-control-item"><span class="aSpan">1</span>身份验证</a>
 					<a class="mui-control-item ss"><span class="aSpan">2</span>上传影像资料</a>
-					<a class="mui-control-item ss"><span class="aSpan">3</span>更多信息</a>
+					<a class="mui-control-item mui-active ss"><span class="aSpan">3</span>更多信息</a>
 				</div>
 			</div>
-		</header>
-		<div class="mui-content" style="margin-top: 50px;">
-			
 			<div class="mui-card-header" style="color: grey;">单位信息</div>
 			<div class="mui-form" style="margin: 0px;">
 				<div class="mui-input-row">
@@ -99,8 +102,8 @@
 			</div>
 			<div class="mui-card-header" style="color: grey;">
 				房产信息 
-				<span class="headerSpan">添加房产
-					<span  style="color:#F0AD4E" class="mui-icon mui-icon-plusempty"></span>
+				<span class="headerSpan" style="color: blue;">添加房产
+					<span  style="color:blue" class="mui-icon mui-icon-plusempty"></span>
 				</span>
 			</div>
 			<div class="mui-form" style="margin: 0px;">
@@ -108,13 +111,13 @@
 					<label style="width: 35%;">房产总值</label> 
 					<input style="width: 65%;" type="text" id="phone" placeholder="请输入房产总值" />
 				</div>
-				<div class="mui-input-row selectInput">
+				<div id="faType" class="mui-input-row selectInput">
 					<label style="width: 35%;">房产类型</label> 
-					<input style="width: 65%;" type="text" readonly="readonly" id="phone" value="住宅" />
+					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" id="faTypeValue" value="" />
 				</div>
-				<div class="mui-input-row selectInput">
+				<div id="mortType" class="mui-input-row selectInput">
 					<label style="width: 35%;">抵押类型</label> 
-					<input style="width: 65%;" type="text" readonly="readonly" id="phone" value="首抵-银行抵押" />
+					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" id="mortTypeValue" value="" />
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">房产证编号</label> 
@@ -145,6 +148,8 @@
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
+	<script src="../../common/js/mui.picker.js"></script>
+	<script src="../../common/js/mui.poppicker.js"></script>
 	<!--<script type="text/javascript" src="../plugins/passguard/plugin-passguard.js" ></script>-->
-	<script src="./js/certifiedMessage.js"></script>
+	<script src="./js/moreInformation.js"></script>
 </html>

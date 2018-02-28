@@ -55,15 +55,19 @@
 	}
 	//1.点击登录按钮
 	$("#oBtn").on("tap",function(){
+		mui.openWindow({
+	                url:"../home/home.html",
+	                id:"home"
+	           	});
 		//var csrf=localStorage.getItem("csrf");
-		if(canLogin()){//初步校验通过，允许走登录逻辑
-			eg.getToken("68720a30",function(data) {
-				var s=data.split('"');
-				var csrf=s[s.length-2];
-				console.log("未登录时获取_csrf==="+csrf);
-				isToLogin(csrf);
-			});
-		}
+//		if(canLogin()){//初步校验通过，允许走登录逻辑
+//			eg.getToken("68720a30",function(data) {
+//				var s=data.split('"');
+//				var csrf=s[s.length-2];
+//				console.log("未登录时获取_csrf==="+csrf);
+//				isToLogin(csrf);
+//			});
+//		}
 	});
 	//2.点击忘记密码
 	$("#forgetPassword").on("tap",function(){	

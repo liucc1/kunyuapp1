@@ -13,6 +13,19 @@
 			/*设置-不起作用 ？*/ 	
 	    	.lablewth{width: 35%;}
 	    	.inputwth{width: 65%;}
+	    	.divContent{
+	    		margin-top: 10px;
+    			padding-top: 25%;
+	    		height: calc(100% - 10px);
+	    		background-color: white;
+	    	}
+	    	.divContent >div> p {
+	    		color: red;
+	    		font-size: 24px;
+	    	}
+	    	.divContent >div> div{
+	    		font-size: 16px;
+	    	}
 	    </style>
 	</head>
 	<body>
@@ -20,10 +33,15 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">影像核查不通过</h1>
 		</header>
-		<div class="mui-content">
-			<div id="square">
-				<img src="../../images/checkbox_chexk.png" />
-				<div class="mui-content-padded" style="margin-top: 60px;">
+		<div class="mui-content" style="height: 100vh;">
+			<div class="divContent">
+				<div style="text-align: center;padding: 0px 20px;">
+					<img src="../../images/alertBtn_colse.png" />
+					<p>提交成功</p>
+					<div>我们将飞速审核您反馈的资料</div>
+					<div>工作时间（9：00-18：00）之外或节假日可能会延迟</div>
+				</div>
+				<div class="mui-content-padded" style="margin-top: 50px;padding: 0px 20px;">
 					<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">确定</button>
 				</div>
 			</div>

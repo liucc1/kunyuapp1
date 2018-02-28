@@ -13,12 +13,6 @@
 			/*设置-不起作用 ？*/ 	
 	    	.lablewth{width: 35%;}
 	    	.inputwth{width: 65%;}
-	    	.afterInput{
-	    		margin: 10px;
-				padding:10px;
-				background-image: url(../../images/scan.png); 
-				background-repeat: no-repeat;
-	    	}
 	    	.mui-segmented-control-negative.mui-segmented-control-inverted .mui-control-item.mui-active{
 	    		border-bottom: 0px;
 	    		color:#D30D24;
@@ -50,6 +44,30 @@
 	    		margin-top: -6px;
 	    		left: -10px;
 	    	}
+	    	.headerSpan{
+	    		position: absolute;
+	    		top: 10px;
+	    		right: 10px;
+	    	}
+	    	.selectInput:after{
+	    		content:" ";
+	    		display: inline-block;
+	    		height: 8px;
+	    		width: 8px;
+	    		border-width: 2px 2px 0 0;
+	    		border-color: #C8C7CC;
+	    		border-style: solid;
+	    		z-index: 99;
+	    		-webkit-transform: matrix(0.71,0.71,-0.71,0.71,0,0);
+	    		transform: matrix(0.71,0.71,-0.71,0.71,0,0);
+	    		position: absolute;
+	    		top: 50%;
+	    		margin-top: -4px;
+	    		right: 10px;
+	    	}
+	    	.mui-card-header:after{
+	    		display: none;
+	    	}
 	    	.mui-form{
 	    		border: 0px;
 	    	}
@@ -60,45 +78,42 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title ">信息认证</h1>
 		</header>
-		<div class="mui-content">
+		<div class="mui-content" >
 			<div style="padding: 10px 10px;background-color: white;width: calc(100% + 20px);margin-left: -10px;">
 				<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
-					<a class="mui-control-item mui-active "><span class="aSpan">1</span>身份验证</a>
-					<a class="mui-control-item ss"><span class="aSpan">2</span>上传影像资料</a>
+					<a class="mui-control-item"><span class="aSpan">1</span>身份验证</a>
+					<a class="mui-control-item  mui-active ss"><span class="aSpan">2</span>上传影像资料</a>
 					<a class="mui-control-item ss"><span class="aSpan">3</span>更多信息</a>
 				</div>
 			</div>
-			<div class="mui-form">
-				<div class="mui-input-row ">
-					<label style="width: 35%;">姓名</label> 
-					<input  style="width: 65%;" type="tel" maxlength="11" id="phone" placeholder="请输入您的姓名" />
-					<i class="afterInput"></i>
+			<div style="background-color: white;margin-top: 10px;">
+				<div class="mui-card-header" style="font-size: 14px;">请拍摄原件，复印件，扫描件无法通过审核，二选一即可</div>
+				<div class="mui-form" style="margin: 0;">
+					<div class="mui-input-row">
+						<div style="padding-top: 10px;">
+							<span style="padding-left: 10px;">《房产证》</span>
+							<span style="color: #4AABFF;position: absolute;right: 15px;">示例></span>
+						</div>
+						<div style="text-align: center;padding: 20px 0 30px 0 ;">
+							<img  src="../../images/camera.png"/>
+							<img  src="../../images/addImage.png"/>
+						</div>
+					</div>
+					<div class="mui-input-row">
+						<div style="padding-top: 10px;">
+							<span style="padding-left: 10px;">《购房合同》</span>
+							<span style="color: #4AABFF;position: absolute;right: 15px;">示例></span>
+						</div>
+						<div style="text-align: center;padding: 20px 0 30px 0 ;">
+							<img  src="../../images/camera.png"/>
+							<img  src="../../images/addImage.png"/>
+						</div>
+					</div>
 				</div>
-				<div class="mui-input-row">
-					<label style="width: 35%;">身份验证</label>
-					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="请输入您的身份证号" />
-				</div>
-				<div class="mui-input-row">
-					<label style="width: 35%;">民族</label>
-					<input style="width: 65%;" type="password" id="pwd1" placeholder="请输入您的民族">
-				</div>
-				<div class="mui-input-row  ">
-					<label style="width: 35%;">住址</label>
-					<input style="width: 65%;" type="password" id="pwd2" placeholder="请输入您的地址">
-				</div>
-				<div class="mui-input-row  ">
-					<label style="width: 35%;">发证机关</label>
-					<input style="width: 65%;" type="password" id="pwd3" placeholder="请输入您的发证机关">
-				</div>
-				<div class="mui-input-row  bor_none">
-					<label style="width: 35%;">有效期至</label>
-					<input style="width: 65%;" type="password" id="pwd4" placeholder="请输入您的有效期">
-				</div>
-				
 			</div>
-			<p  style="color:#F0AD4E;padding-left:10px"><img src="../../images/plaint.png" style="margin-right: 5px;" />请核对客户信息，点击可修改</p>
+			<p  style="color:#F0AD4E;padding-left:10px;margin-top: 1rem;"><img src="../../images/plaint.png" style="margin-right: 5px;" />请核对客户信息，点击可修改</p>
 			<div class="mui-content-padded">
-				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block"> 下一步 </button>
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">提交</button>
 			</div>
 		</div>
 	</body>
@@ -106,5 +121,5 @@
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
 	<!--<script type="text/javascript" src="../plugins/passguard/plugin-passguard.js" ></script>-->
-	<script src="./js/certifiedMessage.js"></script>
+	<script src="./js/uploadImages.js"></script>
 </html>

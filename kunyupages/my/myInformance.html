@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的资料</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/mui.picker.css" rel="stylesheet" />
+		<link href="../../common/css/mui.poppicker.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<style>	  
+			.mui-form{
+	    		border: 0px;
+	    	}
+	    	.ps{
+	    		height: 32px;
+	    		line-height: 42px;
+	    		padding: 0px 10px;
+	    	}
+	    	.mui-input-row>input{
+	    		text-align: right;
+	    	}
+	    	.mui-input-row>.rowInput{
+	    		text-align: right;
+	    		position: relative;
+	    		right: 50px;
+	    	}
+	    	.afterInput{
+	    		color: black!important;
+	    		font-weight: 100!important;
+	    		font-style: normal;
+	    		margin-right: 15px;
+	    		font-size: 15px;
+				/*padding:10px;*/
+	    	}
+	    	.mui-input-row.afterRow:after{
+	    		content:"";
+	    		display: inline-block;
+	    		height: 8px;
+	    		width: 8px;
+	    		border-width: 2px 2px 0 0;
+	    		border-color: #C8C7CC;
+	    		border-style: solid;
+	    		-webkit-transform: matrix(0.71,0.71,-0.71,0.71,0,0);
+	    		transform: matrix(0.71,0.71,-0.71,0.71,0,0);
+	    		position: absolute;
+	    		top: 50%;
+	    		margin-top: -5px;
+	    		right: 5px;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav back_fff" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">我的资料</h1>
+		</header>
+		<div class="mui-content">
+			<p class="ps">高级资料</p>
+			<div class="mui-form">
+				<div class="mui-input-row">
+					<label style="width: 35%;">姓名</label> 
+					<input style="width: 65%;" value="王星" type="text"  id="custName" readonly="" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">身份证</label>
+					<input style="width: 65%;" value="123112443212" type="text"  id="cutNo" readonly="readonly" />
+				</div>
+				<div class="mui-input-row afterRow" onclick="reviseCer('reviseCer')">
+					<label style="width: 35%;">银行卡号</label>
+					<input class="rowInput" style="width: 65%;" value="123123123312" type="text"  id="address" readonly="readonly" />
+					<i class="afterInput">更换</i>
+				</div>
+				<div class="mui-input-row" style="border-bottom: 0px;">
+					<label style="width: 35%;">开户行</label>
+					<input style="width: 65%;" value="北京朝阳区白日撞支行" type="text"  id="appoint" readonly="readonly" />
+				</div>
+			</div>
+			<p class="ps">基础资料</p>
+			<div class="mui-form">
+				<div class="mui-input-row afterRow" onclick="reviseCer('revisePhone')">
+					<label style="width: 35%;">手机号码</label> 
+					<input class="rowInput" style="width: 65%;" value="12121212121" type="text"  id="custName" readonly="" />
+					<i class="afterInput">更换</i>
+				</div>
+				<div class="mui-input-row ">
+					<label style="width: 35%;">用户等级</label>
+					<input style="width: 65%;" value="高级用户" type="text"  id="cutNo" readonly="readonly" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">业务城市</label>
+					<input class="rowInput" style="width: 65%;" value="北京分公司" type="text"  id="address" readonly="readonly" />
+					<i class="afterInput">更换</i>
+				</div>
+				<div class="mui-input-row" style="border-bottom: 0px;">
+					<label style="width: 35%;">客服电话</label>
+					<input style="width: 65%;" value="122-1231-1231" type="text"  id="appoint" readonly="readonly" />
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/zepto.min.js" ></script>
+	<script src="../../common/js/common.js" ></script>
+	<script>
+		function reviseCer(param){
+			var url = './'+param+'.html'
+			mui.openWindow({
+				url: url,
+				id: param
+			})
+		}
+		function 
+	</script>
+</html>

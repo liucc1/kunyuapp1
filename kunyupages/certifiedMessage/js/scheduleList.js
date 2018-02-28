@@ -4,7 +4,7 @@ mui.init({
 mui.plusReady(function(){
 	
 })
-mui('#productlist').on('tap', 'ul', function() {
+mui('#pendingList').on('tap', 'ul', function() {
 	mui.openWindow({
         url:"./pendingListDetail.html",
         id:"pendingListDetail"

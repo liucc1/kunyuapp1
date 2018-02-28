@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实名信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<style>
+			.mui-form{
+	    		border: 0px;
+	    	}
+	    	.ps{
+	    		height: 32px;
+	    		line-height: 42px;
+	    		padding: 0px 10px;
+	    	}
+	    	.afterInput{
+	    		margin: 10px;
+				padding:10px;
+				background-image: url(../../images/scan.png); 
+				background-repeat: no-repeat;
+	    	}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav back_fff" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">实名信息</h1>
+		</header>
+		<div class="mui-content">
+			<p class="ps">请确认以下为本人信息及信息真实有效</p>
+			<div class="mui-form">
+				<div class="mui-input-row ">
+					<label style="width: 35%;color: #4AABFF!important;">身份证信息</label> 
+					<input  style="width: 65%;" type="tel" maxlength="11" id="phone" placeholder="" readonly="readonly" />
+					<i class="afterInput"></i>
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">姓名</label>
+					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+				</div>
+				<div class="mui-input-row" style="border-bottom: 0px;">
+					<label style="width: 35%;">身份证号码</label>
+					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+				</div>
+			</div>
+			<div class="mui-form">
+				<div class="mui-input-row ">
+					<label style="width: 35%;color: #4AABFF!important;">银行卡信息</label> 
+					<input  style="width: 65%;" type="tel" maxlength="11" id="phone"  placeholder="" readonly="readonly" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">银行卡</label>
+					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">手机号</label>
+					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+				</div>
+				<div class="mui-input-row" style="border-bottom: 0px;">
+					<label style="width: 35%;">开户号</label>
+					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block"> 保存 </button>
+			</div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/zepto.min.js" ></script>
+	<script src="../../common/js/common.js" ></script>
+	<script>
+		$("#oBtn").on("tap",function(){
+			mui.openWindow({
+				url: "./myInformance.html",
+				id: "myInformance"
+			})
+		})
+	</script>
+</html>

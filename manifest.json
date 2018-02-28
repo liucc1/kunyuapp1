@@ -1,6 +1,6 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
-	"id": "H508CC724",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"id": "H5A09A3A4",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "kunyuapp",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "1.0.0",/*应用版本名称*/
@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "kunyupages/pwdmanage/forgetpassword.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "kunyupages/home/home.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -196,13 +196,18 @@
 				"resources": [
 					"kunyupages/home/index.html"
 				],
-				"refer": [],
+				"refer": [
+					"kunyupages/home/my.html"
+				],
 				"priority": 0
 			},
 			"kunyupages/home/index.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/index/progressquery.html"
+					"kunyupages/index/progressquery.html",
+					"kunyupages/home/home.html",
+					"kunyupages/certifiedMessage/scheduleList.html",
+					"kunyupages/certifiedMessage/pendingList.html"
 				],
 				"priority": 0
 			},
@@ -210,7 +215,65 @@
 				"resources": [],
 				"refer": [
 					"kunyupages/register/register.html",
-					"kunyupages/pwdmanage/forgetpassword.html"
+					"kunyupages/pwdmanage/forgetpassword.html",
+					"kunyupages/home/home.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/certifiedMessage/certifiedMessage.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/register/register.html",
+					"kunyupages/certifiedMessage/uploadImages.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/productmanage/productdetails.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/certifiedMessage/certifiedMessage.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/certifiedMessage/uploadImages.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/certifiedMessage/moreInformation.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/certifiedMessage/moreInformation.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/certifiedMessage/submitSuccess.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/certifiedMessage/scheduleList.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/certifiedMessage/pendingListDetail.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/certifiedMessage/pendingList.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/certifiedMessage/pendingListDetail.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/home/my.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/my/informance.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/my/informance.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/my/myInformance.html"
 				],
 				"priority": 0
 			}

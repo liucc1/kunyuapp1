@@ -17,7 +17,7 @@
 				margin: 10px;
 				padding:20px;
 				height: 300px;
-				background-image: url(../../images/back2.png); 
+				background-image: url(../../images/back1.png); 
 				background-repeat: no-repeat;
 				background-size: 100%;
 			}
@@ -30,6 +30,16 @@
 			.detailPCss{
 				font-size: 14px;color: darkgray;margin-top:2px
 			}
+			.bs{
+				width: 40%;
+				float: left;
+			}
+			.mui-popup{
+				background-color: white;
+			}
+			.mui-popup-title{
+				border-bottom:0px;
+			}
 	    </style>
 	</head>
 	<body>
@@ -39,18 +49,43 @@
 		</header>
 		<div class="mui-content">
 			<div id="square">
-				<!--<div class="detailCss">亡灵：影像核查不通过</div>
+				<div class="detailCss">亡灵：影像核查不通过</div>
 				<p class="detailPCss">2018-01-09 10:55:34</p>
-				<p>你推荐的亡灵，证件号码：1232134123您的房产影像不合格，请按照示例重新上传。</p>
-				<div class="mui-content-padded" style="margin-top: 60px;">
+				<p style="margin-top: 30px;">你推荐的亡灵，证件号码：1232134123您的房产影像不合格，请按照示例重新上传。</p>
+				<div class="mui-content-padded" style="margin-top: 50px;">
 					<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">去处理</button>
-				</div>-->
+				</div>
+				<div class="mui-content-padded" style="margin-top: 50px;text-align: center;">
+					<button type="button" id="confirmBtn" class="mui-btn mui-btn-danger mui-btn-block bs">取消预约</button>
+					<button type="button" id="appointMent" class="mui-btn mui-btn-danger mui-btn-block bs" style="margin-left: 20%;">重新预约</button>
+				</div>
 			</div>
 		</div>
 	</body>
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
-	<script src="../certifiedJson/pendingListData.js"></script>
-	<script src="./js/pendingListDetail.js"></script>
+	<script>
+		mui.init()
+		mui.plusReady(function(){
+			
+		})
+		document.getElementById("confirmBtn").addEventListener('tap', function() {
+			var btnArray = ['否', '是'];
+			mui.confirm('是否取消2018年1月2日的预约？', '提示', btnArray, function(e) {
+				if (e.index == 1) {
+					alert('确认')
+				} else {
+					alert('取消')
+				}
+			})
+		});
+		$('#appointMent').on("tap",function(){
+			mui.openWindow({
+		        url:"./appointMent.html",
+		        id:"appointMent"
+		   	});
+		})
+		
+	</script>
 </html>

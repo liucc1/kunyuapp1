@@ -7,8 +7,8 @@ mui.plusReady(function(){
 /**点击提交按钮**/
 $("#oBtn").on("tap",function(){
 	mui.openWindow({
-		url: "../register/register.html",
-		id: "register"
+		url: "./uploadImages.html",
+		id: "uploadImages"
 	})
 //	var params = {
 //		"_csrf":localStorage.getItem("csrf"),
