@@ -1,9 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>更换银行卡</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<style>
+			.mui-form{
+	    		border: 0px;
+	    	}
+	    	.ps{
+	    		height: 32px;
+	    		line-height: 42px;
+	    		padding: 0px 10px;
+	    	}
+	    	.afterInput{
+	    		margin: 10px;
+				padding:10px;
+				background-image: url(../../images/scan.png); 
+				background-repeat: no-repeat;
+	    	}
+		</style>
 	</head>
 	<body>
+		<header class="mui-bar mui-bar-nav back_fff" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">更换银行卡</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-form">
+				<div class="mui-input-row ">
+					<label style="width: 35%;">银行卡号</label> 
+					<input  style="width: 65%;" type="tel" maxlength="11" id="phone" placeholder="请输入您的银行卡号" readonly="readonly" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">身份证号</label>
+					<input style="width: 65%;" type="tel" value="123123123124" id="smscode" maxlength="6" placeholder="" readonly="readonly" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">姓名</label>
+					<input style="width: 65%;" type="tel" value="王星" id="smscode" maxlength="6" placeholder="" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">预留手机号</label>
+					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="请输入您的手机号" />
+				</div>
+				<div class="mui-input-row" style="border-bottom: 0px;">
+					<label style="width: 35%;">开户行</label>
+					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="请输入您的开户行" />
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block"> 确认绑卡 </button>
+			</div>
+		</div>
 	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/zepto.min.js" ></script>
+	<script src="../../common/js/common.js" ></script>
+	<script>
+		$("#oBtn").on("tap",function(){
+			mui.openWindow({
+				url: "./myInformance.html",
+				id: "myInformance"
+			})
+		})
+	</script>
 </html>
