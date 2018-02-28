@@ -50,23 +50,23 @@
 			</div>
 			<ul class="mui-table-view mui-table-view-group">
 				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right" onclick="goMyInformance()">
+					<a class="mui-navigate-right" onclick="goPage('informance')">
 						<img style="max-width: 20px;" src="../../images/broad.png"/> 我的资料
 						<font>升级为高级用户</font>
 					</a>
 				</li>
-				<li class="mui-table-view-cell">
+				<li class="mui-table-view-cell" onclick="goPage('charges')">
 					<a class="mui-navigate-right">
 						<img style="max-width: 20px;" src="../../images/broad.png"/> 我的佣金
 					</a>
 				</li>
-				<li class="mui-table-view-cell">
+				<li class="mui-table-view-cell" onclick="goPage('message')">
 					<a class="mui-navigate-right">
 						<img style="max-width: 20px;" src="../../images/broad.png"/> 消息公告
 						<font class="fs">2</font>
 					</a>
 				</li>
-				<li class="mui-table-view-cell">
+				<li class="mui-table-view-cell" onclick="goPage('setPassword')">
 					<a class="mui-navigate-right">
 						<img style="max-width: 20px;" src="../../images/broad.png"/> 密码管理
 					</a>
@@ -92,10 +92,12 @@
 	<script src="../../common/js/common.js" ></script>
 	<script>
 		mui.init()
-		function goMyInformance(){
+		function goPage(param){
+			var url = '../my/'+param+'.html'
+			console.log(url)
 			mui.openWindow({
-		        url:"../my/informance.html",
-		        id:"informance"
+		        url:url,
+		        id:param
 		   	});
 		}
 	</script>

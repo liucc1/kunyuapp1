@@ -266,7 +266,10 @@
 			"kunyupages/home/my.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/my/informance.html"
+					"kunyupages/my/informance.html",
+					"kunyupages/my/message.html",
+					"kunyupages/my/setPassword.html",
+					"kunyupages/my/charges.html"
 				],
 				"priority": 0
 			},
@@ -274,6 +277,29 @@
 				"resources": [],
 				"refer": [
 					"kunyupages/my/myInformance.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/my/myInformance.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/my/revisePhone.html",
+					"kunyupages/my/reviseCer.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/my/message.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/my/messageDetail.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/my/setPassword.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/my/loginPassword.html",
+					"kunyupages/my/payPassword.html"
 				],
 				"priority": 0
 			}
