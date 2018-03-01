@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>房产示例</title>
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<style>
+			.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar{
+				background-color: #D30D24;
+			}
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
+				color: #D30D24;
+			}
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item{
+				border: 0px;
+			}
+			.mui-slider{
+				background-color: #fff;
+			}
+			.content{
+				padding: 2rem 4rem;
+			}
+			.gap{
+				height: 1rem;
+				background-color: #F6F6F6;
+			}
+			.imgBor{
+				border: 1px solid #e3e3e3;
+    			padding: 5px;
+			}
+			.mui-slider .mui-slider-group .mui-slider-item img.w50{
+				width: 49%;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">房产示例</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-slider">
+				<div  class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1mobile">房本示例</a>
+					<a class="mui-control-item" href="#item2mobile">购房合同示例</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
+				<div class="gap"></div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="content">
+									<p>清晰显示房产证号及房产地址</p>
+									<div class="imgBor">
+										<img src="../../images/contract3.png" />
+									</div>
+									<br /><br />
+									<p>若地址与房产证号不在一页，请完整拍摄两页并清晰显示房产证号及房产地址</p>									
+									<div class="imgBor">
+										<img src="../../images/contract3.png" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="content">
+									<p>若为购房合同，请显示首页，第二页，面积页及签字页</p>
+									<div class="imgBor">
+										<img src="../../images/contract1.jpg" class="w50" />
+										<img src="../../images/contract2.png" class="w50" />
+										<img src="../../images/contract3.png" class="w50" />
+										<img src="../../images/contract1.jpg" class="w50" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../plugins/jquery-1.10.2.min.js"></script>
+	<script>
+		mui.init();
+		mui(".mui-scroll-wrapper").scroll();
+		$(function(){
+			var height = document.documentElement.scrollHeight - document.querySelector('.mui-slider').offsetHeight-document.querySelector('header').offsetHeight+"px"; 
+			$(".mui-slider-item.mui-control-content").css("height",height)
+		})	
+	</script>
+</html>
