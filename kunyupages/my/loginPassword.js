@@ -1,35 +1,61 @@
 mui.init({
 	swipeBack: true //启用右滑关闭功能
 });
+var phone = localStorage.getItem("phone");
+//硬件监听
+document.addEventListener( "plusready", onPlusReady, false );
+function onPlusReady() {
+    console.log("plusready");
+    document.getElementById('phone').value= phone;
+}
 /***
  * 点击获取验证码
  */
 $("#getcode").on("tap",function(){
-	alert("fff");
-	var phoneNum = $("#phone").val().trim();
-	eg.getCsrf();
+//	eg.getCsrf();
 	var csrf=localStorage.getItem("csrf");
 	plus.nativeUI.showWaiting();
 	eg.postAjax("captCha", {
 		"_csrf":csrf,
-		"mobile": phoneNum
-		}, function(data) {
-//		if(data.resCode !== "0") {
-			plus.nativeUI.closeWaiting();
-//			return;
-//		}else{											
-//			eg.postAjax("safe/sendVerificateMessage.do", {
-//					"mobile": $("#phone").val(),
-//					"serviceId": "02009001",
-//					"smsType":"REGIST"
-//				}, function(data) {
-//					plus.nativeUI.closeWaiting();
-//					Countdown("getcode");
-//					mui.toast("验证码已发送");
-//			});
-//		}
+		"mobile": phone
+	}, function(data) {
+		if(data.status=="1"){
+			$("#smscode").val(data.message);
+		}
+	},function(data){
+			if(data=="403") eg.getCsrf();
 	});
 });
+$('#oBtn').click(function() {
+	var newPwd1 = $('#newPwd1').val();
+	var newPwd2 = $('#newPwd2').val();
+	if(!newPwd1) {
+		mui.toast("登录密码不能为空！");
+		return false;
+	};
+	if(!newPwd2) {
+		mui.toast("登录密码不能为空！");
+		return false;
+	};
+	if(newPwd1 != newPwd2){
+		mui.toast("两次密码不一致", { duration: "short" });
+		return;
+	}
+	var csrf=localStorage.getItem("csrf");
+	var params = {
+		"_csrf":csrf,
+		"oldPass":newPwd1,
+		"newPass":newPwd2
+	}
+	eg.postAjax("chgpass",params, function(data) {
+			alert(data.code);
+//			if(data.code=="0"){
+//				alert("ff");
+//			}
+	},function(data){
+		if(data=="403") eg.getCsrf();
+	});
+})
 //$('#oBtn').click(function() {
 //	var beforPwd = $('#beforPwd').val();
 //	var afterPwd = $('#afterPwd').val();
@@ -97,11 +123,6 @@ $("#getcode").on("tap",function(){
 //var  beforPwdVal;
 //var afterPwdVal;
 //var afterPwdVal2;
-//硬件监听
-document.addEventListener( "plusready", onPlusReady, false );
-function onPlusReady() {
-    console.log("plusready");
-}
 
 /***
  *调用密码控件     上线用
