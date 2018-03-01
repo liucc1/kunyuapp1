@@ -18,7 +18,11 @@ mui.plusReady(function(){
 //		"city":$("#cityCode").val().trim()
 	}
 	eg.postAjax("customer/list", params, function(data) {
-			alert("dddd");
+			alert(data.msg);
+			alert(data.total);
+			alert(data.code);
+			var arr = JSON.stringify(data.rows)
+			alert(arr);
 			
 //			alert(data.total);
 	}
