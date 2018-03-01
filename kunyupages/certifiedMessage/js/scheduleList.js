@@ -17,13 +17,17 @@ mui.plusReady(function(){
 //		"password":$("#pwd1").val().trim(),
 //		"city":$("#cityCode").val().trim()
 	}
+	plus.nativeUI.showWaiting();
 	eg.postAjax("customer/list", params, function(data) {
-			alert(data.msg);
-			alert(data.total);
-			alert(data.code);
-			var arr = JSON.stringify(data.rows)
-			alert(arr);
-			
+			plus.nativeUI.closeWaiting();
+//			alert(data.msg);
+//			alert(data.total);
+//			alert(data.code);
+//			
+			if(data.code=="0"){
+				var arr = JSON.stringify(data.rows);
+				alert(arr);
+			}
 //			alert(data.total);
 	}
 	,function(data){
