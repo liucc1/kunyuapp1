@@ -1,79 +1,84 @@
 {
-  "kunyupages/home/home.html": {
-    "resources": [
-      "kunyupages/home/index.html"
-    ],
-    "refer": [
-      "kunyupages/home/index.html",
-      "kunyupages/home/my.html"
-    ]
-  },
-  "kunyupages/home/index.html": {
-    "refer": [
-      "kunyupages/index/progressquery.html",
-      "kunyupages/home/home.html",
-      "kunyupages/certifiedMessage/scheduleList.html",
-      "kunyupages/certifiedMessage/pendingList.html",
-      "kunyupages/certifiedMessage/certifiedMessage.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/login/login.html": {
-    "refer": [
-      "kunyupages/register/register.html",
-      "kunyupages/pwdmanage/forgetpassword.html",
-      "kunyupages/home/home.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/certifiedMessage/certifiedMessage.html": {
-    "refer": [
-      "kunyupages/register/register.html",
-      "kunyupages/certifiedMessage/uploadImages.html"
-    ]
-  },
-  "kunyupages/productmanage/productdetails.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/certifiedMessage.html"
-    ]
-  },
-  "kunyupages/certifiedMessage/uploadImages.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/moreInformation.html"
-    ]
-  },
-  "kunyupages/certifiedMessage/moreInformation.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/submitSuccess.html"
-    ]
-  },
-  "kunyupages/certifiedMessage/scheduleList.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/pendingListDetail.html"
-    ]
-  },
-  "kunyupages/certifiedMessage/pendingList.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/pendingListDetail.html"
-    ]
-  },
-  "kunyupages/home/my.html": {
-    "refer": [
-      "kunyupages/my/informance.html",
-      "kunyupages/my/message.html",
-      "kunyupages/my/setPassword.html",
-      "kunyupages/my/charges.html"
-    ]
-  },
-  "kunyupages/my/informance.html": {
-    "refer": [
-      "kunyupages/my/myInformance.html"
-    ]
-  },
-  "kunyupages/my/setPassword.html": {
-    "refer": [
-      "kunyupages/my/loginPassword.html",
-      "kunyupages/my/payPassword.html"
-    ]
-  }
+	"kunyupages/home/home.html": {
+		"resources": [
+			"kunyupages/home/index.html"
+		],
+		"refer": [
+			"kunyupages/home/index.html",
+			"kunyupages/home/my.html"
+		]
+	},
+	"kunyupages/home/index.html": {
+		"refer": [
+			"kunyupages/index/progressquery.html",
+			"kunyupages/home/home.html",
+			"kunyupages/certifiedMessage/scheduleList.html",
+			"kunyupages/certifiedMessage/pendingList.html",
+			"kunyupages/certifiedMessage/certifiedMessage.html"
+		],
+		"resources": []
+	},
+	"kunyupages/login/login.html": {
+		"refer": [
+			"kunyupages/register/register.html",
+			"kunyupages/pwdmanage/forgetpassword.html",
+			"kunyupages/home/home.html"
+		],
+		"resources": []
+	},
+	"kunyupages/certifiedMessage/certifiedMessage.html": {
+		"refer": [
+			"kunyupages/register/register.html",
+			"kunyupages/certifiedMessage/uploadImages.html"
+		]
+	},
+	"kunyupages/productmanage/productdetails.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/certifiedMessage.html"
+		]
+	},
+	"kunyupages/certifiedMessage/uploadImages.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/moreInformation.html"
+		]
+	},
+	"kunyupages/certifiedMessage/moreInformation.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/submitSuccess.html"
+		]
+	},
+	"kunyupages/certifiedMessage/scheduleList.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/pendingListDetail.html"
+		]
+	},
+	"kunyupages/certifiedMessage/pendingList.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/pendingListDetail.html"
+		]
+	},
+	"kunyupages/home/my.html": {
+		"refer": [
+			"kunyupages/my/informance.html",
+			"kunyupages/my/message.html",
+			"kunyupages/my/setPassword.html",
+			"kunyupages/my/charges.html"
+		]
+	},
+	"kunyupages/my/informance.html": {
+		"refer": [
+			"kunyupages/my/myInformance.html"
+		]
+	},
+	"kunyupages/my/setPassword.html": {
+		"refer": [
+			"kunyupages/my/loginPassword.html",
+			"kunyupages/my/payPassword.html"
+		]
+	},
+	"kunyupages/my/charges.html": {
+		"refer": [
+			"kunyupages/my/withdrawDetail.html"
+		]
+	}
 }
