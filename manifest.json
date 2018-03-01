@@ -208,7 +208,8 @@
 					"kunyupages/home/home.html",
 					"kunyupages/certifiedMessage/scheduleList.html",
 					"kunyupages/certifiedMessage/pendingList.html",
-					"kunyupages/certifiedMessage/certifiedMessage.html"
+					"kunyupages/certifiedMessage/certifiedMessage.html",
+					"kunyupages/index/houseSample.html"
 				],
 				"priority": 0
 			},
