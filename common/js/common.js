@@ -1,7 +1,7 @@
 var eg = {};
 var network;//获取手机网络状况
 //eg.jrURL = localStorage.getItem("ccpcurl");//为方便打包
-eg.jrURL ="http://192.168.3.201:8091/report/";//本地环境
+eg.jrURL ="http://192.168.3.196:8091/report/";//本地环境
 eg.isEmpty = function(obj){
     for (var name in obj){
         return false;
@@ -32,7 +32,7 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 		async: isasync,
 		success: function(data){
 			plus.nativeUI.closeWaiting();
-			console.log("返回参数为："+JSON.stringify(data));
+//			console.log("返回参数为："+JSON.stringify(data));
 			if (data.indexOf('html')=='-1') {//返回的不是页面信息
 				if(typeof data =='string'){data = JSON.parse(data);}
 			}
@@ -42,6 +42,8 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 			plus.nativeUI.closeWaiting();			
 			if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
 				return;
+			}else if(jqXHR.status=="403"){
+				eg.getCsrf();
 			}
 			if(network == 0 || network == 1){
 				mui.toast("无网络");
@@ -52,8 +54,10 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 				mui.toast("系统维护中，请稍后重试");
 			}
 			//var jsonRep=JSON.parse(jqXHR)
-			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
-			errorFun(jqXHR.status); 
+//			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
+//			errorFun(jqXHR.status){
+//				if(jqXHR.status=="403") eg.getCsrf();
+//			};
 		}
 	});
 };
