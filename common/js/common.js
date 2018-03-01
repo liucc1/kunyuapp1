@@ -42,9 +42,10 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 			plus.nativeUI.closeWaiting();			
 			if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
 				return;
-			}else if(jqXHR.status=="403"){
-				eg.getCsrf();
 			}
+//			else if(jqXHR.status=="403"){
+//				eg.getCsrf();
+//			}
 			if(network == 0 || network == 1){
 				mui.toast("无网络");
 			}else{
@@ -55,7 +56,8 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 			}
 			//var jsonRep=JSON.parse(jqXHR)
 //			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
-//			errorFun(jqXHR.status){
+			errorFun(jqXHR.status);
+//			{
 //				if(jqXHR.status=="403") eg.getCsrf();
 //			};
 		}

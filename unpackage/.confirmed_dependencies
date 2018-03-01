@@ -13,7 +13,8 @@
       "kunyupages/index/progressquery.html",
       "kunyupages/home/home.html",
       "kunyupages/certifiedMessage/scheduleList.html",
-      "kunyupages/certifiedMessage/pendingList.html"
+      "kunyupages/certifiedMessage/pendingList.html",
+      "kunyupages/certifiedMessage/certifiedMessage.html"
     ],
     "resources": []
   },
@@ -58,12 +59,21 @@
   },
   "kunyupages/home/my.html": {
     "refer": [
-      "kunyupages/my/informance.html"
+      "kunyupages/my/informance.html",
+      "kunyupages/my/message.html",
+      "kunyupages/my/setPassword.html",
+      "kunyupages/my/charges.html"
     ]
   },
   "kunyupages/my/informance.html": {
     "refer": [
       "kunyupages/my/myInformance.html"
+    ]
+  },
+  "kunyupages/my/setPassword.html": {
+    "refer": [
+      "kunyupages/my/loginPassword.html",
+      "kunyupages/my/payPassword.html"
     ]
   }
 }
