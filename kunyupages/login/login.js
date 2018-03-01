@@ -82,7 +82,7 @@
 		} else {
 			mui.toast("您已经登录！");
 		}
-	});
+	}); 
 	/**历史账户**/
 	var userList = localStorage.getItem("userList");
 		userList = JSON.parse(userList);
