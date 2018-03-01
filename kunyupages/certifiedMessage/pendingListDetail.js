@@ -3,15 +3,12 @@ mui.plusReady(function(){
 	var csrf=localStorage.getItem("csrf");
 	var params = {
 		"_csrf":csrf,
-		"page":"1",
-		"limit":"4",
+		"idNo":"1"
 //		"password":$("#pwd1").val().trim(),
 //		"city":$("#cityCode").val().trim()
 	}
 	eg.postAjax("customer/list", params, function(data) {
-			alert("dddd");
-			
-//			alert(data.total);
+			alert(data.code);
 	}
 	,function(data){
 //		$("#oBtn").removeAttr("disabled");
