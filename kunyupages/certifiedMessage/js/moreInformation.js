@@ -50,6 +50,7 @@ mui.ready(function(){
 	}, false);
 })
 $("#oBtn").on("tap",function(){
+	
 	mui.openWindow({
 		url: "./submitSuccess.html",
 		id: "submitSuccess"
