@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>申请提现</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../common/css/mui.min.css" rel="stylesheet" />
+		<link href="../../common/css/mui.picker.css" rel="stylesheet" />
+		<link href="../../common/css/mui.poppicker.css" rel="stylesheet" />
+		<link href="../../common/css/app.css" rel="stylesheet" />
+		<link href="../../common/css/base.css" rel="stylesheet" />
+		<style>	  
+			/*设置-不起作用 ？*/ 	
+	    	.mui-form.ss{
+	    		min-height: 145px;
+	    		padding: 20px 20px 0px 20px;
+	    	}
+	    	.span-title{
+    		    padding: 16px 5px 0px 15px;
+			    color: #889aa4;
+			    width: 30px;
+			    font-size: 17px;
+			    display: inline-block;
+	    	}
+	    	.span-footer{
+	    		position: absolute;
+			    right: 10px;
+			    top: 18px;
+			    font-size: 16px;
+			    color: red; 
+	    	}
+	    	.inputts{
+	    		display: inline-block;
+			    height: 50px;
+			    width: 60%;
+	    	}
+	    	.myInput{
+			    border: 0px!important;
+			    height: 42px!important;
+			    background-color: #fff;
+			    color: #606266;
+	    	}
+	    	.mui-form>.p-title{
+	    		font-weight: bold;
+	    		color: black;
+	    	}
+	    	.mui-form>.p-footer{
+	    		text-align: right;
+	    		margin-top: 10px;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav back_fff" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title ">申请提现</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-form ss">
+				<p class="p-title">提现金额</p>
+				<div style="position: relative;border: 1px solid rgba(0, 0, 0, .2);">
+					<span class="span-title">￥</span>
+					<div class="inputts">
+						<input class="myInput" value="" placeholder="请输入提现金额" type="text"  id="custName"  />
+					</div>
+					
+					<span class="span-footer">全部提现</span>
+				</div>
+				<p class="p-footer">全部金额：700.10</p>
+			</div>
+			<div class="mui-form">
+				<div class="mui-input-row">
+					<label style="width: 35%;">姓名</label> 
+					<input style="width: 65%;" value="王星" type="text"  id="custName" readonly="" />
+				</div>
+				<div class="mui-input-row mui-input-row-yan">
+					<label style="width: 35%;">到账银行卡</label>
+					<input style="width: 65%;" value="123112443212" type="text"  id="cutNo" readonly="readonly" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">开户行</label>
+					<input style="width: 65%;" value="北京大望路支行" type="text"  id="address" readonly="readonly" />
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<button type="button" id="confirmBtn" class="mui-btn mui-btn-danger mui-btn-block">申请提现</button>
+			</div>
+		</div>
+	</body>
+	<script src="../../common/js/mui.min.js"></script>
+	
+	<script src="../../common/js/zepto.min.js" ></script>
+	<script src="../../common/js/common.js" ></script>
+	<script src="../../common/js/mui.datePicker.js"></script>
+	<script>
+		document.getElementById("confirmBtn").addEventListener('tap', function() {
+			mui.alert('您的提现申请已发送，请您耐心等待转账', '提醒')
+		});
+	</script>
+</html>
