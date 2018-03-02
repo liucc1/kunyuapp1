@@ -6,47 +6,68 @@ var phone = localStorage.getItem("phone");
 document.addEventListener( "plusready", onPlusReady, false );
 function onPlusReady() {
     console.log("plusready");
-    document.getElementById('phone').value= phone;
 }
-/***
- * 点击获取验证码
- */
-$("#getcode").on("tap",function(){
-	eg.getCsrf();
-	var csrf=localStorage.getItem("csrf");
-	plus.nativeUI.showWaiting();
-	eg.postAjax("captCha", {
-		"_csrf":csrf,
-		"mobile": phone
-	}, function(data) {
-		if(data.status=="1"){
-			$("#smscode").val(data.message);
-		}
-	},function(data){
-			if(data=="403") eg.getCsrf();
-	});
-});
+///***
+// * 点击获取验证码
+// */
+//$("#getcode").on("tap",function(){
+//	eg.getCsrf();
+//	var csrf=localStorage.getItem("csrf");
+//	plus.nativeUI.showWaiting();
+//	eg.postAjax("captCha", {
+//		"_csrf":csrf,
+//		"mobile": phone
+//	}, function(data) {
+//		if(data.status=="1"){
+//			$("#smscode").val(data.message);
+//		}
+//	},function(data){
+//			if(data=="403") eg.getCsrf();
+//	});
+//});
 $('#oBtn').click(function() {
+	var oldPwd = $('#oldPwd').val();
 	var newPwd1 = $('#newPwd1').val();
 	var newPwd2 = $('#newPwd2').val();
+	if(!oldPwd) {
+		mui.toast("旧登录密码不能为空！");
+		return false;
+	};
 	if(!newPwd1) {
-		mui.toast("登录密码不能为空！");
+		mui.toast("新登录密码不能为空！");
 		return false;
 	};
 	if(!newPwd2) {
-		mui.toast("登录密码不能为空！");
+		mui.toast("请再次输入新登录密码！");
 		return false;
 	};
 	if(newPwd1 != newPwd2){
 		mui.toast("两次密码不一致", { duration: "short" });
 		return;
 	}
+	 eg.getCsrf();
 	var params = {	
-		"oldPass":newPwd1,
-		"newPass":newPwd2
+		"oldPass":oldPwd,
+		"newPass":newPwd1,
+		"repeatNewPass":newPwd2
 	}
+	params = JSON.stringify(params);
 	eg.postAjax2("chgpass",params, function(data) {
-		alert(data.code);
+		alert(data.status);
+		if(data.status == 0 ){
+			var curr = plus.webview.currentWebview();
+			var all = plus.webview.all();
+			for (var i=0;i<all.length;i++) {
+				if(all[i] != curr) {
+					all[i].close();
+				}	
+			}
+			mui.openWindow({
+				url : "../login/login.html",
+				id: "login"
+			})
+//			curr.close();
+		}
 	},function(data){
 		if(data=="403") eg.getCsrf();
 	});
