@@ -13,7 +13,7 @@
 			/*设置-不起作用 ？*/ 	
 	    	.lablewth{width: 35%;}
 	    	.inputwth{width: 65%;}
-	    	.mui-segmented-control-negative.mui-segmented-control-inverted .mui-control-item.mui-active{
+	    	.mui-segmented-control-negative.mui-segmented-control-inverted .step-bar.mui-active{
 	    		border-bottom: 0px;
 	    		color:#D30D24;
 	    	}
@@ -24,12 +24,12 @@
 	    		padding-right: 5px;
 	    		padding-left: 5px;
 	    	}
-	    	.mui-control-item.mui-active>.aSpan{
+	    	.step-bar.mui-active>.aSpan{
 	    		background-color: #D30D24;
 	    		color: white;
 	    		border-radius: 100%;
 	    	}
-	    	.mui-control-item.ss:before{
+	    	.step-bar.ss:before{
 	    		content:"";
 	    		display: inline-block;
 	    		height: 8px;
@@ -71,6 +71,199 @@
 	    	.mui-form{
 	    		border: 0px;
 	    	}
+	    	.step-bar{
+	    		line-height: 40px;
+			    display: table-cell;
+			    overflow: hidden;
+			    width: 1%;
+			    transition: background-color .1s linear;
+			    text-align: center;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+	    	}
+	    	.imageDiv{
+	    		text-align: left;
+    			padding: 20px 0 30px;
+	    	}
+	    	.imageDiv>div{
+	    		width: 9rem;
+			    height: 9rem;
+			    float: left;
+			    margin: 0 0.5rem 1rem 0;
+			    position: relative;
+	    	}
+	    	.imageDiv img{
+	    		width: 9rem;
+			    height: 9rem;
+			    border-radius: 1rem;
+	    	}
+	    	.imageDiv .mui-icon{
+	    		position: absolute;
+			    top: -1rem;
+			    right: -1rem;
+			    color: #D30D24;
+			    z-index: 2;
+	    	}
+	    	.shake{
+				animation: shakes 0.2s linear 0s infinite alternate;
+				-moz-animation: shakes 0.2s linear 0s infinite alternate;
+				-webkit-animation: shakes 0.2s linear 0s infinite alternate;
+				-o-animation: shakes 0.2s linear 0s infinite alternate;
+			}
+			@-webkit-keyframes shakes{
+				0% {-webkit-transform: translateX(2px) rotate(3deg);}
+				100% {-webkit-transform: translateX(-2px) rotate(-3deg);}
+			}
+	    	.none{
+	    		display: none;
+	    	}
+	    	.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
 	    </style>
 	</head>
 	<body>
@@ -81,9 +274,9 @@
 		<div class="mui-content" >
 			<div style="padding: 10px 10px;background-color: white;margin-left: -10px;">
 				<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
-					<a class="mui-control-item"><span class="aSpan">1</span>身份验证</a>
-					<a class="mui-control-item  mui-active ss"><span class="aSpan">2</span>上传影像资料</a>
-					<a class="mui-control-item ss"><span class="aSpan">3</span>更多信息</a>
+					<span class="step-bar"><span class="aSpan">1</span>身份验证</span>
+					<span class="step-bar ss"><span class="aSpan">2</span>更多信息</span>
+					<span class="step-bar  mui-active ss"><span class="aSpan">3</span>上传影像资料</span>
 				</div>
 			</div>
 			<div style="background-color: white;margin-top: 10px;">
@@ -92,21 +285,35 @@
 					<div class="mui-input-row">
 						<div style="padding-top: 10px;">
 							<span style="padding-left: 10px;">《房产证》</span>
-							<span style="color: #4AABFF;position: absolute;right: 15px;">示例></span>
+							<span id="houseSample" style="color: #4AABFF;position: absolute;right: 15px;">示例></span>
 						</div>
-						<div style="text-align: center;padding: 20px 0 30px 0 ;">
-							<img  src="../../images/camera.png"/>
-							<img  src="../../images/addImage.png"/>
+						<div id="houseImg" class="imageDiv">
+							<!--<div class="shakeImg">
+								<img class="chooseByGally" src="../../images/b.png"/>
+								<span onclick="delImg(this);" class="mui-icon mui-icon-close-filled none"></span>
+							</div>-->
+							<div>
+								<img class="chooseByGally" src="../../images/addImage.png"/>
+							</div>
+							<div>
+								<img class="deleteImg" src="../../images/del_square.png"/>
+								<img class="confirmImg none" src="../../images/confirm.png"/>
+							</div>
 						</div>
 					</div>
 					<div class="mui-input-row">
 						<div style="padding-top: 10px;">
 							<span style="padding-left: 10px;">《购房合同》</span>
-							<span style="color: #4AABFF;position: absolute;right: 15px;">示例></span>
+							<span id="contractSample" style="color: #4AABFF;position: absolute;right: 15px;">示例></span>
 						</div>
-						<div style="text-align: center;padding: 20px 0 30px 0 ;">
-							<img  src="../../images/camera.png"/>
-							<img  src="../../images/addImage.png"/>
+						<div id="contractImg" class="imageDiv">
+							<div>
+								<img class="chooseByGally" src="../../images/addImage.png"/>
+							</div>
+							<div>
+								<img class="deleteImg" src="../../images/del_square.png"/>
+								<img class="confirmImg none" src="../../images/confirm.png"/>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -118,8 +325,12 @@
 		</div>
 	</body>
 	<script src="../../common/js/mui.min.js"></script>
+	<script src="../../common/js/mui.zoom.js"></script>
+	<script src="../../common/js/mui.previewimage.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
 	<!--<script type="text/javascript" src="../plugins/passguard/plugin-passguard.js" ></script>-->
+	<script src="../../plugins/exif.js"></script>
+	<script src="../../plugins/commonUpload.js"></script>
 	<script src="./js/uploadImages.js"></script>
 </html>

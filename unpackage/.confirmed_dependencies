@@ -30,7 +30,8 @@
   "kunyupages/certifiedMessage/certifiedMessage.html": {
     "refer": [
       "kunyupages/register/register.html",
-      "kunyupages/certifiedMessage/uploadImages.html"
+      "kunyupages/certifiedMessage/uploadImages.html",
+      "kunyupages/certifiedMessage/moreInformation.html"
     ],
     "resources": []
   },
@@ -42,13 +43,15 @@
   },
   "kunyupages/certifiedMessage/uploadImages.html": {
     "refer": [
-      "kunyupages/certifiedMessage/moreInformation.html"
+      "kunyupages/certifiedMessage/moreInformation.html",
+      "kunyupages/index/houseshow.html"
     ],
     "resources": []
   },
   "kunyupages/certifiedMessage/moreInformation.html": {
     "refer": [
-      "kunyupages/certifiedMessage/submitSuccess.html"
+      "kunyupages/certifiedMessage/submitSuccess.html",
+      "kunyupages/certifiedMessage/uploadImages.html"
     ],
     "resources": []
   },
