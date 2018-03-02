@@ -12,7 +12,7 @@ function onPlusReady() {
  * 点击获取验证码
  */
 $("#getcode").on("tap",function(){
-//	eg.getCsrf();
+	eg.getCsrf();
 	var csrf=localStorage.getItem("csrf");
 	plus.nativeUI.showWaiting();
 	eg.postAjax("captCha", {
@@ -41,17 +41,12 @@ $('#oBtn').click(function() {
 		mui.toast("两次密码不一致", { duration: "short" });
 		return;
 	}
-	var csrf=localStorage.getItem("csrf");
-	var params = {
-		"_csrf":csrf,
+	var params = {	
 		"oldPass":newPwd1,
 		"newPass":newPwd2
 	}
-	eg.postAjax("chgpass",params, function(data) {
-			alert(data.code);
-//			if(data.code=="0"){
-//				alert("ff");
-//			}
+	eg.postAjax2("chgpass",params, function(data) {
+		alert(data.code);
 	},function(data){
 		if(data=="403") eg.getCsrf();
 	});

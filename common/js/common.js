@@ -32,9 +32,9 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 		async: isasync,
 		success: function(data){
 			plus.nativeUI.closeWaiting();
-//			console.log("返回参数为："+JSON.stringify(data));
 			if (data.indexOf('html')=='-1') {//返回的不是页面信息
 				if(typeof data =='string'){data = JSON.parse(data);}
+				console.log("返回参数为："+JSON.stringify(data));
 			}
 			successFun(data);
 		},
@@ -43,13 +43,10 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 			if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
 				return;
 			}
-//			else if(jqXHR.status=="403"){
-//				eg.getCsrf();
-//			}
 			if(network == 0 || network == 1){
 				mui.toast("无网络");
 			}else{
-				//alert("jqXHR"+JSON.stringify(jqXHR));
+//				alert("jqXHR"+JSON.stringify(jqXHR));
 				//alert("textStatus"+JSON.stringify(textStatus));
 				//alert("errorThrown"+JSON.stringify(errorThrown));
 				mui.toast("系统维护中，请稍后重试");
@@ -57,9 +54,50 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 			//var jsonRep=JSON.parse(jqXHR)
 //			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
 			errorFun(jqXHR.status);
-//			{
-//				if(jqXHR.status=="403") eg.getCsrf();
-//			};
+		}
+	});
+};
+eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
+	plus.nativeUI.showWaiting();
+	//params.channelId = "kunyuapp";//渠道来源
+	//params = JSON.stringify(params);
+	isasync = isasync || false;
+	console.log("请求url："+url + ";上送参数为："+JSON.stringify(params));
+	$.ajax({
+		url: url,
+		contentType: "application/json",
+		type: method,
+		timeout : 60000,
+		beforeSend: function (request) {
+		    request.setRequestHeader("X-CSRF-TOKEN", localStorage.getItem("csrf"));
+		},
+		data: params,
+		dataType: "JSON",
+		async: isasync,
+		success: function(data){
+			plus.nativeUI.closeWaiting();
+			if (data.indexOf('html')=='-1') {//返回的不是页面信息
+				if(typeof data =='string'){data = JSON.parse(data);}
+				console.log("返回参数为："+JSON.stringify(data));	
+			}
+			successFun(data);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			plus.nativeUI.closeWaiting();			
+			if(jqXHR.status =="0" &&jqXHR.readyState =="0"){
+				return;
+			}
+			if(network == 0 || network == 1){
+				mui.toast("无网络");
+			}else{
+//				alert("jqXHR"+JSON.stringify(jqXHR));
+//				alert("textStatus"+JSON.stringify(textStatus));
+//				alert("errorThrown"+JSON.stringify(errorThrown));
+				mui.toast("系统维护中，请稍后重试");
+			}
+			//var jsonRep=JSON.parse(jqXHR)
+//			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
+			errorFun(jqXHR.status);
 		}
 	});
 };
@@ -75,6 +113,12 @@ eg.postAjax = function(url, params, sussessFun,errorFun, isasync) {
 		isasync = true;
   	}	
 	eg.ajax(eg.jrURL + url, params, "POST", sussessFun,errorFun, isasync);
+};
+eg.postAjax2 = function(url, params, sussessFun,errorFun, isasync) {
+	if(typeof(isasync) =="undefined"){
+		isasync = true;
+  	}	
+	eg.ajax2(eg.jrURL + url, params, "POST", sussessFun,errorFun, isasync);
 };
 /**
  * http post请求前先获取token
