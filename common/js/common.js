@@ -62,7 +62,7 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 	//params.channelId = "kunyuapp";//渠道来源
 	//params = JSON.stringify(params);
 	isasync = isasync || false;
-	console.log("请求url："+url + ";上送参数为："+JSON.stringify(params));
+	console.log("请求url："+url + ";上送参数为："+params);
 	$.ajax({
 		url: url,
 		contentType: "application/json",
@@ -256,7 +256,9 @@ function goHomeIndexPage(pageID){
 eg.phone = /^1[3|4|5|7|8]\d{9}$/;
 eg.passwd = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/;
 eg.name =  /^[\u4E00-\u9FA5]{2,10}$/;
+eg.identity = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;//身份证号
 eg.money = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+eg.address = /^[\u4E00-\u9FA5A-Za-z\d\-\_]{5,60}$/;//住址
 /***
  * 判断GPS是否打开（仅限于安卓系统） 
  */
