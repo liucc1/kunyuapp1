@@ -15,7 +15,7 @@
 			/*设置-不起作用 ？*/ 	
 	    	.lablewth{width: 35%;}
 	    	.inputwth{width: 65%;}
-	    	.mui-segmented-control-negative.mui-segmented-control-inverted .mui-control-item.mui-active{
+	    	.mui-segmented-control-negative.mui-segmented-control-inverted .step-bar.mui-active{
 	    		border-bottom: 0px;
 	    		color:#D30D24;
 	    	}
@@ -26,12 +26,12 @@
 	    		padding-right: 5px;
 	    		padding-left: 5px;
 	    	}
-	    	.mui-control-item.mui-active>.aSpan{
+	    	.step-bar.mui-active>.aSpan{
 	    		background-color: #D30D24;
 	    		color: white;
 	    		border-radius: 100%;
 	    	}
-	    	.mui-control-item.ss:before{
+	    	.step-bar.ss:before{
 	    		content:"";
 	    		display: inline-block;
 	    		height: 8px;
@@ -45,6 +45,16 @@
 	    		top: 50%;
 	    		margin-top: -6px;
 	    		left: -10px;
+	    	}
+	    	.step-bar{
+	    		line-height: 40px;
+			    display: table-cell;
+			    overflow: hidden;
+			    width: 1%;
+			    transition: background-color .1s linear;
+			    text-align: center;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
 	    	}
 	    	.headerSpan{
 	    		position: absolute;
@@ -80,9 +90,9 @@
 		<div class="mui-content">
 			<div style="padding: 10px 10px;background-color: white;margin-left: -10px;">
 				<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
-					<a class="mui-control-item"><span class="aSpan">1</span>身份验证</a>
-					<a class="mui-control-item ss"><span class="aSpan">2</span>上传影像资料</a>
-					<a class="mui-control-item mui-active ss"><span class="aSpan">3</span>更多信息</a>
+					<span class="step-bar"><span class="aSpan">1</span>身份验证</span>
+					<span class="step-bar mui-active ss"><span class="aSpan">2</span>更多信息</span>
+					<span class="step-bar ss"><span class="aSpan">3</span>上传影像资料</span>
 				</div>
 			</div>
 			<div class="mui-card-header" style="color: grey;">个人信息</div>
@@ -109,25 +119,48 @@
 			</div>
 			<div class="mui-card-header" style="color: grey;">
 				房产信息 
-				<span class="headerSpan" style="color: blue;">添加房产
-					<span  style="color:blue" class="mui-icon mui-icon-plusempty"></span>
+				<span class="headerSpan" style="color: #4AABFF;">添加房产
+					<span  style="color:#4AABFF" class="mui-icon mui-icon-plusempty"></span>
 				</span>
 			</div>
-			<div class="mui-form" style="margin: 0px;">
+			<div id="houseInfo" class="mui-form" style="margin: 0px;">
 				<div class="mui-input-row">
 					<label style="width: 35%;">房产总值</label> 
+<<<<<<< HEAD
+					<input style="width: 65%;" type="text" class="houseValue" placeholder="请输入房产总值" />
+=======
 					<input style="width: 65%;" type="text" id="price" placeholder="请输入房产总值" />
+>>>>>>> 8fd0953f983f333115b88a78f0d2b79e6db68b28
 				</div>
-				<div id="faType" class="mui-input-row selectInput">
+				<div class="mui-input-row selectInput">
 					<label style="width: 35%;">房产类型</label> 
-					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" id="faTypeValue" value="" />
+					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" class="faType" onclick="initHouseType(this)" value="" />
 				</div>
-				<div id="mortType" class="mui-input-row selectInput">
+				<div class="mui-input-row selectInput">
 					<label style="width: 35%;">抵押类型</label> 
-					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" id="mortTypeValue" value="" />
+					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" class="mortType" onclick="initMortgageType(this)" value="" />
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">房产证编号</label> 
+<<<<<<< HEAD
+					<input style="width: 65%;" type="text" placeholder="请输入房产证编号" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">房产面积</label> 
+					<input style="width: 65%;" type="text" placeholder="请输入房产面积" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">房产地址</label> 
+					<input style="width: 65%;" type="text" placeholder="请输入房产地址" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">一抵时间</label> 
+					<input style="width: 65%;" type="text" placeholder="请输入一抵时间" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 35%;">一抵金额</label> 
+					<input style="width: 65%;" type="text" placeholder="请输入一抵金额" />
+=======
 					<input style="width: 65%;" type="text" id="houseNum" placeholder="请输入房产证编号" />
 				</div>
 				<div class="mui-input-row">
@@ -145,10 +178,11 @@
 				<div class="mui-input-row">
 					<label style="width: 35%;">一抵金额</label> 
 					<input style="width: 65%;" type="text" id="diyaPrice" placeholder="请输入一抵金额" />
+>>>>>>> 8fd0953f983f333115b88a78f0d2b79e6db68b28
 				</div>
 			</div>
 			<div class="mui-content-padded">
-				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">提交</button>
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">下一步</button>
 			</div>
 		</div>
 	</body>

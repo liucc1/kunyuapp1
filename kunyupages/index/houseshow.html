@@ -160,26 +160,52 @@
 				max-width: 100%;
 				height: auto;
 			}
+			.imgBor{
+				border: 1px solid #e3e3e3;
+    			padding: 5px;
+			}
+			.imgBor img{
+				width: 100%;
+			}
+			img.w50{
+				width: 49%;
+			}
+			.none{
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">房产示例</h1>
+			<h1 id="title" class="mui-title"></h1>
 		</header>
 		<div class="mui-content">
-			<div class="mui-content-padded">
-				<p><img src="../../images/alertBtn_head.png" data-preview-src="" data-preview-group="1" /></p>
-				<p>提示：清晰显示房产证号及房产地址</p>
-				<p><img src="../../images/alertBtn_head.png" data-preview-src="" data-preview-group="1" /></p>
-				<p>提示：若地址与房产证号不在一页请完整拍摄两页，并清晰显示房产证号及房产地址</p>
+			<div id="houseSample" class="mui-content-padded none">
+				<p>清晰显示房产证号及房产地址</p>
+				<div class="imgBor">
+					<img src="../../images/contract3.png" data-preview-src="" data-preview-group="1" />
+				</div>
+				<br />
+				<p>若地址与房产证号不在一页，请完整拍摄两页并清晰显示房产证号及房产地址</p>									
+				<div class="imgBor">
+					<img src="../../images/contract3.png" data-preview-src="" data-preview-group="1" />
+				</div>
+			</div>
+			<div id="contractSample" class="mui-content-padded none">
+				<p>若为购房合同，请显示首页，第二页，面积页及签字页</p>
+				<div class="imgBor">
+					<img src="../../images/contract1.jpg" class="w50" data-preview-src="" data-preview-group="2" />
+					<img src="../../images/contract2.png" class="w50" data-preview-src="" data-preview-group="2" />
+					<img src="../../images/contract3.png" class="w50" data-preview-src="" data-preview-group="2" />
+					<img src="../../images/contract1.jpg" class="w50" data-preview-src="" data-preview-group="2" />
+				</div>
 			</div>
 		</div>
 	</body>
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/mui.zoom.js"></script>
 	<script src="../../common/js/mui.previewimage.js"></script>
-	<script>
-		mui.previewImage();
-	</script>
+	<script src="../../plugins/jquery-1.10.2.min.js"></script>
+	<script src="houseshow.js"></script>
 </html>

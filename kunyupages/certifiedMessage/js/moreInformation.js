@@ -1,5 +1,7 @@
-mui.init()
-mui.ready(function(){
+mui.init();
+var index = 1;
+var $ele = $("#houseInfo").clone();
+
 	var userPicker = new mui.PopPicker();
 	userPicker.setData([{
 		value: '住宅',
@@ -17,13 +19,12 @@ mui.ready(function(){
 		value: '商铺',
 		text: '商铺'
 	}]);
-	var faType = document.getElementById('faType');
-	var faTypeValue = document.getElementById('faTypeValue');
-	faType.addEventListener('tap', function(event) {
+	
+	function initHouseType(ele) {
 		userPicker.show(function(items) {
-			faTypeValue.value = items[0].value;
+			ele.value = items[0].value;
 		});
-	}, false);
+	};
 	var userPicker1 = new mui.PopPicker();
 	userPicker1.setData([{
 		value: '无抵押',
@@ -41,18 +42,36 @@ mui.ready(function(){
 		value: '二抵-银行抵押',
 		text: '二抵-银行抵押'
 	}]);
-	var mortType = document.getElementById('mortType');
-	var mortTypeValue = document.getElementById('mortTypeValue');
-	mortType.addEventListener('tap', function(event) {
-		userPicker1.show(function(items) {
-			mortTypeValue.value = items[0].value;
-		});
-	}, false);
-})
-$("#oBtn").on("tap",function(){
 	
+	function initMortgageType(ele) {
+		userPicker1.show(function(items) {
+			ele.value = items[0].value;
+		});
+	};
+
+//添加房产
+$(".headerSpan").on('tap',function(){
+	var cloneEle = $ele.clone();
+	cloneEle.css("margin-top","1rem");
+	var str = "houseInfo"+index;
+	cloneEle.attr("id",str);
+	cloneEle.insertAfter("#houseInfo");
+	index++;
+})
+
+$("#oBtn").on("tap",function(){
+	var phone = $("#phone").val();
+	var unitName = $("#unitName").val();
+	var unitPhone = $("#unitPhone").val();
+	var unitAddress = $("#unitAddress").val();
+	var uploadField = JSON.parse(localStorage.getItem("uploadField"));
+	uploadField.phone = phone;
+	uploadField.unitName = unitName;
+	uploadField.unitPhone = unitPhone;
+	uploadField.unitAddress = unitAddress;
+	localStorage.setItem("uploadField",JSON.stringify(uploadField));
 	mui.openWindow({
-		url: "./submitSuccess.html",
-		id: "submitSuccess"
+		url: "./uploadImages.html",
+		id: "uploadImages"
 	})
 })

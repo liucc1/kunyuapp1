@@ -240,14 +240,16 @@
 			"kunyupages/certifiedMessage/uploadImages.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/certifiedMessage/moreInformation.html"
+					"kunyupages/certifiedMessage/moreInformation.html",
+					"kunyupages/index/houseshow.html"
 				],
 				"priority": 0
 			},
 			"kunyupages/certifiedMessage/moreInformation.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/certifiedMessage/submitSuccess.html"
+					"kunyupages/certifiedMessage/submitSuccess.html",
+					"kunyupages/certifiedMessage/uploadImages.html"
 				],
 				"priority": 0
 			},
