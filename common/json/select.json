@@ -485,5 +485,27 @@
 		{"value": "D302", "text": "登陆密码输入错误"},
 		{"value": "D303", "text": "绑卡手机验证码输入错误"},
 		{"value": "D304", "text": "支用手机验证码输入错误"}
+	],"status":[
+		{"value":"01","text":"待审核"},
+		{"value":"02","text":"预审拒绝"},
+		{"value":"03","text":"预审通过"},
+		{"value":"04","text":"预审拒绝"},
+		{"value":"05","text":"待预约"},
+		{"value":"06","text":"已预约"},
+		{"value":"1","text":"申请"},
+		{"value":"2","text":"处理中"},
+		{"value":"3","text":"拒绝"},
+		{"value":"4","text":"待终审"},
+		{"value":"A","text":"通过"},
+		{"value":"D","text":"拒绝"},
+		{"value":"G","text":"预约"},
+		{"value":"H","text":"拒绝"},
+		{"value":"I","text":"暂停"},
+		{"value":"E","text":"预约"},
+		{"value":"F","text":"预约"},
+		{"value":"Q","text":"通过"},
+		{"value":"R","text":"拒绝"},		
+		{"value":"0","text":"预审通过"},		
+		{"value":"null","text":"预审通过"}
 	]
 }

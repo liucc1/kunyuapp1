@@ -1,74 +1,75 @@
 mui.init();
 var index = 1;
 var $ele = $("#houseInfo").clone();
-
+var $tus = $("#trust").clone();
+$(".faType").on("tap", function() {
+	document.activeElement.blur();
 	var userPicker = new mui.PopPicker();
-	userPicker.setData([{
-		value: '住宅',
-		text: '住宅'
-	},{
-		value: '公寓',
-		text: '公寓'
-	},{
-		value: '商住',
-		text: '商住'
-	},{
-		value: '办公',
-		text: '办公'
-	},{
-		value: '商铺',
-		text: '商铺'
-	}]);
-	
-	function initHouseType(ele) {
-		userPicker.show(function(items) {
-			ele.value = items[0].value;
-		});
-	};
-	var userPicker1 = new mui.PopPicker();
-	userPicker1.setData([{
-		value: '无抵押',
-		text: '无抵押'
-	},{
-		value: '首抵-银行按揭',
-		text: '首抵-银行按揭'
-	},{
-		value: '首抵-银行抵押',
-		text: '首抵-银行抵押'
-	},{
-		value: '首抵-机构抵押',
-		text: '首抵-机构抵押'
-	},{
-		value: '二抵-银行抵押',
-		text: '二抵-银行抵押'
-	}]);
-	
-	function initMortgageType(ele) {
-		userPicker1.show(function(items) {
-			ele.value = items[0].value;
-		});
-	};
+	userPicker.setData(Json.residenceType);
+	var $this = $(this);
+	userPicker.show(function(items) {
+		$this.val(items[0].text);
+		$this.attr("data-key", items[0].value)
+	});
+});
+$(".mortType").on("tap", function() {
+	document.activeElement.blur();
+	var userPicker = new mui.PopPicker();
+	userPicker.setData(Json.residenceProp);
+	var $this = $(this);
+	userPicker.show(function(items) {
+		$this.val(items[0].text);
+		$this.attr("data-key", items[0].value)
+	});
+});
 
 //添加房产
-$(".headerSpan").on('tap',function(){
-	var cloneEle = $ele.clone();
-	cloneEle.css("margin-top","1rem");
-	var str = "houseInfo"+index;
-	cloneEle.attr("id",str);
-	cloneEle.insertAfter("#houseInfo");
+$(".headerSpan").on('tap',function(){	
+	var cloneEle1 = $tus.clone();
+	var cloneEle2 = $ele.clone();
+	cloneEle1.css("display","block");
+//	cloneEle2.css("margin-top","1rem");
+	var str1 = "trust"+index;
+	var str2 = "houseInfo"+index;
+	cloneEle1.attr("id",str1);
+	cloneEle1.insertAfter("#houseInfo");	
+	cloneEle2.attr("id",str2);
+	cloneEle2.insertAfter("#trust"+index);
 	index++;
 })
-
 $("#oBtn").on("tap",function(){
-	var phone = $("#phone").val();
 	var unitName = $("#unitName").val();
 	var unitPhone = $("#unitPhone").val();
 	var unitAddress = $("#unitAddress").val();
 	var uploadField = JSON.parse(localStorage.getItem("uploadField"));
-	uploadField.phone = phone;
 	uploadField.unitName = unitName;
 	uploadField.unitPhone = unitPhone;
 	uploadField.unitAddress = unitAddress;
+	var house = $(".houseInfo");
+	var houseValues = $(".price");
+	var residenceType = $(".faType");
+	var residenceProp = $(".mortType");
+	var houseId  = $(".houseId ");
+	var area = $(".area");
+	var residenceLocation = $(".residenceLocation");
+	var mortgage1Time = $(".mortgage1Time");
+	var mortgage1Value = $(".mortgage1Value");
+    var houseInfo = [];
+    for (var i=0;i<house.length;i++) {
+    	houseInfo[i]={
+    		"houseValues":houseValues[i].value,
+//			"residenceType":residenceType[i].attr("data-key"),
+//		    "residenceType":residenceType[i].value,
+//		    "residenceProp":residenceProp[i].value,
+//  		"residenceProp":mortType[i].attr("data-key"),
+		    "houseId":houseId[i].value,
+		    "area":area[i].value,
+		    "residenceLocation":residenceLocation[i].value,
+		    "mortgage1Time":mortgage1Time[i].value,
+		    "mortgage1Value":mortgage1Value[i].value
+	 	};   
+    }
+	uploadField.jtCustomerHouses = houseInfo;
 	localStorage.setItem("uploadField",JSON.stringify(uploadField));
 	mui.openWindow({
 		url: "./uploadImages.html",

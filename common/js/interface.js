@@ -27,7 +27,7 @@ main.ajax = function(_url, _type, back, _data, _error, _dataType, sync, _cache) 
 }
 main.select = function(name) {
 	var thisselect = {};
-	main.ajax("../js/select.json", "get", selectok, '', '', '', false)
+	main.ajax("../js/json/select.json", "get", selectok, '', '', '', false)
 
 	function selectok(e) {
 		var result = eval(e);
@@ -124,7 +124,7 @@ function formatphone(val){
 //根据码值获取值
 main.obtainValue = function (name,value){
 	var codeValue;
-	main.ajax("../js/select.json", "get", function(e){
+	main.ajax("../js/json/select.json", "get", function(e){
 		for(var i in e){
 			if(i == name){
 				var arr = e[i];

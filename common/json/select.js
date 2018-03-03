@@ -295,27 +295,36 @@ var Json = {
 		{ "value": "0", "text": "是" }, 
 		{ "value": "1", "text": "否" }
 	],
-	"status":[
-		{"value":"01","text":"待审核"},
-		{"value":"02","text":"预审拒绝"},
-		{"value":"03","text":"预审通过"},
-		{"value":"04","text":"预审拒绝"},
-		{"value":"05","text":"待预约"},
-		{"value":"06","text":"已预约"},
-		{"value":"1","text":"申请"},
-		{"value":"2","text":"处理中"},
-		{"value":"3","text":"拒绝"},
-		{"value":"4","text":"待终审"},
-		{"value":"A","text":"通过"},
-		{"value":"D","text":"拒绝"},
-		{"value":"G","text":"预约"},
-		{"value":"H","text":"拒绝"},
-		{"value":"I","text":"暂停"},
-		{"value":"E","text":"预约"},
-		{"value":"F","text":"预约"},
-		{"value":"Q","text":"通过"},
-		{"value":"R","text":"拒绝"},		
-		{"value":"0","text":"预审通过"},		
-		{"value":"null","text":"预审通过"}
-	]
+	"residenceType":[{
+		"value": '0',
+		"text": '住宅'
+	},{
+		"value": '1',
+		"text": '公寓'
+	},{
+		"value": '2',
+		"text": '商住'
+	},{
+		"value": '3',
+		"text": '办公'
+	},{
+		"value": '4',
+		"text": '商铺'
+	}],
+	"residenceProp":[{
+		"value": '0',
+		"text": '无抵押'
+	},{
+		"value": '1',
+		"text": '首抵-银行按揭'
+	},{
+		"value": '2',
+		"text": '首抵-银行抵押'
+	},{
+		"value": '3',
+		"text": '首抵-机构抵押'
+	},{
+		"value": '4',
+		"text": '二抵-银行抵押'
+	}]
 };

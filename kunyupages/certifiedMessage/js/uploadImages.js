@@ -78,38 +78,63 @@ function delImg(ele){
 
 /**点击提交按钮**/
 $("#oBtn").on("tap",function(){
-	var ele = $(".shakeImg").children("img");
-	var path = eg.jrURL + "customer/add?customerbase="+localStorage.getItem("uploadField");
-	var task = plus.uploader.createUpload(path,{ method:"POST",timeout:"600"},
-	function ( t, status ) {
-			// 上传完成
-			if ( status == 200 ) { 
-				plus.nativeUI.closeWaiting();
-				var dt = JSON.parse(task.responseText);
-				if(dt.status == "1"){
-					mui.openWindow({
-						url: "./submitSuccess.html",
-						id: "submitSuccess"
-					});
-					localStorage.removeItem("uploadField");
-				}else if(dt.status == "-1"){
-					mui.toast("身份证校验失败");
-				}else if(dt.status == "-7"){
-					mui.toast("内部错误");
-				}
-			} else {
-				plus.nativeUI.closeWaiting();
-				alert( "照片上传失败！");
-			}
-		}
-	);
-	for(var i = 0; i < ele.length; i++){
-		var upPath = ele[i].src;
-		if(upPath.split("file:").length == 1){
-			upPath = "file://" + upPath;
-		}
-		task.addFile(upPath, {key:upPath} );
+	var uploadField = localStorage.getItem("uploadField");
+	eg.getCsrf();
+	var csrf = localStorage.getItem("csrf");
+	var params = {
+		"_csrf":csrf,
+		"customerbase":uploadField
 	}
-	task.start();	
+	eg.postAjax("customer/add",params, function(data) {
+		if(data.status!="1"){
+			mui.toast(data.message);
+			return;
+		}
+	},function(data){
+		if(data=="403") eg.getCsrf();
+	});
+//	var uploadField = JSON.parse(localStorage.getItem("uploadField"));
+//	var inEle = document.createElement("input");
+//	
+//	for(var i in uploadField){
+//		
+//	}
+//	var ele = $(".shakeImg").children("img");
+//	eg.getCsrf();
+//	var csrf = localStorage.getItem("csrf");
+//	var path = eg.jrURL + "customer/add?_csrf="+csrf+"?customerbase="+encodeURIComponent(encodeURIComponent(localStorage.getItem("uploadField")));
+//	console.log(path);
+//	var task = plus.uploader.createUpload(path,{ method:"POST",timeout:"600"},
+//	function ( t, status ) {
+//			// 上传完成
+//			console.log(status);
+//			if ( status == 200 ) { 
+//				plus.nativeUI.closeWaiting();
+//				var dt = JSON.parse(task.responseText);
+//				if(dt.status == "1"){
+//					mui.openWindow({
+//						url: "./submitSuccess.html",
+//						id: "submitSuccess"
+//					});
+//					localStorage.removeItem("uploadField");
+//				}else if(dt.status == "-1"){
+//					mui.toast("身份证校验失败");
+//				}else if(dt.status == "-7"){
+//					mui.toast("内部错误");
+//				}
+//			} else {
+//				plus.nativeUI.closeWaiting();
+//				alert( "照片上传失败！");
+//			}
+//		}
+//	);
+//	for(var i = 0; i < ele.length; i++){
+//		var upPath = ele[i].src;
+//		if(upPath.split("file:").length == 1){
+//			upPath = "file://" + upPath;
+//		}
+//		task.addFile(upPath, {key:upPath} );
+//	}
+//	task.start();	
 	
 })

@@ -43,14 +43,14 @@
 			mui.toast("密码不能为空");
 			return false;
 		};
-		if(!eg.phone.test($("#phone").val())) {
-			mui.toast("手机号输入有误！");
-			return false;
-		};
-		if(!eg.passwd.test($("#pwd").val())) {
-			mui.toast("密码输入有误！");
-			return false;
-		};
+//		if(!eg.phone.test($("#phone").val())) {
+//			mui.toast("手机号输入有误！");
+//			return false;
+//		};
+//		if(!eg.passwd.test($("#pwd").val())) {
+//			mui.toast("密码输入有误！");
+//			return false;
+//		};
 		return true;
 	}
 	//1.点击登录按钮

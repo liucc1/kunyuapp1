@@ -28,7 +28,8 @@ mui.plusReady(function(){
 					html += '<div class="mui-media-body">';
 					html += '<p class="detailPCss" id="recName">'+val.name+'</p>';
 					html += '<p class="cde-p has-b" id="recTime">'+val.createTime+'</p>';
-					html += '<div class="messageDiv" id="process">'+val.status+'</div>';
+					html += '<div class="messageDiv" id="process">'+main.obtainValue('status',val.status)+'</div>';
+//					html += '<div class="messageDiv" id="process">'+val.status+'</div>';
 					html += '<p class="cde-p"><span>信用贷<a id="status">[影像审核中]</a></span></p>';
 					html += '</div></li></ul>';
 					$('#pendingList').append(html);
