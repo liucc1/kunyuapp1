@@ -218,16 +218,16 @@ p{font-size:1.4rem;}
 	line-height: 1rem;
 }
 /*    用户注册       */
-.mui-popup-text{
+/*.mui-popup-text{
 	text-align: left;
 	font-size:1.2rem !important;
 	font-size:0.4rem !important;
-}
-.mui-popup-title{
+}*/
+/*.mui-popup-title{
 	padding:0.8rem 0px;
 	border-bottom:3px double #cccccc;
 	margin-bottom:0.8rem;
-}
+}*/
 .alertBtn_head{
 	display: block;
     position: absolute;

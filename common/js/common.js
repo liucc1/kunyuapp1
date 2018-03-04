@@ -134,6 +134,7 @@ eg.getToken = function(url,success){
 		timeout : 60000,
 		data: {},
 		dataType: "HTML",
+		asyn: false,
 		success: function(data){
 			plus.nativeUI.closeWaiting(); //关闭等待框
 			//console.log("getToken——HTML==="+data);

@@ -124,15 +124,15 @@
 			<div id="houseInfo" class="mui-form houseInfo" style="margin: 0px;">
 				<div class="mui-input-row">
 					<label style="width: 35%;">房产总值</label> 
-					<input style="width: 65%;" type="text" id="price" class="price" placeholder="请输入房产总值" />
+					<input style="width: 65%;" type="text" class="price" placeholder="请输入房产总值" />
 				</div>
 				<div class="mui-input-row selectInput">
 					<label style="width: 35%;">房产类型</label> 
-					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" class="faType"  value="" />
+					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" class="faType" onclick="initHouseType(this)" value="" />
 				</div>
 				<div class="mui-input-row selectInput">
 					<label style="width: 35%;">抵押类型</label> 
-					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" class="mortType" value="" />
+					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" class="mortType" onclick="initMortgageType(this)" value="" />
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">房产证编号</label> 

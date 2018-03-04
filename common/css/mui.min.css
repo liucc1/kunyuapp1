@@ -3283,6 +3283,7 @@ select:focus {
 	position: relative;
 	padding: 15px;
 	border-radius: 13px 13px 0 0;
+    background: rgba(255,255,255,.95);
 }
 
 .mui-popup-inner:after {

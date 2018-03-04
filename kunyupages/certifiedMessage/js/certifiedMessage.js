@@ -65,13 +65,14 @@ mui.plusReady(function(){
 //}
 /**点击提交按钮**/
 $("#oBtn").on("tap",function(){	
+	$(":input").blur();
 	var custName = $('#name').val();
 	var idNo = $('#idNo').val();
 	var phoneNum = $("#phone").val();
-	var nation = $('#nation').val();
-	var address = $('#address').val();
-	var issueAuthority = $('#issued_by').val();
-	var avalDate = $('#valid_date').val();
+//	var nation = $('#nation').val();
+//	var address = $('#address').val();
+//	var issueAuthority = $('#issued_by').val();
+//	var avalDate = $('#valid_date').val();
 //	if(isNullVal(custName)){
 //		mui.toast("姓名不能为空！");
 //		return;
