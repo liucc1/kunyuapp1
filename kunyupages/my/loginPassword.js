@@ -66,7 +66,9 @@ $('#oBtn').click(function() {
 				url : "../login/login.html",
 				id: "login"
 			})
-//			curr.close();
+			setTimeout("2000",function(){
+				curr.close();
+			});			
 		}
 	},function(data){
 		if(data=="403") eg.getCsrf();

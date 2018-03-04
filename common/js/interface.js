@@ -124,7 +124,7 @@ function formatphone(val){
 //根据码值获取值
 main.obtainValue = function (name,value){
 	var codeValue;
-	main.ajax("../js/json/select.json", "get", function(e){
+	main.ajax("../../common/json/select.json", "get", function(e){
 		for(var i in e){
 			if(i == name){
 				var arr = e[i];
