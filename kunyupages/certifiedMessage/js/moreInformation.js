@@ -100,8 +100,8 @@ $("#oBtn").on("tap",function(){
     for (var i=0;i<house.length;i++) {
     	houseInfo[i]={
     		"houseValues":houseValues[i].value,
-			"residenceType":residenceType[i].attr("data-key"),
-    		"residenceProp":mortType[i].attr("data-key"),
+			"residenceType":residenceType.eq(i).attr("data-key"),
+    		"residenceProp":mortType.eq(i).attr("data-key"),
 		    "houseId":houseId[i].value,
 		    "area":area[i].value,
 		    "residenceLocation":residenceLocation[i].value,

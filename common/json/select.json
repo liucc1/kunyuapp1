@@ -507,7 +507,6 @@
 		{"value": "Q", "text": "处理中"},
 		{"value": "R", "text": "拒绝"},
 		{"value": "S", "text": "激活"},
-		{"value": "0", "text": "处理中"},		
-		{"value": "null", "text": "处理中"}
+		{"value": "0", "text": "处理中"}		
 	]
 }

@@ -42,27 +42,27 @@ mui.plusReady(function(){
 	
 })
 /**点击获取验证码**/
-//$("#getcode").on("tap",function(){
-//	var phoneNum = $("#phone").val();
-//	if(!eg.phone.test(phoneNum)) {
-//		mui.toast("手机号码格式不正确！");
-//		return;
-//	};
-//	var csrf=localStorage.getItem("csrf");
-// 	getSms(csrf);
-//});
-//function getSms(csrf){
-//	eg.postAjax("captCha", {
-//		"_csrf":csrf,
-//		"mobile":$("#phone").val().trim()
-//		}, function(data) {
-//			if(data.status=="1"){
-//				$("#smscode").val(data.message);
-//			}
-//	},function(data){
-//		if(data=="403") eg.getCsrf();
-//	});
-//}
+$("#getcode").on("tap",function(){
+	var phoneNum = $("#phone").val();
+	if(!eg.phone.test(phoneNum)) {
+		mui.toast("手机号码格式不正确！");
+		return;
+	};
+	var csrf=localStorage.getItem("csrf");
+   	getSms(csrf);
+});
+function getSms(csrf){
+	eg.postAjax("captCha", {
+		"_csrf":csrf,
+		"mobile":$("#phone").val().trim()
+		}, function(data) {
+			if(data.status=="1"){
+				$("#smscode").val(data.message);
+			}
+	},function(data){
+		if(data=="403") eg.getCsrf();
+	});
+}
 /**点击提交按钮**/
 $("#oBtn").on("tap",function(){	
 	$(":input").blur();
