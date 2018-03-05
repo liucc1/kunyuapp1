@@ -35,6 +35,9 @@ mui.plusReady(function(){
 //					}else if(main.obtainValue('status',val.status)=="已预约"){
 //						html += '【可修改预约时间】';
 //					}
+//					else if(main.obtainValue('status',val.status)=="处理中"){
+//						html += '[信息处理中]';
+//					}
 //					html += '</a></span></p></div></li></ul>';
 //					$('#pendingList').append(html);
 //				});

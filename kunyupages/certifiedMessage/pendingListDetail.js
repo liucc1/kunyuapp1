@@ -22,6 +22,8 @@ mui.plusReady(function(){
 //		$(".mode6").removeClass("none");
 //	}else if(status=="激活"){
 //		$(".mode7").removeClass("none");
+//	}else if(status=="处理中"){
+//		$(".mode8").removeClass("none");
 //	}
 //	var csrf=localStorage.getItem("csrf");
 //	var params = {
