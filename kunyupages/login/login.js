@@ -21,13 +21,13 @@
 		});
 		//改变图标
 		$("#phone").focus(function(){
-			$("#phonePic").attr("src","../images/person_blue.png")
+			$("#phonePic").attr("src","../../images/person_blue.png")
 		})
 		$("#phone").blur(function(){
 			$("#phonePic").attr("src","../../images/person_grey.png")
 		})
 		$("#pwd").focus(function(){
-			$("#pwdPic").attr("src","../images/lock_blue.png")
+			$("#pwdPic").attr("src","../../images/lock_blue.png")
 		})
 		$("#pwd").blur(function(){
 			$("#pwdPic").attr("src","../../images/lock_grey.png")
