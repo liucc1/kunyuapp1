@@ -11,6 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-xuanzekuang:before { content: "\e641"; }
+
+.icon-selected:before { content: "\e642"; }
+
 .icon-jinbi:before { content: "\e621"; }
 
 .icon-ren:before { content: "\e619"; }

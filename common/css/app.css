@@ -897,14 +897,14 @@ color: #d3d3d3;
     right: 0rem;
     top: 0.7rem;
 }
-.mui-form .mui-input-row.mui-input-row-yan .mui-btn-primary{
-	border:1px solid #1475BC;
+.mui-form .mui-input-row.mui-input-row-yan .mui-btn-outlined{
+	border:1px solid #d0923b;
 	/*background-color: #F3213C;*/
 	border-radius:30px;
     width: auto;
     padding: 0rem;
     font-size: 1.1rem;
-    color: #1475BC;
+    color: #d0923b;
     padding: 0.6rem 1.2rem;
     position: absolute;
     right: 0.5rem;
@@ -929,7 +929,6 @@ color: #d3d3d3;
 	background-color: #D30D24;
 	border-radius:30px;
 	padding:0.8rem 0;
-	font-weight: bold;
 }
 
 /**步骤**/

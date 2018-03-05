@@ -67,12 +67,12 @@ $(".close-img").on("tap",function(){
 });
 /**点击同意协议事件**/
 $("#checkbox").on("tap",function(){
-	if($("#checkImg").hasClass("nocheck")){
-		$("#checkImg").attr("src","../../images/checkbox_empty.png");//lcc选中图片的颜色应该调整？？
-		$("#checkImg").removeClass("nocheck");
+	if($(this).hasClass("icon-selected")){
+		$(this).addClass("icon-xuanzekuang");
+		$(this).removeClass("icon-selected");
 	}else{
-		$("#checkImg").attr("src","../../images/checkbox_chexk.png");
-		$("#checkImg").addClass("nocheck");
+		$(this).removeClass("icon-xuanzekuang");
+		$(this).addClass("icon-selected");
 	}	
 });
 /**注册按钮置可以点击状态**/
@@ -123,7 +123,7 @@ function istoregister(){
 		});
 		return false;
 	}
-	if(!$("#checkImg").hasClass("nocheck")) {
+	if(!$("#checkImg").hasClass("icon-xuanzekuang")) {
 		plus.nativeUI.toast("请先同意用户协议", {
 			duration: "short"
 		});
