@@ -43,7 +43,7 @@ function queryOne(){
 			var detail = JSON.stringify(data.rows);
 			detail = JSON.parse(detail);
 			$(".name").text(detail.name);
-			$("#idNo").text(detail.idNo);	
+			$(".idNo").text(detail.idNo);	
 		}
 	}
 	,function(data){
@@ -62,9 +62,9 @@ function queryTwo(){
 			var detail = JSON.stringify(data.rows);
 			detail = JSON.parse(detail);
 			$(".name").text(detail.name);
-			$("#idNo").text(detail.idNo);
+			$(".idNo").text(detail.idNo);
 //			$("#address").text(detail.);//预约地点字段？
-			$("#time").text(detail.appointmentDate+detail.timeQuantum);
+			$(".time").text(detail.appointmentDate+detail.timeQuantum);
 		}
 	}
 	,function(data){
@@ -83,8 +83,8 @@ function queryThree(){
 			var detail = JSON.stringify(data.rows);
 			detail = JSON.parse(detail);
 			$(".name").text(detail.name);
-			$("#idNo").text(detail.idNo);
-			$("#reason").text(detail.refuseDesc);
+			$(".idNo").text(detail.idNo);
+			$(".reason").text(detail.refuseDesc);
 		}
 	}
 	,function(data){
@@ -103,9 +103,9 @@ function queryFour(){
 			var detail = JSON.stringify(data.rows);
 			detail = JSON.parse(detail);
 			$(".name").text(detail.name);
-			$("#idNo").text(detail.idNo);
-			$("#activeAmount").text(detail.activeAmount);
-			$("#activeDate").text(detail.activeDate);
+			$(".idNo").text(detail.idNo);
+			$(".activeAmount").text(detail.activeAmount);
+			$(".activeDate").text(detail.activeDate);
 		}
 	}
 	,function(data){

@@ -274,7 +274,8 @@
 					"kunyupages/my/informance.html",
 					"kunyupages/my/message.html",
 					"kunyupages/my/setPassword.html",
-					"kunyupages/my/charges.html"
+					"kunyupages/my/charges.html",
+					"kunyupages/login/login.html"
 				],
 				"priority": 0
 			},

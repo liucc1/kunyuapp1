@@ -93,6 +93,9 @@
 	<script src="../../common/js/common.js" ></script>
 	<script>
 		mui.init()
+		mui.plusReady(function(){
+			
+		})
 		function goPage(param){
 			var url = '../my/'+param+'.html'
 			console.log(url)
@@ -101,5 +104,27 @@
 		        id:param
 		   	});
 		}
+		$("#oBtn").on("tap",function(){
+			eg.getCsrf();
+			var csrf = localStorage.getItem("csrf");
+			var params = {	
+				"_csrf":csrf
+			}
+			params = JSON.stringify(params);
+			eg.postAjax2("logout",params, function(data) {
+				var all = plus.webview.all();
+				mui.openWindow({
+					url: "../login/login.html",
+					id: "login"
+				})
+				setTimeout(function(){
+					for(var i = 0; i < all.length; i++) {
+						all[i].close();
+					}
+				},1000)
+			},function(data){
+				if(data=="403") eg.getCsrf();
+			});
+		})
 	</script>
 </html>

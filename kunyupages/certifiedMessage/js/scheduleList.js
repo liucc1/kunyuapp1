@@ -7,7 +7,7 @@ mui.plusReady(function(){
 	var params = {
 		"_csrf":csrf,
 		"page":"1",
-		"limit":"4"
+		"limit":"1000000"
 	}
 	plus.nativeUI.showWaiting();
 	eg.postAjax("customer/list", params, function(data) {
@@ -18,11 +18,12 @@ mui.plusReady(function(){
 				var custList = arr[index];
 				$(custList).each(function(key,val){
 					var dataList = {"sid":val.sid,"status":val.status};
+					var createTime = val.createTime.split(".")[0];
 					var html = '<ul class="mui-table-view mui-table-view-group">';
 					html += '<li class="mui-table-view-cell" data-list='+JSON.stringify(dataList)+'>';
 					html += '<div class="mui-media-body">';
 					html += '<p class="detailPCss" id="recName">'+val.name+'</p>';
-					html += '<p class="cde-p has-b" id="recTime">'+val.createTime+'</p>';
+					html += '<p class="cde-p has-b" id="recTime">'+createTime+'</p>';
 					if(val.status){
 						html += '<div class="messageDiv" id="status">'+main.obtainValue('status',val.status)+'</div>';
 						html += '<p class="cde-p"><span>信用贷<a id="process">';
@@ -67,12 +68,3 @@ mui('#pendingList').on('tap', '.mui-media-body', function() {
         }
     });   
 })
-//$("#pendingList").on("tap",function(){
-//	mui.openWindow({
-//      url:"./pendingListDetail.html",
-//      id:"pendingListDetail",
-//      extras:{
-//      	"status":"已驳回"
-//      }
-//  }); 
-//})

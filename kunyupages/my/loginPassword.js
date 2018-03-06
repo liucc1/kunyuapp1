@@ -45,7 +45,7 @@ $('#oBtn').click(function() {
 		mui.toast("两次密码不一致", { duration: "short" });
 		return;
 	}
-	 eg.getCsrf();
+	eg.getCsrf();
 	var params = {	
 		"oldPass":oldPwd,
 		"newPass":newPwd1,
@@ -55,20 +55,16 @@ $('#oBtn').click(function() {
 	eg.postAjax2("chgpass",params, function(data) {
 		alert(data.status);
 		if(data.status == 0 ){
-			var curr = plus.webview.currentWebview();
 			var all = plus.webview.all();
-			for (var i=0;i<all.length;i++) {
-				if(all[i] != curr) {
-					all[i].close();
-				}	
-			}
 			mui.openWindow({
-				url : "../login/login.html",
+				url: "../login/login.html",
 				id: "login"
 			})
-			setTimeout("2000",function(){
-				curr.close();
-			});			
+			setTimeout(function(){
+				for(var i = 0; i < all.length; i++) {
+					all[i].close();
+				}
+			},1000)		
 		}
 	},function(data){
 		if(data=="403") eg.getCsrf();

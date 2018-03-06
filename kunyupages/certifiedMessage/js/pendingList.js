@@ -7,28 +7,29 @@ mui.plusReady(function(){
 	var params = {
 		"_csrf":csrf,
 		"page":"1",
-		"limit":"4"
+		"limit":"1000000"
 	}
 	plus.nativeUI.showWaiting();
 	eg.postAjax("customer/list", params, function(data) {
 		plus.nativeUI.closeWaiting();
-//			alert(data.msg);
-//			alert(data.total);
-//			alert(data.code);		
 		if(data.code=="0"){
-//			var arr = JSON.stringify(data.rows);
 			var arr = data.rows;
-			alert(arr);
 			for(var index in arr){
-				var custList = data.arr[index];
+				var custList = arr[index];
 				$(custList).each(function(key,val){
+					var dataList = {"sid":val.sid,"status":val.status};
+					var createTime = val.createTime.split(".")[0];
 					var html = '<ul class="mui-table-view mui-table-view-chevron ulTop">'
-					html += '<li class="mui-table-view-cell mui-media" data-list='+JSON.stringify(val)+'>';
-					html += '<a class="mui-navigate-right font20">';
+					html += '<li class="mui-table-view-cell mui-media" data-list='+JSON.stringify(dataList)+'>';
+					html += '<a class="mui-navigate-right font20 detail">';
 					html += '<div class="mui-table">';
 					html += '<div class="mui-table-cell mui-col-xs-10 font14">';
-					html += '<label>'+val.name+'<span class="ml5">:</span><span class="ml10">影像审核不通过</span></label>';
-					html += '<p style="margin-top: 5px;font-size: 12px;">'+val.createTime+'</p>';
+					if(val.status){
+						html += '<label>'+val.name+'<span class="ml5">:</span><span class="ml10" id="status">'+main.obtainValue('status',val.status)+'</span></label>';
+					}else{
+						html += '<label>'+val.name+'<span class="ml5">:</span><span class="ml10" id="status">处理中</span></label>';
+					}
+					html += '<p style="margin-top: 5px;font-size: 12px;">'+createTime+'</p>';
 					html += '</div></li></ul>';
 					$('#productlist').append(html);
 				});
@@ -38,9 +39,17 @@ mui.plusReady(function(){
 		if(data=="403") eg.getCsrf();
 	});
 })
-mui('#productlist').on('tap', 'ul', function() {
+mui('#productlist').on('tap','.detail', function() {
+	var list = $(this).parents("li").attr("data-list");
+	list = JSON.parse(list);
+	var sid = list.sid;
+	var status = main.obtainValue('status',list.status);	
 	mui.openWindow({
         url:"./pendingListDetail.html",
-        id:"pendingListDetail"
-   	});
+        id:"pendingListDetail",
+        extras:{
+        	"sid":sid,
+        	"status":status
+        }
+    });   
 })
