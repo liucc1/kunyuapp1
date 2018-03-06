@@ -97,7 +97,9 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 			}
 			//var jsonRep=JSON.parse(jqXHR)
 //			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
-			errorFun(jqXHR.status);
+			if (method == "POST") {
+				errorFun(jqXHR.status);
+			}
 		}
 	});
 };
@@ -119,6 +121,12 @@ eg.postAjax2 = function(url, params, sussessFun,errorFun, isasync) {
 		isasync = true;
   	}	
 	eg.ajax2(eg.jrURL + url, params, "POST", sussessFun,errorFun, isasync);
+};
+eg.getAjax = function(url, params, sussessFun,errorFun, isasync) {
+	if(typeof(isasync) =="undefined"){
+		isasync = true;
+  	}	
+	eg.ajax(eg.jrURL + url, params, "GET", sussessFun,errorFun, isasync);
 };
 /**
  * http post请求前先获取token

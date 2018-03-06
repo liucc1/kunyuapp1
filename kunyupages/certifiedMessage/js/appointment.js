@@ -6,7 +6,8 @@ mui.plusReady(function(){
 	idNo = self.idNo;
 	$("#custName").val(name);
 	$("#cutNo").val(idNo);	
-	eg.getAjax("jt/appoint/date/0",{},function(data){
+	var params = {};
+	eg.getAjax("jt/appoint/date/0",params,function(data){
 		
 	}
 //	,function(data){

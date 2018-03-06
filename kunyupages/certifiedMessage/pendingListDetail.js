@@ -1,13 +1,15 @@
 mui.init();
-var sid,status;
+var dataList;
 var name,idNo;
 mui.plusReady(function(){
-	eg.getCsrf();
 	var self = plus.webview.currentWebview();
-	sid = self.sid;
-	status = self.status;
+	dataList = self.dataList;	
+	if(dataList.status){
+		var status = main.obtainValue('status',dataList.status);	
+	}else{
+		status = "处理中";
+	}
 	if(status=="已驳回"){
-		console.log(status);
 		$(".mode1").removeClass("none");
 		queryOne();
 	}else if(status=="待完善"){
@@ -21,38 +23,24 @@ mui.plusReady(function(){
 		queryOne();
 	}else if(status=="已预约"){
 		$(".mode5").removeClass("none");
-		queryTwo();
+//		queryTwo();
 	}else if(status=="拒绝"){
 		$(".mode6").removeClass("none");
-		queryThree();
+//		queryThree();
 	}else if(status=="激活"){
 		$(".mode7").removeClass("none");
-		queryFour();
+//		queryFour();
 	}else if(status=="处理中"){
 		$(".mode8").removeClass("none");
-		queryOne();
+//		queryOne();
 	}
 })
 /*已驳回，待完善，已提交，可预约，处理中*/
 function queryOne(){
-	var csrf=localStorage.getItem("csrf");
-	var params = {
-		"_csrf":csrf,
-		"idNo":sid
-	}
-	eg.postAjax("customer/detail", params, function(data) {	
-		if(data.code == "1"){
-			var detail = JSON.stringify(data.rows);
-			detail = JSON.parse(detail);
-			$(".name").text(detail.name);
-			$(".idNo").text(detail.idNo);
-			name = detail.name;
-			idNo = detail.idNo;
-		}
-	}
-	,function(data){
-		if(data=="403") eg.getCsrf();
-	});
+	$(".name").text(dataList.name);
+	$(".idNo").text(dataList.idNo);
+	name = dataList.name;
+	idNo = dataList.idNo;
 }
 /*已预约*/
 function queryTwo(){
@@ -67,8 +55,7 @@ function queryTwo(){
 			detail = JSON.parse(detail);
 			$(".name").text(detail.name);
 			$(".idNo").text(detail.idNo);
-//			$("#address").text(detail.);//预约地点字段？
-			$(".time").text(detail.appointmentDate+detail.timeQuantum);
+			$(".time").text(detail.appointmentDate);//+timeQuantum
 			name = detail.name;
 			idNo = detail.idNo;
 		}
@@ -169,6 +156,14 @@ $('#appointMent').on("tap",function(){
 /*已提交*/
 $('#oBtn3').on("tap",function(){
 	plus.webview.currentWebview().close();
+//	var scheduleList = plus.webview.getWebviewById("scheduleList.html");
+//	var pendingList = plus.webview.getWebviewById("pendingList.html");
+//	if (scheduleList) {
+//		scheduleList.close();
+//	}
+//	if (pendingList) {
+//		pendingList.close();
+//	}
 	mui.openWindow({
 		url:"./home.html",
 		id:"home"
@@ -176,6 +171,7 @@ $('#oBtn3').on("tap",function(){
 })
 /*已预约*/
 $('#oBtn5').on("tap",function(){
+	plus.webview.currentWebview().close();
 	mui.openWindow({
 		url:"./home.html",
 		id:"home"
