@@ -158,6 +158,9 @@
 	                url:"../home/home.html",
 	                id:"home"
 	           	});
+//				setTimeout(function(){
+//	       	 		plus.webview.getWebviewById("login").close();
+//	       	 	},500);
 			}
 		},function(data){
 			alert("err==="+data);

@@ -17,8 +17,9 @@ mui.plusReady(function(){
 			for(var index in arr){
 				var custList = arr[index];
 				$(custList).each(function(key,val){
-					var html = '<ul class="mui-table-view mui-table-view-group">'
-					html += '<li class="mui-table-view-cell" data-list='+JSON.stringify(val)+'>';
+					var dataList = {"sid":val.sid,"status":val.status};
+					var html = '<ul class="mui-table-view mui-table-view-group">';
+					html += '<li class="mui-table-view-cell" data-list='+JSON.stringify(dataList)+'>';
 					html += '<div class="mui-media-body">';
 					html += '<p class="detailPCss" id="recName">'+val.name+'</p>';
 					html += '<p class="cde-p has-b" id="recTime">'+val.createTime+'</p>';
@@ -53,12 +54,10 @@ mui.plusReady(function(){
 	});
 })
 mui('#pendingList').on('tap', '.mui-media-body', function() {
-	var status = $("#status").val();
-	var list = JSON.parse($(this).parents("li").attr("data-list"));
+	var list = $(this).parents("li").attr("data-list");
+	list = JSON.parse(list);
 	var sid = list.sid;
-	console.log(sid);
-	console.log(status);
-//	var status = list.status;
+	var status = main.obtainValue('status',list.status);	
 	mui.openWindow({
         url:"./pendingListDetail.html",
         id:"pendingListDetail",

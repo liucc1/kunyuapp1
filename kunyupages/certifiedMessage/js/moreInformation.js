@@ -80,7 +80,7 @@ mui(".mui-content").on('tap',".mui-icon.mui-icon-trash",function(){
     })
 })
 $("#oBtn").on("tap",function(){
-	var unitName = $("#unitName").val();
+	var unit = $("#unitName").val();
 	var unitPhone = $("#unitPhone").val();
 	var unitAddress = $("#unitAddress").val();
 	var uploadField = JSON.parse(localStorage.getItem("uploadField"));
