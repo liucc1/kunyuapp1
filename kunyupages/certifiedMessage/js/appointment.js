@@ -1,4 +1,19 @@
-mui.init()
+mui.init();
+var name,idNo;
+mui.plusReady(function(){
+	var self = plus.webview.currentWebview();
+	name = self.name;
+	idNo = self.idNo;
+	$("#custName").val(name);
+	$("#cutNo").val(idNo);	
+	eg.getAjax("jt/appoint/date/0",{},function(data){
+		
+	}
+//	,function(data){
+//		if(data=="403") eg.getCsrf();
+//	}
+	)
+})
 function dealDate(res){
 	return res.substring(4,6)+'.'+res.substring(6,8)
 }
@@ -85,9 +100,6 @@ mui.ready(function() {
 			//return false;
 		});
 	}, false);
-})
-mui.plusReady(function(){
-	//
 })
 $("#oBtn").on("tap",function(){//提交预约
 	

@@ -43,7 +43,12 @@ mui('#productlist').on('tap','.detail', function() {
 	var list = $(this).parents("li").attr("data-list");
 	list = JSON.parse(list);
 	var sid = list.sid;
-	var status = main.obtainValue('status',list.status);	
+	status = list.status;
+	if(status){
+		var status = main.obtainValue('status',list.status);	
+	}else{
+		status = "处理中";
+	}	
 	mui.openWindow({
         url:"./pendingListDetail.html",
         id:"pendingListDetail",

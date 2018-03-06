@@ -1,6 +1,8 @@
 mui.init();
 var sid,status;
+var name,idNo;
 mui.plusReady(function(){
+	eg.getCsrf();
 	var self = plus.webview.currentWebview();
 	sid = self.sid;
 	status = self.status;
@@ -43,7 +45,9 @@ function queryOne(){
 			var detail = JSON.stringify(data.rows);
 			detail = JSON.parse(detail);
 			$(".name").text(detail.name);
-			$(".idNo").text(detail.idNo);	
+			$(".idNo").text(detail.idNo);
+			name = detail.name;
+			idNo = detail.idNo;
 		}
 	}
 	,function(data){
@@ -65,6 +69,8 @@ function queryTwo(){
 			$(".idNo").text(detail.idNo);
 //			$("#address").text(detail.);//预约地点字段？
 			$(".time").text(detail.appointmentDate+detail.timeQuantum);
+			name = detail.name;
+			idNo = detail.idNo;
 		}
 	}
 	,function(data){
@@ -118,9 +124,9 @@ document.getElementById("confirmBtn").addEventListener('tap', function() {
 	var btnArray = ['否', '是'];
 	mui.confirm('是否取消2018年1月2日的预约？', '提示', btnArray, function(e) {
 		if (e.index == 1) {
-			alert('确认')
+			alert("取消预约接口？")
 		} else {
-			alert('取消')
+//			alert('取消')
 		}
 	})
 });
@@ -142,19 +148,27 @@ $('#oBtn2').on("tap",function(){
 $('#oBtn4').on("tap",function(){
 	mui.openWindow({
         url:"./appointMent.html",
-        id:"appointMent"
+        id:"appointMent",
+        extras:{
+			"name":name,
+			"idNo":idNo
+		}
    	});
 })
-/*12重新预约*//*如果取消预约到哪个页面呢？*/
+/*12已预约重新预约*/
 $('#appointMent').on("tap",function(){
 	mui.openWindow({
         url:"./appointMent.html",
-        id:"appointMent"
+        id:"appointMent",
+        extras:{
+			"name":name,
+			"idNo":idNo
+		}
    	});
 })
-
 /*已提交*/
 $('#oBtn3').on("tap",function(){
+	plus.webview.currentWebview().close();
 	mui.openWindow({
 		url:"./home.html",
 		id:"home"
