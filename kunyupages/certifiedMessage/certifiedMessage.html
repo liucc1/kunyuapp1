@@ -9,6 +9,7 @@
 		<link href="../../common/css/mui.min.css" rel="stylesheet" />
 		<link href="../../common/css/app.css" rel="stylesheet" />
 		<link href="../../common/css/base.css" rel="stylesheet" />
+		<link href="../../common/css/iconfont.css" rel="stylesheet" />
 		<style>	  
 			/*设置-不起作用 ？*/ 	
 	    	.lablewth{width: 35%;}
@@ -80,52 +81,149 @@
 			</div>
 			<div class="mui-form">
 				<div class="mui-input-row ">
-					<label style="width: 35%;">姓名</label> 
-					<input  style="width: 65%;" type="text" maxlength="11" id="name" placeholder="请输入您的姓名" />
+					<label>姓名</label> 
+					<input  type="text" maxlength="11" id="name" placeholder="请输入您的姓名" />
 					<i class="afterInput"></i>
+					<input id="inputBtn" type="file" capture="camera" accept="image/*" name="idPic" hidden="hidden"/>
+					<input id="inputBtn1" type="file" capture="camera" accept="image/*" name="idPic" hidden="hidden"/>
 				</div>
 				<div class="mui-input-row">
-					<label style="width: 35%;">身份验证</label>
-					<input style="width: 65%;" type="tel" id="idNo" maxlength="18" placeholder="请输入您的身份证号" />
+					<label>身份证号码</label>
+					<input type="text" id="idNo" maxlength="18" placeholder="请输入您的身份证号" />
 				</div>
 				<div class="mui-input-row">
-					<label style="width: 35%;">民族</label>
-					<input style="width: 65%;" type="text" id="nation" placeholder="请输入您的民族">
+					<label>民族</label>
+					<input type="text" id="nation" placeholder="请输入您的民族">
 				</div>
 				<div class="mui-input-row  ">
-					<label style="width: 35%;">住址</label>
-					<input style="width: 65%;" type="text" id="address" placeholder="请输入您的地址">
+					<label>住址</label>
+					<input type="text" id="address" placeholder="请输入您的地址">
 				</div>
 				<div class="mui-input-row  ">
-					<label style="width: 35%;">发证机关</label>
-					<input style="width: 65%;" type="text" id="issued_by" placeholder="请输入您的发证机关">
+					<label>发证机关</label>
+					<input type="text" id="issued_by" placeholder="请输入您的发证机关">
 				</div>
-				<div class="mui-input-row  bor_none">
-					<label style="width: 35%;">有效期至</label>
-					<input style="width: 65%;" type="tel" id="valid_date" placeholder="请输入您的有效期">
+				<div class="mui-input-row">
+					<label>有效期至</label>
+					<input type="text" id="valid_date" placeholder="请输入您的有效期">
 				</div>
 			</div>
 			<div class="mui-form">
-				<div class="mui-input-row">
-					<label style="width: 35%;">手机号码</label> 
-					<input style="width: 65%;" type="tel" maxlength="11" id="phone" placeholder="请输入手机号" />
-					<i id="i1" class="mui-icon mui-icon-closeempty none"></i>
+				<div class="mui-input-row ">
+					<label>手机号</label> 
+					<input  type="tel" maxlength="11" id="phone" placeholder="请输入您的手机号" />
 				</div>
-				<div class="mui-input-row mui-input-row-yan bor_none">
-					<label style="width: 35%;">验证码</label>
-					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="请输入验证码" />
-					<button type="button" id="getcode" class="mui-btn mui-btn-primary mui-btn-outlined" style="color: #d0923b;border-color: #d0923b;">获取验证码</button>
+				<div class="mui-input-row mui-input-row-yan">
+					<label>验证码</label>
+					<input type="tel" id="validityCode" maxlength="18" placeholder="请输入验证码" />
+					<button type="button" id="getcode" class="mui-btn mui-btn-outlined mt4">获取验证码</button>
 				</div>
 			</div>
-			<p  style="color:#F0AD4E;padding-left:10px"><img src="../../images/plaint.png" style="margin-right: 5px;" />请核对客户信息，点击可修改</p>
-			<div class="mui-content-padded">
+			<p  style="color:#d0923b;padding-left:10px">
+				<span class="mui-icon mui-icon-info"></span>
+				请核对客户信息，点击可修改
+			</p>
+			<div class="mui-content-padded tac">
+				<p style="padding-left:10px; margin-bottom: 0.5rem;color: #000;">
+					<span id="checkbox" class="iconfont icon-xuanzekuang"> 我已阅读并同意</span>
+					<span id='alertBtn' style="color: #d0923b;">《用户协议》</span>
+				</p>
 				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block"> 下一步 </button>
+			</div>
+			<!--用户协议 -->
+			<div class="dis_show bg_fly none">
+				<div class="close-img"><img src="images/alertBtn_colse.png" alt="" /></div>
+				<div class="agreement">
+					<p class="indent">欢迎你阅读北京昆玉顺达国际信息咨询有限公司（以下简称“昆玉国际”）发布的《“御用金”手机客户端用户注册协议》（以下简称“本协议”）。</p>
+					<p class="indent">本协议是关于你（以下称“你”、“用户”）使用“御用金”手机客户端（以下简称“本APP”或“御用金”）时，约定你和昆玉国际之间权利义务关系的有效协议。请务必完整阅读以下《“御用金”手机客户端用户注册协议》的全部条款，若对任一条款内容不接受或有任何疑问，请终止注册及/或登录操作并退出本APP。你明确且不可撤销地同意，如你成功注册、登录及/或使用本APP的服务，即表示你已充分阅读、理解并接受本协议所有内容，本协议即产生法律效力。</p>
+					<br />
+					<h3>“御用金”手机客户端用户注册协议</h3>
+					<p>一、服务内容</p>
+					<p class="indent">本APP是昆玉国际开发、拥有及运营的一款独立信贷经纪人移动展业的APP，通过网络及昆玉国际相关线下运营资源向你提供移动客户推荐、信息查询、消息推送、服务报酬核算及支付服务。</p>
+					<p>（一）移动客户推荐</p>
+					<p class="indent">本协议所称“移动客户推荐”服务，指APP用户使用本APP向昆玉国际推荐借款客户，昆玉国际根据一定规则将符合条件的客户推荐至昆玉国际合作方。你同意按照昆玉国际要求向昆玉国际推荐借款客户，且充分理解并认同以下规则：</p>
+					<p>1.借款客户的借款意愿必须为其真实表达，你不得以诱导、胁迫、欺骗等方式取得客户的信息及授权（授权包括借款申请授权、个人征信信息查询授权等）。</p>
+					<p>2.你本人不得或与客户达成一致，通过造假、试探性申请等欺骗手段向本APP提供不实客户信息。</p>
+					<p>3.你同意使用本APP服务时，你负有尽职审查客户申请意愿、确保客户资料真实性、按照APP流程合规操作的义务。</p>
+					<p>4.若你因非昆玉国际原因与客户发生纠纷，由你自行处理，消除不良后果。</p>
+					<p>5.昆玉国际不对你的推荐行为及客户的申请行为、资质提供任何形式的担保。</p>
+					<p>（二）服务报酬核算与支付</p>
+					<p class="indent">本协议所称“服务报酬”，指根据昆玉国际当期运营规则，你向昆玉国际推荐借款客户后可能获得的客户支付的服务费、现金奖励、服务佣金等。你充分理解并认同以下规则：</p>
+					<p>1.昆玉国际有权调整服务报酬核算规则，但须事先通知。昆玉国际通过APP或其他渠道（运营人员主动告知、用户查询）向你通知服务报酬核算规则的调整，一经发布立即生效，你应密切关注相关信息。</p>
+					<p>2.你充分理解并认同服务报酬核算规则的时效性和非普遍性，是否获得报酬及报酬比例以昆玉国际通知及实际运营规则为准。如你不接受昆玉国际给予你的服务报酬，请立即停止使用本APP。若你继续使用，则表示同意服务报酬核算标准，并不得以不知情、不同意为由要求昆玉国际补偿或赔偿。</p>
+					<p>3. 你充分理解并认同，你不可撤销地授权昆玉国际代为向客户收取服务费，昆玉国际代为收取客户服务费后再支付至你的支付账户。你收取服务报酬后应当按照税法主动履行纳税义务，否则由此造成昆玉国际损失的，你应予以赔偿。如因客户违约等情形导致你未收到客户支付的服务费，你有权直接向客户追偿，昆玉国际不承担任何责任。</p>
+					<p>4.昆玉国际有权调整服务报酬支付时间、频率，但应事先通知你。</p>
+					<p>5.你应向昆玉国际提供真实有效的支付账户信息用于收取服务报酬，并在有变动的时候第一时间通知昆玉国际。</p>
+					<p>6.若因你提供的支付账户信息错误等原因导致服务报酬支付到他人账户的，相关损失由你本人承担，并不得要求昆玉国际给予额外补偿或赔偿。</p>
+					<p>7.若因你提供的支付账户信息错误等原因导致服务报酬支付失败的，你有权要求昆玉国际在条件具备的情况下继续支付，但你应承担继续支付产生的支付手续费用，并不得要求昆玉国际给予额外补偿或赔偿。</p>
+					<p>8.除按照服务报酬核算规则获得报酬外，你不得自行向借款客户收取额外的任何费用。</p>
+					<p>（三）服务关系</p>
+					<p class="indent">你充分理解并认同你与昆玉国际不存在任何劳动合同关系，若你因使用本APP出现以下情形的，昆玉国际无须承担任何法律责任或支付任何费用：</p>
+					<p>1.你与任何第三方签订劳动合同，因使用本APP服务造成你与该第三方纠纷。</p>
+					<p>2.你违反法律法规，导致承担法律责任。</p>
+					<p>3.你发生意外伤害、疾病或死亡，应予以治疗或善后。</p>
+					<p>4.你与所推荐客户产生纠纷。</p>
+					<p>二、用户注册、账号和密码的使用及保管</p>
+					<p>（一）当你注册及／或使用本APP时，你必须是具备完全民事行为能力的自然人，无民事行为能力、限制民事行为能力不应当注册及／或使用本APP。</p>
+					<p>（二）你注册成功后，不得将本APP的用户账号和密码转让给第三方使用。你确认，你用你的用户账号和密码登录本APP后在本APP的一切行为均代表你本人作出的行为并由你承担相应的法律后果。任何利用你的用户账号和密码登录本APP并进行操作的行为均将被视为你的行为。因此，你有义务非常谨慎地保管自己的用户账号和密码。本APP对你的用户账号和密码的遗失或被盗所产生的后果不承担任何责任。</p>
+					<p>（三）若你的账号符合以下任一条件，昆玉国际有权回收你的账号，本APP相应服务同时终止：</p>
+					<p>1.未通过实名认证的账号；<br />
+					2.连续十二个月未登录本APP的账号；<br />
+					3.存在违反用户服务协议或昆玉国际实际运营规则行为的账号；<br />
+					4.存在其他国家法律法规禁止行为的账号。<br />
+					你充分理解并同意昆玉国际有权判断你的用户账号是否符合上述情形。
+					</p>
+					<p>三、用户使用限制</p>
+					<p>（一）你同意遵守昆玉国际有关你使用本APP服务时应遵守的各项规则制度、业务操作规程。</p>
+					<p>（二）你不得利用本APP或本APP服务从事任何不符合中国法律法规或侵犯他人权益的活动。本APP在发现你从事该等活动时，有权不经通知而立即停止你对本APP的全部或部分功能的使用。</p>
+					<p>（三）若你在未经昆玉国际书面同意的情况下，以昆玉国际及相关合作方名义进行本协议约定的服务之外的行为，昆玉国际有权随时单方面解除本协议并禁用你的账号，同时追究你因此造成损失的相关法律责任。</p>
+					<p>（四）若你的行为损害昆玉国际利益的，昆玉国际有权向你追究责任并要求损害赔偿。</p>
+					<p>四、用户信息的提供、核实、保护及使用</p>
+					<p>（一）你有义务向昆玉国际提供自己的真实资料，并保证诸如电子邮件地址、联系电话、联系地址、邮政编码等内容的有效性、安全性和及时更新，以便昆玉国际为你提供服务并与你进行及时、有效的联系。你应完全独自承担因通过上述联系方式无法与你取得联系而导致你在使用本服务过程中遭受的任何损失或增加任何费用等不利后果。</p>
+					<p>（二） 为便于昆玉国际及其关联公司向你更好的提供服务，你不可撤销地授权并同意昆玉国际向你使用的通讯设备、有关机构或单位收集、查询或确认与你相关的个人联络方式、关系人、位置数据、通信行为、通讯信息、互联网使用信息、互联网使用行为等并保留相关核查资料等。</p>
+					<p>（三）昆玉国际尊重并保护你的相关信息（包括个人真实资料、使用本APP服务产生的用户数据等），昆玉国际将按照具体授权条款的约定收集、存储、保护、使用和共享你的相关信息。具体授权条款将在你使用本APP服务过程中以包括但不限于弹窗提醒、协议、公告等方式呈现，你应当密切关注并认真阅读理解授权内容。当昆玉国际以上述方式通知你之后，如你继续使用本APP服务，则代表你不可撤销地同意授权。</p>
+					<p>（四）你同意昆玉国际可以使用你的个人资料以改进本APP的推广和促销工作、分析APP的使用率、改善本APP的内容和产品推广形式，并使本APP的页面内容、设计和服务更能符合用户的要求。从而使你在使用本APP服务时得到更为顺利、有效、安全及个性化的交易体验。</p>
+					<p>（五）你同意昆玉国际利用你的资料与你联络并向你传递针对你行为特征而提供的信息，例如：有针对性的广告条、行政管理方面的通知、产品提供以及有关你使用本APP的通讯。你接受本协议即视为你同意收取这些信息。</p>
+					<p>（六）你充分理解昆玉国际将以高度的勤勉、审慎义务采用行业标准惯例保护你的个人资料，但鉴于技术限制，昆玉国际不能确保你相关信息不会通过昆玉国际未预见的途径泄露出去。<br />
+					（七）为了向你提供更好服务，你不可撤销地授权昆玉国际将你的相关信息披露给昆玉国际关联公司及／或第三方合作公司并授权该公司使用。<br />
+					（八）昆玉国际有义务根据有关法律要求向司法机关和政府部门提供你的个人资料。
+					</p>
+					<p>五、知识产权</p>
+					<p>（一）昆玉国际对本APP的所有内容，包括但不限于商标、文本、数据、图案、音频、视频、FLASH、设计、动画源代码和其他所有信息，拥有著作权、商标权、商业秘密以及其他相关的知识产权。</p>
+					<p>（二）未经昆玉国际事先书面同意，你或其他任何人不得复制、改编、传播、公布、展示或以任何其他方式，为任何盈利性或非营利性目的侵犯昆玉国际的知识产权。</p>
+					<p>六、涉及第三方网站</p>
+					<p class="indent">本APP的网页内容可能涉及由第三方所有、控制或者运营的其他网站的内容或链接（以下称“第三方网站”）。昆玉国际不能保证也没有义务保证第三方网站上的信息的真实性和有效性。对于该内容或链接，你确认按照第三方网站的使用协议确定相关权利义务，而不是按照本协议。第三方网站的内容、产品、广告和其他任何信息均由你自行判断并承担风险，而与昆玉国际无关。</p>
+					<p>七、免责条款</p>
+					<p class="indent">你充分理解并认同本APP通过互联网为你提供服务，互联网的不稳定性及第三方行为的不可控性导致互联网服务有潜在隐患，故在下述情况发生时，昆玉国际应免除相应的责任：</p>
+					<p>（一）由于本APP及相关第三方的设备、系统故障或缺陷、病毒、黑客攻击、网络故障、网络中断、地震、台风、水灾、海啸、雷电、火灾、瘟疫、流行病、战争、恐怖主义、敌对行为、暴动、罢工、交通中断、停止供应主要服务、电力中断、经济形势严重恶化、政府管制或其它类似事件，致使昆玉国际未能履行本协议或履行本协议不符合约定，不构成昆玉国际的违约。对于因此导致的损失，昆玉国际将不承担任何责任。在发生以上事件时，昆玉国际有权根据需要随时暂停服务并不需要事先通知你。</p>
+					<p>（二）鉴于目前的技术条件昆玉国际不保证用户在使用本APP服务时的操作不会中断或没有错误，不保证昆玉国际所有产品缺陷可以得到纠正，亦不保证昆玉国际所有产品能满足用户的所有要求。</p>
+					<p>（三）你明确同意使用本APP所存在的风险由你本人承担，昆玉国际不对此承担任何担保、补偿、赔偿责任。</p>
+					<p>（四）你明确同意昆玉国际无须就你相关信息的丢失、损坏及／或任何间接的、附带的、特殊的、后果性的损失向你进行补偿及／或赔偿。</p>
+					<p>八、通知</p>
+					<p class="indent">本协议项下的通知可以公示方式作出，公示形式包括但不限于APP消息推送、APP页面的任何展示、APP弹窗、昆玉国际线下经营场所的张贴公告、昆玉国际相关运营人员的口头告知、电话、媒体公告等，你有义务密切关注并认真理解通知内容，一经在昆玉国际公示即视为通知已经送达。</p>
+					<p class="indent">如你在公示作出后继续登陆及／或继续使用本APP的服务，则代表你理解并同意公示内容。</p>
+					<p>九、违约责任</p>
+					<p class="indent">如果你违反了你在本协议中所作的陈述、保证、承诺或任何其他义务，致使昆玉国际及／或昆玉国际的股东、实际控制人、员工、其他用户承受任何损失，你应向受损失的一方做出赔偿。</p>
+					<p>十、协议变更与执行</p>
+					<p class="indent">昆玉国际有权根据需要修改、增加或删除本协议。昆玉国际将采用本协议第八条说明的方式通知你，你应密切关注本协议内容的变更。</p>
+					<p class="indent">若你不同意相关变更，请立即停止登录及/或继续使用本APP的服务。你继续登录及/或继续使用本APP的服务，即视为已同意并接受协议内容的修订和变更。</p>
+					<p>十一、终止</p>
+					<p class="indent">除非昆玉国际终止本协议或者你申请终止本协议且经本APP同意，否则本协议始终有效。在你违反了本协议规则或本APP遇到本协议第七条第一款约定的免责事项时，本APP有权在不通知你的情况下在任何时间终止本协议或者限制你使用本APP的服务。</p>
+					<p>十二、适用法律和管辖</p>
+					<p class="indent">本协议适用中华人民共和国法律法规。本合同项下及与之有关的一切争议，应首先通过友好协商解决。协商不成的，你同意将纠纷或争议提交昆玉国际所在地人民法院解决。</p>
+					<p>十三、条款的独立性</p>
+					<p class="indent">若本协议的部分条款被认定为无效或者无法实施时，本协议中的其他条款仍然有效。</p>
+					<p>十四、其他</p>
+					<p>（一）昆玉国际有权将其在本合同项下的权利义务全部或部分转让给第三方，该转让行为无需另行征得你同意。</p>
+					<p>（二）昆玉国际在法律许可的范围内对本协议享有最终的解释权。</p>
+					<br />
+					<p style="text-align: right;">北京昆玉顺达国际信息咨询有限公司</p>					
+				</div>
 			</div>
 		</div>
 	</body>
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
-	<script type="text/javascript" src="../../plugins/openIdcardScan/plugin-openIdcardScan.js" ></script>
 	<script src="./js/certifiedMessage.js"></script>
 </html>

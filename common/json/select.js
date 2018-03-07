@@ -294,37 +294,5 @@ var Json = {
 		{ "value": "00", "text": "请选择" }, 
 		{ "value": "0", "text": "是" }, 
 		{ "value": "1", "text": "否" }
-	],
-	"residenceType":[{
-		"value": '0',
-		"text": '住宅'
-	},{
-		"value": '1',
-		"text": '公寓'
-	},{
-		"value": '2',
-		"text": '商住'
-	},{
-		"value": '3',
-		"text": '办公'
-	},{
-		"value": '4',
-		"text": '商铺'
-	}],
-	"residenceProp":[{
-		"value": '0',
-		"text": '无抵押'
-	},{
-		"value": '1',
-		"text": '首抵-银行按揭'
-	},{
-		"value": '2',
-		"text": '首抵-银行抵押'
-	},{
-		"value": '3',
-		"text": '首抵-机构抵押'
-	},{
-		"value": '4',
-		"text": '二抵-银行抵押'
-	}]
+	]
 };

@@ -7,8 +7,9 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link href="../../common/css/mui.min.css" rel="stylesheet" />
-		<link href="../../common/css/mui.picker.css" rel="stylesheet" />
+		<!--<link href="../../common/css/mui.picker.css" rel="stylesheet" />-->
 		<link href="../../common/css/mui.poppicker.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../common/css/mui.picker.min.css" />
 		<link href="../../common/css/app.css" rel="stylesheet" />
 		<link href="../../common/css/base.css" rel="stylesheet" />
 		<link href="../../common/css/iconfont.css" rel="stylesheet"/>
@@ -96,63 +97,71 @@
 					<span class="step-bar ss"><span class="aSpan">3</span>上传影像资料</span>
 				</div>
 			</div>
-			<div class="mui-card-header" style="color: grey;">单位信息</div>
+			<div class="mui-card-header color_666">单位信息</div>
 			<div class="mui-form" style="margin: 0px;">
 				<div class="mui-input-row">
-					<label style="width: 35%;">单位名称</label> 
-					<input style="width: 65%;" type="text" id="unitName" placeholder="请输入单位名称" />
+					<label >单位名称</label> 
+					<input  type="text" id="unitName" placeholder="请输入单位名称" />
 				</div>
 				<div class="mui-input-row">
-					<label style="width: 35%;">单位电话</label> 
-					<input style="width: 65%;" type="text" id="unitPhone" placeholder="请输入单位电话" />
+					<label >单位电话</label> 
+					<input  type="text" id="unitPhone" placeholder="区号-电话号-分机号(分机选填)" />
 				</div>
 				<div class="mui-input-row">
-					<label style="width: 35%;">单位地址</label> 
-					<input style="width: 65%;" type="text" id="unitAddress" placeholder="请输入单位地址" />
+					<label >单位地址</label>
+					<input  type="text" id="unitAddress" placeholder="请输入单位地址" />
 				</div>
 			</div>
-			<div class="mui-card-header" style="color: grey;">房产信息 
+			<div class="mui-card-header color_666">
+				房产信息 
 				<span class="headerSpan" style="color: #4AABFF;">添加房产
 					<span  style="color:#4AABFF" class="mui-icon mui-icon-plusempty"></span>
 				</span>
 			</div>
-			<div class="mui-card-header" style="display: none;" id="trust">
-				<div style="margin-left: 90%;">
-					<span class="iconfont icon-shanchu"></span>
-				</div>
-			</div>
 			<div id="houseInfo" class="mui-form houseInfo" style="margin: 0px;">
 				<div class="mui-input-row">
-					<label style="width: 35%;">房产总值</label> 
+					<label style="width: 35%;">房产总值/万元</label> 
 					<input style="width: 65%;" type="text" class="price" placeholder="请输入房产总值" />
 				</div>
-				<div class="mui-input-row selectInput">
-					<label style="width: 35%;">房产类型</label> 
-					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" class="faType" onclick="initHouseType(this)" value="" />
+				<div class="mui-input-row">
+					<label style="width: 35%;">房产性质</label> 
+					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择"class="faType" onclick="initHouseType(this)"  value="" />
+					<a class="mui-navigate-right"></a>
 				</div>
-				<div class="mui-input-row selectInput">
-					<label style="width: 35%;">抵押类型</label> 
+				<div class="mui-input-row">
+					<label style="width: 35%;">房产类型</label> 
 					<input style="width: 65%;" type="text" readonly="readonly" placeholder="请选择" class="mortType" onclick="initMortgageType(this)" value="" />
+					<a class="mui-navigate-right"></a>
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">房产证编号</label> 
 					<input style="width: 65%;" type="text" class="houseId" placeholder="请输入房产证编号" />
 				</div>
 				<div class="mui-input-row">
-					<label style="width: 35%;">房产面积</label> 
+					<label style="width: 35%;">房产面积/㎡</label> 
 					<input style="width: 65%;" type="text" class="area" placeholder="请输入房产面积" />
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">房产地址</label> 
 					<input style="width: 65%;" type="text" class="residenceLocation" placeholder="请输入房产地址" />
 				</div>
-				<div class="mui-input-row">
+				<div class="mui-input-row oneMortgage none">
 					<label style="width: 35%;">一抵时间</label> 
-					<input style="width: 65%;" type="text" class="mortgage1Time" placeholder="请输入一抵时间" />
+					<input style="width: 65%;" type="text" class="mortgage1Time" onclick="initMortgageTime(this)" readonly="readonly" placeholder="请输入一抵时间" />
+					<a class="mui-navigate-right"></a>
 				</div>
-				<div class="mui-input-row">
-					<label style="width: 35%;">一抵金额</label> 
+				<div class="mui-input-row oneMortgage none">
+					<label style="width: 35%;">一抵金额/万元</label> 
 					<input style="width: 65%;" type="text" class="mortgage1Value" placeholder="请输入一抵金额" />
+				</div>
+				<div class="mui-input-row twiceMortgage none">
+					<label style="width: 35%;">二抵时间</label> 
+					<input style="width: 65%;" type="text" class="mortgage2Time" onclick="initMortgageTime(this)" readonly="readonly" placeholder="请输入一抵时间" />
+					<a class="mui-navigate-right"></a>
+				</div>
+				<div class="mui-input-row twiceMortgage none">
+					<label style="width: 35%;">二抵金额/万元</label> 
+					<input style="width: 65%;" type="text" class="mortgage2Value" placeholder="请输入一抵金额" />
 				</div>
 			</div>
 			<div class="mui-content-padded">
@@ -163,10 +172,7 @@
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
-	<script src="../../common/json/select.js"></script>
-	<script src="../../plugins/pinyin.js"></script>
-	<script src="../../common/js/mui.picker.js"></script>
 	<script src="../../common/js/mui.poppicker.js"></script>
-	<!--<script type="text/javascript" src="../plugins/passguard/plugin-passguard.js" ></script>-->
+	<script src="../../common/js/mui.picker.min.js"></script>
 	<script src="./js/moreInformation.js"></script>
 </html>
