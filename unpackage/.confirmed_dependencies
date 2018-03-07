@@ -18,7 +18,8 @@
 	"kunyupages/login/login.html": {
 		"refer": [
 			"kunyupages/register/register.html",
-			"kunyupages/home/home.html"
+			"kunyupages/home/home.html",
+			"kunyupages/pwdmanage/forgetpassword.html"
 		],
 		"resources": []
 	},
@@ -31,8 +32,16 @@
 	"kunyupages/home/my.html": {
 		"refer": [
 			"kunyupages/my/companyProfile.html",
-			"kunyupages/login/login.html"
+			"kunyupages/login/login.html",
+			"kunyupages/my/informance.html",
+			"kunyupages/my/setPassword.html"
 		],
 		"resources": []
+	},
+	"kunyupages/my/setPassword.html": {
+		"refer": [
+			"kunyupages/my/loginPassword.html",
+			"kunyupages/my/payPassword.html"
+		]
 	}
 }

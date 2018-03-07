@@ -5,14 +5,8 @@
 	//0.预加载历史账户信息
 	mui.plusReady(function(){
 	 	//获取历史账号
-		historyUser();
-		// 下拉账号
-		$("#historyNub").on("tap",function(){		
-			$(".historyList").show();
-			if($(".historyList li").length > 0){
-				$(".disbl").removeClass("dis_bor_top");
-			}
-		});
+		$("#phone").val(localStorage.getItem("phone"));
+		
 		//点击空白处页面下移
 		$("body").on("tap",function(){
 			plus.webview.currentWebview().setStyle({
@@ -83,65 +77,7 @@
 			mui.toast("您已经登录！");
 		}
 	}); 
-	/**历史账户**/
-	var userList = localStorage.getItem("userList");
-		userList = JSON.parse(userList);
-	/**加载登录过的客户账号**/
-	function historyUser(){
-		$("#usersList").html("");
-		if(userList){
-			$("#phone").val(userList[0]);
-			var ul = $("#usersList");
-			$(userList).each(function(key, val) {
-				var html = '<li><span class="nub">'+val+'</span><span class="move_this">x</span></li>'
-					ul.append(html);
-			});
-			$(".nub").on("tap",function(event){
-				event.stopPropagation();
-				var thistext = $(this).text();
-				$("#phone").val(thistext);
-				$("#dis_nubmer").hide();
-			});
-			$(".move_this").on("tap",function(event){
-				event.stopPropagation();
-				var thistext = $(this).siblings("span")[0].innerText;
-				$(userList).each(function(key, val) {
-					if(val == thistext){
-						userList.splice(key,1);
-						localStorage.setItem("userList",JSON.stringify(userList));
-						return false;
-					}
-				});
-				historyUser();			
-			});
-		}
-	}
-	/**图片验证码,暂未用**/
-	function getImageCode(){
-		var timestamp = (new Date()).valueOf();
-		var  srcUrl = eg.jrURL+"safe/verifyImage.do?clientId="+plus.device.uuid+"&time="+timestamp;
-		$("#imgCode").attr("src",srcUrl);
-	}
-	/**登录逻辑**/
-	var num;
-    function toLogin(){
-    	//1.用户输入检索输错密码几次
-		var parameters = {
-			"serviceId": "02001011",
-			"mobile": $("#phone").val()
-		};
-		var url = "user/queryFailLoginCount.do";
-		plus.nativeUI.showWaiting();
-		eg.postAjax(url, parameters, function(data) {
-			plus.nativeUI.closeWaiting();
-			num = data.failCount;				
-			if(num >= 3) {
-				mui.toast("您输入的密码次数已超3次！");				
-			}else{
-				isToLogin();
-			}
-		});
-    }
+	
 	function isToLogin(csrf){ 
 		var params = {
 			"_csrf":csrf,
