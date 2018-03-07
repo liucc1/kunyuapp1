@@ -2,12 +2,9 @@ mui.init({
 	swipeBack: false
 });
 mui.plusReady(function(){
-	eg.getCsrf();
-	var csrf=localStorage.getItem("csrf");
 	var params = {
-		"_csrf":csrf,
 		"page":"1",
-		"limit":"1000000"
+		"limit":"500"
 	}
 	plus.nativeUI.showWaiting();
 	eg.postAjax("customer/list", params, function(data) {
@@ -17,7 +14,8 @@ mui.plusReady(function(){
 			for(var index in arr){
 				var custList = arr[index];
 				$(custList).each(function(key,val){
-					var dataList = {"sid":val.sid,"status":val.status,"name":val.name,"idNo":val.idNo,"appointmentDate":val.appointmentDate,"timeQuantum":val.timeQuantum,"refuseDesc":val.refuseDesc,"activeAmount":val.activeAmount,"activeDate":val.activeDate};
+					var name = val.name.replace(/\s/g,"");//对象的value值中间有空格传不过去
+					var dataList = {"sid":val.sid,"status":val.status,"name":name,"appointmentDate":val.appointmentDate,"timeQuantum":val.timeQuantum,"refuseDesc":val.refuseDesc,"activeAmount":val.activeAmount,"activeDate":val.activeDate};
 					var createTime = val.createTime.split(".")[0];
 					var html = '<ul class="mui-table-view mui-table-view-group">';
 					html += '<li class="mui-table-view-cell" data-list='+JSON.stringify(dataList)+'>';
@@ -36,7 +34,7 @@ mui.plusReady(function(){
 						}else if(main.obtainValue('status',val.status)=="可预约"){
 							html += '[可预约面签]';
 						}else if(main.obtainValue('status',val.status)=="已预约"){
-							html += '【可修改预约时间】';
+							html += '[可修改预约时间]';
 						}else if(main.obtainValue('status',val.status)=="处理中"){
 							html += '[信息处理中]';
 						}
@@ -50,10 +48,9 @@ mui.plusReady(function(){
 				});
 			}
 		}
-	},function(data){
-		if(data=="403") eg.getCsrf();
 	});
 })
+
 mui('#pendingList').on('tap', '.mui-media-body', function() {
 	var dataList = $(this).parents("li").attr("data-list");
 	dataList = JSON.parse(dataList);

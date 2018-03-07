@@ -2,12 +2,9 @@ mui.init({
 	swipeBack: false
 });
 mui.plusReady(function(){
-	eg.getCsrf();
-	var csrf=localStorage.getItem("csrf");
 	var params = {
-		"_csrf":csrf,
 		"page":"1",
-		"limit":"1000000"
+		"limit":"500"
 	}
 	plus.nativeUI.showWaiting();
 	eg.postAjax("customer/list", params, function(data) {
@@ -17,7 +14,8 @@ mui.plusReady(function(){
 			for(var index in arr){
 				var custList = arr[index];
 				$(custList).each(function(key,val){
-					var dataList = {"sid":val.sid,"status":val.status};
+					var name = val.name.replace(/\s/g,"");//对象的value值中间有空格传不过去
+					var dataList = {"sid":val.sid,"status":val.status,"name":name,"appointmentDate":val.appointmentDate,"timeQuantum":val.timeQuantum,"refuseDesc":val.refuseDesc,"activeAmount":val.activeAmount,"activeDate":val.activeDate};
 					var createTime = val.createTime.split(".")[0];
 					var html = '<ul class="mui-table-view mui-table-view-chevron ulTop">'
 					html += '<li class="mui-table-view-cell mui-media" data-list='+JSON.stringify(dataList)+'>';
@@ -35,26 +33,16 @@ mui.plusReady(function(){
 				});
 			}
 		}
-	},function(data){
-		if(data=="403") eg.getCsrf();
 	});
 })
 mui('#productlist').on('tap','.detail', function() {
-	var list = $(this).parents("li").attr("data-list");
-	list = JSON.parse(list);
-	var sid = list.sid;
-	status = list.status;
-	if(status){
-		var status = main.obtainValue('status',list.status);	
-	}else{
-		status = "处理中";
-	}	
+	var dataList = $(this).parents("li").attr("data-list");
+	dataList = JSON.parse(dataList);
 	mui.openWindow({
         url:"./pendingListDetail.html",
         id:"pendingListDetail",
         extras:{
-        	"sid":sid,
-        	"status":status
+        	"dataList":dataList
         }
     });   
 })

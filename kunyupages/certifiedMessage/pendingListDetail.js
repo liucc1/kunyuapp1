@@ -23,90 +23,47 @@ mui.plusReady(function(){
 		queryOne();
 	}else if(status=="已预约"){
 		$(".mode5").removeClass("none");
-//		queryTwo();
+		queryTwo();
 	}else if(status=="拒绝"){
 		$(".mode6").removeClass("none");
-//		queryThree();
+		queryThree();
 	}else if(status=="激活"){
 		$(".mode7").removeClass("none");
-//		queryFour();
+		queryFour();
 	}else if(status=="处理中"){
 		$(".mode8").removeClass("none");
-//		queryOne();
+		queryOne();
 	}
 })
 /*已驳回，待完善，已提交，可预约，处理中*/
 function queryOne(){
 	$(".name").text(dataList.name);
-	$(".idNo").text(dataList.idNo);
 	name = dataList.name;
-	idNo = dataList.idNo;
 }
 /*已预约*/
-function queryTwo(){
-	var csrf=localStorage.getItem("csrf");
-	var params = {
-		"_csrf":csrf,
-		"idNo":sid
+function queryTwo(){	
+	$(".name").text(dataList.name);
+	if(dataList.timeQuantum == "1"){
+		timeQuantum = "上午";
+	}else if(dataList.timeQuantum == "2"){
+		timeQuantum = "下午";
 	}
-	eg.postAjax("customer/detail", params, function(data) {	
-		if(data.code == "1"){
-			var detail = JSON.stringify(data.rows);
-			detail = JSON.parse(detail);
-			$(".name").text(detail.name);
-			$(".idNo").text(detail.idNo);
-			$(".time").text(detail.appointmentDate);//+timeQuantum
-			name = detail.name;
-			idNo = detail.idNo;
-		}
-	}
-	,function(data){
-		if(data=="403") eg.getCsrf();
-	});
+	$(".time").text(dataList.appointmentDate+timeQuantum);
+	name = dataList.name;
 }
 /*拒绝*/
 function queryThree(){
-	var csrf=localStorage.getItem("csrf");
-	var params = {
-		"_csrf":csrf,
-		"idNo":sid
-	}
-	eg.postAjax("customer/detail", params, function(data) {	
-		if(data.code == "1"){
-			var detail = JSON.stringify(data.rows);
-			detail = JSON.parse(detail);
-			$(".name").text(detail.name);
-			$(".idNo").text(detail.idNo);
-			$(".reason").text(detail.refuseDesc);
-		}
-	}
-	,function(data){
-		if(data=="403") eg.getCsrf();
-	});
+	$(".name").text(dataList.name);
+	$(".reason").text(dataList.refuseDesc);
+	name = dataList.name;
 }
 /*激活*/
 function queryFour(){
-	var csrf=localStorage.getItem("csrf");
-	var params = {
-		"_csrf":csrf,
-		"idNo":sid
-	}
-	eg.postAjax("customer/detail", params, function(data) {	
-		if(data.code == "1"){
-			var detail = JSON.stringify(data.rows);
-			detail = JSON.parse(detail);
-			$(".name").text(detail.name);
-			$(".idNo").text(detail.idNo);
-			$(".activeAmount").text(detail.activeAmount);
-			$(".activeDate").text(detail.activeDate);
-		}
-	}
-	,function(data){
-		if(data=="403") eg.getCsrf();
-	});
+	$(".name").text(dataList.name);
+	$(".activeAmount").text(dataList.activeAmount);
+	$(".activeDate").text(dataList.activeDate);
+	name = dataList.name;
 }
-
-
 document.getElementById("confirmBtn").addEventListener('tap', function() {
 	var btnArray = ['否', '是'];
 	mui.confirm('是否取消2018年1月2日的预约？', '提示', btnArray, function(e) {
