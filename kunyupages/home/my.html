@@ -52,7 +52,7 @@
 		        <li class="mui-table-view-cell mui-media mui-col-xs-12" style="padding-bottom: 5px;">
 		            <a>
 		                <img style="width: 7rem;border: 2px solid #fff;border-radius: 50%;" class="mui-media-imgs" src="../../images/loginafterimg.png">
-		                <div class="mui-media-body" style="color: white;margin-top: 1rem;">151****1233</div>
+		                <div id="phone" class="mui-media-body" style="color: white;margin-top: 1rem;"></div>
 		            </a>
 		        </li>
 			</div>
@@ -79,15 +79,14 @@
 						<span class="iconfont icon-lock"></span> 密码管理
 					</a>
 				</li>
-				<li class="mui-table-view-cell">
+				<li class="mui-table-view-cell" onclick="goPage('companyProfile')">
 					<a class="mui-navigate-right">
 						<span class="iconfont icon-gongsijianjie"></span> 公司简介
 					</a>
 				</li>
-				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right">
-						<span class="iconfont icon-ren3"></span> 关于我们
-					</a>
+				<li id="telphone" class="mui-table-view-cell">
+					<span class="iconfont icon-ren3"></span> 联系我们
+					<font style="float: right;">010-60570660</font>
 				</li>
 			</ul>
 			<div class="mui-content-padded" style="margin-top: 50px;">
@@ -99,9 +98,15 @@
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
 	<script>
-		mui.init()
+		mui.init();
 		mui.plusReady(function(){
-			
+			$("#telphone").on('tap',function(){
+				var phoneNum = $(this).children("font").text();
+				plus.device.dial(phoneNum);
+			})
+		})
+		$(function(){
+			$("#phone").text(localStorage.getItem("phone"));
 		})
 		function goPage(param){
 			var url = '../my/'+param+'.html'

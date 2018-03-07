@@ -153,7 +153,7 @@
 				mui.alert("您输入的用户名或密码不正确，或您未注册！");
 			} else if(data.resCode==0){//mui.alert("登陆成功");
 				//eg.tohomeindex();	//进入首页
-				alert("ceshi");
+				localStorage.setItem("phone",$("#phone").val().trim());
 				mui.openWindow({
 	                url:"../home/home.html",
 	                id:"home"

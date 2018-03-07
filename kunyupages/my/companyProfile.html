@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>关于我们</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../common/css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../common/css/app.css" />
+		<link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
+		<script src="../../common/js/mui.min.js"></script>
+		<style>
+			.content{
+				background-color: #fff;
+				margin-top: 1rem;
+			}
+			.about_top{
+				text-align: center;
+			}
+			.padded{
+				padding: 0 2rem 1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+			<h1 class="mui-title">公司简介</h1>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="content">
+					<div class="about_top">
+						<img src="../../images/logo.jpg" width="40%" alt="" />
+					</div>
+					<div id="comIntroduce" class="padded">
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;北京昆玉顺达国际信息咨询有限公司（以下简称“昆玉国际”）成立于2016年底，注册资本3000万，是一家专业的经济信息咨询服务机构。</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;昆玉国际致力于为广大小微企业主、个体工商户等提供商业咨询服务，以便客户更有效率、更低成本地解决商业问题，帮助客户持续、稳健经营。</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;昆玉国际至今已为来自数百个行业、上千位客户提供优质的咨询服务。如今，昆玉国际针对客户信贷需求，专门开发并上线“御用金”APP，为信贷经纪人提供功能齐全、操作简便的移动展业平台和智能贷款顾问、流程运营服务，撬动信贷经纪人共同为客户解决融资难、融资贵的难题。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		mui.init();
+		mui(".mui-scroll-wrapper").scroll();
+	</script>
+</html>
