@@ -7,6 +7,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../../common/css/mui.min.css">
+		<link rel="stylesheet" href="../../common/css/iconfont.css">
 		<link rel="stylesheet" href="../../common/css/app.css">
 		<link rel="stylesheet" href="../../common/css/base.css">
 		<style>
@@ -14,26 +15,8 @@
 				background-color: white;
 				min-height: 215px;
 			}
-			.pos_r{
-				width: 100%;
-				height: 20%;
-			}
-			#tabbar{
-				width: 100%;
-				height: 100%;
-			}
 			.mui-slider{
 				height: 100%;
-			}
-			.wait:before{
-				content: "Loading…";
-			    display: block;
-			    text-align: center;
-			    width: 100%;
-			    height: 20%;
-			    padding-top: 10%;
-			    font-size: 25px;
-			    color: rgb(204, 204, 204);
 			}
 			.fleft{
 				/*width: 50%;*/
@@ -94,108 +77,63 @@
 				height:0;
 				visibility:hidden;
 			}
+			.product_title{
+				position: absolute;
+			    top: 4rem;
+			    left: 4rem;
+			    color: #fff;
+			    font-size: 1.8rem;
+			}
+			.pos_r .mui-icon-arrowleft{
+				position: absolute;
+			    top: 1rem;
+			    left: 0.5rem;
+			    color: #fff;
+			}
+			.mui-btn.mui-btn-danger.mui-btn-block.oBtn{
+				margin-bottom: 0;
+    			border-radius: 0;
+			}
+			.index_cent>.cent_tite:last-child{
+				border: 0;
+			}
+			.mui-slider .mui-slider-group{
+				padding-bottom: 1rem;
+			}
 		</style>
 	</head>
 	<body >
 		<div id="tabbar" class="mui-content">
 			<div class="pos_r wait">
-				<div class="mui-slider">
-					<div class="mui-slider-group mui-slider-loop" id="queryAdlist"></div>
-					<div class="mui-slider-indicator"></div>
-				</div>
+				<img id="proBg" src="../../images/product_bg1.jpg" width="100%" />
+				<span class="mui-icon mui-icon-arrowleft mui-action-back"></span>
+				<span class="product_title"></span>
 			</div>
-			<!--<div class="index_cent mt4 back_fff">
-				<div class="colors" style="text-align: center;">
-					<a id="register">产品介绍</a>
-					<a id="forgetPassword">产品申请</a>
-				</div>
-			</div>-->
 			<!--2.产品详情展示区-->
-			<div id="slider" class="mui-slider back_fff"style="height: 43%">
+			<div id="slider" class="mui-slider back_fff"style="height: auto">
 				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
-					<a class="mui-control-item" href="#item1">产品介绍</a>
+					<a class="mui-control-item mui-active" href="#item1">产品介绍</a>
 					<a class="mui-control-item" href="#item2">申请条件</a>
 				</div>
 				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6 mb10"></div>
 				<div class="mui-slider-group">
 					<div id="item1" class="mui-slider-item mui-control-content mui-active bor_none">
-						<div id="scroll1" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="centits">
-									<span class="lineCla"></span>
-									<h6 class="title_h6 font12">适合人群</h6>
-									<div>
-										<li style="list-style-type:disc;color: #8f8f94;">适用于北京地区，12个月无逾期记录征信</li>
-									</div>
-								</div>
-								<div class="centits">
-									<span class="lineCla"></span>
-									<h6 class="title_h6 font12">借款用途</h6>
-									<div>
-										<li style="list-style-type:disc;color: #8f8f94;">个人消费用途（装修/婚礼/旅游）、个人经营用途（资金周转）</li>
-									</div>
-								</div>
-								<div class="centits">
-									<span class="lineCla"></span>
-									<h6 class="title_h6 font12">额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;度:<span style="padding-left: 5px;">5-2000万元</span></h6>
-								</div>
-								<div class="centits">
-									<span class="lineCla"></span>
-									<h6 class="title_h6 font12">贷款期限:<span style="padding-left: 5px;">12个月以上</span></h6>
-								</div>
-								<div class="centits">
-									<span class="lineCla"></span>
-									<h6 class="title_h6 font12">年化利率:<span style="color: #FFCC33;padding-left: 5px;">6.65%</span></h6>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 					<div id="item2" class="mui-slider-item mui-control-content bor_none">
-						<div id="scroll1" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="centits">
-									<span class="lineCla"></span>
-									<h6 class="title_h6 font12">条件</h6>
-									<div style="padding-top: 20px;">
-										<li style="list-style-type:disc;color: #8f8f94;">适用于北京地区，且有自住房</li>
-										<li style="list-style-type:disc;color: #8f8f94;margin-top: 10px;">12月内无征信逾期报告</li>
-										<li style="list-style-type:disc;color: #8f8f94;margin-top: 10px;">无其他欠款</li>
-										<li style="list-style-type:disc;color: #8f8f94;margin-top: 10px;">综合信用评分较高的客户</li>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
 			<div class="index_cent mt10 back_fff">
-				<div class="cent_tite">
-					<div class="progress_box">
-						<h6 class="title_h6 font12 ml10 mt15 mb15">申请流程</h6>
-				    	<ul class="clearfix">
-							<li><i class="circle"></i>录入客户<em class="progress_line"></em></li>
-							<li><i class="circle"></i>准入初审<em class="progress_line"></em></li>
-							<li><i class="circle"></i>预约<em class="progress_line"></em></li>
-							<li><i class="circle"></i>面签放款</li>
-							<!--<li><i class="circle"></i>激 活</li>-->
-						</ul>
-				    </div>
-			    </div>
-				<div class="cent_tite">
-					<span style="border: 2px solid #F3213C;border-radius: 20px;"></span>
-					<h6 class="title_h6 font12">放款奖励</h6>
-					<div>
-						<p>每月前三笔预约面签客户放款后可分别获得放款金额<span>0.5%</span>、<span>0.3%</span>、<span>0.1%</span> </p>
-					</div>
-				</div>
+				
 			</div>
-			<div class="mui-content-padded mt10">
-				<button id="btn" type="button" class="mui-btn mui-btn-danger mui-btn-block oBtn">立即推荐</button>
-			</div>
+			<button id="btn" type="button" class="mui-btn mui-btn-danger mui-btn-block oBtn">立即推荐</button>
 		</div>
 		<script src="../../common/js/mui.min.js"></script>
 		<script src="../../common/js/zepto.min.js"></script>
 		<script src="../../common/js/common.js"></script>
+		<script src="productData.js"></script>
 		<script src="productdetails.js"></script>
 	</body>
 </html>

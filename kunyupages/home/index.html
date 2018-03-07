@@ -89,28 +89,20 @@
 				<h6 class="title_h6" style="font-size: 16px;">热门产品推荐</h6>
 			</div>
 			<ul id="productlist" class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" data-type="arbitCons">
 					<a class="mui-navigate-right">
 						<img class="mui-media-object mui-pull-left" src="../../images/cbd.jpg">
-						<label>产品1</label></br>
-						<p class='mui-ellipsis fl'>额度:<span>10-30万</span></p>
-						<p class='mui-ellipsis fr mr20'>年利率:<span class="spcol">6.65%</span></p>
+						<label>任性花</label></br>
+						<p class='mui-ellipsis fl'>最高30万</span></p>
+						<p class='mui-ellipsis fr mr20'>年利率:<span class="spcol">7%</span></p>
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" data-type="arbitSta">
 					<a class='mui-navigate-right' href="javascript:;">
 						<img class="mui-media-object mui-pull-left" src="../../images/cbd.jpg">
-						<label>产品1</label></br>
-						<p class='mui-ellipsis fl'>额度:<span>10-30万</span></p>
-						<p class='mui-ellipsis fr mr20'>年利率:<span class="spcol">6.65%</span></p>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class='mui-navigate-right' href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../../images/cbd.jpg">
-						<label>产品1</label></br>
-						<p class='mui-ellipsis fl'>额度:<span>10-30万</span></p>
-						<p class='mui-ellipsis fr mr20'>年利率:<span class="spcol">6.65%</span></p>
+						<label>任分期</label></br>
+						<p class='mui-ellipsis fl'>最高30万</span></p>
+						<p class='mui-ellipsis fr mr20'>年利率:<span class="spcol">7%</span></p>
 					</a>
 				</li>
 			</ul>
@@ -147,9 +139,13 @@
 		})
 		//产品介绍
 		$("#productlist").on('tap','li',function(){
+			var type = $(this).attr("data-type");
 			mui.openWindow({
 				"url" : "../productmanage/productdetails.html",
-				"id": "productdetails"		
+				"id": "productdetails",
+				extras:{
+					type:type
+				}
 			});
 		})
 	</script>

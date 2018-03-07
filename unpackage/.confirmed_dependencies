@@ -1,0 +1,15 @@
+{
+  "kunyupages/home/home.html": {
+    "resources": [
+      "kunyupages/home/index.html"
+    ],
+    "refer": [
+      "kunyupages/home/index.html"
+    ]
+  },
+  "kunyupages/home/index.html": {
+    "refer": [
+      "kunyupages/productmanage/productdetails.html"
+    ]
+  }
+}

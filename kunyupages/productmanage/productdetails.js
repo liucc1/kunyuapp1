@@ -1,11 +1,17 @@
 mui.init({
 	swipeBack: false
 });
-(function($) {
-	$('.mui-scroll-wrapper').scroll({
-		indicators: true //是否显示滚动条
-	});
-})(mui);
+
+mui.plusReady(function(){
+	var type = plus.webview.currentWebview().type;
+	var arbitCons = productData[type];
+	$(".product_title").text(arbitCons.name);
+	$("#proBg").attr("src",arbitCons.imageURL);
+	$("#item1").html(arbitCons.producrInfo);
+	$("#item2").html(arbitCons.applicCond);
+	$(".index_cent").html(arbitCons.ApplicProcess);
+})
+
 $("#btn").on("tap",function(){
 	mui.openWindow({
         url:"../certifiedMessage/certifiedMessage.html",
