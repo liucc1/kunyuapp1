@@ -1,37 +1,38 @@
 {
-  "kunyupages/home/home.html": {
-    "resources": [
-      "kunyupages/home/index.html"
-    ],
-    "refer": [
-      "kunyupages/home/index.html",
-      "kunyupages/home/my.html"
-    ]
-  },
-  "kunyupages/home/index.html": {
-    "refer": [
-      "kunyupages/productmanage/productdetails.html",
-      "kunyupages/index/houseSample.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/login/login.html": {
-    "refer": [
-      "kunyupages/register/register.html",
-      "kunyupages/home/home.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/productmanage/productdetails.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/certifiedMessage.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/home/my.html": {
-    "refer": [
-      "kunyupages/my/companyProfile.html"
-    ],
-    "resources": []
-  }
+	"kunyupages/home/home.html": {
+		"resources": [
+			"kunyupages/home/index.html"
+		],
+		"refer": [
+			"kunyupages/home/index.html",
+			"kunyupages/home/my.html"
+		]
+	},
+	"kunyupages/home/index.html": {
+		"refer": [
+			"kunyupages/productmanage/productdetails.html",
+			"kunyupages/index/houseSample.html"
+		],
+		"resources": []
+	},
+	"kunyupages/login/login.html": {
+		"refer": [
+			"kunyupages/register/register.html",
+			"kunyupages/home/home.html"
+		],
+		"resources": []
+	},
+	"kunyupages/productmanage/productdetails.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/certifiedMessage.html"
+		],
+		"resources": []
+	},
+	"kunyupages/home/my.html": {
+		"refer": [
+			"kunyupages/my/companyProfile.html",
+			"kunyupages/login/login.html"
+		],
+		"resources": []
+	}
 }
