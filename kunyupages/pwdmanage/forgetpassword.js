@@ -1,7 +1,7 @@
 mui.init({ swipeBack:false });
 mui.plusReady(function(){
 	//获取token
-	eg.getCsrf();
+//	eg.getCsrf();
 	//不存在则重新获取
  	//if (!localStorage.getItem("csrf")) {eg.getCsrf();}
 });
@@ -68,14 +68,14 @@ $("#getcode").on("tap",function(){
 		//			});
 		//		}
 			},function(data){
-				if(data=="403") eg.getCsrf();
+//				if(data=="403") eg.getCsrf();
 			});
 		}else{//未注册
 			mui.toast("请输入已注册手机号！");
 			return;
 		}
 	},function(data){
-		if(data=="403") eg.getCsrf();
+//		if(data=="403") eg.getCsrf();
 	});
 });
 /**点击提交按钮**/
@@ -96,7 +96,7 @@ $("#oBtn").on("tap",function(){
 //			});
 		mui.back();
 	},function(data){
-		if(data=="403") eg.getCsrf();
+//		if(data=="403") eg.getCsrf();
 	});
 });
 

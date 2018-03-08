@@ -54,7 +54,7 @@ function queryTwo(){
 /*拒绝*/
 function queryThree(){
 	$(".name").text(dataList.name);
-	$(".reason").text(dataList.refuseDesc);
+//	$(".reason").text(dataList.refuseDesc);/*无拒绝原因*/
 	name = dataList.name;
 }
 /*激活*/

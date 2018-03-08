@@ -112,10 +112,8 @@
 		   	});
 		}
 		$("#oBtn").on("tap",function(){
-			eg.getCsrf();
-			var csrf = localStorage.getItem("csrf");
 			var params = {	
-				"_csrf":csrf
+				
 			}
 			params = JSON.stringify(params);
 			eg.postAjax2("logout",params, function(data) {
@@ -130,7 +128,7 @@
 					}
 				},1000)
 			},function(data){
-				if(data=="403") eg.getCsrf();
+//				if(data=="403") eg.getCsrf();
 			});
 		})
 	</script>

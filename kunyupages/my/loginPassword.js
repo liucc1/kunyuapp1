@@ -45,7 +45,7 @@ $('#oBtn').click(function() {
 		mui.toast("两次密码不一致", { duration: "short" });
 		return;
 	}
-	eg.getCsrf();
+//	eg.getCsrf();
 	var params = {	
 		"oldPass":oldPwd,
 		"newPass":newPwd1,
@@ -67,7 +67,7 @@ $('#oBtn').click(function() {
 			},1000)		
 		}
 	},function(data){
-		if(data=="403") eg.getCsrf();
+//		if(data=="403") eg.getCsrf();
 	});
 })
 //$('#oBtn').click(function() {

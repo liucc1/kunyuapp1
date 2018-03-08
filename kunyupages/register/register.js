@@ -17,7 +17,7 @@ mui.plusReady(function() {
 		});
 	});
 	//获取token(每次进入该页面均重新获取)
-	eg.getCsrf();
+//	eg.getCsrf();
 	//不存在则重新获取
  	//if (!localStorage.getItem("csrf")) {eg.getCsrf();}	
 });
@@ -53,7 +53,7 @@ function getSms(csrf){
 //			});
 //		}
 	},function(data){
-		if(data=="403") eg.getCsrf();
+//		if(data=="403") eg.getCsrf();
 	});
 }
 /**用户协议书打开、关闭**/
@@ -168,7 +168,7 @@ function goRegister(csrf){
 	},function(data){
 		$("#oBtn").removeAttr("disabled");
 		//alert(data);
-		if(data=="403") eg.getCsrf();
+//		if(data=="403") eg.getCsrf();
 	});
 }
 
