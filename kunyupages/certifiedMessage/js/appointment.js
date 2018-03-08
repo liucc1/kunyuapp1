@@ -6,15 +6,11 @@ mui.plusReady(function(){
 	idNo = self.idNo;
 	$("#custName").val(name);
 	$("#cutNo").val(idNo);	
-	var params = {};
-	eg.getAjax("jt/appoint/date/0",params,function(data){
-		
-	}
-//	,function(data){
-//		if(data=="403") eg.getCsrf();
-//	}
+	var url = eg.jrURL+"jt/appoint/date/0";
+	$.get(url,function(data){
+			alert(data.max);
+		}
 	)
-})
 function dealDate(res){
 	return res.substring(4,6)+'.'+res.substring(6,8)
 }

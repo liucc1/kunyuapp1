@@ -110,6 +110,12 @@ $('#appointMent').on("tap",function(){
 		}
    	});
 })
+/*取消预约*/
+$("#confirmBtn").on("tap",function(){
+	var param = {
+		
+	}
+})
 /*已提交*/
 $('#oBtn3').on("tap",function(){
 	plus.webview.currentWebview().close();

@@ -190,7 +190,7 @@ function iosUpload(){
         // param.files = ele[i].src;
         param.files = param.files+","+ele[i].src.split(",")[1];
     }
-    commAjax("wechat/add/base",param, function(data) {
+    eg.postAjax("customer/add",param, function(data) {
         plus.webview.closeWaiting();
         if(data.status=="1"){
         	mui.openWindow({
