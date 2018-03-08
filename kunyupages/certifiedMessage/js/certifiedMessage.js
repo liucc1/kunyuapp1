@@ -1,25 +1,13 @@
 mui.init();
-//遮罩
-var mask = mui.createMask(function(){
-	$(".dis_show").hide();
-});
 $(function(){
 	$('#idNo').blur(function(){
 		var custName = $('#name').val();
 		var idNo = $('#idNo').val();
-//		if(isNullVal(custName)){
-//			mui.toast("姓名不能为空！");
-//			return false;
-//		}
-//		if(!eg.name.test(custName)){
-//			mui.toast("姓名格式不正确！");
-//			return false;
-//		}
 		if(isNullVal(idNo)){
 			mui.toast("身份证不能为空！");
 			return false;
 		}
-		if(!checkIdCard(idNo)){
+		if(!eg.userIdCode(idNo)){
 			mui.toast("身份证格式不正确！");
 			return false;
 		}	
@@ -53,30 +41,8 @@ $(function(){
 mui.plusReady(function(){
 	
 })
-/**点击同意协议事件**/
-$("#checkbox").on("tap",function(){
-	if($(this).hasClass("icon-selected")){
-		$(this).addClass("icon-xuanzekuang");
-		$(this).removeClass("icon-selected");
-	}else{
-		$(this).removeClass("icon-xuanzekuang");
-		$(this).addClass("icon-selected");
-	}	
-});
-
-/**用户协议书打开、关闭**/
-$("#alertBtn").on("tap",function(){
-	mask.show();
-	$(".dis_show").show();
-});
-$(".close-img").on("tap",function(){
-	mask.close();
-	$(".dis_show").hide();
-});
-
 //下一步
 $("#oBtn").on('tap',function(){
-//	$(":input").blur();
 	var custName = $('#name').val();
 	var idNo = $('#idNo').val();
 	var nation = $('#nation').val();
@@ -97,7 +63,7 @@ $("#oBtn").on('tap',function(){
 		mui.toast("身份证不能为空！");
 		return false;
 	}
-	if(!checkIdCard(idNo)){
+	if(!eg.userIdCode(idNo)){
 		mui.toast("身份证格式不正确！");
 		return false;
 	}
@@ -139,10 +105,6 @@ $("#oBtn").on('tap',function(){
 		mui.toast("验证码不能为空！");
 		return false;
 	};
-	if($("#checkbox").hasClass("icon-xuanzekuang")){
-		mui.toast("请先阅读并同意用户协议");
-		return false;
-	}
 	var uploadField = {
 		"name":custName,
 		"idNo":idNo,
@@ -179,12 +141,16 @@ $("#oBtn").on('tap',function(){
 })
 /**点击获取验证码**/
 $("#getcode").on("tap",function(){
-    Countdown('getcode');
 	var phoneNum = $("#phone").val();
+	if(isNullVal(phoneNum)) {
+		mui.toast("手机号码不能为空！");
+		return false;
+	};
 	if(!eg.phone.test(phoneNum)) {
 		mui.toast("手机号码格式不正确！");
 		return false;
 	};
+    Countdown('getcode');
    	getSms();
 });
 function getSms(){

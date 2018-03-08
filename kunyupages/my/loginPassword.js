@@ -53,7 +53,6 @@ $('#oBtn').click(function() {
 	}
 	params = JSON.stringify(params);
 	eg.postAjax2("chgpass",params, function(data) {
-		alert(data.status);
 		if(data.status == 0 ){
 			var all = plus.webview.all();
 			mui.openWindow({

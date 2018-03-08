@@ -243,7 +243,8 @@
 				"resources": [],
 				"refer": [
 					"kunyupages/certifiedMessage/moreInformation.html",
-					"kunyupages/index/houseshow.html"
+					"kunyupages/index/houseshow.html",
+					"kunyupages/certifiedMessage/houseshow.html"
 				],
 				"priority": 0
 			},
@@ -317,6 +318,20 @@
 				"refer": [
 					"kunyupages/my/withdrawDetail.html",
 					"kunyupages/my/withdraw.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/certifiedMessage/pendingListDetail.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/certifiedMessage/uploadImages.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/my/loginPassword.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/login/login.html"
 				],
 				"priority": 0
 			}

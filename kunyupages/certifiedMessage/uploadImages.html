@@ -264,6 +264,16 @@
 					opacity: 0;
 				}
 			}
+			.add_bg{
+				background-image: url(../../images/addImage.png);
+			    background-size: 100% 100%;
+			}
+			.add_bg .dis_block {
+			    width: 100%;
+			    height: 100%;
+			    opacity: 0;
+			    display: block;
+			}
 	    </style>
 	</head>
 	<body>
@@ -292,8 +302,14 @@
 								<img class="chooseByGally" src="../../images/b.png"/>
 								<span onclick="delImg(this);" class="mui-icon mui-icon-close-filled none"></span>
 							</div>-->
-							<div>
-								<img class="chooseByGally" src="../../images/addImage.png"/>
+							<div class="add_bg androidDiv">
+								<a href="#picture" class="dis_block jumpLink"></a>
+								<input id="cameraInput" type="file" capture="camera" accept="image/*"  onchange="showImg(this)" name="files" hidden="hidden"/>
+								<input id="gallyInput" type="file" accept="image/*" multiple hidden="hidden" onchange="showImg(this)" name="files">
+								<!--<input id="gallyInput" type="file" accept="image/png,image/jpeg" onchange="showImg(this)" name="files" multiple hidden="hidden" />					-->
+							</div>
+							<div class="add_bg iosDiv none">
+								<input type="file" class="dis_block jumpLink" accept="image/png,image/jpeg"  onchange="showImg(this)" name="files" multiple hidden="hidden"/>
 							</div>
 							<div>
 								<img class="deleteImg" src="../../images/del_square.png"/>
@@ -307,6 +323,26 @@
 							<span id="contractSample" style="color: #4AABFF;position: absolute;right: 15px;">示例></span>
 						</div>
 						<div id="contractImg" class="imageDiv">
+							<div class="add_bg androidDiv ">
+								<a href="#picture" class="dis_block jumpLink"></a>
+								<!--<input id="cameraInput" type="file" capture="camera" accept="image/*"  onchange="showImg(this)" name="files" hidden="hidden"/>
+								<input id="gallyInput" type="file" name="file" accept="image/png,image/jpeg" onchange="showImg(this)" name="files" multiple hidden="hidden" />					-->
+							</div>
+							<div class="add_bg iosDiv none">
+								<input type="file" class="dis_block jumpLink" accept="image/png,image/jpeg"  onchange="showImg(this)" name="files" multiple hidden="hidden"/>
+							</div>
+							<div>
+								<img class="deleteImg" src="../../images/del_square.png"/>
+								<img class="confirmImg none" src="../../images/confirm.png"/>
+							</div>
+						</div>
+					</div>
+					<!--<div class="mui-input-row">
+						<div style="padding-top: 10px;">
+							<span style="padding-left: 10px;">《购房合同》</span>
+							<span id="contractSample" style="color: #4AABFF;position: absolute;right: 15px;">示例></span>
+						</div>
+						<div id="contractImg" class="imageDiv">
 							<div>
 								<img class="chooseByGally" src="../../images/addImage.png"/>
 							</div>
@@ -315,12 +351,30 @@
 								<img class="confirmImg none" src="../../images/confirm.png"/>
 							</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 			</div>
-			<p  style="color:#F0AD4E;padding-left:10px;margin-top: 1rem;"><img src="../../images/plaint.png" style="margin-right: 5px;" />请核对客户信息，点击可修改</p>
+			<p style="color:#d0923b;padding-left:10px;margin-top: 1rem;">
+				<span class="mui-icon mui-icon-info"></span>
+				请核对客户信息，点击可修改
+			</p>
 			<div class="mui-content-padded">
-				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">提交</button>
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block" data-phone="android">提交</button>
+			</div>
+			<div id="picture" class="mui-popover mui-popover-action mui-popover-bottom">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a id="camera">拍照</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="gally">从相册选取</a>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="#picture"><b>取消</b></a>
+					</li>
+				</ul>
 			</div>
 			<form id="formTab" enctype="multipart/form-data" style="visibility: hidden;"></form>
 		</div>
@@ -330,7 +384,7 @@
 	<script src="../../common/js/mui.previewimage.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
-	<!--<script type="text/javascript" src="../plugins/passguard/plugin-passguard.js" ></script>-->
+	<script type="text/javascript" src="../plugins/passguard/plugin-passguard.js" ></script>
 	<script src="../../plugins/exif.js"></script>
 	<script src="../../plugins/commonUpload.js"></script>
 	<script src="./js/uploadImages.js"></script>
