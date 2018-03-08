@@ -11,7 +11,10 @@
 	"kunyupages/home/index.html": {
 		"refer": [
 			"kunyupages/productmanage/productdetails.html",
-			"kunyupages/index/houseSample.html"
+			"kunyupages/index/houseSample.html",
+			"kunyupages/certifiedMessage/scheduleList.html",
+			"kunyupages/certifiedMessage/pendingList.html",
+			"kunyupages/certifiedMessage/certifiedMessage.html"
 		],
 		"resources": []
 	},
@@ -34,7 +37,8 @@
 			"kunyupages/my/companyProfile.html",
 			"kunyupages/login/login.html",
 			"kunyupages/my/informance.html",
-			"kunyupages/my/setPassword.html"
+			"kunyupages/my/setPassword.html",
+			"kunyupages/my/charges.html"
 		],
 		"resources": []
 	},
@@ -42,6 +46,17 @@
 		"refer": [
 			"kunyupages/my/loginPassword.html",
 			"kunyupages/my/payPassword.html"
+		]
+	},
+	"kunyupages/my/charges.html": {
+		"refer": [
+			"kunyupages/my/withdraw.html"
+		]
+	},
+	"kunyupages/certifiedMessage/scheduleList.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/pendingListDetail.html",
+			"kunyupages/certifiedMessage/scheduleList.html"
 		]
 	}
 }

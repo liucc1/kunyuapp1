@@ -258,7 +258,8 @@
 			"kunyupages/certifiedMessage/scheduleList.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/certifiedMessage/pendingListDetail.html"
+					"kunyupages/certifiedMessage/pendingListDetail.html",
+					"kunyupages/certifiedMessage/scheduleList.html"
 				],
 				"priority": 0
 			},
@@ -314,7 +315,8 @@
 			"kunyupages/my/charges.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/my/withdrawDetail.html"
+					"kunyupages/my/withdrawDetail.html",
+					"kunyupages/my/withdraw.html"
 				],
 				"priority": 0
 			}

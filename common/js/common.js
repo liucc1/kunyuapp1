@@ -172,29 +172,29 @@ eg.getAjax = function(url, params, sussessFun,errorFun, isasync) {
  * @param {Object} url
  * @param {Object} success
  */
-//eg.getToken = function("url",success){
-//	plus.nativeUI.showWaiting(); //增加等待框
-//	$.ajax({
-//		url: eg.jrURL + "68720a30",
-//		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-//		type: 'get',
-//		timeout : 60000,
-//		data: {},
-//		dataType: "HTML",
-//		asyn: false,
-//		success: function(data){
-//			plus.nativeUI.closeWaiting(); //关闭等待框
-//			//console.log("getToken——HTML==="+data);
-//			success(data);
+eg.getToken = function(url,success){
+	plus.nativeUI.showWaiting(); //增加等待框
+	$.ajax({
+		url: eg.jrURL + "68720a30",
+		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+		type: 'get',
+		timeout : 60000,
+		data: {},
+		dataType: "HTML",
+		asyn: false,
+		success: function(data){
+			plus.nativeUI.closeWaiting(); //关闭等待框
+			//console.log("getToken——HTML==="+data);
+			success(data);
 //			var s=data.split('"');
 //			var csrf=s[s.length-2];
-//		},
-//		error: function(jqXHR, textStatus, errorThrown){
-//			plus.nativeUI.closeWaiting(); //关闭等待框
-//			console.log("jqXHR"+JSON.stringify(jqXHR));
-//		}
-//	});
-//}
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			plus.nativeUI.closeWaiting(); //关闭等待框
+			console.log("jqXHR"+JSON.stringify(jqXHR));
+		}
+	});
+}
 //eg.getCsrf = function(){
 //	eg.getToken("68720a30",function(data) {
 //		var s=data.split('"');
