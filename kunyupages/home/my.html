@@ -101,7 +101,7 @@
 			})
 		})
 		$(function(){
-			$("#phone").text(localStorage.getItem("phone"));
+			$("#phone").text(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		})
 		function goPage(param){
 			var url = '../my/'+param+'.html'
@@ -118,15 +118,14 @@
 			params = JSON.stringify(params);
 			eg.postAjax2("logout",params, function(data) {
 				var all = plus.webview.all();
-				mui.openWindow({
-					url: "../login/login.html",
-					id: "login"
-				})
-				setTimeout(function(){
-					for(var i = 0; i < all.length; i++) {
+				var login = plus.webview.getLaunchWebview();
+				for(var i = 0; i < all.length; i++) {
+					if(all[i] != login){
 						all[i].close();
+					}else{
+						login.reload();
 					}
-				},1000)
+				}
 			},function(data){
 //				if(data=="403") eg.getCsrf();
 			});

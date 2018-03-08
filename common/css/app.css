@@ -863,6 +863,9 @@ color: #d3d3d3;
 	border-bottom:1px solid #e3e3e3;
 	margin-bottom:-0.1rem;
 }
+.mui-form .mui-input-row:last-child{
+	border-bottom: 0;
+}
 .mui-form .mui-input-row i{
 	float: right;
 	margin-top: -3rem;
@@ -1316,4 +1319,16 @@ color: #d3d3d3;
 	color: #929292;
 	/*position: absolute;
 	bottom: 10rem;*/
+}
+.mui-card-header.color_666:after{
+	height: 0;
+}
+.mui-control-item.mui-active>span{
+	line-height: 40px;
+    display: inline-block;
+    border-bottom: 2px solid #D30D24;
+    padding: 0 0.5rem;
+}
+.color_000{
+	color: #000;
 }
