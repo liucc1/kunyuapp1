@@ -1,6 +1,6 @@
 mui.init();
 var dataList;
-var name,idNo;
+var name,mobile;
 mui.plusReady(function(){
 	var self = plus.webview.currentWebview();
 	dataList = self.dataList;	
@@ -38,11 +38,14 @@ mui.plusReady(function(){
 /*已驳回，待完善，已提交，可预约，处理中*/
 function queryOne(){
 	$(".name").text(dataList.name);
+	$(".mobile").text(dataList.mobile);
 	name = dataList.name;
+	mobile = dataList.mobile;
 }
 /*已预约*/
 function queryTwo(){	
 	$(".name").text(dataList.name);
+	$(".mobile").text(dataList.mobile);
 	if(dataList.timeQuantum == "1"){
 		timeQuantum = "上午";
 	}else if(dataList.timeQuantum == "2"){
@@ -50,19 +53,24 @@ function queryTwo(){
 	}
 	$(".time").text(dataList.appointmentDate+timeQuantum);
 	name = dataList.name;
+	mobile = dataList.mobile;
 }
 /*拒绝*/
 function queryThree(){
 	$(".name").text(dataList.name);
+	$(".mobile").text(dataList.mobile);
 //	$(".reason").text(dataList.refuseDesc);/*无拒绝原因*/
 	name = dataList.name;
+	mobile = dataList.mobile;
 }
 /*激活*/
 function queryFour(){
 	$(".name").text(dataList.name);
+	$(".mobile").text(dataList.mobile);
 	$(".activeAmount").text(dataList.activeAmount);
 	$(".activeDate").text(dataList.activeDate);
 	name = dataList.name;
+	mobile = dataList.mobile;
 }
 document.getElementById("confirmBtn").addEventListener('tap', function() {
 	var btnArray = ['否', '是'];
@@ -95,26 +103,21 @@ $('#oBtn4').on("tap",function(){
         id:"appointMent",
         extras:{
 			"name":name,
-			"idNo":idNo
+			"mobile":mobile
 		}
    	});
 })
 /*12已预约重新预约*/
 $('#appointMent').on("tap",function(){
+	alert(name)
 	mui.openWindow({
         url:"./appointMent.html",
         id:"appointMent",
         extras:{
 			"name":name,
-			"idNo":idNo
+			"mobile":mobile
 		}
    	});
-})
-/*取消预约*/
-$("#confirmBtn").on("tap",function(){
-	var param = {
-		
-	}
 })
 /*已提交*/
 $('#oBtn3').on("tap",function(){

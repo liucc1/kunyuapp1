@@ -15,7 +15,7 @@ mui.plusReady(function(){
 				var custList = arr[index];
 				$(custList).each(function(key,val){
 					var name = val.name.replace(/\s/g,"");//对象的value值中间有空格传不过去
-					var dataList = {"sid":val.sid,"status":val.status,"name":name,"appointmentDate":val.appointmentDate,"timeQuantum":val.timeQuantum,"refuseDesc":val.refuseDesc,"activeAmount":val.activeAmount,"activeDate":val.activeDate};
+					var dataList = {"sid":val.sid,"status":val.status,"name":name,"mobile":val.mobile,"appointmentDate":val.appointmentDate,"timeQuantum":val.timeQuantum,"refuseDesc":val.refuseDesc,"activeAmount":val.activeAmount,"activeDate":val.activeDate};
 					var createTime = val.createTime.split(".")[0];
 					var html = '<ul class="mui-table-view mui-table-view-chevron ulTop">'
 					html += '<li class="mui-table-view-cell mui-media" data-list='+JSON.stringify(dataList)+'>';

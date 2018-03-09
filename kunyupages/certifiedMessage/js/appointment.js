@@ -1,33 +1,18 @@
 mui.init();
-var name,idNo;
+var name,mobile;
 mui.plusReady(function(){
 	var self = plus.webview.currentWebview();
 	name = self.name;
-	idNo = self.idNo;
+	mobile = self.mobile;
 	$("#custName").val(name);
-	$("#cutNo").val(idNo);	
-	var url = eg.jrURL+"jt/appoint/date/0";
-	$.get(url,function(data){
-			alert(data.max);
-		}
-	)
-function dealDate(res){
-	return res.substring(4,6)+'.'+res.substring(6,8)
-}
-var getData = []
-mui.ready(function() {
+	$("#custMobile").val(mobile);
 	/**
 	 * 获取对象属性的值
 	 * 主要用于过滤三级联动中，可能出现的最低级的数据不存在的情况，实际开发中需要注意这一点；
 	 * @param {Object} obj 对象
 	 * @param {String} param 属性名
-	 */
-	
-	var _getParam = function(obj, param) {
-		return obj[param] || '';
-	};
-	//普通示例
-	
+	 */	
+	//普通示例	
 	var dataSource = {'json':{
 		'max':3,'total':7,
 		'list':[
@@ -72,8 +57,7 @@ mui.ready(function() {
 			{"weekDate":'周五',"appointmentDate":'20180228','acount':'3',
 			'timeQuantum':'2','count':'null','mcount':'2'},
 		]
-	}}
-	
+	}}	
 	var max = dataSource.json.max
 	for(var i=0;i<dataSource.json.list.length;i=i+4){
 		var t = dataSource.json.list
@@ -84,7 +68,7 @@ mui.ready(function() {
 			status3:!!(max-t[i+2].mcount),
 			status4:!!(max-t[i+3].acount)
 		}
-		getData.push(obj)
+		getData.push(obj);
 	}
 	var userPicker = new mui.PopPicker();
 	userPicker.setData(getData);
@@ -97,10 +81,11 @@ mui.ready(function() {
 			//return false;
 		});
 	}, false);
-})
-$("#oBtn").on("tap",function(){//提交预约
-	
-})
-function fn(){
-	alert(1)
+});
+function dealDate(res){
+	return res.substring(4,6)+'.'+res.substring(6,8)
 }
+var getData = [] 
+
+
+
