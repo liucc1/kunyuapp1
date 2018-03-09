@@ -171,12 +171,6 @@ eg.postAjax2 = function(url, params, sussessFun,errorFun, isasync) {
   	}	
 	eg.ajax2(eg.jrURL + url, params, "POST", sussessFun,errorFun, isasync);
 };
-eg.getAjax = function(url, params, sussessFun,errorFun, isasync) {
-	if(typeof(isasync) =="undefined"){
-		isasync = true;
-  	}	
-	eg.ajax(eg.jrURL + url, params, "GET", sussessFun,errorFun, isasync);
-};
 /**
  * http post请求前先获取token
  * @param {Object} url
