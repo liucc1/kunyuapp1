@@ -56,12 +56,17 @@ var _page = {
 			parameters = {};
 			parameters.page = this.pageNo;
 			parameters.limit = this.pageSize;
+			plus.nativeUI.showWaiting();
 			eg.postAjax(scrollConfig.url, parameters, function(data) {
+				plus.nativeUI.closeWaiting();
 				_this.scroller.totalPage = data.total;
 				if(flag){
 					scrollConfig.downSuccess(data);
 				}else{
 					scrollConfig.upSuccess(data);
+				}
+				if(_this.scroller.totalPage <= _this.scroller.pageSize){
+					mui(scrollConfig.container).pullRefresh().endPullup(true);
 				}
 			})
 		}
