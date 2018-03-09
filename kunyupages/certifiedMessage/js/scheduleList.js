@@ -20,6 +20,7 @@ mui.plusReady(function(){
 	})
 })
 
+
 function addEle(data){
 	var arr = data.rows;
 	for(var index in arr){
@@ -57,6 +58,27 @@ function addEle(data){
 			html += '</a></span></p></div></li></ul>';
 			$('#pendingList').append(html);
 		});
+	}
+}
+
+//关键字搜索
+$("#search").keydown(function(e){
+	param = {};
+	event.stopPropagation();
+	if(e.keyCode == 13){
+		document.activeElement.blur();
+		searchData($("#search").val().trim(),param);
+	}
+})
+function searchData(val,param){
+	_page.scroller.params.name = val;
+	_page.scroller.loadData(true);
+}
+
+//判断搜索框是否为空，为空时删除搜索条件
+function ifNull(ele){
+	if($("#search").val().trim() == ""){
+		param.name = "";
 	}
 }
 
