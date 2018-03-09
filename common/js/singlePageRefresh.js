@@ -53,7 +53,7 @@ var _page = {
 					mui(scrollConfig.container).pullRefresh().endPullup(false);
 				}
 			}
-			parameters = {};
+			parameters = this.params;
 			parameters.page = this.pageNo;
 			parameters.limit = this.pageSize;
 			plus.nativeUI.showWaiting();

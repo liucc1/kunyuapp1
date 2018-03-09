@@ -1,6 +1,6 @@
 mui.init();
 var dataList;
-var name,mobile;
+var name,mobile,sid,status;
 mui.plusReady(function(){
 	var self = plus.webview.currentWebview();
 	dataList = self.dataList;	
@@ -41,6 +41,10 @@ function queryOne(){
 	$(".mobile").text(dataList.mobile);
 	name = dataList.name;
 	mobile = dataList.mobile;
+	sid = dataList.sid;
+	status = dataList.status;
+	appointmentDate = dataList.appointmentDate;
+	timeQuantum = dataList.timeQuantum;
 }
 /*已预约*/
 function queryTwo(){	
@@ -54,6 +58,10 @@ function queryTwo(){
 	$(".time").text(dataList.appointmentDate+timeQuantum);
 	name = dataList.name;
 	mobile = dataList.mobile;
+	sid = dataList.sid;
+	status = dataList.status;
+	appointmentDate = dataList.appointmentDate;
+	timeQuantum = dataList.timeQuantum;
 }
 /*拒绝*/
 function queryThree(){
@@ -76,7 +84,25 @@ document.getElementById("confirmBtn").addEventListener('tap', function() {
 	var btnArray = ['否', '是'];
 	mui.confirm('是否取消2018年1月2日的预约？', '提示', btnArray, function(e) {
 		if (e.index == 1) {
-			alert("取消预约接口？")
+			plus.nativeUI.showWaiting();
+			var param = {
+				"sid":sid,
+				"state":"0",
+				"preProcess":status,
+				"date":appointmentDate,
+				"quar":timeQuantum
+			}
+			eg.postAjax("jt/appoint",param,function(data){
+				plus.nativeUI.closeWaiting();
+				if (data.status == "1") {
+					mui.toast("成功取消预约");
+					setTimeout(function(){
+						eg.toHome();
+					},500)		
+				} else{
+					mui.toast(data.message);
+				}
+			})
 		}
 	})
 });
@@ -101,7 +127,9 @@ $('#oBtn4').on("tap",function(){
         id:"appointMent",
         extras:{
 			"name":name,
-			"mobile":mobile
+			"mobile":mobile,
+			"sid":sid,
+			"status":status
 		}
    	});
 })
@@ -112,53 +140,30 @@ $('#appointMent').on("tap",function(){
         id:"appointMent",
         extras:{
 			"name":name,
-			"mobile":mobile
+			"mobile":mobile,
+			"sid":sid,
+			"status":status
 		}
    	});
 })
 /*已提交*/
 $('#oBtn3').on("tap",function(){
-	plus.webview.currentWebview().close();
-//	var scheduleList = plus.webview.getWebviewById("scheduleList.html");
-//	var pendingList = plus.webview.getWebviewById("pendingList.html");
-//	if (scheduleList) {
-//		scheduleList.close();
-//	}
-//	if (pendingList) {
-//		pendingList.close();
-//	}
-	mui.openWindow({
-		url:"./home.html",
-		id:"home"
-	})
+	eg.toHome();
 })
 /*已预约*/
 $('#oBtn5').on("tap",function(){
-	plus.webview.currentWebview().close();
-	mui.openWindow({
-		url:"./home.html",
-		id:"home"
-	})
+	eg.toHome();
 })
 /*拒绝*/
 $('#oBtn6').on("tap",function(){
-	mui.openWindow({
-		url:"./home.html",
-		id:"home"
-	})
+	eg.toHome();
 })
 /*激活*/
 $('#oBtn7').on("tap",function(){
-	mui.openWindow({
-		url:"./home.html",
-		id:"home"
-	})
+	eg.toHome();
 })
 /*处理中*/
 $('#oBtn8').on("tap",function(){
-	mui.openWindow({
-		url:"./home.html",
-		id:"home"
-	})
+	eg.toHome();
 })
 

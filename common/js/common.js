@@ -77,7 +77,7 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 					}
 					//var jsonRep=JSON.parse(jqXHR)
 		//			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
-					errorFun(jqXHR.status);
+//					errorFun(jqXHR.status);
 				}
 			});
 		},
@@ -566,8 +566,18 @@ eg.getRandomNum = function() {
 	},false);
 	return enName;
 };
-
-
+/*回到首页*/
+eg.toHome = function(){
+	var all = plus.webview.all();
+	var login = plus.webview.getLaunchWebview();
+	var home = plus.webview.getWebviewById("home");
+	for(var i = 0; i < all.length; i++) {
+		if(all[i] != login && all[i] != home){
+			all[i].close();
+		}
+	}
+	home.reload();
+}
 
 /***
  * 回到账户首页 
