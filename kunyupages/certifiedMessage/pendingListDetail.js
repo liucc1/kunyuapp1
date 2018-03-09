@@ -77,8 +77,6 @@ document.getElementById("confirmBtn").addEventListener('tap', function() {
 	mui.confirm('是否取消2018年1月2日的预约？', '提示', btnArray, function(e) {
 		if (e.index == 1) {
 			alert("取消预约接口？")
-		} else {
-//			alert('取消')
 		}
 	})
 });
@@ -109,7 +107,6 @@ $('#oBtn4').on("tap",function(){
 })
 /*12已预约重新预约*/
 $('#appointMent').on("tap",function(){
-	alert(name)
 	mui.openWindow({
         url:"./appointMent.html",
         id:"appointMent",
