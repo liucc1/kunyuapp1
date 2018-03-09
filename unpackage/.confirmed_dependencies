@@ -90,5 +90,10 @@
 		"refer": [
 			"kunyupages/certifiedMessage/uploadImages.html"
 		]
+	},
+	"kunyupages/my/informance.html": {
+		"refer": [
+			"kunyupages/my/myInformance.html"
+		]
 	}
 }

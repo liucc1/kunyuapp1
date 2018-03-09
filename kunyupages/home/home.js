@@ -96,6 +96,10 @@ window.addEventListener('myFirst',function(){
 	mui.trigger(document.getElementById('defaultTab'),"tap");
 });
 
+mui.back = function(){
+	return false;
+}
+
 /**
  * 仅限注销登录用，其它刷新个人中心建议用eg.toPersonalInformationHome();  
  */
