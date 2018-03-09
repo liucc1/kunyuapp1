@@ -210,7 +210,8 @@
 					"kunyupages/certifiedMessage/pendingList.html",
 					"kunyupages/certifiedMessage/certifiedMessage.html",
 					"kunyupages/index/houseSample.html",
-					"kunyupages/productmanage/productdetails.html"
+					"kunyupages/productmanage/productdetails.html",
+					"kunyupages/certifiedMessage/submitSuccess.html"
 				],
 				"priority": 0
 			},
@@ -244,7 +245,8 @@
 				"refer": [
 					"kunyupages/certifiedMessage/moreInformation.html",
 					"kunyupages/index/houseshow.html",
-					"kunyupages/certifiedMessage/houseshow.html"
+					"kunyupages/certifiedMessage/houseshow.html",
+					"kunyupages/certifiedMessage/submitSuccess.html"
 				],
 				"priority": 0
 			},

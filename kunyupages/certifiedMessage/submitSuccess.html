@@ -14,20 +14,21 @@
 	    	.lablewth{width: 35%;}
 	    	.inputwth{width: 65%;}
 	    	.divContent{
-	    		margin-top: 10%;
+	    		margin-top: 1rem;
     			padding-top: 25%;
 	    		height: calc(100% - 10px);
 	    		background-color: white;
 	    	}
 	    	.divContent >div> p {
-	    		color: red;
-	    		font-size: 24px;
+	    		color: #D30D24;
+	    		font-size: 2rem;
+	    		margin-top: 1rem;
 	    	}
 	    	.divContent >div> div{
 	    		font-size: 16px;
 	    	}
 	    	.tip-icon{
-				font-size: 6rem;
+				font-size: 5.5rem;
 			    border: 2px solid #D30D24;
 			    color: #D30D24;
 			    border-radius: 50%;
@@ -36,7 +37,6 @@
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav back_fff" >
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">提交成功</h1>
 		</header>
 		<div class="mui-content" style="height: 100vh;">
@@ -56,4 +56,23 @@
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
+	<script>
+		mui.init();
+		mui.plusReady(function(){
+			$("#oBtn").on('tap',function(){
+				var all = plus.webview.all();
+				var login = plus.webview.getLaunchWebview();
+				var home = plus.webview.getWebviewById("home");
+				for(var i = 0; i < all.length; i++) {
+					if(all[i] != login && all[i] != home){
+						all[i].close();
+					}
+				}
+				home.reload();
+			})
+		})
+		mui.back = function(){
+			return false;
+		}
+	</script>
 </html>

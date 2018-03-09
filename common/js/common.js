@@ -49,6 +49,16 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 					if (data.indexOf('html')=='-1') {//返回的不是页面信息
 						if(typeof data =='string'){data = JSON.parse(data);}
 						console.log("返回参数为："+JSON.stringify(data));
+					}else if(data.indexOf('登陆系统')!='-1'){
+						var all = plus.webview.all();
+						var login = plus.webview.getLaunchWebview();
+						for(var i = 0; i < all.length; i++) {
+							if(all[i] != login){
+								all[i].close();
+							}else{
+								login.reload();
+							}
+						}
 					}
 					successFun(data);
 				},
@@ -303,7 +313,7 @@ function goHomeIndexPage(pageID){
 }
 
 /**正则表达式**/
-eg.phone = /^1[3|4|5|7|8]\d{9}$/;
+eg.phone = /^1[3|4|5|6|7|8]\d{9}$/;
 eg.passwd = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/;
 eg.name =  /^[\u4E00-\u9FA5]{2,10}$/;
 eg.identity = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;//身份证号

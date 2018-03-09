@@ -14,9 +14,9 @@ $(function(){
 		var params = {
 			"value":idNo
 		}
-		plus.nativeUI.showWaiting();
+//		plus.nativeUI.showWaiting();
 		eg.postAjax("customer/valid/idNo",params, function(data) {
-			plus.nativeUI.closeWaiting();
+//			plus.nativeUI.closeWaiting();
 			if(data.status!="1"){
 				mui.toast(data.message);
 				return false;
@@ -28,11 +28,11 @@ $(function(){
 		var params = {
 			"value":phone
 		}
-		plus.nativeUI.showWaiting();
+//		plus.nativeUI.showWaiting();
 		eg.postAjax("customer/valid/mobile",params, function(data) {
-			plus.nativeUI.closeWaiting();
+//			plus.nativeUI.closeWaiting();
 			if(data.status!="1"){
-				mui.toast(data.message);
+				mui.toast("该手机号已注册");
 				return false;
 			}
 		});
@@ -101,15 +101,14 @@ $("#oBtn").on('tap',function(){
 		mui.toast("手机号码格式不正确！");
 		return false;
 	};
-	if(isNullVal(validityCode)) {
-		mui.toast("验证码不能为空！");
-		return false;
-	};
+//	if(isNullVal(validityCode)) {
+//		mui.toast("验证码不能为空！");
+//		return false;
+//	};
 	var uploadField = {
 		"name":custName,
 		"idNo":idNo,
-		"mobile":phone,
-		"validCode":validityCode
+		"mobile":phone
 	}
 	var params = {
 		"value":idNo

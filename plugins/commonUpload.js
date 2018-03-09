@@ -10,6 +10,7 @@ var targetElement,insertElement;
 */
 function getByGally(){
 	plus.gallery.pick(function(e) {
+		plus.nativeUI.showWaiting();
 		var oriPath = [];
 		var finPath = [];
 		for(var i in e.files){
@@ -37,21 +38,35 @@ function compressAll(oriPath,finPath){
 	var compressQueue = {
 		index : 0,
 		compress : function(j){
-				state = num;
-				plus.zip.compressImage({
-					src:oriPath[j],
-					dst:finPath[j],
-					quality:50,
-					overwrite:true
-				},function() {
-					num++;
-					var path=plus.io.convertLocalFileSystemURL(finPath[j]);
-					var ele = $(insertElement).clone();
-					ele.children("img").attr("src",path);
+			state = num;
+//			plus.zip.compressImage({
+//				src:oriPath[j],
+//				dst:finPath[j],
+//				quality:50,
+//				overwrite:true
+//			},function() {
+				num++;
+//				compressQueue.next();
+				var path = "file://"+plus.io.convertLocalFileSystemURL(oriPath[j]);
+				var canvas=document.createElement("canvas");  
+			    var ctx=canvas.getContext("2d");  
+			    var image=new Image(); 
+			    image.src = path;  
+			    image.onload=function(){ 
+			        var w=image.width/2;  
+			        var h=image.height/2;  
+			        canvas.width=w;  
+			        canvas.height=h;  
+			        ctx.drawImage(image,0,0,w,h);  
+			        var base64 = canvas.toDataURL("image/jpeg",0.5);
+			        var ele = $(insertElement).clone();
+					ele.children("img").attr("src",base64);
 					targetElement.prepend(ele[0]);
-				},function(error) {
-					alert("压缩失败!");
-				});			
+				}
+				
+//			},function(error) {
+//				alert("压缩失败!");
+//			});			
 		},
 		next : function(){
 			if(num > state){
@@ -59,6 +74,7 @@ function compressAll(oriPath,finPath){
 				if(this.index < oriPath.length){
 					this.compress(this.index);
 				}else{
+					plus.nativeUI.closeWaiting()
 					mui.previewImage();
 					if(funInterval){
 						clearInterval(funInterval);
@@ -89,22 +105,31 @@ function takePhoto(){
 				if(plus.os.name == 'Android'){
 					EXIF.getData(img,function(){
 						var ori=EXIF.getTag(this,"Orientation");
-						orisAndroid(ori,localurl);
+						orisAndroid(ori,localurl,img);
 					});
 				}else{
-					plus.zip.compressImage({
-						src:localurl,
-						dst:localurl,
-						quality:50,
-						overwrite:true
-					},function() {
-						num++;	
-						$(insertElement).children("img").attr("src",localurl);
+//					plus.zip.compressImage({
+//						src:localurl,
+//						dst:localurl,
+//						quality:50,
+//						overwrite:true
+//					},function() {
+						num++;
+						var canvas=document.createElement("canvas");  
+			    		var ctx=canvas.getContext("2d"); 
+				        var w=img.width/2;  
+				        var h=img.height/2;  
+				        canvas.width=w;  
+				        canvas.height=h;  
+				        ctx.drawImage(img,0,0,w,h);  
+				        var base64 = canvas.toDataURL("image/jpeg",0.5);
+						plus.nativeUI.closeWaiting();
+						$(insertElement).children("img").attr("src",base64);
 						targetElement.prepend(insertElement);
 						mui.previewImage();
-					},function(error) {
-						alert("压缩失败!");
-					});
+//					},function(error) {
+//						alert("压缩失败!");
+//					});
 				}
 			}
 		});
@@ -114,31 +139,31 @@ function takePhoto(){
 }
 
 //判断当前选取图片方向
-function orisAndroid(ori,path){
+function orisAndroid(ori,path,imgObj){
     switch(ori){ 
 		case 1:
 			//当为1时候，显示正确
-		  	rotateImage(0,path);
+		  	rotateImage(0,path,imgObj);
 		  	break;
 		case 3:
 //				  	alert('旋转180');
-		  	rotateImage(2,path);
+		  	rotateImage(2,path,imgObj);
 		  	break;
 		case 6:
 //				  	alert("顺时针旋转90");
-		  	rotateImage(1,path);
+		  	rotateImage(1,path,imgObj);
 		  	break;
 		case 8:
 //				  	alert("逆时针旋转90");
-		  	rotateImage(3,path);
+		  	rotateImage(3,path,imgObj);
 		  	break;
 		default:
-		 	rotateImage(0,path);
+		 	rotateImage(0,path,imgObj);
 	}
 }
 
 //旋转图片
-function rotateImage(Ori,path){
+function rotateImage(Ori,path,imgObj){
 	plus.zip.compressImage({
 		src:path,
 		dst:path,
@@ -147,9 +172,17 @@ function rotateImage(Ori,path){
 		rotate:90*Ori		// 旋转90度
 	},
 	function() {
-		plus.nativeUI.closeWaiting();
 		num++;
-		$(insertElement).children("img").attr("src",path);
+		var canvas=document.createElement("canvas");  
+		var ctx=canvas.getContext("2d"); 
+		var w=imgObj.width;  
+        var h=imgObj.height;  
+        canvas.width=w;  
+        canvas.height=h;  
+        ctx.drawImage(imgObj,0,0,w,h);  
+        var base64 = canvas.toDataURL("image/jpeg",1);
+		plus.nativeUI.closeWaiting();
+		$(insertElement).children("img").attr("src",base64);
 		targetElement.prepend(insertElement);
 		mui.previewImage();
 	},function(error) {
