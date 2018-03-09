@@ -15,7 +15,8 @@
 			"kunyupages/certifiedMessage/scheduleList.html",
 			"kunyupages/certifiedMessage/pendingList.html",
 			"kunyupages/certifiedMessage/certifiedMessage.html",
-			"kunyupages/certifiedMessage/submitSuccess.html"
+			"kunyupages/certifiedMessage/submitSuccess.html",
+			"kunyupages/certifiedMessage/pullrefresh.html"
 		],
 		"resources": []
 	},
@@ -94,6 +95,11 @@
 	"kunyupages/my/informance.html": {
 		"refer": [
 			"kunyupages/my/myInformance.html"
+		]
+	},
+	"kunyupages/my/myInformance.html": {
+		"refer": [
+			"kunyupages/my/reviseCer.html"
 		]
 	}
 }
