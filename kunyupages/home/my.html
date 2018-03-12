@@ -135,21 +135,11 @@
 			})
 		})
 		$("#oBtn").on("tap",function(){
-			var params = {	
-				
-			}
+			var params = {};
 			eg.postAjax2("logout",params, function(data) {
-				var all = plus.webview.all();
-				var login = plus.webview.getLaunchWebview();
-				for(var i = 0; i < all.length; i++) {
-					if(all[i] != login){
-						all[i].close();
-					}else{
-						login.reload();
-					}
-				}
+				eg.toLoginPage();
 			},function(data){
-//				if(data=="403") eg.getCsrf();
+
 			});
 		})
 	</script>
