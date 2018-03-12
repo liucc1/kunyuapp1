@@ -210,22 +210,6 @@ eg.getToken = function(url,success){
 		}
 	});
 }
-//eg.getCsrf = function(){
-//	eg.getToken("68720a30",function(data) {
-//		var s=data.split('"');
-//		var csrf=s[s.length-2];
-//		console.log("重新请求获得_csrf==="+csrf);
-//		localStorage.setItem("csrf",csrf);
-//	});
-//}
-//eg.getCsrfArr = function(){
-//	eg.getToken("68720a30",function(data) {
-//		var s=data.split('"');
-//		var csrf=s[s.length-2];
-//		console.log("未登录时获得_csrf==="+csrf);
-//		return csrf;
-//	});
-//}
 
 /***
  * @param {请求地址} url	
@@ -291,30 +275,28 @@ eg.tohomeindex = function() {
 	goHomeIndexPage("index");
 };
 function goHomeIndexPage(pageID){
-		var allPage = plus.webview.all();//获取所有打开的webview
-		var homePage = plus.webview.getWebviewById("home");//plus.webview.getLaunchWebview();
-		if (!homePage) {
-			plus.webview.create("../home/home.html","home");
-			homePage = plus.webview.getWebviewById("home");
-		} 
-		var thisPage = plus.webview.getWebviewById(pageID);
-		if(!thisPage){
-			plus.webview.create("../home/index.html","index");
-			thisPage = plus.webview.getWebviewById(pageID);
+	var allPage = plus.webview.all();//获取所有打开的webview
+	var homePage = plus.webview.getWebviewById("home");//plus.webview.getLaunchWebview();
+	if (!homePage) {
+		plus.webview.create("../home/home.html","home");
+		homePage = plus.webview.getWebviewById("home");
+	} 
+	var thisPage = plus.webview.getWebviewById(pageID);
+	if(!thisPage){
+		plus.webview.create("../home/index.html","index");
+		thisPage = plus.webview.getWebviewById(pageID);
+	}
+	console.log("homePage=="+homePage+"----thisPage=="+thisPage);
+	if(thisPage ==null){
+		 thisPage = plus.webview.getWebviewById("index");
+	}
+	for(var i = 0;i < allPage.length;i++){
+		if(allPage[i] == homePage  || allPage[i] == thisPage){	
+				continue;	
+		}else{												
+			allPage[i].close();//关闭
 		}
-		console.log("homePage=="+homePage+"----thisPage=="+thisPage);
-		if(thisPage ==null){
-			 thisPage = plus.webview.getWebviewById("index");
-		}
-		for(var i = 0;i < allPage.length;i++){
-			if(allPage[i] == homePage  || allPage[i] == thisPage){	
-					continue;	
-			}else{												
-				allPage[i].close();//关闭
-			}
-		}				
-//		homePage.show();				
-//		thisPage.reload();
+	}				
 }
 
 /**正则表达式**/

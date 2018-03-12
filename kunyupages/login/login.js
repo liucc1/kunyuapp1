@@ -85,18 +85,14 @@
 			"password": $("#pwd").val().trim()
 		}
 		eg.postAjax("login",params, function(data) {
-			if (JSON.stringify(data).indexOf('html')!='-1') {//返回页面信息
+			if (JSON.stringify(data).indexOf('html')!='-1') {
 				mui.alert("您输入的用户名或密码不正确，或您未注册！");
-			} else if(data.resCode==0){//mui.alert("登陆成功");
-				//eg.tohomeindex();	//进入首页
+			} else if(data.resCode==0){
 				localStorage.setItem("phone",$("#phone").val().trim());
 				mui.openWindow({
 	                url:"../home/home.html",
 	                id:"home"
-	           	});
-//				setTimeout(function(){
-//	       	 		plus.webview.getWebviewById("login").close();
-//	       	 	},500);
+	         	});
 			}
 		},function(data){
 			alert("err==="+data);
