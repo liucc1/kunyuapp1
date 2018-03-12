@@ -96,8 +96,9 @@ window.addEventListener('myFirst',function(){
 	mui.trigger(document.getElementById('defaultTab'),"tap");
 });
 
+//退出app
 mui.back = function(){
-	return false;
+	plus.runtime.quit();
 }
 
 /**版本检测**/

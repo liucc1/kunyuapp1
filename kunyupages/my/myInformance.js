@@ -9,7 +9,7 @@ mui.plusReady(function(){
 		$("#depositBank").val(info.depositBank);
 		$("#phone").val(localStorage.getItem("phone"));
 		$("#city").val(info.city);
-		$("#telephone").val("");
+		$("#telephone").val(info.serviceTel);
 		$("#telRow").on('tap',function(){
 			var phoneNum = $(this).children("input").val();
 			plus.device.dial(phoneNum);

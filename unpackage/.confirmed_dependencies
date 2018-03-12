@@ -101,7 +101,8 @@
 	},
 	"kunyupages/my/myInformance.html": {
 		"refer": [
-			"kunyupages/my/reviseCer.html"
+			"kunyupages/my/reviseCer.html",
+			"kunyupages/my/revisePhone.html"
 		]
 	},
 	"kunyupages/certifiedMessage/supply.html": {
