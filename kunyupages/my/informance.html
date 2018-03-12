@@ -36,34 +36,33 @@
 			<div class="mui-form">
 				<div class="mui-input-row ">
 					<label style="width: 35%;color: #4AABFF!important;">身份证信息</label> 
-					<input  style="width: 65%;" type="tel" maxlength="11" id="phone" placeholder="" readonly="readonly" />
-					<i class="afterInput"></i>
+					<input  style="width: 65%;" type="tel" maxlength="11" placeholder="" readonly="readonly" />
+					<i id="" class="afterInput"></i>
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">姓名</label>
-					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+					<input style="width: 65%;" type="text" id="name" placeholder="请输入您的姓名" />
 				</div>
 				<div class="mui-input-row" style="border-bottom: 0px;">
 					<label style="width: 35%;">身份证号码</label>
-					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+					<input style="width: 65%;" type="text" id="idNo" placeholder="请输入您的身份证号码" />
 				</div>
 			</div>
 			<div class="mui-form">
 				<div class="mui-input-row ">
-					<label style="width: 35%;color: #4AABFF!important;">银行卡信息</label> 
-					<input  style="width: 65%;" type="tel" maxlength="11" id="phone"  placeholder="" readonly="readonly" />
+					<label style="width: 35%;color: #4AABFF!important;">银行卡信息</label>
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">银行卡</label>
-					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+					<input style="width: 65%;" type="tel" id="cardNo" placeholder="请输入您的银行卡" />
 				</div>
 				<div class="mui-input-row">
-					<label style="width: 35%;">手机号</label>
-					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+					<label style="width: 35%;">预留手机号</label>
+					<input style="width: 65%;" type="tel" id="phone" maxlength="11" placeholder="请输入您银行卡预留手机号" />
 				</div>
 				<div class="mui-input-row" style="border-bottom: 0px;">
-					<label style="width: 35%;">开户号</label>
-					<input style="width: 65%;" type="tel" id="smscode" maxlength="6" placeholder="必填" />
+					<label style="width: 35%;">开户行</label>
+					<input style="width: 65%;" type="text" id="depositBank" placeholder="请输入您银行卡开户行" />
 				</div>
 			</div>
 			<div class="mui-content-padded">
@@ -74,12 +73,5 @@
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
-	<script>
-		$("#oBtn").on("tap",function(){
-			mui.openWindow({
-				url: "./myInformance.html",
-				id: "myInformance"
-			})
-		})
-	</script>
+	<script src="informance.js"></script>
 </html>

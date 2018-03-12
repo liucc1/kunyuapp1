@@ -52,8 +52,8 @@
                 <div id="phone" class="mui-media-body" style="color: white;margin-top: 1rem;"></div>
 			</div>
 			<ul class="mui-table-view mui-table-view-group">
-				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right" onclick="goPage('informance')">
+				<li id="myInfo" class="mui-table-view-cell">
+					<a class="mui-navigate-right">
 						<span class="iconfont icon-ren"></span> 我的资料
 						<font>升级为高级用户</font>
 					</a>
@@ -111,9 +111,33 @@
 		        id:param
 		   	});
 		}
+		$("#myInfo").on('tap',function(){
+			eg.ajax(eg.jrURL + "user/logininfo", {}, 'get', function(data){
+				if(data.status == 1){
+					if(data.data.userType == 0){
+						mui.openWindow({
+					        url:"../my/informance.html",
+					        id:"informance"
+					   	});
+					}else{
+//						if(data.data.userCode == "M"){
+							mui.openWindow({
+						        url:"../my/myInformance.html",
+						        id:"myInformance"
+						   	});
+//						}
+					}
+				}else{
+					mui.toast(data.message);
+				}
+			},function(){
+				
+			})
+		})
 		$("#oBtn").on("tap",function(){
-			var params = {};
-//			params = JSON.stringify(params);
+			var params = {	
+				
+			}
 			eg.postAjax2("logout",params, function(data) {
 				var all = plus.webview.all();
 				var login = plus.webview.getLaunchWebview();
@@ -125,7 +149,7 @@
 					}
 				}
 			},function(data){
-				
+//				if(data=="403") eg.getCsrf();
 			});
 		})
 	</script>

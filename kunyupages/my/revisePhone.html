@@ -35,7 +35,7 @@
 			<div class="mui-form">
 				<div class="mui-input-row ">
 					<label style="width: 35%;">新手机号</label> 
-					<input  style="width: 65%;" type="tel" maxlength="11" id="phone" placeholder="请输入您的新手机号" readonly="readonly" />
+					<input  style="width: 65%;" type="tel" maxlength="11" id="phone" placeholder="请输入您的新手机号" />
 				</div>
 				<div class="mui-input-row mui-input-row-yan">
 					<label style="width: 35%;">输入验证码</label>
@@ -51,12 +51,5 @@
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
-	<script>
-		$("#oBtn").on("tap",function(){
-			mui.openWindow({
-				url: "./myInformance.html",
-				id: "myInformance"
-			})
-		})
-	</script>
+	<script src="revisePhone.js"></script>
 </html>

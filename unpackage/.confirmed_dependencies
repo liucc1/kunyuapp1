@@ -40,7 +40,8 @@
 			"kunyupages/login/login.html",
 			"kunyupages/my/informance.html",
 			"kunyupages/my/setPassword.html",
-			"kunyupages/my/charges.html"
+			"kunyupages/my/charges.html",
+			"kunyupages/my/myInformance.html"
 		],
 		"resources": []
 	},

@@ -63,41 +63,40 @@
 			<div class="mui-form">
 				<div class="mui-input-row">
 					<label style="width: 35%;">姓名</label> 
-					<input style="width: 65%;" value="王星" type="text"  id="custName" readonly="" />
+					<input style="width: 65%;" type="text"  id="custName" readonly="readonly" />
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">身份证</label>
-					<input style="width: 65%;" value="123112443212" type="text"  id="cutNo" readonly="readonly" />
+					<input style="width: 65%;" type="text" id="idNo" readonly="readonly" />
 				</div>
-				<div class="mui-input-row afterRow" onclick="reviseCer('reviseCer')">
+				<div id="changeCardNo" class="mui-input-row afterRow">
 					<label style="width: 35%;">银行卡号</label>
-					<input class="rowInput" style="width: 65%;" value="123123123312" type="text"  id="address" readonly="readonly" />
+					<input class="rowInput" style="width: 65%;" type="text"  id="cardNo" readonly="readonly" />
 					<i class="afterInput">更换</i>
 				</div>
 				<div class="mui-input-row" style="border-bottom: 0px;">
 					<label style="width: 35%;">开户行</label>
-					<input style="width: 65%;" value="北京朝阳区白日撞支行" type="text"  id="appoint" readonly="readonly" />
+					<input style="width: 65%;" type="text"  id="depositBank" readonly="readonly" />
 				</div>
 			</div>
 			<p class="ps">基础资料</p>
 			<div class="mui-form">
-				<div class="mui-input-row afterRow" onclick="reviseCer('revisePhone')">
+				<div id="changePhone" class="mui-input-row afterRow">
 					<label style="width: 35%;">手机号码</label> 
-					<input class="rowInput" style="width: 65%;" value="12121212121" type="text"  id="custName" readonly="" />
+					<input class="rowInput" style="width: 65%;" type="text"  id="phone" readonly="readonly" />
 					<i class="afterInput">更换</i>
 				</div>
 				<div class="mui-input-row ">
 					<label style="width: 35%;">用户等级</label>
-					<input style="width: 65%;" value="高级用户" type="text"  id="cutNo" readonly="readonly" />
+					<input style="width: 65%;" value="高级用户" type="text" readonly="readonly" />
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">业务城市</label>
-					<input class="rowInput" style="width: 65%;" value="北京分公司" type="text"  id="address" readonly="readonly" />
-					<i class="afterInput">更换</i>
+					<input style="width: 65%;" type="text"  id="city" readonly="readonly" />
 				</div>
-				<div class="mui-input-row" style="border-bottom: 0px;">
+				<div id="telRow" class="mui-input-row">
 					<label style="width: 35%;">客服电话</label>
-					<input style="width: 65%;" value="122-1231-1231" type="text"  id="appoint" readonly="readonly" />
+					<input style="width: 65%;" type="text" id="telephone" readonly="readonly" />
 				</div>
 			</div>
 		</div>
@@ -105,13 +104,5 @@
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
-	<script>
-		function reviseCer(param){
-			var url = './'+param+'.html'
-			mui.openWindow({
-				url: url,
-				id: param
-			})
-		}
-	</script>
+	<script src="myInformance.js"></script>
 </html>

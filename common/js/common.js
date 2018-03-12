@@ -30,7 +30,7 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 		dataType: "HTML",
 		asyn: false,
 		success: function(data){
-			plus.nativeUI.closeWaiting(); //关闭等待框
+//			plus.nativeUI.closeWaiting(); //关闭等待框
 			var s=data.split('"');
 			var csrf=s[s.length-2];
 			params._csrf = csrf;
@@ -49,7 +49,7 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 					if (data.indexOf('html')=='-1') {//返回的不是页面信息
 						if(typeof data =='string'){data = JSON.parse(data);}
 						console.log("返回参数为："+JSON.stringify(data));
-					}else if(data.indexOf('登陆系统')!='-1'){
+					}else if(data.indexOf('登陆系统')!='-1'){//session超时处理
 						var all = plus.webview.all();
 						var login = plus.webview.getLaunchWebview();
 						for(var i = 0; i < all.length; i++) {
@@ -101,12 +101,13 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 		dataType: "HTML",
 		asyn: false,
 		success: function(data){
-			plus.nativeUI.closeWaiting(); //关闭等待框
+//			plus.nativeUI.closeWaiting(); //关闭等待框
 			var s=data.split('"');
 			var csrf=s[s.length-2];
 			params._csrf = csrf;
 			console.log("获得csrf:"+csrf);
 			console.log("请求url："+url + ";上送参数为："+params);
+			params = JSON.stringify(params);
 			$.ajax({
 				url: url,
 				contentType: "application/json",
@@ -123,6 +124,16 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 					if (data.indexOf('html')=='-1') {//返回的不是页面信息
 						if(typeof data =='string'){data = JSON.parse(data);}
 						console.log("返回参数为："+JSON.stringify(data));	
+					}else if(data.indexOf('登陆系统')!='-1'){//session超时处理
+						var all = plus.webview.all();
+						var login = plus.webview.getLaunchWebview();
+						for(var i = 0; i < all.length; i++) {
+							if(all[i] != login){
+								all[i].close();
+							}else{
+								login.reload();
+							}
+						}
 					}
 					successFun(data);
 				},
@@ -141,7 +152,7 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 					}
 					//var jsonRep=JSON.parse(jqXHR)
 		//			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
-						errorFun(jqXHR.status);
+//						errorFun(jqXHR.status);
 				}
 			});
 		},

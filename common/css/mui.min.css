@@ -2839,7 +2839,7 @@ select:focus {
 	font-size: 20px;
 	font-weight: 400;
 	position: absolute;
-	top: 50%;
+	top: 70%;
 	right: 50%;
 	display: none;
 	margin-top: -18px;

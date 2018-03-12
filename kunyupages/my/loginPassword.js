@@ -7,6 +7,24 @@ document.addEventListener( "plusready", onPlusReady, false );
 function onPlusReady() {
     console.log("plusready");
 }
+///***
+// * 点击获取验证码
+// */
+//$("#getcode").on("tap",function(){
+//	eg.getCsrf();
+//	var csrf=localStorage.getItem("csrf");
+//	plus.nativeUI.showWaiting();
+//	eg.postAjax("captCha", {
+//		"_csrf":csrf,
+//		"mobile": phone
+//	}, function(data) {
+//		if(data.status=="1"){
+//			$("#smscode").val(data.message);
+//		}
+//	},function(data){
+//			if(data=="403") eg.getCsrf();
+//	});
+//});
 $('#oBtn').click(function() {
 	var oldPwd = $('#oldPwd').val();
 	var newPwd1 = $('#newPwd1').val();
@@ -27,18 +45,13 @@ $('#oBtn').click(function() {
 		mui.toast("两次密码不一致", { duration: "short" });
 		return;
 	}
-	if(!eg.passwd.test(newPwd1)) {
-		plus.nativeUI.toast("密码不符合规则！", {
-			duration: "short"
-		});
-		return false;
-	}
+//	eg.getCsrf();
 	var params = {	
 		"oldPass":oldPwd,
 		"newPass":newPwd1,
 		"repeatNewPass":newPwd2
 	}
-//	params = JSON.stringify(params);
+	params = JSON.stringify(params);
 	eg.postAjax2("chgpass",params, function(data) {
 		if(data.status == 0 ){
 			var all = plus.webview.all();
@@ -53,10 +66,9 @@ $('#oBtn').click(function() {
 			},1000)		
 		}
 	},function(data){
-
+//		if(data=="403") eg.getCsrf();
 	});
 })
-
 //$('#oBtn').click(function() {
 //	var beforPwd = $('#beforPwd').val();
 //	var afterPwd = $('#afterPwd').val();
@@ -66,10 +78,62 @@ $('#oBtn').click(function() {
 //		mui.toast("密码格式错误");
 //		return false;
 //	}
-//}
+//	if(afterPwdVal != afterPwdVal2){
+//		mui.toast("两次密码不一致", { duration: "short" });
+//		return;
+//	}
+//	if(beforPwd == afterPwd){
+//		mui.toast("新密码与旧密码不能相同",{ duration: "short" });
+//		return false;
+//	}
+//	if(plus.os.name == 'iOS'){
+//		beforPwdVal = beforPwdVal.toUpperCase();
+//		afterPwdVal = afterPwdVal.toUpperCase();
+//	}
+//	
+//	var parameters = {
+//		"serviceId": "03001010",
+//  		"beforPwd": beforPwdVal,
+//  		"afterPwd": afterPwdVal
+//	};
+//	plus.nativeUI.showWaiting();
+//	//调取提交接口
+//	var url = "custManager/modifyPassword.do";
+//	eg.postAjax(url, parameters, function(data) {
+//
+//			var parameters2 = {
+//				"serviceId": "03001011"
+//			};
+//	
+//		var url = "custManager/custManagerExit.do";
+//			eg.postAjax(url, parameters2, function(data) {
+//				plus.nativeUI.closeWaiting();
+//				mui.toast("密码修改成功，请重新登录!");
+//				eg.toLoginPage();
+//			});			
+//	});
+//	
+//});
+
+
+///***
+// * 退出登录
+// */
+//$('#exitBtn').click(function() {
+//	
+//		var parameters = {
+//			"serviceId": "03001011"
+//		};
+//	
+//	var url = "custManager/custManagerExit.do";
+//	eg.postAjax(url, parameters, function(data) {			
+//		 localStorage.clear();	
+//	});	
+//	
+//});
 
 //----------------上线要用的密码键盘代码start-------------------
-//var beforPwdVal;
+//var  beforPwdVal;
 //var afterPwdVal;
 //var afterPwdVal2;
 
