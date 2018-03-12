@@ -18,7 +18,7 @@ mui.plusReady(function(){
 			var url = eg.jrURL + "thumbnail/"+id+".jpg";
 			var insertEle = document.createElement("div");
 			$(insertEle).addClass("shakeImg");
-			var html = '<img class="chooseByGally1" style="width:9rem;height:9rem;border-radius:1rem;vertical-align:middle" src="'+url+'" />'
+			var html = '<img class="chooseByGally" src="'+url+'" data-flag = '+id+' />'
 						+'<span onclick="delImg(this);" class="mui-icon mui-icon-close-filled none"></span>';
 			$(insertEle).html(html);
 			$(insertEle).css("upImg");
@@ -57,8 +57,10 @@ $("#contractSample").on("tap",function(){
 //添加照片
 $(".chooseByGally").on('tap',function(){
 	var targetEle = $(this).parents(".imageDiv");
+	var type = targetEle.attr("data-Type");
 	var insertEle = document.createElement("div");
 	$(insertEle).addClass("shakeImg");
+	$(insertEle).addClass("supplyImg");
 	var html = '<img class="chooseByGally" src="" data-preview-src="" data-preview-group="1" />'
 				+'<span onclick="delImg(this);" class="mui-icon mui-icon-close-filled none"></span>';
 	$(insertEle).html(html);
@@ -68,9 +70,7 @@ $(".chooseByGally").on('tap',function(){
 
 //删除图片
 $(".deleteImg").on('tap',function(){
-	alert("弹出");
 	var arr = $(this).parent().siblings(".shakeImg");
-	console.log(arr)
 	if(arr.length == 0){
 		return false;
 	}
@@ -100,34 +100,43 @@ function delImg(ele){
 		$(ele.parentElement).siblings().children(".confirmImg").hide();
 	}
 	$(ele.parentElement).remove();
+	var id = $(ele).siblings(".chooseByGally").attr("data-flag");
+	if(id){
+		eg.postAjax("image/delete",{"id":id},function(data){
+			console.log(data.status);
+			console.log(data.message);
+		})
+	}	
 }
 
 /**点击提交按钮**/
 $("#oBtn").on("tap",function(){
-	var uploadField = localStorage.getItem("uploadField");
 	var ele = $(".shakeImg").children("img");
-	if(ele.length < 0){
+	var eleSupply = $(".supplyImg").children("img");
+	if(ele.length + eleSupply.length < 0){
 		mui.toast("请上传照片");
 		return false;
 	}
-	var filesArr = []
-	for(var i = 0; i < ele.length; i++){
-		filesArr.push(ele[i].src.split(",")[1]);
-	}
-	plus.nativeUI.showWaiting("正在上传...");
-	eg.postAjax("customer/add/base", {
-			"customerbase": uploadField,
-			"files":filesArr.join(",")
+	for(var i = 0; i < eleSupply.length; i++){
+		var type = $(eleSupply[i]).parents(".imageDiv").attr("data-Type");
+		var file = eleSupply[i].src.split(",")[1];
+		console.log(type);
+		console.log(file);
+		plus.nativeUI.showWaiting("正在上传...");
+		eg.postAjax("upload/img", {
+			"file": file,
+			"customerId":sid,
+			"type":type
 		}, function(data) {
 			plus.nativeUI.closeWaiting();
-			if(data.status == "1"){
+			if(data.code == "1"){
             	mui.openWindow({
 					url: "./submitSuccess.html",
 					id: "submitSuccess"
 				});
-				localStorage.removeItem("uploadField");
             }else{
             	mui.toast("上传失败");
             }
 		})
+	}
 })
