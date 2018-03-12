@@ -100,11 +100,6 @@ mui.back = function(){
 	return false;
 }
 
-/**
- * 仅限注销登录用，其它刷新个人中心建议用eg.toPersonalInformationHome();  
- */
-
-
 /**版本检测**/
 //function queryAppInfo() {
 //	appType =  plus.os.name=="Android"? "apk":"ipa";

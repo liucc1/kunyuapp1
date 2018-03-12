@@ -16,10 +16,6 @@ mui.plusReady(function() {
 			$this.attr("data-key", items[0].value )
 		});
 	});
-	//获取token(每次进入该页面均重新获取)
-//	eg.getCsrf();
-	//不存在则重新获取
- 	//if (!localStorage.getItem("csrf")) {eg.getCsrf();}	
 });
 
 /**点击获取验证码**/
@@ -34,28 +30,16 @@ $("#getcode").on("tap",function(){
 });
 function getSms(csrf){
 	eg.postAjax("captCha", {
-		"_csrf":csrf,
 		"mobile":$("#phone").val().trim()
 		}, function(data) {
 			if(data.status=="1"){
-				$("#smscode").val(data.message);
+				Countdown("getcode");
+				mui.toast("短信发送成功");
 			}
-//		if(data.resCode !== "0") {
-//			return;
-//		}else{											
-//			eg.postAjax("safe/sendVerificateMessage.do", {//发送短信
-//					"mobile": $("#phone").val(),
-//					"serviceId": "02009001",
-//					"smsType":"REGIST"
-//				}, function(data) {
-//					Countdown("getcode");
-//					mui.toast("验证码已发送");
-//			});
-//		}
-	},function(data){
-//		if(data=="403") eg.getCsrf();
-	});
-}
+		},function(data){
+			
+		});
+	}
 /**用户协议书打开、关闭**/
 $("#alertBtn").on("tap",function(){
 	mask.show();
@@ -123,7 +107,7 @@ function istoregister(){
 		});
 		return false;
 	}
-	if(!$("#checkImg").hasClass("icon-xuanzekuang")) {
+	if($("#checkbox").hasClass("icon-xuanzekuang")) {
 		plus.nativeUI.toast("请先同意用户协议", {
 			duration: "short"
 		});
@@ -139,13 +123,10 @@ $("#oBtn").on("tap",function(){
  		$("#oBtn").removeAttr("disabled");
  		return
  	};
- 	//获取本地存储的token
- 	var csrf=localStorage.getItem("csrf");
- 	goRegister(csrf);
+ 	goRegister();
 });
-function goRegister(csrf){
+function goRegister(){
 	var params = {
-		"_csrf":csrf,
 		"mobile":$("#phone").val().trim(),
 		"code":$("#smscode").val().trim(),
 		"password":$("#pwd1").val().trim(),
@@ -167,8 +148,6 @@ function goRegister(csrf){
 		}
 	},function(data){
 		$("#oBtn").removeAttr("disabled");
-		//alert(data);
-//		if(data=="403") eg.getCsrf();
 	});
 }
 
