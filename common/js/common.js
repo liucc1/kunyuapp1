@@ -577,6 +577,18 @@ eg.getRandomNum = function() {
 	},false);
 	return enName;
 };
+/*回到登录页*/
+eg.toLoginPage = function(){
+	var all = plus.webview.all();
+	var curr = plus.webview.getLaunchWebview();
+	var login = plus.webview.getWebviewById("login");
+	for(var i = 0; i < all.length; i++) {
+		if(all[i] != curr && all[i] != login){
+			all[i].close();
+		}
+	}
+	login.reload();	
+}
 /*回到首页*/
 eg.toHome = function(){
 	var all = plus.webview.all();
@@ -594,12 +606,6 @@ eg.toHome = function(){
  * 回到账户首页 
  */
 eg.toMyAccountPage = function() {	
-// 	plus.webview.currentWebview().close();
-//	var btn = document.getElementById("account");
-////	plus.webview.getWebviewById("../customerInfo/myAcont.html").reload();
-//	mui.trigger(btn,"tap")
-	
-	
 	var details = plus.webview.getLaunchWebview();
 	mui.fire(details,"trige",{});
 };
@@ -607,39 +613,39 @@ eg.toMyAccountPage = function() {
  * 回到首页 
  */
 eg.toHomePage = function() {
-		toHomeIndexPage("../home/index.html");
+	toHomeIndexPage("../home/index.html");
 };
 /***
  * 回到个人中心首页 
  */
 eg.toPersonalInformationHome = function() {
-		toHomeIndexPage("../customerInfo/personalInformationHome.html");
+	toHomeIndexPage("../customerInfo/personalInformationHome.html");
 };
 /***
  * 回到发现首页 
  */
 eg.toFindIndex = function() {
-		toHomeIndexPage("../customerInfo/findIndex.html");
+	toHomeIndexPage("../customerInfo/findIndex.html");
 };
-function   toHomeIndexPage(pageID){
+function toHomeIndexPage(pageID){
 	//获取所有打开的webview
-		var allPage = plus.webview.all();
-		//首页
-		var homePage = plus.webview.getWebviewById("../home/home.html");//plus.webview.getLaunchWebview();
-		//获取首页页面	
-		var thisPage = plus.webview.getWebviewById(pageID);	
-		if(thisPage ==null){
-			 thisPage = plus.webview.getWebviewById("../customerInfo/indexEE.html");
+	var allPage = plus.webview.all();
+	//首页
+	var homePage = plus.webview.getWebviewById("../home/home.html");//plus.webview.getLaunchWebview();
+	//获取首页页面	
+	var thisPage = plus.webview.getWebviewById(pageID);	
+	if(thisPage ==null){
+		 thisPage = plus.webview.getWebviewById("../customerInfo/indexEE.html");
+	}
+	for(var i = 0;i < allPage.length;i++){
+		if(allPage[i] == homePage   || allPage[i] == thisPage){	
+				continue;	
+		}else{												
+			allPage[i].close();//关闭
 		}
-		for(var i = 0;i < allPage.length;i++){
-			if(allPage[i] == homePage   || allPage[i] == thisPage){	
-					continue;	
-			}else{												
-				allPage[i].close();//关闭
-			}
-		}				
-		homePage.show();				
-		thisPage.reload();
+	}				
+	homePage.show();				
+	thisPage.reload();
 }
 /***
  *竖屏 
@@ -654,17 +660,17 @@ mui.plusReady(function(){
  * @param {图片ID对象} img
  */
 
-  eg.getBase64Image = function(img) {
-            var canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, img.width, img.height);
-            var dataURL = canvas.toDataURL("image/png");
-            return dataURL ;// return dataURL.replace("data:image/png;base64,", ""); 
+eg.getBase64Image = function(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL ;// return dataURL.replace("data:image/png;base64,", ""); 
 }
-  
-  /****
+ 
+/****
  * 把图片转换为base64
  * @param {图片ID对象} img
  */
