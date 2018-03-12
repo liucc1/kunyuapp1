@@ -109,8 +109,11 @@ document.getElementById("confirmBtn").addEventListener('tap', function() {
 /*已驳回;9补送影像*/
 $('#oBtn1').on("tap",function(){
 	mui.openWindow({
-        url:"./uploadImages.html",
-        id:"uploadImages.html"
+        url:"./supply.html",
+        id:"supply",
+        extras:{
+        	"sid":sid
+        }
    	});
 })
 /*待完善;更新客户信息*/

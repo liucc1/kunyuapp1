@@ -63,7 +63,8 @@
 	},
 	"kunyupages/certifiedMessage/pendingListDetail.html": {
 		"refer": [
-			"kunyupages/certifiedMessage/uploadImages.html"
+			"kunyupages/certifiedMessage/uploadImages.html",
+			"kunyupages/certifiedMessage/supply.html"
 		]
 	},
 	"kunyupages/certifiedMessage/pendingList.html": {
@@ -100,6 +101,11 @@
 	"kunyupages/my/myInformance.html": {
 		"refer": [
 			"kunyupages/my/reviseCer.html"
+		]
+	},
+	"kunyupages/certifiedMessage/supply.html": {
+		"refer": [
+			"kunyupages/index/houseshow.html"
 		]
 	}
 }

@@ -327,7 +327,8 @@
 			"kunyupages/certifiedMessage/pendingListDetail.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/certifiedMessage/uploadImages.html"
+					"kunyupages/certifiedMessage/uploadImages.html",
+					"kunyupages/certifiedMessage/supply.html"
 				],
 				"priority": 0
 			},
@@ -335,6 +336,13 @@
 				"resources": [],
 				"refer": [
 					"kunyupages/login/login.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/certifiedMessage/supply.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/index/houseshow.html"
 				],
 				"priority": 0
 			}
