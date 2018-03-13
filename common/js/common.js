@@ -106,8 +106,8 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 			var csrf=s[s.length-2];
 			params._csrf = csrf;
 			console.log("获得csrf:"+csrf);
-			console.log("请求url："+url + ";上送参数为："+params);
 			params = JSON.stringify(params);
+			console.log("请求url："+url + ";上送参数为："+params);
 			$.ajax({
 				url: url,
 				contentType: "application/json",
