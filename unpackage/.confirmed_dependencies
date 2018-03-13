@@ -41,7 +41,8 @@
 			"kunyupages/my/informance.html",
 			"kunyupages/my/setPassword.html",
 			"kunyupages/my/charges.html",
-			"kunyupages/my/myInformance.html"
+			"kunyupages/my/myInformance.html",
+			"kunyupages/my/message.html"
 		],
 		"resources": []
 	},
@@ -109,6 +110,11 @@
 		"refer": [
 			"kunyupages/index/houseshow.html",
 			"kunyupages/certifiedMessage/submitSuccess.html"
+		]
+	},
+	"kunyupages/my/message.html": {
+		"refer": [
+			"kunyupages/my/messageDetail.html"
 		]
 	}
 }
