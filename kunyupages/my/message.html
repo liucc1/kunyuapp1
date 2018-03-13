@@ -75,10 +75,10 @@
 					<div id="item1" class="mui-slider-item mui-control-content mui-active bor_none">
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
-								<ul style="margin-top: 10px;" class="mui-table-view mui-table-view-striped mui-table-view-condensed back_fff">
+								<ul id="message" style="margin-top: 10px;" class="mui-table-view mui-table-view-striped mui-table-view-condensed back_fff">
 							        <li class="mui-table-view-cell">
 							            <div class="mui-table">
-							            	<div class=" mui-col-xs-12">
+							            	<div class="mui-col-xs-12">
 								            	<div class="mui-table-cell mui-col-xs-8">
 								                    <span class="mui-ellipsis">您的佣金到了</span>
 								                </div>
@@ -92,7 +92,7 @@
 							        </li>
 							        <li class="mui-table-view-cell">
 							            <div class="mui-table">
-							            	<div class=" mui-col-xs-12">
+							            	<div class="mui-col-xs-12">
 								            	<div class="mui-table-cell mui-col-xs-8">
 								                    <span class="mui-ellipsis">您的佣金到了</span>
 								                </div>
@@ -157,7 +157,7 @@
 							        </li>
 							        <li class="mui-table-view-cell">
 							            <div class="mui-table">
-							            	<div class=" mui-col-xs-12">
+							            	<div class="mui-col-xs-12">
 								            	<div class="mui-table-cell mui-col-xs-8">
 								                    <span class="mui-ellipsis">您的佣金到了</span>
 								                </div>
@@ -175,10 +175,10 @@
 					<div id="item2" class="mui-slider-item mui-control-content  bor_none">
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
-								<ul style="margin-top: 10px;" class="mui-table-view mui-table-view-striped mui-table-view-condensed back_fff">
+								<ul id="notice" style="margin-top: 10px;" class="mui-table-view mui-table-view-striped mui-table-view-condensed back_fff">
 							        <li class="mui-table-view-cell " onclick="goPage('messageDetail')">
 							            <div class="mui-table messageDiv">
-							            	<div class=" mui-col-xs-11">
+							            	<div class="mui-col-xs-11">
 								            	<div class="mui-table-cell mui-col-xs-6">
 								                    <span class="mui-ellipsis">额外佣金福利</span>
 								                </div>
@@ -191,7 +191,7 @@
 							        </li>
 							        <li class="mui-table-view-cell " onclick="goPage()">
 							            <div class="mui-table messageDiv">
-							            	<div class=" mui-col-xs-11">
+							            	<div class="mui-col-xs-11">
 								            	<div class="mui-table-cell mui-col-xs-6">
 								                    <span class="mui-ellipsis">额外佣金福利</span>
 								                </div>
@@ -212,14 +212,6 @@
 		<script src="../../common/js/mui.min.js"></script>
 		<script src="../../common/js/zepto.min.js"></script>
 		<script src="../../common/js/common.js"></script>
-		<script>
-			mui('.mui-scroll-wrapper').scroll()
-			function goPage(){
-				mui.openWindow({
-			        url:'./messageDetail.html',
-			        id:'messageDetail'
-			   	});
-			}
-		</script>
+		<script src="message.js"></script>
 	</body>
 </html>
