@@ -120,10 +120,10 @@ $("#oBtn").on("tap",function(){
 	for(var i = 0; i < eleSupply.length; i++){
 		var type = $(eleSupply[i]).parents(".imageDiv").attr("data-Type");
 		var file = eleSupply[i].src.split(",")[1];
-		console.log(type);
-		console.log(file);
+//		console.log(type);
+//		console.log(file);
 		plus.nativeUI.showWaiting("正在上传...");
-		eg.postAjax("upload/img", {
+		eg.postAjax("upload/img/base", {
 			"file": file,
 			"customerId":sid,
 			"type":type

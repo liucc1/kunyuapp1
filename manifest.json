@@ -343,7 +343,8 @@
 			"kunyupages/certifiedMessage/supply.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/index/houseshow.html"
+					"kunyupages/index/houseshow.html",
+					"kunyupages/certifiedMessage/submitSuccess.html"
 				],
 				"priority": 0
 			}

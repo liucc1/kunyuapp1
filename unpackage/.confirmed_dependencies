@@ -107,7 +107,8 @@
 	},
 	"kunyupages/certifiedMessage/supply.html": {
 		"refer": [
-			"kunyupages/index/houseshow.html"
+			"kunyupages/index/houseshow.html",
+			"kunyupages/certifiedMessage/submitSuccess.html"
 		]
 	}
 }
