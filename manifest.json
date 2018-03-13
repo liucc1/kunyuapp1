@@ -212,7 +212,8 @@
 					"kunyupages/index/houseSample.html",
 					"kunyupages/productmanage/productdetails.html",
 					"kunyupages/certifiedMessage/submitSuccess.html",
-					"kunyupages/certifiedMessage/pullrefresh.html"
+					"kunyupages/certifiedMessage/pullrefresh.html",
+					"kunyupages/index/bannerDetail.html"
 				],
 				"priority": 0
 			},

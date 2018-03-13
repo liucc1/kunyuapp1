@@ -21,6 +21,9 @@
 	    	.mui-card-content-inner {
 			    padding: 15px;
 			}
+			.mui-card-content-inner img{
+				max-width: 100%;
+			}
 			.mui-content>.mui-card:first-child{
 				margin-top: 10px;
 			}
@@ -49,13 +52,14 @@
 		</header>
 		<div class="mui-content">
 			<div class="mui-card">
-				<div class="mui-card-header" style="font-weight: bold;">额外佣金福利<br/></div>
-				<p class="mui-h5">2018/1/15 15:33</p>
+				<div id="title" class="mui-card-header" style="font-weight: bold;"></div>
+				<p id='time' class="mui-h5"></p>
 				<div class="mui-card-content" style="margin-top: -10px;">
-					<div class="mui-card-content-inner">
-						<div class="mui-card-header mui-card-media" style="height:50vw;background-image:url(../../images/cbd.jpg)"></div>
-						<p></p>
-						<p class="pads">这里显示文章摘要，让读者对文章内容有个粗略的概念...这里显示文章摘要，让读者对文章内容有个粗略的概念...这里显示文章摘要，让读者对文章内容有个粗略的概念...这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>
+					<div id="content" class="mui-card-content-inner">
+						<!--<div class="mui-card-header mui-card-media" style="height:50vw;background-image:url(../../images/cbd.jpg)"></div>-->
+						<!--<img src="data:image/png;base64,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" width="100%" />
+						<br />
+						<p class="pads">这里显示文章摘要，让读者对文章内容有个粗略的概念...这里显示文章摘要，让读者对文章内容有个粗略的概念...这里显示文章摘要，让读者对文章内容有个粗略的概念...这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>-->
 					</div>
 				</div>
 			</div>
@@ -64,4 +68,5 @@
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
+	<script src="messageDetail.js"></script>
 </html>

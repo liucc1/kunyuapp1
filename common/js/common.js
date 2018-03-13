@@ -46,20 +46,21 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 				async: isasync,
 				success: function(data){
 					plus.nativeUI.closeWaiting();
-					if (data.indexOf('html')=='-1') {//返回的不是页面信息
-						if(typeof data =='string'){data = JSON.parse(data);}
-						console.log("返回参数为："+JSON.stringify(data));
-					}else if(data.indexOf('登陆系统')!='-1'){//session超时处理
-						var all = plus.webview.all();
-						var login = plus.webview.getLaunchWebview();
-						for(var i = 0; i < all.length; i++) {
-							if(all[i] != login){
-								all[i].close();
-							}else{
-								login.reload();
+					if(typeof(data) == "string"){
+						if(data.indexOf('登陆系统')!='-1'){//session超时处理
+							var all = plus.webview.all();
+							var login = plus.webview.getLaunchWebview();
+							for(var i = 0; i < all.length; i++) {
+								if(all[i] != login){
+									all[i].close();
+								}else{
+									login.reload();
+								}
 							}
 						}
+						data = JSON.parse(data);
 					}
+					console.log("返回参数为："+JSON.stringify(data));
 					successFun(data);
 				},
 				error: function(jqXHR, textStatus, errorThrown){
@@ -106,8 +107,8 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 			var csrf=s[s.length-2];
 			params._csrf = csrf;
 			console.log("获得csrf:"+csrf);
-			params = JSON.stringify(params);
 			console.log("请求url："+url + ";上送参数为："+params);
+			params = JSON.stringify(params);
 			$.ajax({
 				url: url,
 				contentType: "application/json",

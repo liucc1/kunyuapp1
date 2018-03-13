@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>影像审核不通过</title>
+		<title>首页</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -39,11 +39,16 @@
 	    		top: 90px;
 	    		left: 6px;
 	    	}
+	    	.mui-table-view .mui-media-object{
+	    		border-radius: 5px;
+			    padding: 1px;
+			    border: 0.5px solid #e3e3e3;
+	    	}
 	    </style>
 	</head>
 	<body>
 		<div>
-			<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../../images/cbd.jpg)"></div>
+			<div id="banner" class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../../images/banner1.png)"></div>
 			<div class="mui-card-content" style="background-color: white;">
 				<div class="mui-card-content-inner">
 					<a><img style="max-width: 20px;" src="../../images/broad.png"/></a>
@@ -56,7 +61,7 @@
 			<ul class="mui-table-view mui-grid-view" style="background-color: white;">
 		        <li class="mui-table-view-cell mui-media mui-col-xs-12" style="padding-bottom: 15px;">
 		            <a>
-		                <img style="max-width: 40%;" class="mui-media-imgs" onclick="goCertified()" src="../../images/a.png">
+		                <img  onclick="goCertified()" style="max-width: 40%;" class="mui-media-imgs" src="../../images/a.png">
 		               <div class="mui-media-body">信用贷款</div>
 		               <div class="mui-media-body ts">信用极好</div>
 		                <div class="mui-media-body tsp">立即推荐</div>
@@ -91,7 +96,7 @@
 			<ul id="productlist" class="mui-table-view mui-table-view-chevron">
 				<li class="mui-table-view-cell mui-media" data-type="arbitCons">
 					<a class="mui-navigate-right">
-						<img class="mui-media-object mui-pull-left" src="../../images/cbd.jpg">
+						<img class="mui-media-object mui-pull-left" src="../../images/product_icon1.png">
 						<label>任性花</label></br>
 						<p class='mui-ellipsis fl'>最高30万</span></p>
 						<p class='mui-ellipsis fr mr20'>年利率:<span class="spcol">7%</span></p>
@@ -99,7 +104,7 @@
 				</li>
 				<li class="mui-table-view-cell mui-media" data-type="arbitSta">
 					<a class='mui-navigate-right' href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../../images/cbd.jpg">
+						<img class="mui-media-object mui-pull-left" src="../../images/product_icon2.png">
 						<label>任分期</label></br>
 						<p class='mui-ellipsis fl'>最高30万</span></p>
 						<p class='mui-ellipsis fr mr20'>年利率:<span class="spcol">7%</span></p>
@@ -130,6 +135,13 @@
 		        id:"pendingList"
 		   	});
 		}
+		//banner详情
+		$("#banner").on('tap',function(){
+			mui.openWindow({
+		        url:"../index/bannerDetail.html",
+		        id:"bannerDetail"
+		   	});
+		})
 		//房产示例
 		$("#houseSample").on('tap',function(){
 			mui.openWindow({

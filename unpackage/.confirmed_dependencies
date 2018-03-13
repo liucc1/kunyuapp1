@@ -16,7 +16,8 @@
 			"kunyupages/certifiedMessage/pendingList.html",
 			"kunyupages/certifiedMessage/certifiedMessage.html",
 			"kunyupages/certifiedMessage/submitSuccess.html",
-			"kunyupages/certifiedMessage/pullrefresh.html"
+			"kunyupages/certifiedMessage/pullrefresh.html",
+			"kunyupages/index/bannerDetail.html"
 		],
 		"resources": []
 	},
