@@ -3,7 +3,24 @@ mui.init();
 mui.plusReady(function(){
 	var self = plus.webview.currentWebview();
 	$("#name").val(self.name);
-	$("#idNo").val(self.idNo);
+	$("#phone").val(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
+})
+
+/**点击获取验证码**/
+$("#getcode").on("tap",function(){
+	var phoneNum = localStorage.getItem("phone");
+	eg.postAjax("captCha", {
+		"mobile":phoneNum
+	}, function(data) {
+		if(data.status=="1"){
+			Countdown("getcode");
+			mui.toast("短信发送成功");
+		}else{
+			mui.toast(data.message);
+		}
+	},function(data){
+		
+	});
 })
 
 $("#oBtn").on('tap',function(){
@@ -11,17 +28,22 @@ $("#oBtn").on('tap',function(){
 	var idNo = $("#idNo").val();
 	var cardNo = $("#cardNo").val();
 	var phone = $("#phone").val();
+	var smscode = $("#smscode").val();
 	var depositBank = $("#depositBank").val();
 	if(isNullVal(cardNo)){
 		mui.toast("银行卡号不能为空！");
 		return false;
 	}
-	if(isNullVal(phone)) {
-		mui.toast("手机号码不能为空！");
-		return false;
-	}
-	if(!eg.phone.test(phone)) {
-		mui.toast("手机号码格式不正确！");
+//	if(isNullVal(phone)) {
+//		mui.toast("手机号码不能为空！");
+//		return false;
+//	}
+//	if(!eg.phone.test(phone)) {
+//		mui.toast("手机号码格式不正确！");
+//		return false;
+//	}
+	if(isNullVal(smscode)) {
+		mui.toast("验证码不能为空！");
 		return false;
 	}
 	if(isNullVal(depositBank)) {
@@ -31,10 +53,10 @@ $("#oBtn").on('tap',function(){
 	var params = {
 		idNo:idNo,
 		name:name,
-		mobile:phone,
+//		mobile:phone,
 		cardNo:cardNo,
 		depositBank:depositBank,
-		city:"北京"
+		validCode:smscode
 	}
 	eg.postAjax2("user/data", params, function(data){
 		if(data.status == 1){

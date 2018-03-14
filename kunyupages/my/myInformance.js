@@ -7,7 +7,7 @@ mui.plusReady(function(){
 		$("#idNo").val(info.idNo);
 		$("#cardNo").val(info.cardNo);
 		$("#depositBank").val(info.depositBank);
-		$("#phone").val(localStorage.getItem("phone"));
+		$("#phone").val(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		$("#city").val(info.city);
 		$("#telephone").val(info.serviceTel);
 		$("#telRow").on('tap',function(){
@@ -29,10 +29,10 @@ $("#changeCardNo").on('tap',function(){
 	})
 })
 
-//更换手机号
-$("#changePhone").on('tap',function(){
-	mui.openWindow({
-		url: "revisePhone.html",
-		id: "revisePhone"
-	})
-})
+//更换手机号-暂时先不允许更换
+//$("#changePhone").on('tap',function(){
+//	mui.openWindow({
+//		url: "revisePhone.html",
+//		id: "revisePhone"
+//	})
+//})
