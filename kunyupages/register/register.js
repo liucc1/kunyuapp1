@@ -25,21 +25,27 @@ $("#getcode").on("tap",function(){
 		mui.toast("手机号码格式不正确！");
 		return;
 	};
-	var csrf=localStorage.getItem("csrf");
- 	getSms(csrf);
+	eg.postAjax("search/mobile",{"mobile":phoneNum}, function(data) {
+		if(data.status == "1"){
+ 			getSms();
+		}else{
+			mui.toast("手机号已存在，不可重复注册！");
+			return false;
+		}
+	});
 });
-function getSms(csrf){
+function getSms(){
 	eg.postAjax("captCha", {
 		"mobile":$("#phone").val().trim()
-		}, function(data) {
-			if(data.status=="1"){
-				Countdown("getcode");
-				mui.toast("短信发送成功");
-			}
-		},function(data){
-			
-		});
-	}
+	}, function(data) {
+		if(data.status=="1"){
+			Countdown("getcode");
+			mui.toast("短信发送成功");
+		}
+	},function(data){
+		
+	});
+}
 /**用户协议书打开、关闭**/
 $("#alertBtn").on("tap",function(){
 	mask.show();
