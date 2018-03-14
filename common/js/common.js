@@ -254,18 +254,6 @@ eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
 
 };
 
-/***
- * 
- * @param {请求.do} url
- * @param {上送参数} params
- * @param {成功回调} fun
- * @param {是否异步} isasync
- * PS ： 是否异步为非必传项
- */
-eg.generalPostAjax = function(url, params, sucfun,errfun,isasync) {
-	if(typeof(isasync) =="undefined"){ isasync = true;}	
-	eg.generalAjax(eg.jrURL + url, params, "POST", sucfun,errfun, isasync);
-};
 /**页面跳转**/
 /**进入首页**/
 eg.tohomeindex = function() {
