@@ -44,6 +44,10 @@
 			    padding: 1px;
 			    border: 0.5px solid #e3e3e3;
 	    	}
+	    	.mui-card-content-inner>div{
+	    		width: 92%;
+    			float: right;
+	    	}
 	    </style>
 	</head>
 	<body>
@@ -51,8 +55,13 @@
 			<div id="banner" class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../../images/banner1.png)"></div>
 			<div class="mui-card-content" style="background-color: white;">
 				<div class="mui-card-content-inner">
-					<a><img style="max-width: 20px;" src="../../images/broad.png"/></a>
-					<span>在线佣金：佣金支付再提速，升级高级客户可享</span>
+					<a id="allNotice"><img style="max-width: 20px;" src="../../images/broad.png"/></a>
+					<div id="notice">
+						<ul>
+							<!--<li class="mui-ellipsis">在线佣金1：佣金支付再提速，升级高级客户可享</li>
+							<li class="mui-ellipsis">在线佣金2：佣金支付再提速，升级高级客户可享</li>-->
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -114,51 +123,8 @@
 		</div>
 	</body>
 	<script src="../../common/js/mui.min.js"></script>
-	<script src="../../common/js/zepto.min.js" ></script>
+	<script src="../../plugins/jquery-1.10.2.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
-	<script>
-		$("#scheduleDetail").on("tap",function(){
-			mui.openWindow({
-		        url:"../certifiedMessage/scheduleList.html",
-		        id:"scheduleList"
-		   	});
-		})
-		$("#dealDetail").on("tap",function(){
-			mui.openWindow({
-		        url:"../certifiedMessage/pendingList.html",
-		        id:"pendingList"
-		   	});
-		})
-		function goCertified(){
-			mui.openWindow({
-		        url:"../certifiedMessage/certifiedMessage.html",
-		        id:"pendingList"
-		   	});
-		}
-		//banner详情
-		$("#banner").on('tap',function(){
-			mui.openWindow({
-		        url:"../index/bannerDetail.html",
-		        id:"bannerDetail"
-		   	});
-		})
-		//房产示例
-		$("#houseSample").on('tap',function(){
-			mui.openWindow({
-				"url" : "../index/houseSample.html",
-				"id": "houseSample"		
-			});
-		})
-		//产品介绍
-		$("#productlist").on('tap','li',function(){
-			var type = $(this).attr("data-type");
-			mui.openWindow({
-				"url" : "../productmanage/productdetails.html",
-				"id": "productdetails",
-				extras:{
-					type:type
-				}
-			});
-		})
-	</script>
+	<script src="../../plugins/jquery.vticker.min.js"></script>
+	<script src="index.js"></script>
 </html>
