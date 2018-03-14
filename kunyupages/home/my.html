@@ -48,7 +48,8 @@
 		<header class="mui-bar mui-bar-nav" style="background-color:#D30D24"></header>
 		<div class="mui-content">
 			<div id="square">
-                <img style="width: 7rem;border: 2px solid #fff;border-radius: 50%;" class="mui-media-imgs" src="../../images/loginafterimg.png">
+                <img style="width: 7rem;border: 2px solid #fff;border-radius: 50%;" class="mui-media-imgs none" id="notLogin" src="../../images/loginafterimg.png">
+                <img style="width: 7rem;height: 7rem;border: 2px solid #fff;border-radius: 50%;" class="mui-media-imgs none" id="uploadImg" src="../../images/loginafterimg.png"/>
                 <div id="phone" class="mui-media-body" style="color: white;margin-top: 1rem;"></div>
 			</div>
 			<ul class="mui-table-view mui-table-view-group">
@@ -85,12 +86,14 @@
 				</li>
 			</ul>
 			<div class="mui-content-padded" style="margin-top: 50px;">
-				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">退出登录</button>
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block none">退出登录</button>
+				<button type="button" id="login" class="mui-btn mui-btn-danger mui-btn-block none">登录/注册</button>
 			</div>
 		</div>
 	</body>
 	<script src="../../common/js/mui.min.js"></script>
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
+	<script src="../../plugins/exif.js"></script>
 	<script src="my.js"></script>
 </html>

@@ -98,7 +98,9 @@
 			alert("err==="+data);
 		});
 	}
-
+	$("#closex").on("tap",function(){
+		plus.webview.currentWebview().close();
+	})
 })()
 
 //-----------------上线要用的密码键盘-------------------------------
