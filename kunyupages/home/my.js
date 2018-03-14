@@ -10,7 +10,6 @@ mui.plusReady(function(){
 		var url = eg.jrURL + "user/portrait";
 		plus.nativeUI.showWaiting();
 		$.get(url, function(data) {	
-			console.log(JSON.stringify(data));
 			if(data.status == "1"){
 				$("#uploadImg").attr("src","data:image/jpeg;base64," + data.data);
 			}
@@ -58,6 +57,7 @@ $("#oBtn").on("tap",function(){
 	var params = {};
 	eg.postAjax2("logout",params, function(data) {
 		plus.webview.currentWebview().reload();
+		localStorage.removeItem("phone");
 //		eg.toLoginPage();
 	},function(data){
 
