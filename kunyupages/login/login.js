@@ -89,10 +89,12 @@
 				mui.alert("您输入的用户名或密码不正确，或您未注册！");
 			} else if(data.resCode==0){
 				localStorage.setItem("phone",$("#phone").val().trim());
-				mui.openWindow({
-	                url:"../home/home.html",
-	                id:"home"
-	         	});
+				plus.webview.currentWebview().close();
+				plus.webview.getWebviewById("./my.html").reload();
+//				mui.openWindow({
+//	                url:"../home/home.html",
+//	                id:"home"
+//	         	});
 			}
 		},function(data){
 			alert("err==="+data);

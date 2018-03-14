@@ -215,7 +215,9 @@
 					"kunyupages/productmanage/productdetails.html",
 					"kunyupages/certifiedMessage/submitSuccess.html",
 					"kunyupages/certifiedMessage/pullrefresh.html",
-					"kunyupages/index/bannerDetail.html"
+					"kunyupages/index/bannerDetail.html",
+					"kunyupages/login/login.html",
+					"kunyupages/my/message.html"
 				],
 				"priority": 0
 			},
@@ -240,7 +242,8 @@
 			"kunyupages/productmanage/productdetails.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/certifiedMessage/certifiedMessage.html"
+					"kunyupages/certifiedMessage/certifiedMessage.html",
+					"kunyupages/login/login.html"
 				],
 				"priority": 0
 			},
@@ -266,14 +269,16 @@
 				"resources": [],
 				"refer": [
 					"kunyupages/certifiedMessage/pendingListDetail.html",
-					"kunyupages/certifiedMessage/scheduleList.html"
+					"kunyupages/certifiedMessage/scheduleList.html",
+					"kunyupages/login/login.html"
 				],
 				"priority": 0
 			},
 			"kunyupages/certifiedMessage/pendingList.html": {
 				"resources": [],
 				"refer": [
-					"kunyupages/certifiedMessage/pendingListDetail.html"
+					"kunyupages/certifiedMessage/pendingListDetail.html",
+					"kunyupages/login/login.html"
 				],
 				"priority": 0
 			},

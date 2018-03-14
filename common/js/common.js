@@ -125,16 +125,6 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 					if (data.indexOf('html')=='-1') {//返回的不是页面信息
 						if(typeof data =='string'){data = JSON.parse(data);}
 						console.log("返回参数为："+JSON.stringify(data));	
-					}else if(data.indexOf('登陆系统')!='-1'){//session超时处理
-						var all = plus.webview.all();
-						var login = plus.webview.getLaunchWebview();
-						for(var i = 0; i < all.length; i++) {
-							if(all[i] != login){
-								all[i].close();
-							}else{
-								login.reload();
-							}
-						}
 					}
 					successFun(data);
 				},
@@ -225,7 +215,7 @@ eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
 	isasync = isasync || false;
 	console.log("请求url："+url + ";上送参数为："+JSON.stringify(params));
 	$.ajax({
-		url: url,
+		url: eg.jrURL + url,
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		type: method,
 		timeout : 60000,
@@ -234,8 +224,15 @@ eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
 		async: isasync,
 		success: function(data){
 			plus.nativeUI.closeWaiting();
+			if(typeof data == "string"){
+				data = JSON.parse(data)
+			}
 			console.log("返回参数为："+JSON.stringify(data));
-			sucfun(data);
+			if(data.status != "-13"){
+				sucfun();
+			}else{
+				errfun();
+			}
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			plus.nativeUI.closeWaiting();			
@@ -252,7 +249,6 @@ eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
 			}
 			//var jsonRep=JSON.parse(jqXHR)
 			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
-			errfun(jqXHR.status); 
 		}
 	});
 
@@ -672,51 +668,21 @@ eg.getBase64Image = function(img) {
 
 
 /**
- * 判断当前session是否可用
+ * 判断当前用户是否登录
+ * 参数：lineFun：登录状态的回调函数
+ *      OffLineFun:未登录状态的回调函数
  */
-eg.sessionCanUse = function() {
-	
-	var resultData = false;
-		//1.首先判断user是否为空
-	var user = localStorage.getItem("user");
-	if(user !== null ){//不为空
-		
-		var parameters = {
-		"serviceId": "02001007"
-	};
-	var url = "user/judgeUserLogin.do";
-	plus.nativeUI.showWaiting();
-	eg.postAjax(url, parameters, function(data) {
-		plus.nativeUI.closeWaiting();	
-		resultData = data.result;
-		
-		if(!data.result){			
-			localStorage.removeItem("user");//移除user信息
-		}
-	
-	},false);
-	}	
-		
-	return resultData;	
-};
-
-
-
-/**
- * 必须登录的页面跳转
- * @param {Object} destinationPage   目标页面路径
- * @param {Object} pageId            目标页面ID
- */
-eg.goMustLoginPage =  function(destinationPage,pageId) {
-	if(eg.sessionCanUse()){
-		 mui.openWindow({
-                 url:destinationPage,
-                	id:pageId
-           	});
-	}else{
-		eg.toLogin(destinationPage,pageId);
+eg.loginAjax = function(lineFun,OffLineFun) {
+	if(!OffLineFun){
+		OffLineFun = function(){
+			mui.openWindow({
+				url:"../login/login.html",
+				id:"login"
+			})
+		};
 	}
-};	
+	eg.generalAjax("app/logstatus", {}, 'get', lineFun, OffLineFun);
+};
 
 /**
  * 去登录

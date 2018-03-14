@@ -1,8 +1,7 @@
 mui.init();
 mui.plusReady(function(){
-	var phone = localStorage.getItem("phone");
-	alert(phone);
-	if(phone){
+//	var phone = localStorage.getItem("phone");
+	eg.loginAjax(function(){
 		$("#uploadImg").removeClass("none")
 		$("#phone").text(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		$("#oBtn").removeClass("none");
@@ -15,50 +14,59 @@ mui.plusReady(function(){
 			}
 			plus.nativeUI.closeWaiting();
 		});
-	}else{
+	},function(){
 		$("#notLogin").removeClass("none")
 		$("#login").removeClass("none");
-	}
+	})
 	$("#telphone").on('tap',function(){
 		var phoneNum = $(this).children("font").text();
 		plus.device.dial(phoneNum);
 	})
 })
 function goPage(param){
-	var url = '../my/'+param+'.html'
-	console.log(url)
-	mui.openWindow({
-        url:url,
-        id:param
-   	});
+	eg.loginAjax(function(){
+		var url = '../my/'+param+'.html'
+		mui.openWindow({
+	        url:url,
+	        id:param
+	   	});
+   	})
 }
+//我的资料
 $("#myInfo").on('tap',function(){
-	eg.ajax(eg.jrURL + "user/logininfo", {}, 'get', function(data){
-		if(data.status == 1){
-			if(data.data.userType == 0){
-				mui.openWindow({
-			        url:"../my/informance.html",
-			        id:"informance"
-			   	});
+	eg.loginAjax(function(){
+		eg.ajax(eg.jrURL + "user/logininfo", {}, 'get', function(data){
+			if(data.status == 1){
+				if(data.data.userType == 0){
+					mui.openWindow({
+				        url:"../my/informance.html",
+				        id:"informance"
+				   	});
+				}else{
+					mui.openWindow({
+				        url:"../my/myInformance.html",
+				        id:"myInformance"
+				   });
+				}
 			}else{
-				mui.openWindow({
-			        url:"../my/myInformance.html",
-			        id:"myInformance"
-			   });
+				mui.toast(data.message);
 			}
-		}else{
-			mui.toast(data.message);
-		}
-	},function(){
-		
+		},function(){
+			
+		})
 	})
+})
+//公司简介
+$("#companyProfile").on('tap',function(){
+	mui.openWindow({
+        url:"../my/companyProfile.html",
+        id:"companyProfile"
+    });
 })
 $("#oBtn").on("tap",function(){
 	var params = {};
 	eg.postAjax2("logout",params, function(data) {
 		plus.webview.currentWebview().reload();
-		localStorage.removeItem("phone");
-//		eg.toLoginPage();
 	},function(data){
 
 	});
@@ -69,9 +77,9 @@ $("#login").on("tap",function(){
 		id:"login"
 	})
 })
-$("#notLogin").on("tap",function(){
-	mui.toast("请登录后上传头像");
-})
+//$("#notLogin").on("tap",function(){
+//	mui.toast("请登录后上传头像");
+//})
 
 /*上传头像*/
 $("#uploadImg").on("tap",function(){

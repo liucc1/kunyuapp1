@@ -23,22 +23,29 @@ mui.plusReady(function(){
 })
 
 $("#scheduleDetail").on("tap",function(){
-	mui.openWindow({
-        url:"../certifiedMessage/scheduleList.html",
-        id:"scheduleList"
-   	});
+	eg.loginAjax(function(){
+		mui.openWindow({
+	        url:"../certifiedMessage/scheduleList.html",
+	        id:"scheduleList"
+	   	});
+	})
 })
 $("#dealDetail").on("tap",function(){
-	mui.openWindow({
-        url:"../certifiedMessage/pendingList.html",
-        id:"pendingList"
-   	});
+	eg.loginAjax(function(){
+		mui.openWindow({
+	        url:"../certifiedMessage/pendingList.html",
+	        id:"pendingList"
+	   	});
+    })
 })
 function goCertified(){
-	mui.openWindow({
-        url:"../certifiedMessage/certifiedMessage.html",
-        id:"pendingList"
-   	});
+	eg.loginAjax(function(){
+		mui.openWindow({
+	        url:"../certifiedMessage/certifiedMessage.html",
+	        id:"pendingList"
+	   	});
+	})
+	
 }
 //banner详情
 $("#banner").on('tap',function(){
@@ -80,8 +87,10 @@ mui("#notice>ul").on('tap','li',function(){
 
 //查看全部消息
 $("#allNotice").on('tap',function(){
-	mui.openWindow({
-        url:'../my/message.html',
-        id:'message'
-   	});
+	eg.loginAjax(function(){
+		mui.openWindow({
+	        url:'../my/message.html',
+	        id:'message'
+	   	});
+   	})
 })

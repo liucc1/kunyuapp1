@@ -13,8 +13,10 @@ mui.plusReady(function(){
 })
 
 $("#btn").on("tap",function(){
-	mui.openWindow({
-        url:"../certifiedMessage/certifiedMessage.html",
-        id:"certifiedMessage"
-   	});
+	eg.loginAjax(function(){
+		mui.openWindow({
+	        url:"../certifiedMessage/certifiedMessage.html",
+	        id:"certifiedMessage"
+	   	});
+   	})
 })
