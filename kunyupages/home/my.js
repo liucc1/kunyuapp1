@@ -6,6 +6,16 @@ mui.plusReady(function(){
 		$("#uploadImg").removeClass("none")
 		$("#phone").text(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		$("#oBtn").removeClass("none");
+		//获取头像base64
+		var url = eg.jrURL + "user/portrait";
+		plus.nativeUI.showWaiting();
+		$.get(url, function(data) {	
+			console.log(JSON.stringify(data));
+			if(data.status == "1"){
+				$("#uploadImg").attr("src","data:image/jpeg;base64," + data.data);
+			}
+			plus.nativeUI.closeWaiting();
+		});
 	}else{
 		$("#notLogin").removeClass("none")
 		$("#login").removeClass("none");
@@ -15,9 +25,6 @@ mui.plusReady(function(){
 		plus.device.dial(phoneNum);
 	})
 })
-//$(function(){
-//	$("#phone").text(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
-//})
 function goPage(param){
 	var url = '../my/'+param+'.html'
 	console.log(url)
@@ -35,12 +42,10 @@ $("#myInfo").on('tap',function(){
 			        id:"informance"
 			   	});
 			}else{
-//						if(data.data.userCode == "M"){
-					mui.openWindow({
-				        url:"../my/myInformance.html",
-				        id:"myInformance"
-				   	});
-//						}
+				mui.openWindow({
+			        url:"../my/myInformance.html",
+			        id:"myInformance"
+			   });
 			}
 		}else{
 			mui.toast(data.message);
@@ -58,7 +63,12 @@ $("#oBtn").on("tap",function(){
 
 	});
 })
-
+$("#login").on("tap",function(){
+	mui.openWindow({
+		url:"../login/login.html",
+		id:"login"
+	})
+})
 $("#notLogin").on("tap",function(){
 	mui.toast("请登录后上传头像");
 })
@@ -67,7 +77,6 @@ $("#notLogin").on("tap",function(){
 $("#uploadImg").on("tap",function(){
 	var btnArray = [{title:"我的相册"},{title:"拍照"}];
 	plus.nativeUI.actionSheet( {
-//				title:"选择照片",
 		cancel:"取消",
 		buttons:btnArray
 	}, function(e){
@@ -77,8 +86,7 @@ $("#uploadImg").on("tap",function(){
 				break;
 			case 1:
 			plus.gallery.pick(function(p) {
-//						imageToBase64(p);
-					imageBack(p);
+				imageBack(p);
 			},function(error){
 				
 				});
@@ -97,7 +105,7 @@ var localurl="";
 function getImage() {
 	var cmr = plus.camera.getCamera();
 	cmr.captureImage(function(p) {
-	plus.io.resolveLocalFileSystemURL(p, function(entry) {
+		plus.io.resolveLocalFileSystemURL(p, function(entry) {
 			localurl = entry.toLocalURL();
 			var img=new Image();
 			img.src=localurl;
@@ -119,7 +127,6 @@ function getImage() {
 						},	function (eventData){
 							var target = eventData.target;	
 							$("#uploadImg").attr("src",target);
-//								uploadImg.src = target;
 							imageToBase64(target);
 						},function(error) {
 							alert("error code:"+error.code+",error message:"+error.message);
@@ -134,20 +141,20 @@ function getImage() {
 function orisAndroid(ori,path){
     switch(ori){ 
 		case 1:
-			//当为1时候，显示正确
-//					alert('正常显示');
+//			当为1时候，显示正确
+//			alert('正常显示');
 		  	rotateImage(0,path);
 		  	break;
 		case 3:
-//				  	alert('旋转180');
+//			alert('旋转180');
 		  	rotateImage(2,path);
 		  	break;
 		case 6:
-//				  	alert("顺时针旋转90");
+//			alert("顺时针旋转90");
 		  	rotateImage(1,path);
 		  	break;
 		case 8:
-//				  	alert("逆时针旋转90");
+//			alert("逆时针旋转90");
 		  	rotateImage(3,path);
 		  	break;
 		default:
@@ -170,6 +177,7 @@ function rotateImage(Ori,path){
 			rotate:90*Ori		// 旋转90度
 		},
 		function() {
+			
 		},function(error) {
 			alert("error code:"+error.code+",error message:"+error.message);
 			plus.nativeUI.closeWaiting();
@@ -178,11 +186,10 @@ function rotateImage(Ori,path){
 }
 
 function imageBack(path) {
-	
-	 	var img=new Image();
-	 	localurl  = path;
-		img.src=localurl;
-		img.onload=function(){
+ 	var img = new Image();
+ 	localurl = path;
+	img.src = localurl;
+	img.onload = function(){
 		plus.nativeUI.showWaiting( "头像上传中..." );
 		if(plus.os.name == 'Android'){
 			EXIF.getData(img,function(){
@@ -191,21 +198,20 @@ function imageBack(path) {
 			});
 		}else{
 			EXIF.getData(img,function(){
-							var ori=EXIF.getTag(this,"Orientation");
-							plus.zip.compressImage({
-								src:localurl,
-								dst:localurl,
-								overwrite:true,
-								rotate:90*0		// 旋转90度
-							},	function (eventData){
-								var target = eventData.target;	
-								$("#uploadImg").attr("src",target);
-//								uploadImg.src = target;
-								imageToBase64(target);
-							},function(error) {
-								alert("error code:"+error.code+",error message:"+error.message);
-							});
-						});
+				var ori=EXIF.getTag(this,"Orientation");
+				plus.zip.compressImage({
+					src:localurl,
+					dst:localurl,
+					overwrite:true,
+					rotate:90*0		// 旋转90度
+				},	function (eventData){
+					var target = eventData.target;	
+					$("#uploadImg").attr("src",target);
+					imageToBase64(target);
+				},function(error) {
+					alert("error code:"+error.code+",error message:"+error.message);
+				});
+			});
 		}
 	}
 }
@@ -230,15 +236,13 @@ function imageToBase64(p){
             var parameters = {
 				"portrait": base64.split(',')[1]
 			};
-		//调取提交接口
-		eg.postAjax("user/portrait", parameters, function(data) {
-			if(data.status == "1"){
-				mui.toast("上传头像成功");			
-				$("#uploadImg").attr("src",base64);
-//				uploadImg.src = base64;	
-			}
-			plus.nativeUI.closeWaiting();
-		})
-           
-    }
+			//调取提交接口
+			eg.postAjax("user/portrait", parameters, function(data) {
+				if(data.status == "1"){
+					mui.toast("上传头像成功");			
+					$("#uploadImg").attr("src",base64);
+				}
+				plus.nativeUI.closeWaiting();
+			})           
+	    }
 }
