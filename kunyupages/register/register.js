@@ -142,15 +142,15 @@ function goRegister(){
 		$("#oBtn").removeAttr("disabled");
 		var status=data.status;
 		if(status=='1'){
-			mui.alert("注册成功！");
+			mui.toast("注册成功！");
 			plus.webview.currentWebview().close();//关闭注册页，回到登录页。
 			mui.back();
 		}else if(status=='-2'){
-			mui.alert("注册失败，用户已经存在！");
+			mui.toast("注册失败，用户已经存在！");
 		}else if(status=='-6'){
-			mui.alert("验证码输入错误！");
+			mui.toast("验证码输入错误！");
 		}else{
-			mui.alert("注册失败！");
+			mui.toast("注册失败！");
 		}
 	},function(data){
 		$("#oBtn").removeAttr("disabled");
