@@ -32,7 +32,7 @@ $('#oBtn').click(function() {
     	mui.toast("您输入的新密码格式不正确");
     	return false;
    	}
-	if(newPwd1 != newPwd2){
+	if(afterPwdVal != afterPwdVal2){
 		mui.toast("两次密码不一致", { duration: "short" });
 		return;
 	}
@@ -43,9 +43,9 @@ $('#oBtn').click(function() {
 //		return false;
 //	}
 	var params = {	
-		"oldPass":oldPwd,
-		"newPass":newPwd1,
-		"repeatNewPass":newPwd2
+		"oldPass":beforPwdVal,
+		"newPass":afterPwdVal,
+		"repeatNewPass":afterPwdVal2
 	}
 	eg.postAjax2("chgpass",params, function(data) {
 		if(data.status == "1" ){

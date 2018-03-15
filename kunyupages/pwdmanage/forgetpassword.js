@@ -27,22 +27,6 @@ function canSubmit(){
 //		mui.toast("新输入密码不能为空！");
 //		return false;
 //	};
-//	if($("#pwd1").val()!=$("#pwd2").val()) {
-//		mui.toast("两次输入的密码不一致！");
-//		$("#pwd2").val("");
-//		return false;
-//	};
-//	if(!eg.phone.test($("#phone").val())) {
-//		mui.toast("手机号格式不正确！");
-//		$("#phone").val("");
-//		return false;
-//	}
-//	if(eg.passwd.test($("#pwd1").val())) {
-//		mui.toast("密码设置不符合要求！");
-//		$("#pwd1").val("");
-//		$("#pwd2").val("");
-//		return false;
-//	}
 }
 /**点击获取验证码**/
 $("#getcode").on("tap",function(){
@@ -75,19 +59,21 @@ $("#getcode").on("tap",function(){
 });
 /**点击提交按钮**/
 $("#oBtn").on("tap",function(){
-	var params = {
-		"mobile":$("#phone").val().trim(),
-		"code":$("#smscode").val().trim(),
-		"password":$("#pwd1").val().trim()
-	};
-	eg.postAjax("forget", params, function(data) {
-		plus.nativeUI.toast("密码修改成功！", {
-			duration: "short"
+	if(canSubmit()){
+		var params = {
+			"mobile":$("#phone").val().trim(),
+			"code":$("#smscode").val().trim(),
+			"password":forgetPasswordVal
+		};
+		eg.postAjax("forget", params, function(data) {
+			plus.nativeUI.toast("密码修改成功！", {
+				duration: "short"
+			});
+			mui.back();
+		},function(data){
+	
 		});
-		mui.back();
-	},function(data){
-
-	});
+	}
 });
 
 //----------------上线要用的密码键盘代码start-------------------
