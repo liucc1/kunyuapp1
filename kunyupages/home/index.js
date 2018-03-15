@@ -20,6 +20,7 @@ mui.plusReady(function(){
 			mui.toast(data.message);
 		}
 	})
+	plus.nativeUI.closeWaiting();
 })
 
 $("#scheduleDetail").on("tap",function(){

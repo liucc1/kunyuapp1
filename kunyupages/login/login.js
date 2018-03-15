@@ -33,18 +33,19 @@
 			mui.toast("手机号码不能为空");
 			return false;
 		};
+		if(!eg.phone.test($("#phone").val())) {
+			mui.toast("手机号输入有误！");
+			return false;
+		};
 		if(!$("#pwd").val()) {
 			mui.toast("密码不能为空");
 			return false;
 		};
-//		if(!eg.phone.test($("#phone").val())) {
-//			mui.toast("手机号输入有误！");
-//			return false;
-//		};
-//		if(!eg.passwd.test($("#pwd").val())) {
-//			mui.toast("密码输入有误！");
-//			return false;
-//		};
+		var ok = plus.pluginPGKeyboard.checkMatch("pwd");
+		if(!ok){
+			mui.toast("密码格式不正确");
+			return false;
+		}
 		return true;
 	}
 	//1.点击登录按钮
@@ -52,7 +53,7 @@
 		if(canLogin()){//初步校验通过，允许走登录逻辑
 			var params = {
 				"username": $("#phone").val().trim(),
-				"password": $("#pwd").val().trim()
+				"password": passwordVal
 			}
 			eg.postAjax("login",params, function(data) {
 				if(data.status == 1){
@@ -121,7 +122,7 @@ $("#pwd").click(function(){
 	$("#pwd").val("");
 	passwordVal="";
 	plus.pluginPGKeyboard.clearKeyboard("pwd");	
-	plus.pluginPGKeyboard.openMD5Keyboard("pwd", "false", 0,20,"false","true","false","","/(?!^\d+$)(?!^[a-zA-Z]+$)[0-9a-zA-Z]{8,20}/",
+	plus.pluginPGKeyboard.openMD5Keyboard("pwd", "false", 0,20,"false","true","false","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$","",
 			function(result) {
 					if (result) {
 						if (result.status) {
@@ -152,7 +153,7 @@ $("#pwd").click(function(){
 					alert(result);
 				});
 	plus.webview.currentWebview().setStyle({
-		bottom:"150px"
+		bottom:"50px"
 	})
 });
 
