@@ -79,7 +79,7 @@ var afterPwdVal2;
 $("#oldPwd").click(function(){
 	plus.pluginPGKeyboard.hideKeyboard();
 	$("#oldPwd").val("");
-	plus.pluginPGKeyboard.openMD5Keyboard("beforPwd", "false", 0,16,"true","true","true","","",
+	plus.pluginPGKeyboard.openMD5Keyboard("beforPwd", "false", 0,20,"true","true","true","","",
 			function(result) {
 					if (result) {
 						if (result.status) {
@@ -110,7 +110,7 @@ $("#oldPwd").click(function(){
 $("#newPwd1").click(function(){
 	plus.pluginPGKeyboard.hideKeyboard();
 	$("#newPwd1").val("");
-	plus.pluginPGKeyboard.openMD5Keyboard("afterPwd", "false", 0,12,"true","true","true","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$","",
+	plus.pluginPGKeyboard.openMD5Keyboard("afterPwd", "false", 0,20,"true","true","true","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$","",
 			function(result) {
 					if (result) {
 						if (result.status) {
@@ -141,7 +141,7 @@ $("#newPwd1").click(function(){
 $("#newPwd2").click(function(){
 	plus.pluginPGKeyboard.hideKeyboard();
 	$("#newPwd2").val("");
-	plus.pluginPGKeyboard.openMD5Keyboard("afterPwd2", "false", 0,12,"true","true","true","","",
+	plus.pluginPGKeyboard.openMD5Keyboard("afterPwd2", "false", 0,20,"true","true","true","","",
 			function(result) {
 					if (result) {
 						if (result.status) {
