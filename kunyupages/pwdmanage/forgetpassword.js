@@ -104,7 +104,7 @@ $("#pwd1").click(function(){
 	$("#pwd1").val("");
 	forgetPasswordVal="";
 	plus.pluginPGKeyboard.clearKeyboard("newPwd");	
-	plus.pluginPGKeyboard.openMD5Keyboard("newPwd", "false", 1,20,"false","true","false","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$","",
+	plus.pluginPGKeyboard.openMD5Keyboard("newPwd", "false", 0 ,20,"false","true","false","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$","",
 			function(result) {
 					if (result) {
 						if (result.status) {
@@ -144,7 +144,7 @@ $("#pwd2").click(function(){
 	$("#pwd2").val("");
 	ReForgetPasswordVal ="";
 	plus.pluginPGKeyboard.clearKeyboard("doublePwd");	
-	plus.pluginPGKeyboard.openMD5Keyboard("doublePwd", "false", 1,20,"false","true","false","","",
+	plus.pluginPGKeyboard.openMD5Keyboard("doublePwd", "false", 0,20,"false","true","false","","",
 			function(result) {
 					if (result) {
 						if (result.status) {

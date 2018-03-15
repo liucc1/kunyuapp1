@@ -89,12 +89,12 @@ function istoregister(){
 		});
 		return;
 	}
-//	if(!$("#pwd1").val().trim()) {
-//		plus.nativeUI.toast("密码不能为空！", {
-//			duration: "short"
-//		});
-//		return false;
-//	};
+	if(!$("#pwd1").val().trim()) {
+		plus.nativeUI.toast("密码不能为空！", {
+			duration: "short"
+		});
+		return false;
+	};
 	if(!$("#pwd2").val().trim()) {
 		plus.nativeUI.toast("再次输入密码不能为空！", {
 			duration: "short"
@@ -114,21 +114,6 @@ function istoregister(){
 		});
 		return false;
 	}
-	if(!eg.passwd.test($("#pwd1").val())) {
-		$("#pwd1").val("");
-		$("#pwd2").val("");
-		plus.nativeUI.toast("密码不符合规则！", {
-			duration: "short"
-		});
-		return false;
-	}
-//	if($("#pwd1").val()!=$("#pwd2").val()) {
-//		$("#pwd2").val("");
-//		plus.nativeUI.toast("您两次输入的密码不一致！", {
-//			duration: "short"
-//		});
-//		return false;
-//	}
 	if($("#checkbox").hasClass("icon-xuanzekuang")) {
 		plus.nativeUI.toast("请先同意用户协议", {
 			duration: "short"
@@ -150,7 +135,7 @@ function goRegister(){
 	var params = {
 		"mobile":$("#phone").val().trim(),
 		"code":$("#smscode").val().trim(),
-		"password":$("#pwd1").val().trim(),
+		"password":regPwdVal,
 		"city":$("#cityCode").val().trim()
 	}
 	eg.postAjax("register", params, function(data) {
@@ -208,7 +193,7 @@ $("#pwd1").click(function(){
 	$("#pwd1").val("");
 	regPwdVal="";
 	plus.pluginPGKeyboard.clearKeyboard("regPwd");	
-	plus.pluginPGKeyboard.openMD5Keyboard("regPwd", "false", 1,20,"false","true","false","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$","",
+	plus.pluginPGKeyboard.openMD5Keyboard("regPwd", "false", 0,20,"false","true","false","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$","",
 			function(result) {
 					if (result) {
 						if (result.status) {
@@ -245,7 +230,7 @@ $("#pwd2").click(function(){
 	$("#pwd2").val("");
 	repeatRegPwdVal="";
 	plus.pluginPGKeyboard.clearKeyboard("rereatRegPwd");	
-	plus.pluginPGKeyboard.openMD5Keyboard("rereatRegPwd", "false", 1,20,"false","true","false","","",
+	plus.pluginPGKeyboard.openMD5Keyboard("rereatRegPwd", "false", 0,20,"false","true","false","","",
 			function(result) {
 					if (result) {
 						if (result.status) {
