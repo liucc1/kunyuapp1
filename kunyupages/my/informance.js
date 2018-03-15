@@ -1,8 +1,40 @@
 mui.init();
-
+var ifFlag = false;
 mui.plusReady(function(){
 	$("#phone").val(localStorage.getItem("phone"));
 })
+
+//OCR
+$(".afterInput").on('tap',function(){
+	scanImage("0");
+})
+function scanImage(str){
+	plus.pluginOpenIdcardScan.openIdcardScan(str, false, function(result) {
+		if(result.status) {
+			var message = result.message;
+			var payload = result.payload;
+			var url = "wechat/identify";
+			var parameters = {
+				"idCardImg": payload.picOne
+			};	
+			//调取OCR接口
+			eg.postAjax(url, parameters, function(data) {
+				//如果是0，填充信息后接着扫描身份证背面
+				if(str == "0") {
+					$("#name").val(data.name);
+					$("#idNo").val(data.idCardNumber);
+					scanImage('1');
+				}else{
+					ifFlag = true;
+				}					
+			});
+		} else {
+			alert("调用插件时发生异常。");
+		}
+	}, function(result) {
+		alert(result);
+	});
+}
 
 //保存
 $("#oBtn").on('tap',function(){
@@ -25,6 +57,10 @@ $("#oBtn").on('tap',function(){
 	}
 	if(!eg.userIdCode(idNo)){
 		mui.toast("身份证格式不正确！");
+		return false;
+	}
+	if(!ifFlag){
+		mui.toast("请拍摄身份证反面！");
 		return false;
 	}
 	if(isNullVal(cardNo)){
