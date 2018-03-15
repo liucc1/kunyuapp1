@@ -4,6 +4,7 @@ mui.init({ swipeBack:false });
 var mask = mui.createMask(function(){
 	$(".dis_show").hide();
 });
+var  ifPlusKeyBoard = false;
 //城市选项弹出框的设计
 mui.plusReady(function() {
 	var userPicker = new mui.PopPicker();
@@ -73,12 +74,27 @@ function istoregister(){
 		});
 		return false;
 	};
-	if(!$("#pwd1").val().trim()) {
-		plus.nativeUI.toast("密码不能为空！", {
+	if(!ifPlusKeyBoard){//点击了密码控件
+        mui.toast("请输入密码");
+        return;
+    }	
+	var ok = plus.pluginPGKeyboard.checkMatch("regPwd");
+	if(!ok){
+		mui.toast("密码格式不正确");
+		return;
+	}		
+	if(regPwdVal !== repeatRegPwdVal) {
+		plus.nativeUI.toast("两次密码输入不一致", {
 			duration: "short"
 		});
-		return false;
-	};
+		return;
+	}
+//	if(!$("#pwd1").val().trim()) {
+//		plus.nativeUI.toast("密码不能为空！", {
+//			duration: "short"
+//		});
+//		return false;
+//	};
 	if(!$("#pwd2").val().trim()) {
 		plus.nativeUI.toast("再次输入密码不能为空！", {
 			duration: "short"
@@ -106,13 +122,13 @@ function istoregister(){
 		});
 		return false;
 	}
-	if($("#pwd1").val()!=$("#pwd2").val()) {
-		$("#pwd2").val("");
-		plus.nativeUI.toast("您两次输入的密码不一致！", {
-			duration: "short"
-		});
-		return false;
-	}
+//	if($("#pwd1").val()!=$("#pwd2").val()) {
+//		$("#pwd2").val("");
+//		plus.nativeUI.toast("您两次输入的密码不一致！", {
+//			duration: "short"
+//		});
+//		return false;
+//	}
 	if($("#checkbox").hasClass("icon-xuanzekuang")) {
 		plus.nativeUI.toast("请先同意用户协议", {
 			duration: "short"
@@ -122,7 +138,6 @@ function istoregister(){
 	return true;
 }
 /**6.点击注册按钮**/
-//var  ifPlusKeyBoard = false;
 $("#oBtn").on("tap",function(){
 	$("#oBtn").attr("disabled","disabled")
  	if(!istoregister()){
@@ -187,13 +202,13 @@ function onPlusReady() {
  * @param regex 密码设置的正则表达式--可以设置为"",表示不设置密码正则表达式--demo仅提供测试，具体的设置方式根据业务规则去走
  * @param inputregex设置键盘输入正则规则--可以设置为""无限制--demo仅提供测试，具体的设置方式根据业务规则去走
  */
-$("#pwd").click(function(){
+$("#pwd1").click(function(){
 	ifPlusKeyBoard = true;
 	plus.pluginPGKeyboard.hideKeyboard();
-	$("#pwd").val("");
+	$("#pwd1").val("");
 	regPwdVal="";
 	plus.pluginPGKeyboard.clearKeyboard("regPwd");	
-	plus.pluginPGKeyboard.openMD5Keyboard("regPwd", "false", 1,20,"false","true","false","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$","",
+	plus.pluginPGKeyboard.openMD5Keyboard("regPwd", "false", 1,20,"false","true","false","^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$","",
 			function(result) {
 					if (result) {
 						if (result.status) {
@@ -211,7 +226,7 @@ $("#pwd").click(function(){
 									bottom:"0px"
 								})
 							}else{
-								document.getElementById('pwd').value = obj.text==null?"":obj.text;
+								document.getElementById('pwd1').value = obj.text==null?"":obj.text;
 								regPwdVal = obj.cipherText==null?"":obj.cipherText;
 							}
 						} else {
@@ -225,9 +240,9 @@ $("#pwd").click(function(){
 				});
 });
 
-$("#doublePwd").click(function(){
+$("#pwd2").click(function(){
 	plus.pluginPGKeyboard.hideKeyboard();
-	$("#doublePwd").val("");
+	$("#pwd2").val("");
 	repeatRegPwdVal="";
 	plus.pluginPGKeyboard.clearKeyboard("rereatRegPwd");	
 	plus.pluginPGKeyboard.openMD5Keyboard("rereatRegPwd", "false", 1,20,"false","true","false","","",
@@ -248,7 +263,7 @@ $("#doublePwd").click(function(){
 									bottom:"0px"
 								})
 							}else{
-								document.getElementById('doublePwd').value = obj.text==null?"":obj.text;
+								document.getElementById('pwd2').value = obj.text==null?"":obj.text;
 								repeatRegPwdVal = obj.cipherText==null?"":obj.cipherText;
 							}
 						} else {

@@ -140,5 +140,10 @@
 			"kunyupages/my/messageDetail.html"
 		],
 		"resources": []
+	},
+	"kunyupages/register/register.html": {
+		"resources": [
+			"kunyupages/register/register.js"
+		]
 	}
 }

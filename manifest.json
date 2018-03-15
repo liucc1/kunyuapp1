@@ -358,6 +358,13 @@
 					"kunyupages/certifiedMessage/submitSuccess.html"
 				],
 				"priority": 0
+			},
+			"kunyupages/register/register.html": {
+				"resources": [
+					"kunyupages/register/register.js"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {
@@ -384,7 +391,6 @@
 				"index.html",
 				"common/fonts/mui.ttf",
 				"common/css/base.css",
-				"kunyupages/register/register.js",
 				"kunyupages/login/gesturepwdlogin.js",
 				"plugins/common.js",
 				"common/js/mui.locker.js",
