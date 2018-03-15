@@ -50,11 +50,20 @@
 	//1.点击登录按钮
 	$("#oBtn").on("tap",function(){
 		if(canLogin()){//初步校验通过，允许走登录逻辑
-			eg.getToken("68720a30",function(data) {
-				var s=data.split('"');
-				var csrf=s[s.length-2];
-				console.log("未登录时获取_csrf==="+csrf);
-				isToLogin(csrf);
+			var params = {
+				"username": $("#phone").val().trim(),
+				"password": $("#pwd").val().trim()
+			}
+			eg.postAjax("login",params, function(data) {
+				if(data.status == 1){
+					localStorage.setItem("phone",$("#phone").val().trim());
+					plus.webview.currentWebview().close();
+					plus.webview.getWebviewById("./my.html").reload();
+				}else{
+					mui.toast(data.message);
+				}
+			},function(data){
+				alert("err==="+data);
 			});
 		}
 	});
@@ -78,28 +87,6 @@
 		}
 	}); 
 	
-	function isToLogin(csrf){ 
-		var params = {
-			"_csrf":csrf,
-			"username": $("#phone").val().trim(),
-			"password": $("#pwd").val().trim()
-		}
-		eg.postAjax("login",params, function(data) {
-			if (JSON.stringify(data).indexOf('html')!='-1') {
-				mui.alert("您输入的用户名或密码不正确，或您未注册！");
-			} else if(data.resCode==0){
-				localStorage.setItem("phone",$("#phone").val().trim());
-				plus.webview.currentWebview().close();
-				plus.webview.getWebviewById("./my.html").reload();
-//				mui.openWindow({
-//	                url:"../home/home.html",
-//	                id:"home"
-//	         	});
-			}
-		},function(data){
-			alert("err==="+data);
-		});
-	}
 	$("#closex").on("tap",function(){
 		plus.webview.currentWebview().close();
 	})
@@ -128,13 +115,13 @@ function onPlusReady() {
  * @param regex 密码设置的正则表达式--可以设置为"",表示不设置密码正则表达式--demo仅提供测试，具体的设置方式根据业务规则去走
  * @param inputregex设置键盘输入正则规则--可以设置为""无限制--demo仅提供测试，具体的设置方式根据业务规则去走
  */
-$("#pwd1").click(function(){
-	$("#dis_nubmer").hide();
+$("#pwd").click(function(){
+//	$("#dis_nubmer").hide();
 	plus.pluginPGKeyboard.hideKeyboard();	
 	$("#pwd").val("");
 	passwordVal="";
 	plus.pluginPGKeyboard.clearKeyboard("pwd");	
-	plus.pluginPGKeyboard.openMD5Keyboard("pwd", "false", 0,20,"false","true","false","","",
+	plus.pluginPGKeyboard.openMD5Keyboard("pwd", "false", 0,20,"false","true","false","","/(?!^\d+$)(?!^[a-zA-Z]+$)[0-9a-zA-Z]{8,20}/",
 			function(result) {
 					if (result) {
 						if (result.status) {

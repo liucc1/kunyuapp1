@@ -48,14 +48,15 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 					plus.nativeUI.closeWaiting();
 					if(typeof(data) == "string"){
 						if(data.indexOf('登陆系统')!='-1'){//session超时处理
-							var all = plus.webview.all();
-							var login = plus.webview.getLaunchWebview();
-							for(var i = 0; i < all.length; i++) {
-								if(all[i] != login){
-									all[i].close();
-								}else{
-									login.reload();
-								}
+							var login = plus.webview.getWebviewById("login");
+							if(login){
+								login.reload();
+								login.show();
+							}else{
+								mui.openWindow({
+									url:"../login/login.html",
+									id:"login"
+								})
 							}
 						}
 						data = JSON.parse(data);
