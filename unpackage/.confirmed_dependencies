@@ -19,7 +19,8 @@
 			"kunyupages/certifiedMessage/pullrefresh.html",
 			"kunyupages/index/bannerDetail.html",
 			"kunyupages/login/login.html",
-			"kunyupages/my/message.html"
+			"kunyupages/my/message.html",
+			"kunyupages/my/messageDetail.html"
 		],
 		"resources": [
 			"plugins/jquery.vticker.min.js"

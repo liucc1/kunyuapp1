@@ -44,16 +44,17 @@ $("#getcode").on("tap",function(){
 		return;
 	};
 	eg.postAjax("search/mobile", {//1.首先验证该手机号是否已注册
-		"_csrf":localStorage.getItem("csrf"),
+//		"_csrf":localStorage.getItem("csrf"),
 		"mobile":$("#phone").val().trim()
 		}, function(data) {
 		if(data.status != "1") {//已注册--发送短信验证码
 			eg.postAjax("captCha", {
-				"_csrf":localStorage.getItem("csrf"),
+//				"_csrf":localStorage.getItem("csrf"),
 				"mobile":$("#phone").val().trim()
 				}, function(data) {
 					if(data.status=="1"){
-						$("#smscode").val(data.message);
+						Countdown("getcode");
+						mui.toast("短信发送成功");
 					}
 		//		if(data.resCode !== "0") {
 		//			return;
@@ -81,7 +82,7 @@ $("#getcode").on("tap",function(){
 /**点击提交按钮**/
 $("#oBtn").on("tap",function(){
 	var params = {
-		"_csrf":localStorage.getItem("csrf"),
+//		"_csrf":localStorage.getItem("csrf"),
 		"mobile":$("#phone").val().trim(),
 		"code":$("#smscode").val().trim(),
 		"password":$("#pwd1").val().trim()

@@ -1,4 +1,5 @@
 mui.init();
+
 $(function(){
 	$('#idNo').blur(function(){
 		var custName = $('#name').val();
@@ -14,9 +15,7 @@ $(function(){
 		var params = {
 			"value":idNo
 		}
-//		plus.nativeUI.showWaiting();
 		eg.postAjax("customer/valid/idNo",params, function(data) {
-//			plus.nativeUI.closeWaiting();
 			if(data.status!="1"){
 				mui.toast(data.message);
 				return false;
@@ -28,9 +27,7 @@ $(function(){
 		var params = {
 			"value":phone
 		}
-//		plus.nativeUI.showWaiting();
 		eg.postAjax("customer/valid/mobile",params, function(data) {
-//			plus.nativeUI.closeWaiting();
 			if(data.status!="1"){
 				mui.toast("该手机号已注册");
 				return false;
@@ -169,82 +166,37 @@ function getSms(){
 }
 //OCR
 $(".afterInput").on('tap',function(){
-	$("#inputBtn").click();
-	var inputBtn=document.getElementById("inputBtn");
-	var picType = inputBtn.value.split(".")[1];
-	inputBtn.onchange=function(){
-        var reader = new FileReader();
-        reader.readAsDataURL(this.files[0]);
-        reader.onload = function(e) {
-        	var canvas=document.createElement("canvas");  
-	        var ctx=canvas.getContext("2d");  
-	        var image=new Image();  
-            image.src=e.target.result;  
-            image.onload=function(){ 
-                var w=image.width/2;  
-                var h=image.height/2;  
-                canvas.width=w;  
-                canvas.height=h;  
-                ctx.drawImage(image,0,0,w,h);  
-                var base64 = canvas.toDataURL("image/jpeg",0.5);  
-                plus.nativeUI.showWaiting();
-                eg.postAjax("wechat/identify", {
-					"idCardImg": base64.split(',')[1],
-					"mimetype":picType
-				}, function(data) {
-					plus.nativeUI.closeWaiting();
-					if(data.side == "front"){
-						$("#name").val(data.name);
-						$("#idNo").val(data.idCardNumber);
-						$('#nation').val(data.race);
-						$("#address").val(data.address);
-						var btnArray = ['确定'];
-						mui.confirm('请继续拍反面！', '提示', btnArray, function(e) {
-							if (e.index == 0) {
-								scanReverse();						
-							}
-						})
-					}else{
-						mui.toast("请扫描身份证正面！");
-						return false;
-					}
-				});
-            }
-        }
-	}
+	scanImage("0");
 })
-//扫反面
-function scanReverse(){
-	$("#inputBtn1").click();
-	var inputBtn=document.getElementById("inputBtn1");
-	var picType = inputBtn.value.split(".")[1];
-	inputBtn.onchange=function(){
-		var reader = new FileReader();
-	    reader.readAsDataURL(this.files[0]);
-	    reader.onload = function(e) {
-	    	var canvas=document.createElement("canvas");  
-	        var ctx=canvas.getContext("2d");  
-	        var image=new Image();  
-	        image.src=e.target.result;  
-	        image.onload=function(){ 
-	            var w=image.width/2;  
-	            var h=image.height/2;  
-	            canvas.width=w;  
-	            canvas.height=h;  
-	            ctx.drawImage(image,0,0,w,h);  
-	            var base64 = canvas.toDataURL("image/jpeg",0.5); 
-	            plus.nativeUI.showWaiting();
-	            eg.postAjax("wechat/identify", {
-					"idCardImg": base64.split(',')[1],
-					"mimetype":picType
-				}, function(data) {
-					plus.nativeUI.closeWaiting();
+function scanImage(str){
+	plus.pluginOpenIdcardScan.openIdcardScan(str, false, function(result) {
+		if(result.status) {
+			var message = result.message;
+			var payload = result.payload;
+			var url = "wechat/identify";
+			var parameters = {
+				"idCardImg": payload.picOne
+			};	
+			//调取OCR接口
+			eg.postAjax(url, parameters, function(data) {
+				//如果是0，填充信息后接着扫描身份证背面
+				if(str == "0") {
+					$("#name").val(data.name);
+					$("#idNo").val(data.idCardNumber);
+					$('#nation').val(data.race);
+					$("#address").val(data.address);
+					scanImage('1');
+				}else{
 					$('#issued_by').val(data.issuedBy);
 					$('#valid_date').val(data.validDate);
-				})
-			}
-	    }
-	}
+				}					
+			});
+		} else {
+			alert("调用插件时发生异常。");
+		}
+	}, function(result) {
+		alert(result);
+	});
 }
 
 
