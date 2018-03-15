@@ -48,7 +48,7 @@ $('#oBtn').click(function() {
 		"repeatNewPass":newPwd2
 	}
 	eg.postAjax2("chgpass",params, function(data) {
-		if(data.status == 0 ){
+		if(data.status == "1" ){
 			eg.toLoginPage();
 		}
 	},function(data){
