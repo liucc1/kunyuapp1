@@ -51,10 +51,15 @@ $("#oBtn").on("tap",function(){
 	}else{
 		var quar = "2";
 	}
+	if(main.obtainValue('status',status)=="可预约"){
+		var stateCode = "1";
+	}else{
+		var stateCode = "2";
+	}
 	plus.nativeUI.showWaiting();
 	var param = {
 		"sid":sid,
-		"state":"1",
+		"state":stateCode,
 		"preProcess":status,
 		"date":date,
 		"quar":quar

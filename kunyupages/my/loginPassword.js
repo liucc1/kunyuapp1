@@ -39,7 +39,9 @@ $('#oBtn').click(function() {
 	}
 	eg.postAjax2("chgpass",params, function(data) {
 		if(data.status == "1" ){
-			plus.webview.getElementById("home").reload();
+			mui.toast("密码修改成功，请重新登录");
+			plus.webview.currentWebview().close();
+			plus.webview.getElementById("my").reload();
 		}
 	},function(data){
 		
