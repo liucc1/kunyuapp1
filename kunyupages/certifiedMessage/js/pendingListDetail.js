@@ -126,8 +126,8 @@ $('#oBtn2').on("tap",function(){
 /*可预约;12预约*/
 $('#oBtn4').on("tap",function(){
 	mui.openWindow({
-        url:"./appointMent.html",
-        id:"appointMent",
+        url:"./appointment.html",
+        id:"appointment",
         extras:{
 			"name":name,
 			"mobile":mobile,
@@ -139,8 +139,8 @@ $('#oBtn4').on("tap",function(){
 /*12已预约重新预约*/
 $('#appointMent').on("tap",function(){
 	mui.openWindow({
-        url:"./appointMent.html",
-        id:"appointMent",
+        url:"./appointment.html",
+        id:"appointment",
         extras:{
 			"name":name,
 			"mobile":mobile,

@@ -560,14 +560,14 @@ eg.toLoginPage = function(){
 /*回到首页*/
 eg.toHome = function(){
 	var all = plus.webview.all();
-	var login = plus.webview.getLaunchWebview();
-	var home = plus.webview.getWebviewById("home");
+	var home = plus.webview.getLaunchWebview();
 	for(var i = 0; i < all.length; i++) {
-		if(all[i] != login && all[i] != home){
+		if(all[i] != home){
 			all[i].close();
+		}else{
+			home.reload();
 		}
 	}
-	home.reload();
 }
 
 /***

@@ -240,7 +240,7 @@ function imageToBase64(p){
             var ctx = canvas.getContext('2d');
                $(canvas).attr({width : w, height : h});
             ctx.drawImage(that, 0, 0, w, h);
-            var base64 = canvas.toDataURL('image/jpeg', 0.5);   //1最清晰，越低越模糊。有一点不清楚这里明明设置的是jpeg。弹出 base64 开头的一段 data：image/png;却是png。哎开心就好，开心就好
+            var base64 = canvas.toDataURL('image/jpeg', 0.7);   //1最清晰，越低越模糊。有一点不清楚这里明明设置的是jpeg。弹出 base64 开头的一段 data：image/png;却是png。哎开心就好，开心就好
             var parameters = {
 				"portrait": base64.split(',')[1]
 			};

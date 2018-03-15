@@ -8,23 +8,15 @@ function onPlusReady() {
     console.log("plusready");
 }
 $('#oBtn').click(function() {
-	var oldPwd = $('#oldPwd').val();
-	var newPwd1 = $('#newPwd1').val();
-	var newPwd2 = $('#newPwd2').val();
-	if(!oldPwd) {
+//	var oldPwd = $('#oldPwd').val();
+//	var newPwd1 = $('#newPwd1').val();
+//	var newPwd2 = $('#newPwd2').val();
+	if(!beforPwdVal) {
 		mui.toast("旧登录密码不能为空！");
 		return false;
 	};
-	if(!newPwd1) {
+	if(!afterPwdVal) {
 		mui.toast("新登录密码不能为空！");
-		return false;
-	};
-	if(oldPwd == newPwd1){
-		mui.toast("新密码与旧密码不能相同！");
-		return false;
-	}
-	if(!newPwd2) {
-		mui.toast("请再次输入新登录密码！");
 		return false;
 	};
 	var ok = plus.pluginPGKeyboard.checkMatch("afterPwd");
@@ -32,16 +24,14 @@ $('#oBtn').click(function() {
     	mui.toast("您输入的新密码格式不正确");
     	return false;
    	}
+	if(beforPwdVal == afterPwdVal){
+		mui.toast("新密码与旧密码不能相同！");
+		return false;
+	}
 	if(afterPwdVal != afterPwdVal2){
 		mui.toast("两次密码不一致", { duration: "short" });
 		return;
 	}
-//	if(!eg.passwd.test(newPwd1)) {
-//		plus.nativeUI.toast("密码不符合规则！", {
-//			duration: "short"
-//		});
-//		return false;
-//	}
 	var params = {	
 		"oldPass":beforPwdVal,
 		"newPass":afterPwdVal,
@@ -49,7 +39,7 @@ $('#oBtn').click(function() {
 	}
 	eg.postAjax2("chgpass",params, function(data) {
 		if(data.status == "1" ){
-			eg.toLoginPage();
+			plus.webview.getElementById("home").reload();
 		}
 	},function(data){
 		

@@ -23,10 +23,11 @@ function canSubmit(){
 		});
 		return false;
 	};
-//	if(!$("#pwd1").val().trim()) {
-//		mui.toast("新输入密码不能为空！");
-//		return false;
-//	};
+	if(!$("#pwd1").val().trim()) {
+		mui.toast("新输入密码不能为空！");
+		return false;
+	};
+	return true;
 }
 /**点击获取验证码**/
 $("#getcode").on("tap",function(){
