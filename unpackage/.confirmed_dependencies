@@ -1,149 +1,150 @@
 {
-  "kunyupages/home/home.html": {
-    "resources": [
-      "kunyupages/home/index.html"
-    ],
-    "refer": [
-      "kunyupages/home/index.html",
-      "kunyupages/home/my.html"
-    ]
-  },
-  "kunyupages/home/index.html": {
-    "refer": [
-      "kunyupages/productmanage/productdetails.html",
-      "kunyupages/index/houseSample.html",
-      "kunyupages/certifiedMessage/scheduleList.html",
-      "kunyupages/certifiedMessage/pendingList.html",
-      "kunyupages/certifiedMessage/certifiedMessage.html",
-      "kunyupages/certifiedMessage/submitSuccess.html",
-      "kunyupages/certifiedMessage/pullrefresh.html",
-      "kunyupages/index/bannerDetail.html",
-      "kunyupages/login/login.html",
-      "kunyupages/my/message.html",
-      "kunyupages/my/messageDetail.html"
-    ],
-    "resources": [
-      "plugins/jquery.vticker.min.js"
-    ]
-  },
-  "kunyupages/login/login.html": {
-    "refer": [
-      "kunyupages/register/register.html",
-      "kunyupages/home/home.html",
-      "kunyupages/pwdmanage/forgetpassword.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/productmanage/productdetails.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/certifiedMessage.html",
-      "kunyupages/login/login.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/home/my.html": {
-    "refer": [
-      "kunyupages/my/companyProfile.html",
-      "kunyupages/login/login.html",
-      "kunyupages/my/informance.html",
-      "kunyupages/my/setPassword.html",
-      "kunyupages/my/charges.html",
-      "kunyupages/my/myInformance.html",
-      "kunyupages/my/message.html"
-    ],
-    "resources": [
-      "kunyupages/home/my.js"
-    ]
-  },
-  "kunyupages/my/setPassword.html": {
-    "refer": [
-      "kunyupages/my/loginPassword.html",
-      "kunyupages/my/payPassword.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/my/charges.html": {
-    "refer": [
-      "kunyupages/my/withdraw.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/certifiedMessage/scheduleList.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/pendingListDetail.html",
-      "kunyupages/certifiedMessage/scheduleList.html",
-      "kunyupages/login/login.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/certifiedMessage/pendingListDetail.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/uploadImages.html",
-      "kunyupages/certifiedMessage/supply.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/certifiedMessage/pendingList.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/pendingListDetail.html",
-      "kunyupages/login/login.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/my/loginPassword.html": {
-    "refer": [
-      "kunyupages/login/login.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/certifiedMessage/uploadImages.html": {
-    "refer": [
-      "kunyupages/index/houseshow.html",
-      "kunyupages/certifiedMessage/submitSuccess.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/certifiedMessage/certifiedMessage.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/moreInformation.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/certifiedMessage/moreInformation.html": {
-    "refer": [
-      "kunyupages/certifiedMessage/uploadImages.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/my/informance.html": {
-    "refer": [
-      "kunyupages/my/myInformance.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/my/myInformance.html": {
-    "refer": [
-      "kunyupages/my/reviseCer.html",
-      "kunyupages/my/revisePhone.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/certifiedMessage/supply.html": {
-    "refer": [
-      "kunyupages/index/houseshow.html",
-      "kunyupages/certifiedMessage/submitSuccess.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/my/message.html": {
-    "refer": [
-      "kunyupages/my/messageDetail.html"
-    ],
-    "resources": []
-  },
-  "kunyupages/register/register.html": {
-    "resources": [
-      "kunyupages/register/register.js"
-    ]
-  }
+	"kunyupages/home/home.html": {
+		"resources": [
+			"kunyupages/home/index.html"
+		],
+		"refer": [
+			"kunyupages/home/index.html",
+			"kunyupages/home/my.html"
+		]
+	},
+	"kunyupages/home/index.html": {
+		"refer": [
+			"kunyupages/productmanage/productdetails.html",
+			"kunyupages/index/houseSample.html",
+			"kunyupages/certifiedMessage/scheduleList.html",
+			"kunyupages/certifiedMessage/pendingList.html",
+			"kunyupages/certifiedMessage/certifiedMessage.html",
+			"kunyupages/certifiedMessage/submitSuccess.html",
+			"kunyupages/certifiedMessage/pullrefresh.html",
+			"kunyupages/index/bannerDetail.html",
+			"kunyupages/login/login.html",
+			"kunyupages/my/message.html",
+			"kunyupages/my/messageDetail.html"
+		],
+		"resources": [
+			"plugins/jquery.vticker.min.js"
+		]
+	},
+	"kunyupages/login/login.html": {
+		"refer": [
+			"kunyupages/register/register.html",
+			"kunyupages/home/home.html",
+			"kunyupages/pwdmanage/forgetpassword.html"
+		],
+		"resources": []
+	},
+	"kunyupages/productmanage/productdetails.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/certifiedMessage.html",
+			"kunyupages/login/login.html"
+		],
+		"resources": []
+	},
+	"kunyupages/home/my.html": {
+		"refer": [
+			"kunyupages/my/companyProfile.html",
+			"kunyupages/login/login.html",
+			"kunyupages/my/informance.html",
+			"kunyupages/my/setPassword.html",
+			"kunyupages/my/charges.html",
+			"kunyupages/my/myInformance.html",
+			"kunyupages/my/message.html"
+		],
+		"resources": [
+			"kunyupages/home/my.js"
+		]
+	},
+	"kunyupages/my/setPassword.html": {
+		"refer": [
+			"kunyupages/my/loginPassword.html",
+			"kunyupages/my/payPassword.html"
+		],
+		"resources": []
+	},
+	"kunyupages/my/charges.html": {
+		"refer": [
+			"kunyupages/my/withdraw.html"
+		],
+		"resources": []
+	},
+	"kunyupages/certifiedMessage/scheduleList.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/pendingListDetail.html",
+			"kunyupages/certifiedMessage/scheduleList.html",
+			"kunyupages/login/login.html"
+		],
+		"resources": []
+	},
+	"kunyupages/certifiedMessage/pendingListDetail.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/uploadImages.html",
+			"kunyupages/certifiedMessage/supply.html",
+			"kunyupages/certifiedMessage/appointment.html"
+		],
+		"resources": []
+	},
+	"kunyupages/certifiedMessage/pendingList.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/pendingListDetail.html",
+			"kunyupages/login/login.html"
+		],
+		"resources": []
+	},
+	"kunyupages/my/loginPassword.html": {
+		"refer": [
+			"kunyupages/login/login.html"
+		],
+		"resources": []
+	},
+	"kunyupages/certifiedMessage/uploadImages.html": {
+		"refer": [
+			"kunyupages/index/houseshow.html",
+			"kunyupages/certifiedMessage/submitSuccess.html"
+		],
+		"resources": []
+	},
+	"kunyupages/certifiedMessage/certifiedMessage.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/moreInformation.html"
+		],
+		"resources": []
+	},
+	"kunyupages/certifiedMessage/moreInformation.html": {
+		"refer": [
+			"kunyupages/certifiedMessage/uploadImages.html"
+		],
+		"resources": []
+	},
+	"kunyupages/my/informance.html": {
+		"refer": [
+			"kunyupages/my/myInformance.html"
+		],
+		"resources": []
+	},
+	"kunyupages/my/myInformance.html": {
+		"refer": [
+			"kunyupages/my/reviseCer.html",
+			"kunyupages/my/revisePhone.html"
+		],
+		"resources": []
+	},
+	"kunyupages/certifiedMessage/supply.html": {
+		"refer": [
+			"kunyupages/index/houseshow.html",
+			"kunyupages/certifiedMessage/submitSuccess.html"
+		],
+		"resources": []
+	},
+	"kunyupages/my/message.html": {
+		"refer": [
+			"kunyupages/my/messageDetail.html"
+		],
+		"resources": []
+	},
+	"kunyupages/register/register.html": {
+		"resources": [
+			"kunyupages/register/register.js"
+		]
+	}
 }

@@ -340,7 +340,8 @@
 				"resources": [],
 				"refer": [
 					"kunyupages/certifiedMessage/uploadImages.html",
-					"kunyupages/certifiedMessage/supply.html"
+					"kunyupages/certifiedMessage/supply.html",
+					"kunyupages/certifiedMessage/appointment.html"
 				],
 				"priority": 0
 			},

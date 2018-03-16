@@ -157,7 +157,7 @@
 			if(dataSource[index].status2){
 				inner = inner + `<li>${dataItem[0]}下午</li>`
 			}else{
-				inner = inner + `<li class="disable">${dataItem[0]}上午</li>`
+				inner = inner + `<li class="disable">${dataItem[0]}下午</li>`
 			}
 			if(dataSource[index].status3){
 				inner = inner + `<li>${dataItem[1]}上午</li>`
@@ -167,7 +167,7 @@
 			if(dataSource[index].status4){
 				inner = inner + `<li>${dataItem[1]}下午</li>`
 			}else{
-				inner = inner + `<li class="disable">${dataItem[1]}上午</li>`
+				inner = inner + `<li class="disable">${dataItem[1]}下午</li>`
 			}
 			mui('.mui-datePicker-button')[0].innerHTML = inner
 		},

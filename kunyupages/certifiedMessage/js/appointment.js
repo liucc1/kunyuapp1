@@ -1,6 +1,8 @@
 mui.init();
 var name,mobile,sid,status,date;
 var getData = [];
+var currentTime;
+var flagM ,flagA;
 mui.plusReady(function(){
 	var self = plus.webview.currentWebview();
 	name = self.name;
@@ -9,17 +11,21 @@ mui.plusReady(function(){
 	status = self.status;
 	$("#custName").val(name);
 	$("#custMobile").val(mobile);
+	var curr = new Date();
+	currentTime = curr.getHours();
+	flagM = (currentTime<12);
+	flagA = (currentTime<18);
 	var url = eg.jrURL+"jt/appoint/date/0";
-	$.get(url,function(data){		
+	$.get(url,function(data){	
 		var max = data.max;
 		for(var i=0;i<data.list.length;i=i+2){
 			var t = data.list;
 			var obj = {
 				title:dealDate(t[i].appointmentDate)+"-"+dealDate(t[i+1].appointmentDate),
-				status1:!!(max-t[i].mcount),
-				status2:!!(max-t[i].acount),
-				status3:!!(max-t[i+1].mcount),
-				status4:!!(max-t[i+1].acount)
+				status1:!!(max-t[i].mcount>0)&&flagM,
+				status2:!!(max-t[i].acount>0)&&flagA,
+				status3:!!(max-t[i+1].mcount>0),
+				status4:!!(max-t[i+1].acount>0)
 			}
 			getData.push(obj);
 		}
