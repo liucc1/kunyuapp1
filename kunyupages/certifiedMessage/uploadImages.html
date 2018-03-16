@@ -28,21 +28,7 @@
 	    		background-color: #D30D24;
 	    		color: white;
 	    		border-radius: 100%;
-	    	}
-	    	.step-bar.ss:before{
-	    		content:"";
-	    		display: inline-block;
-	    		height: 8px;
-	    		width: 8px;
-	    		border-width: 2px 2px 0 0;
-	    		border-color: #333;
-	    		border-style: solid;
-	    		-webkit-transform: matrix(0.71,0.71,-0.71,0.71,0,0);
-	    		transform: matrix(0.71,0.71,-0.71,0.71,0,0);
-	    		position: relative;
-	    		top: 50%;
-	    		margin-top: -6px;
-	    		left: -10px;
+	    		margin-right: 5px;
 	    	}
 	    	.headerSpan{
 	    		position: absolute;
@@ -72,15 +58,15 @@
 	    		border: 0px;
 	    	}
 	    	.step-bar{
-	    		line-height: 40px;
-			    display: table-cell;
-			    overflow: hidden;
-			    width: 1%;
-			    transition: background-color .1s linear;
-			    text-align: center;
-			    white-space: nowrap;
-			    text-overflow: ellipsis;
+	    		line-height: 3rem;
+	    		padding: 0 0.3rem;
 	    	}
+	    	.mui-icon.mui-active {
+			    color: #D30D24;
+			}
+			.mui-icon.mui-icon-forward{
+				font-size: 1.4rem;
+			}
 	    	.imageDiv{
 	    		text-align: left;
     			padding: 20px 0 30px;
@@ -282,10 +268,12 @@
 			<h1 class="mui-title ">信息认证</h1>
 		</header>
 		<div class="mui-content" >
-			<div style="padding: 10px 10px;background-color: white;margin-left: -10px;">
-				<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
+			<div style="padding: 10px 0px;background-color: white;text-align: center;"">
+				<div id="segmentedControl" style="display: inline;" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
 					<span class="step-bar"><span class="aSpan">1</span>身份验证</span>
+					<span class="mui-icon mui-icon-forward"></span>
 					<span class="step-bar ss"><span class="aSpan">2</span>更多信息</span>
+					<span class="mui-icon mui-icon-forward"></span>
 					<span class="step-bar  mui-active ss"><span class="aSpan">3</span>上传影像资料</span>
 				</div>
 			</div>
