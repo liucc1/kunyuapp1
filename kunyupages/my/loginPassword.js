@@ -8,9 +8,6 @@ function onPlusReady() {
     console.log("plusready");
 }
 $('#oBtn').click(function() {
-//	var oldPwd = $('#oldPwd').val();
-//	var newPwd1 = $('#newPwd1').val();
-//	var newPwd2 = $('#newPwd2').val();
 	if(!beforPwdVal) {
 		mui.toast("旧登录密码不能为空！");
 		return false;
@@ -41,7 +38,9 @@ $('#oBtn').click(function() {
 		if(data.status == "1" ){
 			mui.toast("密码修改成功，请重新登录");
 			plus.webview.currentWebview().close();
-			plus.webview.getElementById("my").reload();
+			plus.webview.getWebviewById("setPassword").close();
+			var my = plus.webview.getWebviewById("./my.html");
+			my.reload();
 		}
 	},function(data){
 		
@@ -52,7 +51,6 @@ $('#oBtn').click(function() {
 var beforPwdVal;
 var afterPwdVal;
 var afterPwdVal2;
-
 /***
  *调用密码控件     上线用
  *  * 
