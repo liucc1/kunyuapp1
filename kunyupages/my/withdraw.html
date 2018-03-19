@@ -88,16 +88,34 @@
 				<button type="button" id="confirmBtn" class="mui-btn mui-btn-danger mui-btn-block">申请提现</button>
 			</div>
 		</div>
+		<!--    模拟弹出框         -->
+		<div class="moni-alert none">
+			<div class="alert_input">
+				<label style="color: darkgray;">支付密码</label>
+				<div id="payPassword" class="payDiv">
+					<div class="pwdDiv" style="border-color: darkgray;"></div>
+					<div class="pwdDiv" style="border-color: darkgray;"></div>
+					<div class="pwdDiv" style="border-color: darkgray;"></div>
+					<div class="pwdDiv" style="border-color: darkgray;"></div>
+					<div class="pwdDiv" style="border-color: darkgray;"></div>
+					<div class="pwdDiv" style="border-color: darkgray;"></div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			<div class="select_btn">				
+				<span id="cancel" class="bor_right">取消</span>
+				<span id="sure">确定</span>
+			</div>
+		</div>
 	</body>
-	<script src="../../common/js/mui.min.js"></script>
-	
+	<script src="../../common/js/mui.min.js"></script>	
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
 	<script src="../../common/js/mui.datePicker.js"></script>
 	<script>
-		document.getElementById("confirmBtn").addEventListener('tap', function() {
-			mui.alert('您的提现申请已发送，请您耐心等待转账', '提醒')
-		});
+//		document.getElementById("confirmBtn").addEventListener('tap', function() {
+//			mui.alert('您的提现申请已发送，请您耐心等待转账', '提醒')
+//		});
 	</script>
 	<script src="withdraw.js"></script>
 </html>
