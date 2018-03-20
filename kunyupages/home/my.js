@@ -22,6 +22,21 @@ mui.plusReady(function(){
 		var phoneNum = $(this).children("font").text();
 		plus.device.dial(phoneNum);
 	})
+	/*查询用户是否实名认证*/
+	eg.ajax(eg.jrURL + "user/logininfo", {}, 'get', function(data){
+		if(data.status == 1){
+			if(data.data.userType == 0){
+				$("#userType").text("升级为高级用户");
+			}else{
+				$("#userType").text("高级用户");
+			}
+		}else{
+			mui.toast(data.message);
+		}
+	},function(){
+		
+	})
+
 })
 function goPage(param){
 	eg.loginAjax(function(){

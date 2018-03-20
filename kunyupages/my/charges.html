@@ -58,19 +58,19 @@
 		<header class="mui-bar mui-bar-nav back_fff" >
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title ">我的佣金</h1>
-			<a class=" mui-title-right" onclick="goPage('withdrawDetail')">提现记录</a>
+			<a class=" mui-title-right" id="record">提现记录</a>
 		</header>
 		<nav class="mui-bar mui-bar-tab">
-			<p style="text-align: center;margin-top: 10px;margin-bottom: 0px;color: #4AA8FF;">可提取金额：700.10元</p>
+			<p style="text-align: center;margin-top: 10px;margin-bottom: 0px;color: #4AA8FF;">可提取金额：<span id="totalMoney"></span> 元</p>
 			<div style="margin: 0px 40px 10px 40px;padding-bottom: 10px;">
-				<button type="button" onclick="goPage('withdraw')" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">提交预约</button>
+				<button type="button" id="oBtn" class="mui-btn mui-btn-danger mui-btn-block">提交预约</button>
 			</div>
 		</nav>
 		<div id="tabbar" class="mui-content">
 			<div id="slider" class="mui-slider "  style="background-color: #efeff4;">
 				<div id="sliderSegmentedControl" style="padding-top: 10px;" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative back_fff">
-					<a class="mui-control-item" style="font-weight: bold;color: red;font-size: 16px;" href="#item1">本月佣金<div style="padding-bottom: 10px;">0.00</div></a>
-					<a class="mui-control-item" style="font-weight: bold;color: red;font-size: 16px;" href="#item2">累计佣金<div style="padding-bottom: 10px;">0.00</div></a>
+					<a class="mui-control-item" style="font-weight: bold;color: red;font-size: 16px;" href="#item1" id="Item1">本月佣金<div style="padding-bottom: 10px;" id="thisMonthCommission"></div></a>
+					<a class="mui-control-item" style="font-weight: bold;color: red;font-size: 16px;" href="#item2" id="Item2">累计佣金<div style="padding-bottom: 10px;" id="cumulativeCommission"></div></a>
 				</div>
 				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
 				<div class="mui-slider-group" >
@@ -78,120 +78,7 @@
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<table id="monthBrokerage" class="table-charge"style="margin-top: 10px;">
-									<tr>
-										<th>客户姓名</th>
-										<th>激活额度</th>
-										<th>佣金计算</th>
-										<th>佣金金额</th>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
+									
 								</table>
 							</div>
 						</div>
@@ -200,30 +87,7 @@
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<table id="totalBrokerage" class="table-charge"style="margin-top: 10px;">
-									<tr>
-										<th>客户姓名</th>
-										<th>激活额度</th>
-										<th>佣金计算</th>
-										<th>佣金金额</th>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
-									<tr>
-										<td>张三</td>
-										<td>50000</td>
-										<td>50000*0.1%</td>
-										<td class="table-charge-td">500</td>
-									</tr>
+									
 								</table>
 							</div>
 						</div>
@@ -234,16 +98,6 @@
 		<script src="../../common/js/mui.min.js"></script>
 		<script src="../../common/js/zepto.min.js"></script>
 		<script src="../../common/js/common.js"></script>
-		<script>
-			mui('.mui-scroll-wrapper').scroll()
-			function goPage(param){
-				var url = './'+param+'.html'
-				mui.openWindow({
-					url: url,
-					id: param
-				})
-			}
-		</script>
 		<script src="charges.js"></script>
 	</body>
 </html>

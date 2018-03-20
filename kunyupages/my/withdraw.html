@@ -63,25 +63,25 @@
 				<div style="position: relative;border: 1px solid rgba(0, 0, 0, .2);">
 					<span class="span-title">￥</span>
 					<div class="inputts">
-						<input class="myInput" value="" placeholder="请输入提现金额" type="text"  id="custName"  />
+						<input class="myInput" value="" placeholder="请输入提现金额" type="text" id="money" />
 					</div>
 					
 					<span class="span-footer">全部提现</span>
 				</div>
-				<p class="p-footer">全部金额：700.10</p>
+				<p class="p-footer">全部金额：<span id="totalMoney"></span></p>
 			</div>
 			<div class="mui-form">
 				<div class="mui-input-row">
 					<label style="width: 35%;">姓名</label> 
-					<input style="width: 65%;" value="王星" type="text"  id="custName" readonly="" />
+					<input style="width: 65%;" value="" type="text" id="custName" readonly="readonly" />
 				</div>
 				<div class="mui-input-row mui-input-row-yan">
 					<label style="width: 35%;">到账银行卡</label>
-					<input style="width: 65%;" value="123112443212" type="text"  id="cutNo" readonly="readonly" />
+					<input style="width: 65%;" value="" type="text" id="cutNo" readonly="readonly" />
 				</div>
 				<div class="mui-input-row">
 					<label style="width: 35%;">开户行</label>
-					<input style="width: 65%;" value="北京大望路支行" type="text"  id="address" readonly="readonly" />
+					<input style="width: 65%;" value="" type="text" id="address" readonly="readonly" />
 				</div>
 			</div>
 			<div class="mui-content-padded">
@@ -112,6 +112,7 @@
 	<script src="../../common/js/zepto.min.js" ></script>
 	<script src="../../common/js/common.js" ></script>
 	<script src="../../common/js/mui.datePicker.js"></script>
+	<script src="../../plugins/passguard/plugin-passguard.js"></script>
 	<script>
 //		document.getElementById("confirmBtn").addEventListener('tap', function() {
 //			mui.alert('您的提现申请已发送，请您耐心等待转账', '提醒')

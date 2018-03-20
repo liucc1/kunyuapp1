@@ -1,4 +1,3 @@
-//mui初始化
 mui.init({ swipeBack:false });
 //遮罩
 var mask = mui.createMask(function(){
@@ -18,27 +17,7 @@ mui.plusReady(function() {
 		});
 	});
 });
-
-
-/**点击获取验证码**/
-//$("#getcode").on("tap",function(){
-//	setTimeout(function(){
-//		var phoneNum = $("#phone").val();
-//		if(!eg.phone.test(phoneNum)) {
-//			mui.toast("手机号码格式不正确！");
-//			return;
-//		};
-//		eg.postAjax("search/mobile",{"mobile":phoneNum}, function(data) {
-//			if(data.status == "1"){
-//	   			getSms();
-//			}else{
-//				mui.toast("手机号已存在，不可重复注册！");
-//				return false;
-//			}
-//		});
-//	},1000);
-//});
-///**点击获取验证码**/
+/*点击获取验证码*/
 $("#getcode").on("tap",function(){
 	var phoneNum = $("#phone").val();
 	if(!eg.phone.test(phoneNum)) {
@@ -181,7 +160,7 @@ function goRegister(){
 var regPwdVal;
 var repeatRegPwdVal;
 //硬件监听
-//document.addEventListener( "plusready", onPlusReady, false );
+document.addEventListener( "plusready", onPlusReady, false );
 function onPlusReady() {   
 	//加载用户协议
 	eg.postAjax("local/queryProtocol.do", {

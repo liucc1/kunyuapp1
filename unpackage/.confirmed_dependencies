@@ -64,7 +64,9 @@
 	},
 	"kunyupages/my/charges.html": {
 		"refer": [
-			"kunyupages/my/withdraw.html"
+			"kunyupages/my/withdraw.html",
+			"kunyupages/my/informance.html",
+			"kunyupages/my/withdrawDetail.html"
 		],
 		"resources": []
 	},

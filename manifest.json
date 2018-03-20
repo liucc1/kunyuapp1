@@ -332,7 +332,8 @@
 				"resources": [],
 				"refer": [
 					"kunyupages/my/withdrawDetail.html",
-					"kunyupages/my/withdraw.html"
+					"kunyupages/my/withdraw.html",
+					"kunyupages/my/informance.html"
 				],
 				"priority": 0
 			},

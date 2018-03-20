@@ -59,10 +59,10 @@ $("#oBtn").on('tap',function(){
 		mui.toast("身份证格式不正确！");
 		return false;
 	}
-	if(!ifFlag){
-		mui.toast("请拍摄身份证反面！");
-		return false;
-	}
+//	if(!ifFlag){
+//		mui.toast("请拍摄身份证反面！");
+//		return false;
+//	}
 	if(isNullVal(cardNo)){
 		mui.toast("银行卡号不能为空！");
 		return false;

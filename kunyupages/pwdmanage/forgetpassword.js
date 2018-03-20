@@ -67,10 +67,16 @@ $("#oBtn").on("tap",function(){
 			"password":forgetPasswordVal
 		};
 		eg.postAjax("forget", params, function(data) {
-			plus.nativeUI.toast("密码修改成功！", {
-				duration: "short"
-			});
-			mui.back();
+			if (data.status == "1") {
+				plus.nativeUI.toast("密码修改成功,请重新登录！", {
+					duration: "short"
+				});
+				mui.back();
+			} else if(status == "-6"){
+				plus.nativeUI.toast("验证码错误！", {
+					duration: "short"
+				});
+			}
 		},function(data){
 	
 		});

@@ -1,4 +1,5 @@
 mui.init();
+var totalMoney;
 var k = document.getElementsByClassName("pwdDiv");
 //遮罩
 var mask = mui.createMask(function(){
@@ -7,14 +8,46 @@ var mask = mui.createMask(function(){
 	});
 	$(".moni-alert").hide();
 });
-
+mui.plusReady(function(){
+	totalMoney = plus.webview.currentWebview().totalMoney;
+	$("#totalMoney").text(totalMoney);
+	eg.ajax(eg.jrURL + "user/data.json", {}, 'get', function(data){
+		var info = data.rows;
+		$("#custName").val(info.name);
+		$("#cutNo").val(info.cardNo);
+		$("#address").val(info.depositBank);
+	})	
+})
+/*全部提现*/
+$(".span-footer").on('tap',function(){
+	$("#money").val(totalMoney);
+})
 /*申请提现*/
 $("#confirmBtn").on("tap",function(){
+	eg.postAjax2("user/query",{"type":"pmq"},function(data){
+		if(data.status == "1"){
+			withdraw();
+		}else if(data.status == "0"){
+			mui.toast("请先设置支付密码！");
+			mui.openWindow({
+				url:"payPassword.html",
+				id:"payPassword"
+			})
+		}
+	})
+})
+
+function withdraw(){
+	var money = $("#money").val().trim();
+	if(parseInt(money) > parseInt(totalMoney)){
+		mui.toast("申请提现金额不得大于全部金额！");
+		return false;
+	}
 	/* 弹出框    */
 	mask.show();
 	$(".moni-alert").show().css("top","35%");	
-//	showKeyboard();
-})
+	showKeyboard();
+}
 
 $("#sure").on("tap",function(){
 	for(var i = 0; i < k.length; i++){
@@ -29,13 +62,18 @@ $("#sure").on("tap",function(){
 	});
 	mask.close();
 	$(".moni-alert").hide();
-//	var data = {
-//		"payPassword": payPasswdVal,
-//	}
-//	plus.nativeUI.showWaiting();
-//	payPasswdVal ="";
+	var params = {
+		"amount":$("#money").val().trim(),
+		"password": payPasswdVal
+	}
+	plus.nativeUI.showWaiting();
+	payPasswdVal ="";
+	eg.postAjax2("user/payment/submit",params,function(data){
+			plus.nativeUI.closeWaiting();
+			alert(JSON.stringify(data));
+	})
 //	eg.generalPostAjax("account/withdraw.do", data, function(val) {
-//		plus.nativeUI.closeWaiting();
+
 //		if(val.resCode !== "0"){
 //			mui.toast(val.resMsg);
 //			randomNum = eg.getRandomNum();
@@ -71,11 +109,10 @@ $("#cancel").on("tap",function(){
 //-----------------上线要用的密码键盘-------------------------------
 var payPasswdVal;//上线支付密码
 //硬件监听
-document.addEventListener( "plusready", onPlusReady, false );
-function onPlusReady() {
-    console.log("plusready");
-}
-
+//document.addEventListener( "plusready", onPlusReady, false );
+//function onPlusReady() {
+//  console.log("plusready");
+//}
 /***
  *调用密码控件     上线用
  *  * 
