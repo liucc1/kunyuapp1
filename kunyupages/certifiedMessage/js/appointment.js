@@ -48,7 +48,10 @@ function dealDate(res){
 $("#oBtn").on("tap",function(){
 	var appointTime = $("#appointTime").val();
 	if(isNullVal(appointTime)){
-		mui.toast("请选择预约时间！");
+		mui.toast("请选择预约时间",{
+						duration: 'short',
+						type: 'div'
+					});
 		return false;
 	}
 	var date = "2018-"+appointTime.substring(0,2)+'-'+appointTime.substring(3,5);
@@ -73,12 +76,18 @@ $("#oBtn").on("tap",function(){
 	eg.postAjax("jt/appoint",param,function(data){
 		plus.nativeUI.closeWaiting();
 		if (data.status == "1") {
-			mui.toast("预约成功");
+			mui.toast("预约成功",{
+						duration: 'short',
+						type: 'div'
+					});
 			setTimeout(function(){
 				eg.toHome();
 			},500)		
 		} else{
-			mui.toast(data.message);
+			mui.toast(data.message,{
+						duration: 'short',
+						type: 'div'
+					});
 		}
 	})
 })

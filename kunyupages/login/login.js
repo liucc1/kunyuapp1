@@ -30,20 +30,32 @@
 	/**登录之前校验**/
 	function canLogin(){
 		if(!$("#phone").val()) {
-			mui.toast("手机号码不能为空");
+			mui.toast("手机号码不能为空",{
+						duration: 'short',
+						type: 'div'
+					});
 			return false;
 		};
 		if(!eg.phone.test($("#phone").val())) {
-			mui.toast("手机号输入有误！");
+			mui.toast("手机号输入有误",{
+						duration: 'short',
+						type: 'div'
+					});
 			return false;
 		};
 		if(!$("#pwd").val()) {
-			mui.toast("密码不能为空");
+			mui.toast("密码不能为空",{
+						duration: 'short',
+						type: 'div'
+					});
 			return false;
 		};
 		var ok = plus.pluginPGKeyboard.checkMatch("pwd");
 		if(!ok){
-			mui.toast("密码格式不正确");
+			mui.toast("密码格式不正确",{
+						duration: 'short',
+						type: 'div'
+					});
 			return false;
 		}
 		return true;
@@ -54,6 +66,7 @@
 			var params = {
 				"username": $("#phone").val().trim(),
 				"password": passwordVal
+//				"password": "185AEF3B1C810799A6BE8314ABF6512C"
 			}
 			eg.postAjax("login",params, function(data) {
 				if(data.status == 1){
@@ -61,7 +74,10 @@
 					plus.webview.currentWebview().close();
 					plus.webview.getWebviewById("./my.html").reload();
 				}else{
-					mui.toast(data.message);
+					mui.toast(data.message,{
+						duration: 'short',
+						type: 'div'
+					});
 				}
 			},function(data){
 				alert("err==="+data);
@@ -84,7 +100,10 @@
 				id: "register"
 			})
 		} else {
-			mui.toast("您已经登录！");
+			mui.toast("您已经登录",{
+						duration: 'short',
+						type: 'div'
+					});
 		}
 	}); 
 	
@@ -100,7 +119,6 @@ var passwordVal;
 function onPlusReady() {
     console.log("plusready");
 }
-
 /***
  *调用密码控件     上线用
  *  * 
@@ -156,4 +174,3 @@ $("#pwd").click(function(){
 		bottom:"50px"
 	})
 });
-

@@ -19,7 +19,26 @@ mui.plusReady(function() {
 	});
 });
 
+
 /**点击获取验证码**/
+//$("#getcode").on("tap",function(){
+//	setTimeout(function(){
+//		var phoneNum = $("#phone").val();
+//		if(!eg.phone.test(phoneNum)) {
+//			mui.toast("手机号码格式不正确！");
+//			return;
+//		};
+//		eg.postAjax("search/mobile",{"mobile":phoneNum}, function(data) {
+//			if(data.status == "1"){
+//	   			getSms();
+//			}else{
+//				mui.toast("手机号已存在，不可重复注册！");
+//				return false;
+//			}
+//		});
+//	},1000);
+//});
+///**点击获取验证码**/
 $("#getcode").on("tap",function(){
 	var phoneNum = $("#phone").val();
 	if(!eg.phone.test(phoneNum)) {
@@ -28,13 +47,13 @@ $("#getcode").on("tap",function(){
 	};
 	eg.postAjax("search/mobile",{"mobile":phoneNum}, function(data) {
 		if(data.status == "1"){
- 			getSms();
+   			getSms();
 		}else{
 			mui.toast("手机号已存在，不可重复注册！");
 			return false;
 		}
 	});
-});
+}); 
 function getSms(){
 	eg.postAjax("captCha", {
 		"mobile":$("#phone").val().trim()
