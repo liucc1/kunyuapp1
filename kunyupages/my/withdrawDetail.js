@@ -9,7 +9,7 @@ mui.plusReady(function(){
 				$(recordList).each(function(key,val){
 					html += '<tr><td>'+val.withdrawalsAmount+'</td>'
 					html += '<td>'+val.withdrawalsTime+'</td>'
-					html += '<td class="table-charge-td">'+''+'</td>'
+					html += '<td class="table-charge-td">'+val.balance+'</td>'
 				})
 			}
 			$("#recordList").html(html);

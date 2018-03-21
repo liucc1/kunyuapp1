@@ -148,5 +148,10 @@
 		"resources": [
 			"kunyupages/register/register.js"
 		]
+	},
+	"kunyupages/my/withdraw.html": {
+		"refer": [
+			"kunyupages/my/payPassword.html"
+		]
 	}
 }

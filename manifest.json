@@ -367,6 +367,13 @@
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"kunyupages/my/withdraw.html": {
+				"resources": [],
+				"refer": [
+					"kunyupages/my/payPassword.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {

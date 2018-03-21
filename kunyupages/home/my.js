@@ -2,7 +2,7 @@ mui.init();
 mui.plusReady(function(){
 //	var phone = localStorage.getItem("phone");
 	eg.loginAjax(function(){
-		$("#uploadImg").removeClass("none")
+//		$("#uploadImg").removeClass("none")
 		$("#phone").text(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		$("#oBtn").removeClass("none");
 		//获取头像base64
@@ -15,7 +15,6 @@ mui.plusReady(function(){
 			plus.nativeUI.closeWaiting();
 		});
 	},function(){
-		$("#notLogin").removeClass("none")
 		$("#login").removeClass("none");
 	})
 	$("#telphone").on('tap',function(){
@@ -92,34 +91,34 @@ $("#login").on("tap",function(){
 		id:"login"
 	})
 })
-//$("#notLogin").on("tap",function(){
-//	mui.toast("请登录后上传头像");
-//})
 
 /*上传头像*/
 $("#uploadImg").on("tap",function(){
-	var btnArray = [{title:"我的相册"},{title:"拍照"}];
-	plus.nativeUI.actionSheet( {
-		cancel:"取消",
-		buttons:btnArray
-	}, function(e){
-		var index = e.index;
-		switch (index){
-			case 0:
-				break;
-			case 1:
-			plus.gallery.pick(function(p) {
-				imageBack(p);
-			},function(error){
-				
-				});
-				break;
-			case 2:
-				getImage();						
-				break;
-		}
-	} );
+	eg.loginAjax(function(){
+		var btnArray = [{title:"我的相册"},{title:"拍照"}];
+		plus.nativeUI.actionSheet( {
+			cancel:"取消",
+			buttons:btnArray
+		}, function(e){
+			var index = e.index;
+			switch (index){
+				case 0:
+					break;
+				case 1:
+				plus.gallery.pick(function(p) {
+					imageBack(p);
+				},function(error){
+					
+					});
+					break;
+				case 2:
+					getImage();						
+					break;
+			}
+		});
+	})
 })
+
 /***
  * 调取摄像头拍照
  * @param {照片序号} 

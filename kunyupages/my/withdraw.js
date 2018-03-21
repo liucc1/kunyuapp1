@@ -24,25 +24,41 @@ $(".span-footer").on('tap',function(){
 })
 /*申请提现*/
 $("#confirmBtn").on("tap",function(){
+	var money = $("#money").val().trim();
+	if(!money) {
+		mui.toast("请输入提现金额");
+		return false;
+	}
+	if(money == "0"){
+		mui.toast("提现金额不得等于零");
+		return false;
+	}
+	if(!eg.money.test(money)) {
+		mui.toast("提现金额格式不正确");
+		return false;
+	}
+	if(parseInt(money) > parseInt(totalMoney)){
+		mui.toast("申请提现金额不得大于全部金额！");
+		return false;
+	}
 	eg.postAjax2("user/query",{"type":"pmq"},function(data){
 		if(data.status == "1"){
-			withdraw();
-		}else if(data.status == "0"){
-			mui.toast("请先设置支付密码！");
-			mui.openWindow({
-				url:"payPassword.html",
-				id:"payPassword"
-			})
+			if(data.data.pmq == "1"){
+				withdraw();
+			}else if(data.data.pmq == "0"){
+				mui.toast("请先设置支付密码！");
+				mui.openWindow({
+					url:"payPassword.html",
+					id:"payPassword"
+				})
+			}
+		}else{
+			mui.toast(data.message);
 		}
 	})
 })
 
 function withdraw(){
-	var money = $("#money").val().trim();
-	if(parseInt(money) > parseInt(totalMoney)){
-		mui.toast("申请提现金额不得大于全部金额！");
-		return false;
-	}
 	/* 弹出框    */
 	mask.show();
 	$(".moni-alert").show().css("top","35%");	
@@ -72,27 +88,6 @@ $("#sure").on("tap",function(){
 			plus.nativeUI.closeWaiting();
 			alert(JSON.stringify(data));
 	})
-//	eg.generalPostAjax("account/withdraw.do", data, function(val) {
-
-//		if(val.resCode !== "0"){
-//			mui.toast(val.resMsg);
-//			randomNum = eg.getRandomNum();
-//			return;
-//		}	
-////		if(val.result == "true"){
-//			var ber = loanAccount.substring(0,loanAccount.length-4);
-//			ber = ber.replace(/\d/g,"*");
-//			loanAccount = ber + loanAccount.slice(-4);
-//			var str = loanAcctDeposit+" "+loanAccount;
-//			mui.openWindow({
-//				url: "carryPresentEnd.html",
-//				id: "carryPresentEnd",
-//				extras:{
-//					openBank:str
-//				}
-//			});
-//		}
-//	});
 })
 
 $("#cancel").on("tap",function(){
