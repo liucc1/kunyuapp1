@@ -114,7 +114,7 @@ $("#oBtn").on("tap",function(){
 	var ele = $(".shakeImg").children("img");
 	var eleSupply = $(".supplyImg").children("img");
 	if(ele.length + eleSupply.length < 0){
-		mui.toast("请上传照片",{duration: 'short'});
+		mui.toast("请上传照片",{duration: 'short',type: 'div'});
 		return false;
 	}
 	for(var i = 0; i < eleSupply.length; i++){
@@ -133,7 +133,7 @@ $("#oBtn").on("tap",function(){
 					id: "submitSuccess"
 				});
             }else{
-            	mui.toast("上传失败",{duration: 'short'});
+            	mui.toast("上传失败",{duration: 'short',type: 'div'});
             }
 		})
 	}

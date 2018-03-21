@@ -21,7 +21,7 @@ function getByGally(){
 		}
 		compressAll(oriPath,finPath);
 	},function(error){
-		mui.toast("请重新选择",{duration: 'short'});
+		mui.toast("请重新选择",{duration: 'short',type: 'div'});
 	},{filter:"image",multiple:true,maximum:9});
 }
 
@@ -134,7 +134,7 @@ function takePhoto(){
 			}
 		});
 	},function(error){
-		mui.toast("未获取图片，请确认摄像头权限开启之后重新尝试",{duration: 'short'});
+		mui.toast("未获取图片，请确认摄像头权限开启之后重新尝试",{duration: 'short',type: 'div'});
 	});
 }
 

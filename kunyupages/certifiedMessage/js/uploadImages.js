@@ -82,7 +82,7 @@ $("#oBtn").on("tap",function(){
 	var uploadField = localStorage.getItem("uploadField");
 	var ele = $(".shakeImg").children("img");
 	if(ele.length < 0){
-		mui.toast("请上传照片",{duration: 'short'});
+		mui.toast("请上传照片",{duration: 'short',type: 'div'});
 		return false;
 	}
 	var filesArr = []
@@ -102,7 +102,7 @@ $("#oBtn").on("tap",function(){
 				});
 				localStorage.removeItem("uploadField");
             }else{
-            	mui.toast("上传失败",{duration: 'short'});
+            	mui.toast("上传失败",{duration: 'short',type: 'div'});
             }
 		})
 })

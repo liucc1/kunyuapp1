@@ -75,7 +75,7 @@ var PullToRefreshFactory = {
 						scrollConfig.upSuccess(ul,data);
 					}
 				}else{
-					mui.toast(data.message,{duration: 'short'});
+					mui.toast(data.message,{duration: 'short',type: 'div'});
 				}
 			})
 		}

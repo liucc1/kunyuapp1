@@ -71,12 +71,12 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 						return;
 					}
 					if(network == 0 || network == 1){
-						mui.toast("无网络",{duration: 'short'});
+						mui.toast("无网络",{duration: 'short',type: 'div'});
 					}else{
 		//				alert("jqXHR"+JSON.stringify(jqXHR));
 						//alert("textStatus"+JSON.stringify(textStatus));
 						//alert("errorThrown"+JSON.stringify(errorThrown));
-						mui.toast("系统维护中，请稍后重试",{duration: 'short'});
+						mui.toast("系统维护中，请稍后重试",{duration: 'short',type: 'div'});
 					}
 					//var jsonRep=JSON.parse(jqXHR)
 		//			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
@@ -136,12 +136,12 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 						return;
 					}
 					if(network == 0 || network == 1){
-						mui.toast("无网络",{duration: 'short'});
+						mui.toast("无网络",{duration: 'short',type: 'div'});
 					}else{
 		//				alert("jqXHR"+JSON.stringify(jqXHR));
 		//				alert("textStatus"+JSON.stringify(textStatus));
 		//				alert("errorThrown"+JSON.stringify(errorThrown));
-						mui.toast("系统维护中，请稍后重试",{duration: 'short'});
+						mui.toast("系统维护中，请稍后重试",{duration: 'short',type: 'div'});
 					}
 					//var jsonRep=JSON.parse(jqXHR)
 		//			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
@@ -242,12 +242,12 @@ eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
 				return;
 			}
 			if(network == 0 || network == 1){
-				mui.toast("无网络",{duration: 'short'});
+				mui.toast("无网络",{duration: 'short',type: 'div'});
 			}else{
 				//alert("jqXHR"+JSON.stringify(jqXHR));
 				//alert("textStatus"+JSON.stringify(textStatus));
 				//alert("errorThrown"+JSON.stringify(errorThrown));
-				mui.toast("系统维护中，请稍后重试",{duration: 'short'});
+				mui.toast("系统维护中，请稍后重试",{duration: 'short',type: 'div'});
 			}
 			//var jsonRep=JSON.parse(jqXHR)
 			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}

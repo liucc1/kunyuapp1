@@ -8,7 +8,7 @@ $("#getcode").on('tap',function(){
 	}, function(data) {
 		if(data.status=="1"){
 			Countdown("getcode");
-			mui.toast("短信发送成功",{duration: 'short'});
+			mui.toast("短信发送成功",{duration: 'short',type: 'div'});
 		}
 	},function(data){
 		
@@ -16,20 +16,20 @@ $("#getcode").on('tap',function(){
 })
 $("#oBtn").on('tap',function(data){
 	if(!$("#smscode").val().trim()){
-		mui.toast("验证码不可为空！",{duration: 'short'});
+		mui.toast("验证码不可为空！",{duration: 'short',type: 'div'});
 		return false;
 	}
 	if(!$("#pwd").val().trim()){
-		mui.toast("请输入支付密码！",{duration: 'short'});
+		mui.toast("请输入支付密码！",{duration: 'short',type: 'div'});
 		return false;
 	}
 	var ok = plus.pluginPGKeyboard.checkMatch("myPassword");
 	if(!ok){
-    	mui.toast("您输入的支付密码格式不正确",{duration: 'short'});
+    	mui.toast("您输入的支付密码格式不正确",{duration: 'short',type: 'div'});
     	return false;
    }	
 	if(payPasswdVal != repeatPasswordVal){
-		mui.toast("两次支付密码设置不一致",{duration: 'short'});
+		mui.toast("两次支付密码设置不一致",{duration: 'short',type: 'div'});
 		return false;
 	}
 	var param = {
@@ -38,7 +38,7 @@ $("#oBtn").on('tap',function(data){
 	}
 	eg.postAjax2("user/payment/pwd",param,function(data){
 		if(data.status == "1"){
-			mui.toast("设置成功",{duration: 'short'});
+			mui.toast("设置成功",{duration: 'short',type: 'div'});
 			plus.webview.currentWebview().close();
 		}
 	})

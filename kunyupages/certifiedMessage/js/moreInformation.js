@@ -137,83 +137,83 @@ $("#oBtn").on("tap",function(){
     var houseInfo = [];
     
 	if(isNullVal(unit)){
-		mui.toast("单位名称不能为空！",{duration: 'short'});
+		mui.toast("单位名称不能为空！",{duration: 'short',type: 'div'});
 		return false;
 	}
 	var reg = /(\ud83c[\udf00-\udfff])|(\ud83d[\udc00-\ude4f])|(\ud83d[\ude80-\udeff])/;
 	if(reg.test(unit)){
-		mui.toast("单位名称格式不正确！",{duration: 'short'});
+		mui.toast("单位名称格式不正确！",{duration: 'short',type: 'div'});
 		return false;  
 	}
 	if(isNullVal(unitPhone)){
-		mui.toast("单位电话不能为空！",{duration: 'short'});
+		mui.toast("单位电话不能为空！",{duration: 'short',type: 'div'});
 		return false;
 	}
 	var telExp = /^0\d{2,3}-\d{7,8}(-\d{0,4}|)$/;
 	if(!telExp.test(unitPhone)) {
-		mui.toast("单位电话号格式不正确,区号应为3至4位，首位为0",{duration: 'short'});
+		mui.toast("单位电话号格式不正确,区号应为3至4位，首位为0",{duration: 'short',type: 'div'});
 		return false;
 	};
   	if(isNullVal(unitAddress)){
-		mui.toast("单位地址不能为空！",{duration: 'short'});
+		mui.toast("单位地址不能为空！",{duration: 'short',type: 'div'});
 		return false;
 	}
     for (var i=0;i<house.length;i++) {
     	if(isNullVal(houseValues[i].value)){
-			mui.toast("房产总值不能为空！",{duration: 'short'});
+			mui.toast("房产总值不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
     	if(houseValues[i].value <= 0){
-			mui.toast("房产价值不能小于等于零",{duration: 'short'});
+			mui.toast("房产价值不能小于等于零",{duration: 'short',type: 'div'});
 			return false;
 		}
 		var reg = /^[1-9]\d{0,8}$/
 		if(!reg.test(houseValues[i].value.split(".")[0])){
-			mui.toast("房产价值格式有误，最多输入九位数",{duration: 'short'});
+			mui.toast("房产价值格式有误，最多输入九位数",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(residenceType.eq(i).attr("data-key"))){
-			mui.toast("房产类型不能为空！",{duration: 'short'});
+			mui.toast("房产类型不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(residenceProp.eq(i).attr("data-key"))){
-			mui.toast("抵押类型不能为空！",{duration: 'short'});
+			mui.toast("抵押类型不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(houseId[i].value)){
-			mui.toast("房产编号不能为空！",{duration: 'short'});
+			mui.toast("房产编号不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(area[i].value)){
-			mui.toast("房产面积不能为空！",{duration: 'short'});
+			mui.toast("房产面积不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(residenceLocation[i].value)){
-			mui.toast("房产地址不能为空！",{duration: 'short'});
+			mui.toast("房产地址不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(mortgage1Time[i].value) && residenceProp.eq(i).attr("data-key") > 1){
-			mui.toast("一抵时间不能为空！",{duration: 'short'});
+			mui.toast("一抵时间不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(mortgage1Value[i].value) && residenceProp.eq(i).attr("data-key") > 1){
-			mui.toast("一抵金额不能为空！",{duration: 'short'});
+			mui.toast("一抵金额不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(!reg.test(mortgage1Value[i].value.split(".")[0]) && !isNullVal(mortgage1Value[i].value)){
-			mui.toast("一抵金额格式有误，最多输入九位数",{duration: 'short'});
+			mui.toast("一抵金额格式有误，最多输入九位数",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(mortgage2Time[i].value) && residenceProp.eq(i).attr("data-key") == 5){
-			mui.toast("二抵时间不能为空！",{duration: 'short'});
+			mui.toast("二抵时间不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(isNullVal(mortgage2Value[i].value) && residenceProp.eq(i).attr("data-key") == 5){
-			mui.toast("二抵金额不能为空！",{duration: 'short'});
+			mui.toast("二抵金额不能为空！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	    if(!reg.test(mortgage2Value[i].value.split(".")[0]) && !isNullVal(mortgage2Value[i].value)){
-			mui.toast("二抵金额格式有误，最多输入九位数",{duration: 'short'});
+			mui.toast("二抵金额格式有误，最多输入九位数",{duration: 'short',type: 'div'});
 			return false;
 		}
     	houseInfo[i]={

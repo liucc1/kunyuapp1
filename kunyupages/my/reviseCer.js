@@ -14,9 +14,9 @@ $("#getcode").on("tap",function(){
 	}, function(data) {
 		if(data.status=="1"){
 			Countdown("getcode");
-			mui.toast("短信发送成功",{duration: 'short'});
+			mui.toast("短信发送成功",{duration: 'short',type: 'div'});
 		}else{
-			mui.toast(data.message,{duration: 'short'});
+			mui.toast(data.message,{duration: 'short',type: 'div'});
 		}
 	},function(data){
 		
@@ -31,15 +31,15 @@ $("#oBtn").on('tap',function(){
 	var smscode = $("#smscode").val();
 	var depositBank = $("#depositBank").val();
 	if(isNullVal(cardNo)){
-		mui.toast("银行卡号不能为空！",{duration: 'short'});
+		mui.toast("银行卡号不能为空！",{duration: 'short',type: 'div'});
 		return false;
 	}
 	if(isNullVal(smscode)) {
-		mui.toast("验证码不能为空！",{duration: 'short'});
+		mui.toast("验证码不能为空！",{duration: 'short',type: 'div'});
 		return false;
 	}
 	if(isNullVal(depositBank)) {
-		mui.toast("开户行不能为空！",{duration: 'short'});
+		mui.toast("开户行不能为空！",{duration: 'short',type: 'div'});
 		return false;
 	}
 	var params = {
@@ -51,11 +51,11 @@ $("#oBtn").on('tap',function(){
 	}
 	eg.postAjax2("user/data", params, function(data){
 		if(data.status == 1){
-			mui.toast("更换银行卡成功",{duration: 'short'});
+			mui.toast("更换银行卡成功",{duration: 'short',type: 'div'});
 			plus.webview.currentWebview().opener().reload();
 			plus.webview.currentWebview().close();
 		}else{
-			mui.toast(data.message,{duration: 'short'});
+			mui.toast(data.message,{duration: 'short',type: 'div'});
 		}
 	},function(){
 		

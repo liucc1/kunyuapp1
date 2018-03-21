@@ -21,14 +21,14 @@ mui.plusReady(function() {
 $("#getcode").on("tap",function(){
 	var phoneNum = $("#phone").val();
 	if(!eg.phone.test(phoneNum)) {
-		mui.toast("手机号码格式不正确！",{duration: 'short'});
+		mui.toast("手机号码格式不正确！",{duration: 'short',type: 'div'});
 		return;
 	};
 	eg.postAjax("search/mobile",{"mobile":phoneNum}, function(data) {
 		if(data.status == "1"){
    			getSms();
 		}else{
-			mui.toast("手机号已存在，不可重复注册！",{duration: 'short'});
+			mui.toast("手机号已存在，不可重复注册！",{duration: 'short',type: 'div'});
 			return false;
 		}
 	});
@@ -39,7 +39,7 @@ function getSms(){
 	}, function(data) {
 		if(data.status=="1"){
 			Countdown("getcode");
-			mui.toast("短信发送成功",{duration: 'short'});
+			mui.toast("短信发送成功",{duration: 'short',type: 'div'});
 		}
 	},function(data){
 		
@@ -73,12 +73,12 @@ function istoregister(){
 		return false;
 	};
 	if(!ifPlusKeyBoard){//点击了密码控件
-        mui.toast("请输入密码",{duration: 'short'});
+        mui.toast("请输入密码",{duration: 'short',type: 'div'});
         return;
     }	
 	var ok = plus.pluginPGKeyboard.checkMatch("regPwd");
 	if(!ok){
-		mui.toast("密码格式不正确",{duration: 'short'});
+		mui.toast("密码格式不正确",{duration: 'short',type: 'div'});
 		return;
 	}		
 	if(regPwdVal !== repeatRegPwdVal) {
@@ -140,15 +140,15 @@ function goRegister(){
 		$("#oBtn").removeAttr("disabled");
 		var status=data.status;
 		if(status=='1'){
-			mui.toast("注册成功！",{duration: 'short'});
+			mui.toast("注册成功！",{duration: 'short',type: 'div'});
 			plus.webview.currentWebview().close();//关闭注册页，回到登录页。
 			mui.back();
 		}else if(status=='-2'){
-			mui.toast("注册失败，用户已经存在！",{duration: 'short'});
+			mui.toast("注册失败，用户已经存在！",{duration: 'short',type: 'div'});
 		}else if(status=='-6'){
-			mui.toast("验证码输入错误！",{duration: 'short'});
+			mui.toast("验证码输入错误！",{duration: 'short',type: 'div'});
 		}else{
-			mui.toast("注册失败！",{duration: 'short'});
+			mui.toast("注册失败！",{duration: 'short',type: 'div'});
 		}
 	},function(data){
 		$("#oBtn").removeAttr("disabled");
