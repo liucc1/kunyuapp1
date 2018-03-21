@@ -25,15 +25,37 @@ mui.plusReady(function(){
 				})
 			}
 			$("#monthBrokerage").html(html);
+			eg.postAjax2("commission/list",{"days":""},function(data){
+				if(data.code == "1"){
+					var html = '<tr><th>客户姓名</th><th>激活额度</th><th>佣金计算</th><th>佣金金额</th></tr>';
+					var arr = data.rows;
+					for(var index in arr){
+						var recordList = arr[index];
+						$(recordList).each(function(key,val){
+							html += '<tr><td>'+val.name+'</td>'
+							html += '<td>'+val.activeAmount+'</td>'
+							html += '<td>'+val.activeAmount+'*'+val.rebate+'%'+'</td>'
+							html += '<td class="table-charge-td">'+val.rebateAmount+'</td></tr>'
+						})
+					}
+					$("#totalBrokerage").html(html);
+				}
+			})
 		}
 	})
 })
 $("#Item1").on('tap',function(){
-	Commission("30","monthBrokerage")
+	Commission("30","monthBrokerage");
 })
 $("#Item2").on('tap',function(){
-	Commission("","totalBrokerage")
+	Commission("","totalBrokerage");
 })
+//document.addEventListener("swipeleft",function(){
+//  Commission("","totalBrokerage");
+//});
+//document.addEventListener("dragstart",function(){
+//  Commission("","totalBrokerage");
+//});
 function Commission(num,id){
 	var param = {
 		"days":num
