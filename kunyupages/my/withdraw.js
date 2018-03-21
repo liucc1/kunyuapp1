@@ -71,8 +71,13 @@ $("#sure").on("tap",function(){
 	}
 	if(isNullVal(payPasswdVal)) {
 		console_error("支付密码");
-		return;
+		return false;
 	}
+	var ok = plus.pluginPGKeyboard.checkMatch("payPassword");
+	if(!ok){
+    	mui.toast("支付密码格式不正确");
+    	return false;
+   }	
 	plus.webview.currentWebview().setStyle({
 		bottom: "0px" // 弹出软键盘时自动改变webview的高度
 	});
@@ -84,7 +89,7 @@ $("#sure").on("tap",function(){
 	}
 	plus.nativeUI.showWaiting();
 	payPasswdVal ="";
-	eg.postAjax2("user/payment/submit",params,function(data){
+	eg.postAjax2("commission/extract",params,function(data){
 			plus.nativeUI.closeWaiting();
 			alert(JSON.stringify(data));
 	})
@@ -131,7 +136,7 @@ function showKeyboard(){
 	}
 	payPasswdVal="";
 	plus.pluginPGKeyboard.clearKeyboard("payPassword");	
-	plus.pluginPGKeyboard.openMD5Keyboard("payPassword", "true",0,6,"false","true","false","","",
+	plus.pluginPGKeyboard.openMD5Keyboard("payPassword", "true",0,6,"false","true","false","^[0-9]{6}$","",
 			function(result) {
 					if (result) {
 						if (result.status) {
@@ -169,7 +174,7 @@ function showKeyboard(){
 					alert(result);
 				});
 	plus.webview.currentWebview().setStyle({
-		bottom:"100px"
+		bottom:"0px"
 	});
 }
 

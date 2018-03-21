@@ -1,8 +1,6 @@
 mui.init();
 mui.plusReady(function(){
-//	var phone = localStorage.getItem("phone");
 	eg.loginAjax(function(){
-//		$("#uploadImg").removeClass("none")
 		$("#phone").text(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		$("#oBtn").removeClass("none");
 		//获取头像base64
@@ -35,7 +33,6 @@ mui.plusReady(function(){
 	},function(){
 		
 	})
-
 })
 function goPage(param){
 	eg.loginAjax(function(){
