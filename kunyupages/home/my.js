@@ -28,7 +28,7 @@ mui.plusReady(function(){
 				$("#userType").text("高级用户");
 			}
 		}else{
-			mui.toast(data.message);
+			mui.toast(data.message,{duration: 'short'});
 		}
 	},function(){
 		
@@ -60,7 +60,7 @@ $("#myInfo").on('tap',function(){
 				   });
 				}
 			}else{
-				mui.toast(data.message);
+				mui.toast(data.message,{duration: 'short'});
 			}
 		},function(){
 			
@@ -258,7 +258,7 @@ function imageToBase64(p){
 			//调取提交接口
 			eg.postAjax("user/portrait", parameters, function(data) {
 				if(data.status == "1"){
-					mui.toast("上传头像成功");			
+					mui.toast("上传头像成功",{duration: 'short'});			
 					$("#uploadImg").attr("src",base64);
 				}
 				plus.nativeUI.closeWaiting();

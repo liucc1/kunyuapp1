@@ -43,7 +43,7 @@ function addEle(data){
 		});
 	}
 }
-	
+
 mui('#productlist').on('tap','.detail', function() {
 	var dataList = $(this).parents("li").attr("data-list");
 	dataList = JSON.parse(dataList);

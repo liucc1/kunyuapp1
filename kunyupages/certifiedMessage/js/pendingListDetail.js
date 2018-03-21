@@ -95,12 +95,12 @@ document.getElementById("confirmBtn").addEventListener('tap', function() {
 			eg.postAjax("jt/appoint",param,function(data){
 				plus.nativeUI.closeWaiting();
 				if (data.status == "1") {
-					mui.toast("成功取消预约");
+					mui.toast("成功取消预约",{duration: 'short'});
 					setTimeout(function(){
 						eg.toHome();
 					},500)		
 				} else{
-					mui.toast(data.message);
+					mui.toast(data.message,{duration: 'short'});
 				}
 			})
 		}

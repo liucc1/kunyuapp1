@@ -11,5 +11,3 @@ mui.plusReady(function(){
 	var idStr = "#" + type;
 	$(idStr).show();
 })
-
-//	mui.previewImage();

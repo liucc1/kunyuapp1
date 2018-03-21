@@ -5,16 +5,16 @@ mui.plusReady(function(){
 /**校验输入项**/
 function canSubmit(){
 	if(!$("#phone").val().trim()) {
-		mui.toast("手机号码不能为空！");
+		mui.toast("手机号码不能为空！",{duration: 'short'});
 		return false;
 	};
 	if(!$("#smscode").val().trim()) {
-		mui.toast("验证码不能为空！");
+		mui.toast("验证码不能为空！",{duration: 'short'});
 		return false;
 	};
 	var ok = plus.pluginPGKeyboard.checkMatch("newPwd");
 	if(!ok){
-		mui.toast("密码格式错误");
+		mui.toast("密码格式错误",{duration: 'short'});
 		return false;
 	}
 	if(forgetPasswordVal !== ReForgetPasswordVal) {
@@ -24,7 +24,7 @@ function canSubmit(){
 		return false;
 	};
 	if(!$("#pwd1").val().trim()) {
-		mui.toast("新输入密码不能为空！");
+		mui.toast("新输入密码不能为空！",{duration: 'short'});
 		return false;
 	};
 	return true;
@@ -33,7 +33,7 @@ function canSubmit(){
 $("#getcode").on("tap",function(){
 	var phoneNum = $("#phone").val();
 	if(!eg.phone.test(phoneNum)) {
-		mui.toast("手机号码格式不正确！");
+		mui.toast("手机号码格式不正确！",{duration: 'short'});
 		return;
 	};
 	eg.postAjax("search/mobile", {//1.首先验证该手机号是否已注册
@@ -45,13 +45,13 @@ $("#getcode").on("tap",function(){
 				}, function(data) {
 					if(data.status=="1"){
 						Countdown("getcode");
-						mui.toast("短信发送成功");
+						mui.toast("短信发送成功",{duration: 'short'});
 					}
 			},function(data){
 
 			});
 		}else{//未注册
-			mui.toast("请输入已注册手机号！");
+			mui.toast("请输入已注册手机号！",{duration: 'short'});
 			return;
 		}
 	},function(data){

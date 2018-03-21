@@ -1,5 +1,4 @@
 mui.init();
-
 $(function(){
 	$('#idNo').blur(function(){
 		var custName = $('#name').val();
@@ -146,13 +145,6 @@ $("#oBtn").on('tap',function(){
 					});
 		return false;
 	};
-//	if(isNullVal(validityCode)) {
-//		mui.toast("验证码不能为空！",{
-//						duration: 'short',
-//						type: 'div'
-//					});
-//		return false;
-//	};
 	var uploadField = {
 		"name":custName,
 		"idNo":idNo,

@@ -26,19 +26,19 @@ $(".span-footer").on('tap',function(){
 $("#confirmBtn").on("tap",function(){
 	var money = $("#money").val().trim();
 	if(!money) {
-		mui.toast("请输入提现金额");
+		mui.toast("请输入提现金额",{duration: 'short'});
 		return false;
 	}
 	if(money == "0"){
-		mui.toast("提现金额不得等于零");
+		mui.toast("提现金额不得等于零",{duration: 'short'});
 		return false;
 	}
 	if(!eg.money.test(money)) {
-		mui.toast("提现金额格式不正确");
+		mui.toast("提现金额格式不正确",{duration: 'short'});
 		return false;
 	}
 	if(parseInt(money) > parseInt(totalMoney)){
-		mui.toast("申请提现金额不得大于全部金额！");
+		mui.toast("申请提现金额不得大于全部金额！",{duration: 'short'});
 		return false;
 	}
 	eg.postAjax2("user/query",{"type":"pmq"},function(data){
@@ -46,14 +46,14 @@ $("#confirmBtn").on("tap",function(){
 			if(data.data.pmq == "1"){
 				withdraw();
 			}else if(data.data.pmq == "0"){
-				mui.toast("请先设置支付密码！");
+				mui.toast("请先设置支付密码！",{duration: 'short'});
 				mui.openWindow({
 					url:"payPassword.html",
 					id:"payPassword"
 				})
 			}
 		}else{
-			mui.toast(data.message);
+			mui.toast(data.message,{duration: 'short'});
 		}
 	})
 })
@@ -75,7 +75,7 @@ $("#sure").on("tap",function(){
 	}
 	var ok = plus.pluginPGKeyboard.checkMatch("payPassword");
 	if(!ok){
-    	mui.toast("支付密码格式不正确");
+    	mui.toast("支付密码格式不正确",{duration: 'short'});
     	return false;
    }	
 	plus.webview.currentWebview().setStyle({
@@ -92,12 +92,11 @@ $("#sure").on("tap",function(){
 	eg.postAjax2("commission/extract",params,function(data){
 			plus.nativeUI.closeWaiting();
 			if(data.status == "1"){
-				mui.toast("提现申请正在处理中，请耐心等待");
-				eg.toHome();
+				mui.toast("提现申请正在处理中，请耐心等待",{duration: 'short'});
+				plus.webview.currentWebview().close();
 			}else{
-				mui.toast(data.message);
+				mui.toast(data.message,{duration: 'short'});
 			}
-			alert(JSON.stringify(data));
 	})
 })
 

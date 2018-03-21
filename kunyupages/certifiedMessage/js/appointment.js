@@ -36,8 +36,6 @@ mui.plusReady(function(){
 		showUserPickerButton.addEventListener('tap', function(event) {
 			userPicker.show(function(items) {
 				appointTime.value = items;
-				//返回 false 可以阻止选择框的关闭
-				//return false;
 			});
 		}, false);
 	})

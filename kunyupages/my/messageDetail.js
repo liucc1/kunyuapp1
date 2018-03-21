@@ -10,7 +10,7 @@ mui.plusReady(function(){
 			$("#time").text(data.data.createTime);
 			$("#content").html(data.data.message);
 		}else{
-			mui.toast(data.message);
+			mui.toast(data.message,{duration: 'short'});
 		}
 	})	
 })

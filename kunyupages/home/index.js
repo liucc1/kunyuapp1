@@ -17,7 +17,7 @@ mui.plusReady(function(){
 				pause: 3000
 			});
 		}else{
-			mui.toast(data.message);
+			mui.toast(data.message,{duration: 'short'});
 		}
 	})
 	plus.nativeUI.closeWaiting();

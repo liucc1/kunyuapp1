@@ -57,14 +57,14 @@ function Commission(num,id){
 }
 $("#oBtn").on('tap',function(){
 	if($("#totalMoney").text() == "0"){
-		mui.toast("无可提取金额");
+		mui.toast("无可提取金额",{duration: 'short'});
 		return false;
 	}
 	eg.loginAjax(function(){
 		eg.ajax(eg.jrURL + "user/logininfo", {}, 'get', function(data){
 			if(data.status == 1){
 				if(data.data.userType == 0){
-					mui.toast("请先完成实名认证再申请提现");
+					mui.toast("请先完成实名认证再申请提现",{duration: 'short'});
 					mui.openWindow({
 				        url:"../my/informance.html",
 				        id:"informance"
@@ -79,7 +79,7 @@ $("#oBtn").on('tap',function(){
 				   });
 				}
 			}else{
-				mui.toast(data.message);
+				mui.toast(data.message,{duration: 'short'});
 			}
 		},function(){
 			

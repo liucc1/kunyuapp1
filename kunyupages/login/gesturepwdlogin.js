@@ -50,7 +50,7 @@ mui.plusReady(function(){
 							errorCount = parseInt(errorCount) + 1 + "";
 							localStorage.setItem("gesturePasswordErrorCount",errorCount);
 							if(errorCount == "3"){
-								mui.toast("您已输错3次手势锁密码，请用其他方式登录！");
+								mui.toast("您已输错3次手势锁密码，请用其他方式登录！",{duration: 'short'});
 //										var details = plus.webview.getWebviewById(backId);
 								mui.openWindow({
 										"url": "../customerInfo/login.html",
@@ -68,11 +68,11 @@ mui.plusReady(function(){
 							localStorage.setItem("gesturePasswordErrorCount","1");
 							errorCount = "1";
 						}			
-						mui.toast("您已输错"+errorCount+"次手势锁密码!");
+						mui.toast("您已输错"+errorCount+"次手势锁密码!",{duration: 'short'});
 						return;
 					}
 			 if( data.resCode !== "0" ){
-					mui.toast(data.resMsg);
+					mui.toast(data.resMsg,{duration: 'short'});
 					return;
 				}
 

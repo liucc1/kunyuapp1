@@ -31,7 +31,7 @@ function searchData(value){
 		var custList = data.custList;
 		var html = "";
 		if(custList == ""){
-			mui.toast("此客户或手机号不存在");
+			mui.toast("此客户或手机号不存在",{duration: 'short'});
 		}else{
 			$(custList).each(function(key,val){
 				html += '<li class="mui-table-view-cell two-li" data-list='+JSON.stringify(val)+'>';
@@ -78,7 +78,7 @@ mui(".mui-table-view").on('tap','.mui-slider-handle',function(){
 			}
 		});
 	}else{
-		mui.toast("该客户暂无详情数据");		
+		mui.toast("该客户暂无详情数据",{duration: 'short'});		
 	}
 });
 

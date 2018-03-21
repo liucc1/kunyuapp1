@@ -9,20 +9,20 @@ function onPlusReady() {
 }
 $('#oBtn').click(function() {
 	if(!beforPwdVal) {
-		mui.toast("旧登录密码不能为空！");
+		mui.toast("旧登录密码不能为空！",{duration: 'short'});
 		return false;
 	};
 	if(!afterPwdVal) {
-		mui.toast("新登录密码不能为空！");
+		mui.toast("新登录密码不能为空！",{duration: 'short'});
 		return false;
 	};
 	var ok = plus.pluginPGKeyboard.checkMatch("afterPwd");
 	if(!ok){
-    	mui.toast("您输入的新密码格式不正确");
+    	mui.toast("您输入的新密码格式不正确",{duration: 'short'});
     	return false;
    	}
 	if(beforPwdVal == afterPwdVal){
-		mui.toast("新密码与旧密码不能相同！");
+		mui.toast("新密码与旧密码不能相同！",{duration: 'short'});
 		return false;
 	}
 	if(afterPwdVal != afterPwdVal2){
@@ -36,7 +36,7 @@ $('#oBtn').click(function() {
 	}
 	eg.postAjax2("chgpass",params, function(data) {
 		if(data.status == "1" ){
-			mui.toast("密码修改成功，请重新登录");
+			mui.toast("密码修改成功，请重新登录",{duration: 'short'});
 			plus.webview.currentWebview().close();
 			plus.webview.getWebviewById("setPassword").close();
 			var my = plus.webview.getWebviewById("./my.html");

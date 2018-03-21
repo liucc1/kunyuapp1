@@ -2,7 +2,7 @@ var eg = {};
 var network;//获取手机网络状况
 //eg.jrURL = localStorage.getItem("ccpcurl");//为方便打包
 //eg.jrURL ="https://192.168.3.196:8443/report/";//本地环境
-eg.jrURL ="http://192.168.3.196:8091/report/";//本地环境
+eg.jrURL ="http://192.168.3.181/report/";//本地环境
 eg.isEmpty = function(obj){
     for (var name in obj){
         return false;
@@ -71,12 +71,12 @@ eg.ajax = function(url, params, method, successFun,errorFun, isasync) {
 						return;
 					}
 					if(network == 0 || network == 1){
-						mui.toast("无网络");
+						mui.toast("无网络",{duration: 'short'});
 					}else{
 		//				alert("jqXHR"+JSON.stringify(jqXHR));
 						//alert("textStatus"+JSON.stringify(textStatus));
 						//alert("errorThrown"+JSON.stringify(errorThrown));
-						mui.toast("系统维护中，请稍后重试");
+						mui.toast("系统维护中，请稍后重试",{duration: 'short'});
 					}
 					//var jsonRep=JSON.parse(jqXHR)
 		//			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
@@ -136,12 +136,12 @@ eg.ajax2 = function(url, params, method, successFun,errorFun, isasync) {
 						return;
 					}
 					if(network == 0 || network == 1){
-						mui.toast("无网络");
+						mui.toast("无网络",{duration: 'short'});
 					}else{
 		//				alert("jqXHR"+JSON.stringify(jqXHR));
 		//				alert("textStatus"+JSON.stringify(textStatus));
 		//				alert("errorThrown"+JSON.stringify(errorThrown));
-						mui.toast("系统维护中，请稍后重试");
+						mui.toast("系统维护中，请稍后重试",{duration: 'short'});
 					}
 					//var jsonRep=JSON.parse(jqXHR)
 		//			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}
@@ -242,12 +242,12 @@ eg.generalAjax = function(url, params, method, sucfun, errfun,isasync) {
 				return;
 			}
 			if(network == 0 || network == 1){
-				mui.toast("无网络");
+				mui.toast("无网络",{duration: 'short'});
 			}else{
 				//alert("jqXHR"+JSON.stringify(jqXHR));
 				//alert("textStatus"+JSON.stringify(textStatus));
 				//alert("errorThrown"+JSON.stringify(errorThrown));
-				mui.toast("系统维护中，请稍后重试");
+				mui.toast("系统维护中，请稍后重试",{duration: 'short'});
 			}
 			//var jsonRep=JSON.parse(jqXHR)
 			for (var i in jqXHR) {console.log(i+"==="+jqXHR[i]);}

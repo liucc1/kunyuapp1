@@ -114,14 +114,12 @@ $("#oBtn").on("tap",function(){
 	var ele = $(".shakeImg").children("img");
 	var eleSupply = $(".supplyImg").children("img");
 	if(ele.length + eleSupply.length < 0){
-		mui.toast("请上传照片");
+		mui.toast("请上传照片",{duration: 'short'});
 		return false;
 	}
 	for(var i = 0; i < eleSupply.length; i++){
 		var type = $(eleSupply[i]).parents(".imageDiv").attr("data-Type");
 		var file = eleSupply[i].src.split(",")[1];
-//		console.log(type);
-//		console.log(file);
 		plus.nativeUI.showWaiting("正在上传...");
 		eg.postAjax("upload/img/base", {
 			"file": file,
@@ -135,7 +133,7 @@ $("#oBtn").on("tap",function(){
 					id: "submitSuccess"
 				});
             }else{
-            	mui.toast("上传失败");
+            	mui.toast("上传失败",{duration: 'short'});
             }
 		})
 	}
