@@ -91,6 +91,12 @@ $("#sure").on("tap",function(){
 	payPasswdVal ="";
 	eg.postAjax2("commission/extract",params,function(data){
 			plus.nativeUI.closeWaiting();
+			if(data.status == "1"){
+				mui.toast("提现申请正在处理中，请耐心等待");
+				eg.toHome();
+			}else{
+				mui.toast(data.message);
+			}
 			alert(JSON.stringify(data));
 	})
 })
