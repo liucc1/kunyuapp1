@@ -164,13 +164,7 @@ var repeatRegPwdVal;
 //硬件监听
 document.addEventListener( "plusready", onPlusReady, false );
 function onPlusReady() {   
-	//加载用户协议
-	eg.postAjax("local/queryProtocol.do", {
-			"protType": "01",
-			"serviceId": "02000002"
-		}, function(data) {
-			$(".agreement").html(data.protText);
-		});
+
 }
 /***
  *调用密码控件     上线用

@@ -40,7 +40,10 @@ $("#activity").one('tap',function(){
 	var ele = document.getElementById("activBulletin");
 	PullToRefreshFactory.scrollers[1].loadData(true,ele);
 })
-
+document.addEventListener("swipeleft",function(){
+    var ele = document.getElementById("activBulletin");
+	PullToRefreshFactory.scrollers[1].loadData(true,ele);
+});
 //加载数据
 function addEle(ele,data){
 	var html = '';

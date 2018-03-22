@@ -19,7 +19,8 @@ function canSubmit(){
 	}
 	if(forgetPasswordVal !== ReForgetPasswordVal) {
 		plus.nativeUI.toast("两次密码不一致！", {
-			duration: "short"
+			duration: "short",
+			type: 'div'
 		});
 		return false;
 	};
