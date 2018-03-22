@@ -90,6 +90,7 @@ $("#oBtn").on('tap',function(){
 		if(data.status == 1){
 			mui.toast("已绑卡成功",{duration: 'short',type: 'div'});
 			plus.webview.currentWebview().close();
+			plus.webview.getWebviewById("./my.html").reload();
 		}else{
 			mui.toast(data.message,{duration: 'short',type: 'div'});
 		}

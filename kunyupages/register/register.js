@@ -141,7 +141,11 @@ function goRegister(){
 		var status=data.status;
 		if(status=='1'){
 			mui.toast("注册成功！",{duration: 'short',type: 'div'});
-			plus.webview.currentWebview().close();//关闭注册页，回到登录页。
+//			var curr = plus.webview.currentWebview();
+//			setTimeout(function(){
+//				curr.close();
+//			},800);
+//			plus.webview.currentWebview().close();//关闭注册页，回到登录页。
 			mui.back();
 		}else if(status=='-2'){
 			mui.toast("注册失败，用户已经存在！",{duration: 'short',type: 'div'});

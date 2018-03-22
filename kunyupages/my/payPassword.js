@@ -39,7 +39,10 @@ $("#oBtn").on('tap',function(data){
 	eg.postAjax2("user/payment/pwd",param,function(data){
 		if(data.status == "1"){
 			mui.toast("设置成功",{duration: 'short',type: 'div'});
-			plus.webview.currentWebview().close();
+			var curr = plus.webview.currentWebview();
+			setTimeout(function(){
+				curr.close();
+			},800);
 		}
 	})
 })
