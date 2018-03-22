@@ -74,7 +74,7 @@
 					plus.webview.currentWebview().close();
 					plus.webview.getWebviewById("./my.html").reload();
 				}else{
-					mui.toast(data.message,{
+					mui.toast("帐户名或密码错误",{
 						duration: 'short',
 						type: 'div'
 					});
@@ -93,20 +93,12 @@
 	});
 	//3.点击立即注册
 	$("#register").on("tap",function(){	
-		var custName = localStorage.getItem("user");
-		if(!custName) {
-			mui.openWindow({
-				url: "../register/register.html",
-				id: "register"
-			})
-		} else {
-			mui.toast("您已经登录",{
-						duration: 'short',
-						type: 'div'
-					});
-		}
+		mui.openWindow({
+			url: "../register/register.html",
+			id: "register"
+		})
 	}); 
-	
+	/*关闭登录页*/
 	$("#closex").on("tap",function(){
 		plus.webview.currentWebview().close();
 	})
