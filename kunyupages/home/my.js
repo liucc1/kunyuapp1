@@ -1,5 +1,12 @@
 mui.init();
 mui.plusReady(function(){
+	var url = eg.jrURL + "sys/info/kyapp";
+    $.get(url,function(data){
+		console.log(JSON.stringify(data));
+		localStorage.setItem("companyTel",data.companyTel);
+		localStorage.setItem("companyLocation",data.companyLocation);
+		$("#contact").text(data.companyTel);
+	}) 	
 	eg.loginAjax(function(){
 		$("#phone").text(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		$("#oBtn").removeClass("none");

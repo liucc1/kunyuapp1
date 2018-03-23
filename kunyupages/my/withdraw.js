@@ -30,7 +30,7 @@ $("#confirmBtn").on("tap",function(){
 		return false;
 	}
 	if(money == "0"){
-		mui.toast("提现金额不得等于零",{duration: 'long',type: 'div'});
+		mui.toast("提现金额不得等于零",{duration: 'short',type: 'div'});
 		return false;
 	}
 	if(!eg.money.test(money)) {

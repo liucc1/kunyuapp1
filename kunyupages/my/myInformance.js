@@ -1,6 +1,7 @@
 mui.init();
 
-mui.plusReady(function(){
+mui.plusReady(function(){ 
+	$("#telephone").val(localStorage.getItem("companyTel"));
 	eg.ajax(eg.jrURL + "user/data.json", {}, 'get', function(data){
 		var info = data.rows;
 		$("#custName").val(info.name);
@@ -9,7 +10,6 @@ mui.plusReady(function(){
 		$("#depositBank").val(info.depositBank);
 		$("#phone").val(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		$("#city").val(info.city);
-		$("#telephone").val(info.serviceTel);
 		$("#telRow").on('tap',function(){
 			var phoneNum = $(this).children("input").val();
 			plus.device.dial(phoneNum);

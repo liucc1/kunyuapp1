@@ -50,6 +50,7 @@ function queryOne(){
 function queryTwo(){	
 	$(".name").text(dataList.name);
 	$(".mobile").text(dataList.mobile);
+	$("#address").text(localStorage.getItem("companyLocation"));	
 	if(dataList.timeQuantum == "1"){
 		timeQuantum = "上午";
 	}else if(dataList.timeQuantum == "2"){

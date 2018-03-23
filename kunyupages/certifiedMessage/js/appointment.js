@@ -11,6 +11,7 @@ mui.plusReady(function(){
 	status = self.status;
 	$("#custName").val(name);
 	$("#custMobile").val(mobile);
+	$("#appoint").val(localStorage.getItem("companyLocation"));
 	var curr = new Date();
 	currentTime = curr.getHours();
 	flagM = (currentTime<12);
