@@ -31,19 +31,21 @@ $(function(){
 		});
 	})
 	$('#phone').blur(function(){
-		var phone = $("#phone").val();
-		var params = {
-			"value":phone
-		}
-		eg.postAjax("customer/valid/mobile",params, function(data) {
-			if(data.status!="1"){
-				mui.toast("该手机号已注册！",{
-						duration: 'short',
-						type: 'div'
-					});
-				return false;
+		var phone = $("#phone").val();	
+		if(!isNullVal(phone)) {
+			var params = {
+				"value":phone
 			}
-		});
+			eg.postAjax("customer/valid/mobile",params, function(data) {
+				if(data.status!="1"){
+					mui.toast("该手机号已注册！",{
+							duration: 'short',
+							type: 'div'
+						});
+					return false;
+				}
+			});
+		};	
 	})
 })
 mui.plusReady(function(){

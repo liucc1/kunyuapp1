@@ -15,25 +15,7 @@ mui.plusReady(function() {
 	mui.trigger(defaultTab, 'tap');
 	//设备唯一标识
 	var uuid = plus.device.uuid;
-    localStorage.setItem("uuid",uuid);//存储UUID
-/*---------------------------为方便打包--------------------------------*/
-//	var arr = ["测试","富滇准生产","联调","乙丙融","生产？"];
-//	mui.confirm("请选择网络环境？","提示",arr,function(e){
-//		if( e.index === 0){
-//			eg.jrURL ="http://172.16.40.173:8080/ssp-customer/";//测试环境
-//		}else if(e.index === 1){
-//			 eg.jrURL ="http://219.143.184.26:18080/ssp-customer/";//富滇准生产环境
-//		}else if(e.index === 2){
-//			 eg.jrURL ="http://219.143.184.27:12000/ssp-customer/";//富滇联调环境
-//		}else if(e.index === 3){
-//			 eg.jrURL ="http://219.143.184.27:10002/ssp-customer/";//乙丙融专用				 
-//		}else{
-//			 eg.jrURL ="http://36.110.101.68/ssp-customer/";//富滇				 
-//		}
-//	  	localStorage.setItem("ccpcurl",eg.jrURL);
-//	  	//queryAppInfo();//检测最新版本信息
-//	});
-/*-------------------------------为方便打包---------------------------------------*/   
+    localStorage.setItem("uuid",uuid);//存储UUID   
 });
 
 //选项卡点击事件
@@ -95,48 +77,3 @@ mui('.mui-bar-tab').on('tap', 'a', function(e) {
 window.addEventListener('myFirst',function(){
 	mui.trigger(document.getElementById('defaultTab'),"tap");
 });
-
-//退出app
-mui.back = function(){
-	plus.runtime.quit();
-}
-
-/**版本检测**/
-//function queryAppInfo() {
-//	appType =  plus.os.name=="Android"? "apk":"ipa";
-//	eg.postAjax("local/queryAppInfo.do", {
-//		"appId":"customer",
-//		"appVersion":plus.runtime.version,
-//		"appType":appType,
-//		"serviceId": "02000010"
-//	}, function(data) {
-//		if(data.forceUpdate =="1"){
-//			mustUpdate(data.appUrl);			
-//		}else if(data.forceUpdate =="2"){
-//			canChooseUpdate(data.appUrl);			
-//		}
-//	});
-//}
-///**强制更新
-// * @param {Object} appUrl
-// */
-//function mustUpdate(appUrl){
-//	plus.nativeUI.alert("检测到新版本，请更新！",function(e){
-//		var i=e.index;	
-//		if(i == 0){	
-//			localStorage.removeItem("ccpcurl");
-//			plus.runtime.openURL(appUrl);
-//		}
-//	},"提醒","更新");
-//}
-///**选择性更新
-// * @param {Object} appUrl
-// */
-//function canChooseUpdate(appUrl){
-//	plus.nativeUI.confirm("检测到新版本，是否更新？", function(e){
-//		if( e.index == 1){
-////			localStorage.removeItem("ccpcurl");
-//			plus.runtime.openURL(appUrl);
-//		}
-//	}, "提醒", ["否","是"]);
-//}
