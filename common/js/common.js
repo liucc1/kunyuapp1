@@ -3,7 +3,7 @@ var network;//获取手机网络状况
 //eg.jrURL = localStorage.getItem("ccpcurl");//为方便打包
 //eg.jrURL ="https://192.168.3.196:8443/report/";//本地环境
 //eg.jrURL ="http://192.168.3.181/report/";//本地环境
-eg.jrURL ="http://www.kunyugj.com/report/";//生产
+eg.jrURL ="https://www.kunyugj.com/report/";//生产
 eg.isEmpty = function(obj){
     for (var name in obj){
         return false;

@@ -1,6 +1,6 @@
 mui.init();
 $(function(){
-	$('#idNo').blur(function(){
+	$('#idNo').mouseout(function(){
 		var custName = $('#name').val();
 		var idNo = $('#idNo').val();
 		if(isNullVal(idNo)){
@@ -30,9 +30,16 @@ $(function(){
 			}
 		});
 	})
-	$('#phone').blur(function(){
-		var phone = $("#phone").val();	
+	$('#phone').mouseout(function(){
+		var phone = $("#phone").val();
 		if(!isNullVal(phone)) {
+			if(!eg.phone.test(phone)) {
+				mui.toast("手机号码格式不正确！",{
+								duration: 'short',
+								type: 'div'
+							});
+				return false;
+			};
 			var params = {
 				"value":phone
 			}
@@ -48,11 +55,12 @@ $(function(){
 		};	
 	})
 })
+
 mui.plusReady(function(){
-	
+
 })
 //下一步
-$("#oBtn").on('tap',function(){
+$("#oBtn").on('click',function(){
 	var custName = $('#name').val();
 	var idNo = $('#idNo').val();
 	var nation = $('#nation').val();

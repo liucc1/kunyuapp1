@@ -3,7 +3,6 @@ var ifFlag = false;
 mui.plusReady(function(){
 	$("#phone").val(localStorage.getItem("phone"));
 })
-
 //OCR
 $(".afterInput").on('tap',function(){
 	scanImage("0");

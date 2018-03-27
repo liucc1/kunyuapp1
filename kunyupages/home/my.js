@@ -27,7 +27,7 @@ mui.plusReady(function(){
 		plus.device.dial(phoneNum);
 	})
 	/*查询用户是否实名认证*/
-	eg.ajax(eg.jrURL + "user/logininfo", {}, 'get', function(data){
+	$.get(eg.jrURL + "user/logininfo",function(data){
 		if(data.status == 1){
 			if(data.data.userType == 0){
 				$("#userType").text("升级为高级用户");
@@ -37,8 +37,6 @@ mui.plusReady(function(){
 		}else{
 			mui.toast(data.message,{duration: 'short',type: 'div'});
 		}
-	},function(){
-		
 	})
 })
 function goPage(param){
