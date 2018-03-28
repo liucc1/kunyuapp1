@@ -11,32 +11,31 @@ mui.plusReady(function(){
 		$("#phone").text(localStorage.getItem("phone").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'));
 		$("#oBtn").removeClass("none");
 		//获取头像base64
-		var url = eg.jrURL + "user/portrait";
 		plus.nativeUI.showWaiting();
-		$.get(url, function(data) {	
+		$.get(eg.jrURL + "user/portrait", function(data) {	
 			if(data.status == "1"){
 				$("#uploadImg").attr("src","data:image/jpeg;base64," + data.data);
 			}
 			plus.nativeUI.closeWaiting();
 		});
+		/*查询用户是否实名认证*/
+		$.get(eg.jrURL + "user/logininfo",function(data){
+			if(data.status == 1){
+				if(data.data.userType == 0){
+					$("#userType").text("升级为高级用户");
+				}else{
+					$("#userType").text("高级用户");
+				}
+			}else{
+				mui.toast(data.message,{duration: 'short',type: 'div'});
+			}
+		})
 	},function(){
 		$("#login").removeClass("none");
 	})
 	$("#telphone").on('tap',function(){
 		var phoneNum = $(this).children("font").text();
 		plus.device.dial(phoneNum);
-	})
-	/*查询用户是否实名认证*/
-	$.get(eg.jrURL + "user/logininfo",function(data){
-		if(data.status == 1){
-			if(data.data.userType == 0){
-				$("#userType").text("升级为高级用户");
-			}else{
-				$("#userType").text("高级用户");
-			}
-		}else{
-			mui.toast(data.message,{duration: 'short',type: 'div'});
-		}
 	})
 })
 function goPage(param){
