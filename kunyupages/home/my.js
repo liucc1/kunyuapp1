@@ -81,7 +81,9 @@ $("#companyProfile").on('tap',function(){
 $("#oBtn").on("tap",function(){
 	var params = {};
 	eg.postAjax2("logout",params, function(data) {
-		plus.webview.currentWebview().reload();
+		if(data.status == "1"){	
+			plus.webview.currentWebview().reload();
+		}
 	},function(data){
 
 	});
