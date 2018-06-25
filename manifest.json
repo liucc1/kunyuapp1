@@ -194,10 +194,12 @@
 		"pages": {
 			"kunyupages/home/home.html": {
 				"resources": [
-					"kunyupages/home/index.html"
+					"kunyupages/home/index.html",
+					"kunyupages/home/indexDemo.html"
 				],
 				"refer": [
-					"kunyupages/home/my.html"
+					"kunyupages/home/my.html",
+					"kunyupages/login/login.html"
 				],
 				"priority": 0
 			},
@@ -372,6 +374,17 @@
 				"resources": [],
 				"refer": [
 					"kunyupages/my/payPassword.html"
+				],
+				"priority": 0
+			},
+			"kunyupages/home/indexDemo.html": {
+				"resources": [
+					"images/pic_09.png",
+					"images/pic_19.png",
+					"images/pic_04.png"
+				],
+				"refer": [
+					"kunyupages/home/detailDemo.html"
 				],
 				"priority": 0
 			}

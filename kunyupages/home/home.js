@@ -11,11 +11,18 @@ mui.plusReady(function() {
 	        cachemode:'noCache'
 	    }
 	}
-	//模拟底部选项卡切换事件
-	mui.trigger(defaultTab, 'tap');
+	
 	//设备唯一标识
 	var uuid = plus.device.uuid;
-    localStorage.setItem("uuid",uuid);//存储UUID   
+    localStorage.setItem("uuid",uuid);//存储UUID
+    //判断是否为假页面
+    $.get( eg.jrURL + "sys/test/KYAPP",function(data){
+    	if(data.data == "F"){
+    		$("#defaultTab").attr("href","./indexDemo.html")
+    	}
+    	//模拟底部选项卡切换事件
+		mui.trigger(defaultTab, 'tap');
+    })
 });
 
 //选项卡点击事件

@@ -1,11 +1,14 @@
 {
 	"kunyupages/home/home.html": {
 		"resources": [
-			"kunyupages/home/index.html"
+			"kunyupages/home/index.html",
+			"kunyupages/home/indexDemo.html"
 		],
 		"refer": [
 			"kunyupages/home/index.html",
-			"kunyupages/home/my.html"
+			"kunyupages/home/my.html",
+			"kunyupages/login/login.html",
+			"kunyupages/home/indexDemo.html"
 		]
 	},
 	"kunyupages/home/index.html": {
@@ -152,6 +155,16 @@
 	"kunyupages/my/withdraw.html": {
 		"refer": [
 			"kunyupages/my/payPassword.html"
+		]
+	},
+	"kunyupages/home/indexDemo.html": {
+		"refer": [
+			"kunyupages/home/detailDemo.html"
+		],
+		"resources": [
+			"images/pic_09.png",
+			"images/pic_19.png",
+			"images/pic_04.png"
 		]
 	}
 }
